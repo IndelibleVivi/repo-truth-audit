@@ -33,10 +33,6 @@ read-only audit 如何抵达有决策边界的结果；它们不是品牌 banner
 JSON model 拥有语义；每份 README 拥有本 locale 的精简 display copy 与 Mermaid
 syntax。两版共享 region、node 与 semantic-edge IDs，并显示 model 中的每一条 edge。
 
-三条 `~~~` link 被明确声明为 layout-only constraints。它们使用 Mermaid invisible-link
-syntax，在 README 宽度下纵向排列 challenge branches；不会增加 semantic relation，也
-不会改变 model 的 30 条 edge topology。
-
 每个内部 node 都映射到当前 repository authority：
 
 - [`../product-spec.zh-CN.md`](../product-spec.zh-CN.md) 拥有 accepted product

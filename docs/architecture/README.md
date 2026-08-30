@@ -36,10 +36,6 @@ The JSON model owns meaning. Each README owns its locale's concise display
 copy and Mermaid syntax. Region, node, and semantic-edge IDs are shared, and
 every modeled edge remains visible in both diagrams.
 
-Three `~~~` links are declared as layout-only constraints. They use Mermaid's
-invisible-link syntax to stack the challenge branches at README width; they do
-not add semantic relationships or alter the modeled 30-edge topology.
-
 Every internal node maps to current repository authority:
 
 - [`../product-spec.md`](../product-spec.md) owns accepted product behavior;

@@ -84,11 +84,6 @@ flowchart TB
     N51_EXTERNAL_STATE["Runtime · edge · device · account · owner acceptance<br/>得到新鲜观察前始终是显式未知"]
   end
 
-  %% 仅用于布局：在 README 宽度下收窄 challenge fan-out。
-  N31_FALSE_GREEN ~~~ N32_MULTIPLICITY
-  N32_MULTIPLICITY ~~~ N33_EXTERNAL_UNKNOWN
-  N33_EXTERNAL_UNKNOWN ~~~ N34_SPECIALIST
-
   %% E01_DECISION_BOUNDS_PIN
   N00_OWNER_DECISION -->|限定| N01_START_PIN
   %% E02_PIN_BINDS_READ_ONLY

@@ -91,11 +91,6 @@ flowchart TB
     N51_EXTERNAL_STATE["Runtime · edge · device · account · owner acceptance<br/>explicitly unknown until freshly observed"]
   end
 
-  %% Layout-only constraints: narrow the challenge fan-out at README width.
-  N31_FALSE_GREEN ~~~ N32_MULTIPLICITY
-  N32_MULTIPLICITY ~~~ N33_EXTERNAL_UNKNOWN
-  N33_EXTERNAL_UNKNOWN ~~~ N34_SPECIALIST
-
   %% E01_DECISION_BOUNDS_PIN
   N00_OWNER_DECISION -->|bounds| N01_START_PIN
   %% E02_PIN_BINDS_READ_ONLY

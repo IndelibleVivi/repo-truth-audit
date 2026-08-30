@@ -47,8 +47,8 @@ authority.
 | `docs/product-spec.md` | Complete accepted product contract and acceptance requirements |
 | `docs/evidence-model.md` | Finding, clean-result, proof-layer, and stopping semantics |
 | `docs/architecture/audit-runtime-model.json` | Renderer-neutral architecture semantics, stable IDs, locale copy, boundaries, and source mapping |
-| `scripts/render_architecture_svg.py` | Canonical fixed geometry and condensed display composition for both localized SVGs |
-| `docs/architecture/audit-runtime.*.svg` | Tracked generated English/Chinese diagrams; never edit as source |
+| `README.md` and `README.zh-CN.md` Mermaid blocks | Active localized architecture views and concise display composition |
+| `scripts/validate_architecture.py` | Model/source-anchor validation plus exact Mermaid topology, connector-kind, and locale-parity checks |
 | `docs/research-basis.md` | Public-safe research provenance and external-source decisions |
 | `docs/current-state.md` | Volatile source, Git, validation, installation, and publication state |
 | `evals/cases/` | Controlled behavior subjects; expected artifacts are evaluator evidence, not runtime instructions |
@@ -90,9 +90,11 @@ research packets and raw target-repository evidence outside this Git tree.
 - Expected eval artifacts must not leak into the Skill prompt or fixture.
 - Architecture diagrams must answer the accepted audit-runtime reader question;
   do not replace them with a banner, abstract concept, or Skill packaging view.
-- Change architecture meaning in `audit-runtime-model.json`, change composition
-  in the renderer, regenerate both SVGs, and preserve semantic/localization
-  parity. Never hot-edit one generated locale artifact.
+- Change architecture meaning in `audit-runtime-model.json`; change localized
+  composition in both README Mermaid blocks in the same edit. Preserve stable
+  IDs, exact edge topology, connector kinds, and localization parity. Use
+  renderer-default theming rather than fixed colors so GitHub can adapt to day
+  and dark surfaces.
 
 ## Documentation impact
 
@@ -118,7 +120,6 @@ Run after meaningful changes:
 ```bash
 python3 scripts/validate_repository.py
 python3 scripts/validate_architecture.py
-python3 scripts/render_architecture_svg.py --check
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/selftest.py
 python3 "/path/to/skill-creator/scripts/quick_validate.py" \

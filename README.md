@@ -46,10 +46,116 @@ The diagram answers one public-reader question:
 It depicts the **audit runtime contract**. Packaging, installation, and release
 of this Skill are deliberately excluded as a separate reader job.
 
-![Repository Operational Truth Audit runtime architecture](docs/architecture/audit-runtime.en.svg)
+Solid arrows are in-scope evidence traversal. Dotted arrows are conditional
+specialist or explicitly authorized external observation. The thick return
+arrow means that new decision-relevant evidence reopens the audit.
 
-The renderer-neutral model, stable semantic IDs, evidence mapping, and localized
-artifact contract live in [`docs/architecture/`](docs/architecture/README.md).
+```mermaid
+flowchart TB
+  subgraph R00_PIN["01 · Pin the audit object"]
+    N00_OWNER_DECISION["Owner decision<br/>re-entry · migration · archive · handoff · release readiness"]
+    N01_START_PIN["Exact start pin<br/>physical/Git root · branch · HEAD · working tree"]
+    N02_READ_ONLY["Read-only contract<br/>observe without fixing, committing, installing, or deploying"]
+  end
+
+  subgraph R10_RESOLVE["02 · Resolve authority + reachability"]
+    N10_AUTHORITY["Current authority owners<br/>source · config · durable state · runbooks · history"]
+    N11_LIVE_SELECTORS["Live entrypoints + selectors<br/>registrations · callers · pipelines · services · operator routes"]
+    N12_OWNERSHIP_STATE["Ownership + state isolation<br/>selector · owner · callers · state · version · retirement intent"]
+  end
+
+  subgraph R20_TRAVERSE["03 · Traverse evidence layers"]
+    N20_SOURCE_STATE["Source · config · durable state<br/>the layer that owns behavior or persistent truth"]
+    N21_DERIVED_ARTIFACT["Generated · built · packaged · projected<br/>derivation identity and source-to-artifact relation"]
+    N22_INSTALLED_IDENTITY["Installed · deployed identity<br/>an exact instance only when freshly observed"]
+    N23_EVIDENCE_GATES["Evidence gates<br/>exact input · path · assertion · proof layer · observed identity"]
+  end
+
+  subgraph R30_CHALLENGE["04 · Challenge + adjudicate"]
+    N30_TRACE["Decision-bearing candidate trace<br/>claim → mechanism/state → gap → impact → fresh validation"]
+    N31_FALSE_GREEN["False-green challenge<br/>did the exact path run, observe the assertion, and fail when broken?"]
+    N32_MULTIPLICITY["Multiplicity or shadow path?<br/>selection · ownership · isolation · callers · retirement intent"]
+    N33_EXTERNAL_UNKNOWN["Decision-critical external unknown<br/>missing observation → prevented claim → affected decision → needed proof"]
+    N34_SPECIALIST["Specialist adapter<br/>bounded material observation only; no default fan-out"]
+  end
+
+  subgraph R40_DECIDE["05 · Decide + stop"]
+    N40_OUTCOMES["Adjudication register<br/>contradiction · false green · shadow path · intentional multiplicity<br/>residue · unknown · external boundary · clean within scope"]
+    N41_STOPPING{"Decision fixed-point test<br/>every candidate adjudicated · no new material evidence edge"}
+    N42_DECISION_OUTPUT["Decision answer + proof boundary<br/>pin · live topology · traces · non-findings · verification · overhead"]
+    N43_END_REPIN["End re-pin + mutation statement<br/>reconcile ending identity with the start pin"]
+  end
+
+  subgraph R50_EXTERNAL["External proof boundary"]
+    N50_OBSERVATION_GATE["Fresh observation gate<br/>exact scope + authorization + named current instance"]
+    N51_EXTERNAL_STATE["Runtime · edge · device · account · owner acceptance<br/>explicitly unknown until freshly observed"]
+  end
+
+  %% E01_DECISION_BOUNDS_PIN
+  N00_OWNER_DECISION -->|bounds| N01_START_PIN
+  %% E02_PIN_BINDS_READ_ONLY
+  N01_START_PIN -->|bind scope| N02_READ_ONLY
+  %% E03_PIN_TO_AUTHORITY
+  N02_READ_ONLY -->|observe| N10_AUTHORITY
+  %% E04_AUTHORITY_TO_SELECTORS
+  N10_AUTHORITY -->|resolve reachability| N11_LIVE_SELECTORS
+  %% E05_SELECTORS_TO_OWNERSHIP
+  N11_LIVE_SELECTORS -->|identify selection| N12_OWNERSHIP_STATE
+  %% E06_OWNERSHIP_TO_SOURCE
+  N12_OWNERSHIP_STATE -->|reach owner| N20_SOURCE_STATE
+  %% E07_SOURCE_TO_ARTIFACT
+  N20_SOURCE_STATE -->|derive| N21_DERIVED_ARTIFACT
+  %% E08_ARTIFACT_TO_INSTALL
+  N21_DERIVED_ARTIFACT -->|identify instance| N22_INSTALLED_IDENTITY
+  %% E09_SOURCE_TO_GATES
+  N20_SOURCE_STATE -->|prove layer| N23_EVIDENCE_GATES
+  %% E10_ARTIFACT_TO_GATES
+  N21_DERIVED_ARTIFACT -->|prove identity| N23_EVIDENCE_GATES
+  %% E11_INSTALL_TO_GATES
+  N22_INSTALLED_IDENTITY -->|prove exact instance| N23_EVIDENCE_GATES
+  %% E12_AUTHORITY_TO_TRACE
+  N10_AUTHORITY -->|claim surface| N30_TRACE
+  %% E13_SELECTION_TO_TRACE
+  N12_OWNERSHIP_STATE -->|mechanism + state| N30_TRACE
+  %% E14_GATES_TO_TRACE
+  N23_EVIDENCE_GATES -->|fresh validation| N30_TRACE
+  %% E15_TRACE_TO_FALSE_GREEN
+  N30_TRACE -->|challenge proof| N31_FALSE_GREEN
+  %% E16_TRACE_TO_MULTIPLICITY
+  N30_TRACE -->|adjudicate paths| N32_MULTIPLICITY
+  %% E17_TRACE_TO_UNKNOWN
+  N30_TRACE -->|name missing proof| N33_EXTERNAL_UNKNOWN
+  %% E18_TRACE_TO_SPECIALIST
+  N30_TRACE -. only if material .-> N34_SPECIALIST
+  %% E19_SPECIALIST_TO_TRACE
+  N34_SPECIALIST -. bounded observation .-> N30_TRACE
+  %% E20_UNKNOWN_TO_GATE
+  N33_EXTERNAL_UNKNOWN -. scope + authorize .-> N50_OBSERVATION_GATE
+  %% E21_GATE_TO_EXTERNAL
+  N50_OBSERVATION_GATE -. fresh named observation .-> N51_EXTERNAL_STATE
+  %% E22_EXTERNAL_TO_TRACE
+  N51_EXTERNAL_STATE -. observed evidence only .-> N30_TRACE
+  %% E23_TRACE_TO_OUTCOMES
+  N30_TRACE -->|adjudicate| N40_OUTCOMES
+  %% E24_FALSE_GREEN_TO_OUTCOMES
+  N31_FALSE_GREEN -->|record proof result| N40_OUTCOMES
+  %% E25_MULTIPLICITY_TO_OUTCOMES
+  N32_MULTIPLICITY -->|record path judgment| N40_OUTCOMES
+  %% E26_UNKNOWN_TO_OUTCOMES
+  N33_EXTERNAL_UNKNOWN -->|retain explicit unknown| N40_OUTCOMES
+  %% E27_OUTCOMES_TO_STOP
+  N40_OUTCOMES -->|test completeness| N41_STOPPING
+  %% E28_STOP_FEEDBACK
+  N41_STOPPING == new material evidence edge ==> N10_AUTHORITY
+  %% E29_STOP_TO_OUTPUT
+  N41_STOPPING -->|fixed point reached| N42_DECISION_OUTPUT
+  %% E30_OUTPUT_TO_REPIN
+  N42_DECISION_OUTPUT -->|close receipt| N43_END_REPIN
+```
+
+The renderer-neutral model, stable semantic IDs, evidence mapping, and paired
+Mermaid source contract live in
+[`docs/architecture/`](docs/architecture/README.md).
 
 ## When to use it
 
@@ -105,7 +211,6 @@ git clone https://github.com/IndelibleVivi/repository-operational-truth-audit.gi
 cd repository-operational-truth-audit
 
 python3 scripts/validate_architecture.py
-python3 scripts/render_architecture_svg.py --check
 python3 scripts/validate_repository.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/selftest.py
@@ -176,11 +281,11 @@ contradiction or decision-critical unknown remained inside the pinned object.
 | `skills/repository-operational-truth-audit/` | Canonical Skill source and UI metadata |
 | `docs/product-spec.md` | Complete accepted product and acceptance contract |
 | `docs/evidence-model.md` | Proof, finding, unknown, clean-result, and stopping semantics |
-| `docs/architecture/` | Renderer-neutral architecture model and separate English/Chinese SVGs |
+| `docs/architecture/` | Renderer-neutral architecture model and the paired English/Chinese README Mermaid contract |
 | `docs/research-basis.md` | Public-safe research provenance and source decisions |
 | `docs/current-state.md` | Volatile source, Git, install, CI, and publication truth |
 | `evals/cases/` | Controlled behavior cases with evaluator-only expected artifacts |
-| `scripts/` | Validation, deterministic SVG rendering, fixture self-test, and transactional install |
+| `scripts/` | Architecture/repository validation, fixture self-test, and transactional install |
 | `tests/` | Repository, architecture, fixture, and installer regressions |
 
 Chinese editions use the `.zh-CN.md` suffix and preserve the same document

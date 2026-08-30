@@ -1,23 +1,21 @@
 #!/usr/bin/env python3
-"""Validate the renderer-neutral Lane 2 audit architecture contract."""
+"""Validate the renderer-neutral audit model and paired README Mermaid views."""
 
 from __future__ import annotations
 
-import hashlib
 import json
 from pathlib import Path
 import re
 import sys
 from typing import Any
-import xml.etree.ElementTree as ET
 
 from common import ROOT
 
 
 MODEL_PATH = ROOT / "docs" / "architecture" / "audit-runtime-model.json"
-SVG_PATHS = {
-    "en": ROOT / "docs" / "architecture" / "audit-runtime.en.svg",
-    "zh-CN": ROOT / "docs" / "architecture" / "audit-runtime.zh-CN.svg",
+README_PATHS = {
+    "en": ROOT / "README.md",
+    "zh_cn": ROOT / "README.zh-CN.md",
 }
 
 REQUIRED_REGIONS = {
@@ -69,17 +67,6 @@ ALLOWED_EVIDENCE_STATUS = {
     "unobserved_by_default",
 }
 
-REQUIRED_VISIBLE_EDGES = {
-    "E03_PIN_TO_AUTHORITY",
-    "E06_OWNERSHIP_TO_SOURCE",
-    "E14_GATES_TO_TRACE",
-    "E20_UNKNOWN_TO_GATE",
-    "E21_GATE_TO_EXTERNAL",
-    "E22_EXTERNAL_TO_TRACE",
-    "E23_TRACE_TO_OUTCOMES",
-    "E28_STOP_FEEDBACK",
-}
-
 
 def _read_model(errors: list[str]) -> dict[str, Any]:
     if not MODEL_PATH.is_file():
@@ -96,11 +83,7 @@ def _read_model(errors: list[str]) -> dict[str, Any]:
     return payload
 
 
-def _localized_text(
-    value: object,
-    context: str,
-    errors: list[str],
-) -> None:
+def _localized_text(value: object, context: str, errors: list[str]) -> None:
     if not isinstance(value, dict):
         errors.append(f"{context} must be a localized object")
         return
@@ -172,70 +155,87 @@ def _validate_source_ref(reference: object, context: str, errors: list[str]) -> 
             errors.append(f"{context} source anchor does not exist: {reference}")
 
 
-def _local_name(tag: str) -> str:
-    return tag.rsplit("}", 1)[-1]
+def _extract_mermaid_block(path: Path, errors: list[str]) -> str:
+    relative = path.relative_to(ROOT).as_posix()
+    if not path.is_file():
+        errors.append(f"missing localized README: {relative}")
+        return ""
+    content = path.read_text(encoding="utf-8")
+    blocks = re.findall(
+        r"^```mermaid\s*\n(.*?)^```\s*$",
+        content,
+        re.MULTILINE | re.DOTALL,
+    )
+    if len(blocks) != 1:
+        errors.append(
+            f"{relative} must contain exactly one Mermaid architecture block, got {len(blocks)}"
+        )
+        return ""
+    return blocks[0]
 
 
-def _validate_svg_artifacts(
+def _normalized_line(value: str) -> str:
+    return " ".join(value.strip().split())
+
+
+def _expected_edge_line(edge: dict[str, Any], locale: str) -> str:
+    source = edge["source"]
+    target = edge["target"]
+    label = edge["label"][locale]
+    kind = edge["kind"]
+    if kind == "observed":
+        return f"{source} -->|{label}| {target}"
+    if kind == "conditional":
+        return f"{source} -. {label} .-> {target}"
+    return f"{source} == {label} ==> {target}"
+
+
+def _validate_mermaid_readmes(
     model: dict[str, Any],
     region_ids: set[str],
     node_ids: set[str],
     edge_ids: set[str],
     errors: list[str],
 ) -> None:
-    model_digest = hashlib.sha256(MODEL_PATH.read_bytes()).hexdigest()
-    semantic_sets: dict[str, set[str]] = {}
-    visible_sets: dict[str, set[str]] = {}
+    edges = model.get("edges")
+    regions = model.get("regions")
+    nodes = model.get("nodes")
+    layout = model.get("layout_contract")
+    question = model.get("primary_question")
+    if not all(isinstance(value, list) for value in (edges, regions, nodes)):
+        return
+    if not isinstance(layout, dict) or not isinstance(question, dict):
+        return
 
-    for language, path in SVG_PATHS.items():
+    model_edges = {
+        edge["id"]: edge
+        for edge in edges
+        if isinstance(edge, dict) and isinstance(edge.get("id"), str)
+    }
+    semantic_sets: dict[str, tuple[set[str], set[str], set[str]]] = {}
+
+    for locale, path in README_PATHS.items():
         relative = path.relative_to(ROOT).as_posix()
-        if not path.is_file():
-            errors.append(f"missing localized SVG: {relative}")
-            continue
-        try:
-            root = ET.parse(path).getroot()
-        except (ET.ParseError, OSError) as exc:
-            errors.append(f"{relative} is not valid standalone XML: {exc}")
+        source = _extract_mermaid_block(path, errors)
+        if not source:
             continue
 
-        if _local_name(root.tag) != "svg":
-            errors.append(f"{relative} root element must be svg")
-        for attribute, expected in (
-            ("width", "1600"),
-            ("height", "1080"),
-            ("viewBox", "0 0 1600 1080"),
-            ("role", "img"),
-            ("lang", language),
-        ):
-            if root.get(attribute) != expected:
-                errors.append(
-                    f"{relative} {attribute} must be {expected!r}, got {root.get(attribute)!r}"
-                )
-        labelled_by = root.get("aria-labelledby", "")
-        if len(labelled_by.split()) != 2:
-            errors.append(f"{relative} must bind one title and one description")
+        first_line = next((line.strip() for line in source.splitlines() if line.strip()), "")
+        if first_line != "flowchart TB":
+            errors.append(f"{relative} Mermaid diagram must begin with 'flowchart TB'")
 
-        elements = list(root.iter())
-        rendered_regions = {
-            element.get("data-region-id")
-            for element in elements
-            if element.get("data-region-id")
-        }
-        rendered_nodes = {
-            element.get("data-node-id")
-            for element in elements
-            if element.get("data-node-id")
-        }
-        semantic_edges = {
-            element.get("data-semantic-edge-id")
-            for element in elements
-            if element.get("data-semantic-edge-id")
-        }
-        visible_edges = {
-            element.get("data-edge-id")
-            for element in elements
-            if element.get("data-edge-id")
-        }
+        rendered_region_order = re.findall(
+            r"^\s*subgraph\s+(R[A-Z0-9_]+)\s*\[", source, re.MULTILINE
+        )
+        rendered_regions = set(rendered_region_order)
+        rendered_nodes = set(
+            re.findall(r"^\s*(N[A-Z0-9_]+)\s*(?=[\[\{\(])", source, re.MULTILINE)
+        )
+        edge_comments = re.findall(
+            r"^\s*%%\s+(E[A-Z0-9_]+)\s*$", source, re.MULTILINE
+        )
+        semantic_edges = set(edge_comments)
+
         if rendered_regions != region_ids:
             errors.append(
                 f"{relative} region IDs differ: expected={sorted(region_ids)} "
@@ -248,49 +248,75 @@ def _validate_svg_artifacts(
             )
         if semantic_edges != edge_ids:
             errors.append(
-                f"{relative} semantic edge index differs: expected={sorted(edge_ids)} "
+                f"{relative} semantic edge comments differ: expected={sorted(edge_ids)} "
                 f"actual={sorted(semantic_edges)}"
             )
-        missing_visible = REQUIRED_VISIBLE_EDGES - visible_edges
-        if missing_visible:
+        if len(edge_comments) != len(semantic_edges):
+            errors.append(f"{relative} contains duplicate semantic edge comments")
+        if rendered_region_order != layout.get("region_order"):
             errors.append(
-                f"{relative} omits decision-bearing visible edges: {sorted(missing_visible)}"
+                f"{relative} region order differs: expected={layout.get('region_order')} "
+                f"actual={rendered_region_order}"
             )
-        semantic_sets[language] = semantic_edges
-        visible_sets[language] = visible_edges
 
-        metadata = next(
-            (element for element in elements if _local_name(element.tag) == "metadata"),
-            None,
+        lines = source.splitlines()
+        for index, line in enumerate(lines):
+            match = re.match(r"^\s*%%\s+(E[A-Z0-9_]+)\s*$", line)
+            if not match:
+                continue
+            edge_id = match.group(1)
+            next_index = index + 1
+            while next_index < len(lines) and not lines[next_index].strip():
+                next_index += 1
+            if next_index == len(lines):
+                errors.append(f"{relative} edge comment {edge_id} has no Mermaid edge")
+                continue
+            if edge_id not in model_edges:
+                continue
+            expected = _expected_edge_line(model_edges[edge_id], locale)
+            actual = _normalized_line(lines[next_index])
+            if actual != expected:
+                errors.append(
+                    f"{relative} edge {edge_id} differs: expected={expected!r} actual={actual!r}"
+                )
+
+        for region in regions:
+            if isinstance(region, dict) and region.get("label", {}).get(locale) not in source:
+                errors.append(f"{relative} omits localized region label for {region.get('id')}")
+        for node in nodes:
+            if isinstance(node, dict) and node.get("label", {}).get(locale) not in source:
+                errors.append(f"{relative} omits localized node label for {node.get('id')}")
+
+        raw_readme = path.read_text(encoding="utf-8")
+        readme_without_quote_markers = re.sub(r"(?m)^>\s?", "", raw_readme)
+        localized_question = question.get(locale)
+        if isinstance(localized_question, str):
+            compact_readme = re.sub(r"\s+", "", readme_without_quote_markers)
+            compact_question = re.sub(r"\s+", "", localized_question)
+            if compact_question not in compact_readme:
+                errors.append(f"{relative} omits the model's localized reader question")
+
+        forbidden_fragments = (
+            "%%{init",
+            "classDef",
+            "linkStyle",
+            "themeVariables",
+            "<svg",
+            "<image",
+            "click ",
         )
-        metadata_text = "" if metadata is None or metadata.text is None else metadata.text
-        if model_digest not in metadata_text:
-            errors.append(f"{relative} metadata is not pinned to the current model digest")
-        if '"surface":"day-first"' not in metadata_text:
-            errors.append(f"{relative} metadata lost the day-first surface contract")
+        for fragment in forbidden_fragments:
+            if fragment in source:
+                errors.append(
+                    f"{relative} Mermaid source contains forbidden renderer override: {fragment!r}"
+                )
 
-        direct_children = list(root)
-        if not any(_local_name(element.tag) == "title" for element in direct_children):
-            errors.append(f"{relative} must have a direct accessible title")
-        if not any(_local_name(element.tag) == "desc" for element in direct_children):
-            errors.append(f"{relative} must have a direct accessible description")
+        semantic_sets[locale] = (rendered_regions, rendered_nodes, semantic_edges)
 
-        forbidden = {
-            _local_name(element.tag)
-            for element in elements
-            if _local_name(element.tag) in {"script", "foreignObject", "image"}
-        }
-        if forbidden:
-            errors.append(f"{relative} contains forbidden active or embedded elements: {sorted(forbidden)}")
-
-    if len(semantic_sets) == len(SVG_PATHS):
+    if len(semantic_sets) == len(README_PATHS):
         values = list(semantic_sets.values())
         if values[0] != values[1]:
-            errors.append("localized SVG semantic edge sets differ")
-    if len(visible_sets) == len(SVG_PATHS):
-        values = list(visible_sets.values())
-        if values[0] != values[1]:
-            errors.append("localized SVG visible edge sets differ")
+            errors.append("localized README Mermaid semantic ID sets differ")
 
 
 def validate_model() -> list[str]:
@@ -324,14 +350,30 @@ def validate_model() -> list[str]:
     else:
         if layout.get("surface") != "day-first":
             errors.append("architecture must remain day-first")
+        if layout.get("renderer") != "mermaid":
+            errors.append("architecture renderer must equal 'mermaid'")
+        if layout.get("direction") != "TB":
+            errors.append("architecture Mermaid direction must equal 'TB'")
+        if layout.get("render_sources") != {
+            "en": "README.md",
+            "zh_cn": "README.zh-CN.md",
+        }:
+            errors.append("architecture render_sources must bind both localized READMEs")
+        if layout.get("region_order") != [
+            "R00_PIN",
+            "R10_RESOLVE",
+            "R20_TRAVERSE",
+            "R30_CHALLENGE",
+            "R40_DECIDE",
+            "R50_EXTERNAL",
+        ]:
+            errors.append("architecture region_order must retain all six day-first regions")
+        if layout.get("external_region") != "R50_EXTERNAL":
+            errors.append("external_region must equal R50_EXTERNAL")
         if layout.get("max_connector_meanings") != 3:
             errors.append("max_connector_meanings must equal 3")
-        if layout.get("title_band_max_ratio", 1) > 0.1:
-            errors.append("title band may occupy at most 10% of the canvas")
-        if layout.get("architecture_area_min_ratio", 0) < 0.78:
-            errors.append("architecture must occupy at least 78% of the canvas")
-        if layout.get("readme_review_width_px", 0) < 900:
-            errors.append("README review width must be at least 900 px")
+        if "renderer defaults" not in layout.get("theme_contract", ""):
+            errors.append("theme_contract must preserve renderer-default day/dark adaptation")
 
     legend = payload.get("connector_legend")
     if not isinstance(legend, list):
@@ -446,12 +488,7 @@ def validate_model() -> list[str]:
         if not isinstance(excludes, list) or len(excludes) < 4:
             errors.append("boundary.excludes must keep adjacent reader jobs separate")
 
-    _validate_svg_artifacts(payload, region_ids, node_ids, edge_ids, errors)
-
-    from render_architecture_svg import check_all
-
-    errors.extend(check_all())
-
+    _validate_mermaid_readmes(payload, region_ids, node_ids, edge_ids, errors)
     return errors
 
 
@@ -462,7 +499,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}", file=sys.stderr)
         return 1
-    print("Audit architecture model, topology, localization, and proof boundaries: PASS")
+    print("Audit architecture model, README Mermaid parity, and proof boundaries: PASS")
     return 0
 
 

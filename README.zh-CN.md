@@ -40,9 +40,113 @@ unknowns，或一份简短的 clean-within-scope 结论，然后停止。
 因此它画的是**审计运行契约**。这个 Skill 自身的 packaging、installation 与 release
 属于另一项 reader job，没有被硬塞进同一张图。
 
-![Repository Operational Truth Audit 中文运行架构](docs/architecture/audit-runtime.zh-CN.svg)
+实线箭头表示范围内、承载证据的穿行；点线箭头表示 conditional specialist 或经明确
+授权的外部观察；粗回箭头表示新的决策相关证据会重新打开审计。
 
-Renderer-neutral model、稳定 semantic IDs、evidence mapping 与 localized artifact
+```mermaid
+flowchart TB
+  subgraph R00_PIN["01 · 钉住审计对象"]
+    N00_OWNER_DECISION["所有者决策<br/>重新进入 · 迁移 · 归档 · 交接 · 发布准备"]
+    N01_START_PIN["精确起始钉点<br/>physical/Git root · branch · HEAD · working tree"]
+    N02_READ_ONLY["只读契约<br/>只观察，不修复、不 commit、不 install、不 deploy"]
+  end
+
+  subgraph R10_RESOLVE["02 · 解析权威与可达路径"]
+    N10_AUTHORITY["当前权威所有者<br/>source · config · durable state · runbooks · history"]
+    N11_LIVE_SELECTORS["实际入口与 selectors<br/>registrations · callers · pipelines · services · operator routes"]
+    N12_OWNERSHIP_STATE["所有权与状态隔离<br/>selector · owner · callers · state · version · retirement intent"]
+  end
+
+  subgraph R20_TRAVERSE["03 · 穿行证据层"]
+    N20_SOURCE_STATE["Source · config · durable state<br/>拥有行为或持久事实的层"]
+    N21_DERIVED_ARTIFACT["Generated · built · packaged · projected<br/>derivation identity 与 source-to-artifact relation"]
+    N22_INSTALLED_IDENTITY["Installed · deployed identity<br/>仅记录范围内得到新鲜观察的精确 instance"]
+    N23_EVIDENCE_GATES["证据 gates<br/>exact input · path · assertion · proof layer · observed identity"]
+  end
+
+  subgraph R30_CHALLENGE["04 · 挑战与裁定"]
+    N30_TRACE["承载决策的候选 trace<br/>claim → mechanism/state → gap → impact → fresh validation"]
+    N31_FALSE_GREEN["False-green challenge<br/>exact path 是否运行、assertion 是否可见、破坏后是否失败？"]
+    N32_MULTIPLICITY["Intentional multiplicity 还是 shadow path？<br/>选择 · 所有权 · 隔离 · callers · retirement intent"]
+    N33_EXTERNAL_UNKNOWN["决策关键的外部未知<br/>缺失观察 → 被阻断 claim → 受影响 decision → 所需证明"]
+    N34_SPECIALIST["Specialist adapter<br/>只做有实质意义的有限观察；不默认 fan-out"]
+  end
+
+  subgraph R40_DECIDE["05 · 决策与停止"]
+    N40_OUTCOMES["裁定结果簿<br/>矛盾 · false green · shadow path · intentional multiplicity<br/>residue · unknown · external boundary · 范围内 clean"]
+    N41_STOPPING{"决策固定点测试<br/>每个候选项均已裁定 · 不再有新的实质证据边"}
+    N42_DECISION_OUTPUT["决策答案与证明边界<br/>pin · live topology · traces · non-findings · verification · overhead"]
+    N43_END_REPIN["结束复钉与 mutation statement<br/>把结束身份与起始钉点核对"]
+  end
+
+  subgraph R50_EXTERNAL["外部证明边界"]
+    N50_OBSERVATION_GATE["新鲜观察 gate<br/>精确范围 + 明确授权 + 具名当前 instance"]
+    N51_EXTERNAL_STATE["Runtime · edge · device · account · owner acceptance<br/>得到新鲜观察前始终是显式未知"]
+  end
+
+  %% E01_DECISION_BOUNDS_PIN
+  N00_OWNER_DECISION -->|限定| N01_START_PIN
+  %% E02_PIN_BINDS_READ_ONLY
+  N01_START_PIN -->|绑定范围| N02_READ_ONLY
+  %% E03_PIN_TO_AUTHORITY
+  N02_READ_ONLY -->|观察| N10_AUTHORITY
+  %% E04_AUTHORITY_TO_SELECTORS
+  N10_AUTHORITY -->|解析可达性| N11_LIVE_SELECTORS
+  %% E05_SELECTORS_TO_OWNERSHIP
+  N11_LIVE_SELECTORS -->|识别选择| N12_OWNERSHIP_STATE
+  %% E06_OWNERSHIP_TO_SOURCE
+  N12_OWNERSHIP_STATE -->|到达所有者| N20_SOURCE_STATE
+  %% E07_SOURCE_TO_ARTIFACT
+  N20_SOURCE_STATE -->|派生| N21_DERIVED_ARTIFACT
+  %% E08_ARTIFACT_TO_INSTALL
+  N21_DERIVED_ARTIFACT -->|识别实例| N22_INSTALLED_IDENTITY
+  %% E09_SOURCE_TO_GATES
+  N20_SOURCE_STATE -->|证明本层| N23_EVIDENCE_GATES
+  %% E10_ARTIFACT_TO_GATES
+  N21_DERIVED_ARTIFACT -->|证明身份| N23_EVIDENCE_GATES
+  %% E11_INSTALL_TO_GATES
+  N22_INSTALLED_IDENTITY -->|证明精确实例| N23_EVIDENCE_GATES
+  %% E12_AUTHORITY_TO_TRACE
+  N10_AUTHORITY -->|claim surface| N30_TRACE
+  %% E13_SELECTION_TO_TRACE
+  N12_OWNERSHIP_STATE -->|mechanism + state| N30_TRACE
+  %% E14_GATES_TO_TRACE
+  N23_EVIDENCE_GATES -->|新鲜验证| N30_TRACE
+  %% E15_TRACE_TO_FALSE_GREEN
+  N30_TRACE -->|挑战证明| N31_FALSE_GREEN
+  %% E16_TRACE_TO_MULTIPLICITY
+  N30_TRACE -->|裁定路径| N32_MULTIPLICITY
+  %% E17_TRACE_TO_UNKNOWN
+  N30_TRACE -->|命名缺失证明| N33_EXTERNAL_UNKNOWN
+  %% E18_TRACE_TO_SPECIALIST
+  N30_TRACE -. 仅在实质相关时 .-> N34_SPECIALIST
+  %% E19_SPECIALIST_TO_TRACE
+  N34_SPECIALIST -. 有限观察 .-> N30_TRACE
+  %% E20_UNKNOWN_TO_GATE
+  N33_EXTERNAL_UNKNOWN -. 限定范围并授权 .-> N50_OBSERVATION_GATE
+  %% E21_GATE_TO_EXTERNAL
+  N50_OBSERVATION_GATE -. 新鲜具名观察 .-> N51_EXTERNAL_STATE
+  %% E22_EXTERNAL_TO_TRACE
+  N51_EXTERNAL_STATE -. 仅返回已观察证据 .-> N30_TRACE
+  %% E23_TRACE_TO_OUTCOMES
+  N30_TRACE -->|裁定| N40_OUTCOMES
+  %% E24_FALSE_GREEN_TO_OUTCOMES
+  N31_FALSE_GREEN -->|记录证明结果| N40_OUTCOMES
+  %% E25_MULTIPLICITY_TO_OUTCOMES
+  N32_MULTIPLICITY -->|记录路径判断| N40_OUTCOMES
+  %% E26_UNKNOWN_TO_OUTCOMES
+  N33_EXTERNAL_UNKNOWN -->|保留显式未知| N40_OUTCOMES
+  %% E27_OUTCOMES_TO_STOP
+  N40_OUTCOMES -->|测试完备性| N41_STOPPING
+  %% E28_STOP_FEEDBACK
+  N41_STOPPING == 新的实质证据边 ==> N10_AUTHORITY
+  %% E29_STOP_TO_OUTPUT
+  N41_STOPPING -->|抵达固定点| N42_DECISION_OUTPUT
+  %% E30_OUTPUT_TO_REPIN
+  N42_DECISION_OUTPUT -->|闭合回执| N43_END_REPIN
+```
+
+Renderer-neutral model、稳定 semantic IDs、evidence mapping 与两份 Mermaid source
 contract 位于 [`docs/architecture/`](docs/architecture/README.zh-CN.md)。
 
 ## 什么时候使用
@@ -95,7 +199,6 @@ git clone https://github.com/IndelibleVivi/repository-operational-truth-audit.gi
 cd repository-operational-truth-audit
 
 python3 scripts/validate_architecture.py
-python3 scripts/render_architecture_svg.py --check
 python3 scripts/validate_repository.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/selftest.py
@@ -163,11 +266,11 @@ decision-critical unknown。
 | `skills/repository-operational-truth-audit/` | Canonical Skill source 与 UI metadata |
 | `docs/product-spec.md` | 完整 accepted product 与 acceptance contract |
 | `docs/evidence-model.md` | Proof、finding、unknown、clean-result 与 stopping semantics |
-| `docs/architecture/` | Renderer-neutral model 与分开的中英文 SVG |
+| `docs/architecture/` | Renderer-neutral model 与 README 中分开的中英文 Mermaid contract |
 | `docs/research-basis.md` | Public-safe research provenance 与 source decisions |
 | `docs/current-state.md` | 易变化的 source、Git、install、CI 与 publication truth |
 | `evals/cases/` | Controlled behavior cases；expected artifacts 仅供 evaluator 使用 |
-| `scripts/` | Validation、deterministic SVG rendering、fixture self-test 与 transactional install |
+| `scripts/` | Architecture/repository validation、fixture self-test 与 transactional install |
 | `tests/` | Repository、architecture、fixture 与 installer regressions |
 
 中文文档使用 `.zh-CN.md` 后缀，与英文版保持同一文档边界，不把两种语言机械混排进

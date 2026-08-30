@@ -53,8 +53,6 @@ REQUIRED_FILES = {
     "VERSION",
     "docs/current-state.md",
     "docs/architecture/audit-runtime-model.json",
-    "docs/architecture/audit-runtime.en.svg",
-    "docs/architecture/audit-runtime.zh-CN.svg",
     "docs/architecture/README.md",
     "docs/architecture/README.zh-CN.md",
     "docs/current-state.zh-CN.md",
@@ -71,7 +69,6 @@ REQUIRED_FILES = {
     "fieldlab-pack.json",
     "scripts/common.py",
     "scripts/install_skill.py",
-    "scripts/render_architecture_svg.py",
     "scripts/selftest.py",
     "scripts/validate_architecture.py",
     "scripts/validate_repository.py",
@@ -166,7 +163,8 @@ def validate() -> list[str]:
     readme_requirements = {
         "README.md": (
             "[简体中文](README.zh-CN.md)",
-            "docs/architecture/audit-runtime.en.svg",
+            "```mermaid",
+            "flowchart TB",
             "source-available, not OSI open source",
             "--ref v0.1.0",
             "Sustainable Use License 1.0",
@@ -174,7 +172,8 @@ def validate() -> list[str]:
         ),
         "README.zh-CN.md": (
             "[English](README.md)",
-            "docs/architecture/audit-runtime.zh-CN.svg",
+            "```mermaid",
+            "flowchart TB",
             "source-available，不是 OSI open source",
             "--ref v0.1.0",
             "Sustainable Use License 1.0",
@@ -328,7 +327,6 @@ def validate() -> list[str]:
     workflow = read(".github/workflows/validate.yml", errors)
     for command in (
         "python3 scripts/validate_architecture.py",
-        "python3 scripts/render_architecture_svg.py --check",
         "python3 scripts/validate_repository.py",
         "python3 -m unittest discover -s tests -p 'test_*.py'",
         "python3 scripts/selftest.py",

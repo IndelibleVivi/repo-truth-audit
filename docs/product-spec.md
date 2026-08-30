@@ -23,8 +23,8 @@ The complete outcome includes:
 - deterministic repository, architecture, and fixture validation;
 - a reversible local installation path with source provenance;
 - separate English and Simplified Chinese public documentation editions;
-- a day-first architecture SVG pair derived from one renderer-neutral semantic
-  model;
+- separate day-first English and Simplified Chinese Mermaid architecture views
+  embedded in their READMEs and governed by one renderer-neutral semantic model;
 - accurate user, agent, current-state, and research documentation;
 - no ownership or runtime dependency on Softpowers.
 
@@ -237,8 +237,8 @@ Local installation must:
 Source-complete acceptance requires:
 
 - repository validator passes;
-- architecture model, English/Chinese SVG parity, and deterministic render
-  checks pass;
+- architecture model, English/Chinese Mermaid topology, connector-kind, and
+  locale-parity checks pass;
 - unit and fixture self-tests pass;
 - system Skill quick validation passes;
 - controlled fixtures are confirmed to carry their intended dirty/clean truth;

@@ -4,7 +4,13 @@
 
 ## Unreleased
 
-No unreleased changes.
+- Replaced the active architecture surface on `main` with separate native
+  Mermaid diagrams embedded in the English and Simplified Chinese READMEs.
+- Preserved the renderer-neutral model, all six regions, all stable node IDs,
+  all 30 semantic edges, and the read-only, external-proof, and fixed-point
+  boundaries while retiring the fixed-canvas SVG renderer from current source.
+- Added exact Mermaid topology, localized edge-label, connector-kind,
+  theme-neutrality, and locale-parity validation.
 
 ## 0.1.0 — 2026-08-30
 

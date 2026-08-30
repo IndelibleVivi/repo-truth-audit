@@ -31,7 +31,8 @@ paths 中 project-original authored documentation 与独立 diagrams：
 
 - `README.md` 与 `README.zh-CN.md`；
 - `CHANGELOG.md` 与 `CHANGELOG.zh-CN.md`；
-- `docs/**`，包括 renderer-neutral architecture model 与 localized SVG diagrams。
+- `docs/**`，包括 renderer-neutral architecture model；嵌入两份 README 的 localized
+  Mermaid diagrams 随对应 README 一并适用本 license。
 
 CC BY-NC-SA 4.0 要求 attribution；licensed use 受该 license 定义的
 NonCommercial 限制；shared Adapted Material 适用 ShareAlike。Canonical legal code

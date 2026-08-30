@@ -2,10 +2,11 @@
 
 [简体中文](README.zh-CN.md)
 
-This directory owns the public architecture view for the audit runtime
-contract. It is an explanatory model of how one read-only audit reaches a
-decision-bounded result; it is not a brand banner, an abstract project concept,
-or the packaging and release architecture of this repository.
+This directory owns the semantic contract behind the public audit-runtime
+architecture. The localized diagrams themselves are native Mermaid blocks in
+the two root READMEs. They explain how one read-only audit reaches a
+decision-bounded result; they are not a brand banner, an abstract project
+concept, or this repository's packaging and release architecture.
 
 ## Reader question
 
@@ -13,7 +14,7 @@ or the packaging and release architecture of this repository.
 > repository snapshot into a decision-bounded answer without crossing
 > unobserved external boundaries?
 
-The diagram answers by showing six regions:
+The diagrams answer through six regions:
 
 1. pin the audit object;
 2. resolve authority and reachability;
@@ -22,21 +23,18 @@ The diagram answers by showing six regions:
 5. reach a decision fixed point and report; and
 6. keep external state behind an explicit fresh-observation gate.
 
-## Files
+## Truth surfaces
 
-| File | Role |
+| Surface | Authority |
 | --- | --- |
-| `audit-runtime-model.json` | Renderer-neutral semantic authority: audience, question, boundary, nodes, edges, states, source mapping, and render acceptance |
-| `audit-runtime.en.svg` | Standalone day-first English edition |
-| `audit-runtime.zh-CN.svg` | Standalone day-first Simplified Chinese edition |
-| `../../scripts/render_architecture_svg.py` | Deterministic visual composition and locale-specific line breaking |
-| `../../scripts/validate_architecture.py` | Model, source-anchor, topology, localization, SVG-ID, accessibility, and render-drift validation |
+| [`audit-runtime-model.json`](audit-runtime-model.json) | Renderer-neutral semantic authority: reader question, boundaries, stable IDs, nodes, edges, states, source mapping, and render acceptance |
+| [`../../README.md`](../../README.md) | Standalone English Mermaid view |
+| [`../../README.zh-CN.md`](../../README.zh-CN.md) | Standalone Simplified Chinese Mermaid view |
+| [`../../scripts/validate_architecture.py`](../../scripts/validate_architecture.py) | Model, source-anchor, topology, localization, connector-kind, and README parity validation |
 
-The JSON model owns meaning. The renderer owns fixed geometry and condensed
-display copy. The two SVGs are generated artifacts checked into the repository
-so GitHub and offline readers can display them without a build step.
-
-## Truth sources
+The JSON model owns meaning. Each README owns its locale's concise display
+copy and Mermaid syntax. Region, node, and semantic-edge IDs are shared, and
+every modeled edge remains visible in both diagrams.
 
 Every internal node maps to current repository authority:
 
@@ -48,49 +46,48 @@ Every internal node maps to current repository authority:
 - [`../../AGENTS.md`](../../AGENTS.md) owns repository, read-only, source/install,
   privacy, and publication boundaries.
 
-The external-state node is explicitly `unobserved_by_default`. The diagram does
-not claim that a runtime, edge, device, account, or owner-acceptance surface has
-been observed merely because repository evidence exists.
+The external-state node is `unobserved_by_default`. Repository evidence never
+silently proves runtime, edge, device, account, or owner acceptance.
 
 ## Connector meanings
 
-The visual uses exactly three connector meanings:
+The Mermaid views use three shape-level connector meanings that remain visible
+without relying on color:
 
-- solid teal: in-scope, evidence-bearing traversal;
-- dashed clay: an optional specialist or explicitly authorized fresh external
+- solid arrow: in-scope, evidence-bearing traversal;
+- dotted arrow: optional specialist or explicitly authorized fresh external
   observation; and
-- dotted teal return: a new decision-relevant evidence edge reopens traversal.
+- thick return arrow: new decision-relevant evidence reopens traversal.
 
 Passing evidence never upgrades a claim to the next layer. Source, derived
-artifact, installed/deployed identity, and external state remain separate.
+artifact, installed/deployed identity, and external state stay separate.
 
-## Localization contract
+## Localization and theme contract
 
-English and Simplified Chinese are separate SVG artifacts, not bilingual text
-on one canvas. They share region, node, and semantic-edge IDs while allowing
-locale-specific labels and line breaks. The renderer-neutral model contains
-both language editions of all semantic labels, responsibilities, limits, edge
-labels, state labels, and the primary reader question.
+English and Simplified Chinese are two independent Mermaid diagrams, not
+bilingual text on one canvas. They share region, node, semantic-edge, and
+connector-kind parity while allowing locale-specific line breaks.
 
-## Render and validate
+The diagrams use Mermaid renderer defaults and no hard-coded theme colors.
+GitHub can therefore adapt them to day and dark surfaces instead of preserving
+a fixed SVG palette or fixed-canvas text scale.
 
-Regenerate both artifacts after changing the model or renderer:
+## Edit and validate
 
-```bash
-python3 scripts/render_architecture_svg.py
-```
-
-Then run:
+Change architecture meaning in `audit-runtime-model.json`, then update both
+README Mermaid blocks in the same change. Run:
 
 ```bash
 python3 scripts/validate_architecture.py
-python3 scripts/render_architecture_svg.py --check
+python3 scripts/validate_repository.py
+python3 -m unittest tests.test_architecture
 ```
 
-The validator requires stable topology, valid repository source anchors,
-three connector meanings, exact locale parity, direct accessible title and
-description elements, a day-first surface, current model digests, and the
-visible decision-bearing feedback and proof-boundary edges.
+The validator requires all six regions, all stable nodes, all 30 semantic
+edges, exact connector kinds and localized edge labels, model source anchors,
+locale parity, top-to-bottom flow, and the visible read-only, external-proof,
+and fixed-point feedback boundaries.
 
-The SVGs contain no scripts, network dependencies, embedded raster images, or
-`foreignObject` content. They remain ordinary standalone SVG files.
+The immutable `v0.1.0` release remains historical evidence of the earlier SVG
+edition. Current `main` uses the README Mermaid views as the active public
+architecture surface.

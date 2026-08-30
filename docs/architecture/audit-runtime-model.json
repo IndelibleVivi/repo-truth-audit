@@ -10,7 +10,7 @@
     "zh_cn": "正在为具体的重新进入、迁移、整合、安全归档、交接或发布准备决策选择审计方法的仓库所有者与技术协作者。"
   },
   "primary_question": {
-    "en": "How does one read-only audit turn a concrete owner decision and exact repository snapshot into a decision-bounded answer without crossing unobserved external boundaries?",
+    "en": "How does one read-only audit turn a concrete owner decision and an exact repository snapshot into a decision-bounded answer without crossing unobserved external boundaries?",
     "zh_cn": "一次只读审计如何把明确的所有者决策与精确仓库快照转化为有决策边界的答案，并在未观察的外部边界前停下？"
   },
   "answer_contract": {
@@ -35,23 +35,24 @@
   },
   "layout_contract": {
     "surface": "day-first",
-    "canvas": {
-      "width": 1600,
-      "height": 1080
+    "renderer": "mermaid",
+    "direction": "TB",
+    "render_sources": {
+      "en": "README.md",
+      "zh_cn": "README.zh-CN.md"
     },
-    "title_band_max_ratio": 0.1,
-    "architecture_area_min_ratio": 0.78,
-    "readme_review_width_px": 900,
     "region_order": [
       "R00_PIN",
       "R10_RESOLVE",
       "R20_TRAVERSE",
       "R30_CHALLENGE",
-      "R40_DECIDE"
+      "R40_DECIDE",
+      "R50_EXTERNAL"
     ],
     "external_region": "R50_EXTERNAL",
     "max_connector_meanings": 3,
-    "localization": "Separate English and Simplified Chinese SVGs share semantic IDs but may tune line breaks and geometry independently."
+    "theme_contract": "Use Mermaid renderer defaults without hard-coded theme colors so GitHub can adapt the diagram to day or dark surfaces.",
+    "localization": "Separate English and Simplified Chinese Mermaid blocks share region, node, semantic-edge, and connector-kind parity without mixing both languages in one diagram."
   },
   "connector_legend": [
     {
@@ -1011,12 +1012,13 @@
     }
   ],
   "render_acceptance": [
-    "The architecture, not a title or decorative field, occupies most of the canvas.",
-    "All six regions and all stable node IDs are visible in both locale artifacts.",
+    "The audit topology is embedded directly in each localized README as a native Mermaid block.",
+    "All six regions and all stable node IDs are present in both locale diagrams.",
     "Source, derived artifact, installed identity, and external state remain visually distinct.",
     "The external proof boundary and read-only mutation boundary are visible without reading body prose.",
     "The feedback loop from the stopping test to authority resolution is visible.",
-    "The diagram remains legible at approximately 900 CSS pixels wide and at full size.",
-    "The English and Simplified Chinese artifacts preserve semantic parity without sharing one bilingual canvas."
+    "The diagram remains readable in GitHub's normal README rendering without fixed-canvas microtext.",
+    "The English and Simplified Chinese diagrams preserve semantic parity without sharing one bilingual canvas.",
+    "The Mermaid source contains no custom theme colors, scripts, network dependencies, or embedded image content."
   ]
 }

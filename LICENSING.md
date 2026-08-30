@@ -34,8 +34,9 @@ project-original authored documentation and independent diagrams at:
 
 - `README.md` and `README.zh-CN.md`;
 - `CHANGELOG.md` and `CHANGELOG.zh-CN.md`; and
-- `docs/**`, including the renderer-neutral architecture model and localized
-  SVG diagrams.
+- `docs/**`, including the renderer-neutral architecture model; the localized
+  Mermaid diagrams embedded in the two README files are covered with those
+  README files.
 
 CC BY-NC-SA 4.0 requires attribution, limits licensed use to NonCommercial
 purposes as defined by the license, and applies ShareAlike when Adapted Material

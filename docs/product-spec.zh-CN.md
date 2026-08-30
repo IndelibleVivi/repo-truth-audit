@@ -25,7 +25,8 @@ contradictions，区分 intentional multiplicity 与 shadow paths，并在继续
 - deterministic repository、architecture 与 fixture validation；
 - 一条带 source provenance、可逆的 local installation path；
 - 分开的 English 与简体中文 public documentation editions；
-- 一对来自同一 renderer-neutral semantic model 的 day-first architecture SVG；
+- 分别嵌入两份 README、由同一 renderer-neutral semantic model 管辖的 day-first
+  English 与简体中文 Mermaid architecture views；
 - 准确的 user、agent、current-state 与 research documentation；
 - 不由 Softpowers 拥有，也不依赖其 runtime。
 
@@ -230,7 +231,8 @@ Local installation 必须：
 Source-complete acceptance 要求：
 
 - repository validator 通过；
-- architecture model、English/Chinese SVG parity 与 deterministic render check 通过；
+- architecture model、English/Chinese Mermaid topology、connector-kind 与
+  locale-parity checks 通过；
 - unit 与 fixture self-tests 通过；
 - system Skill quick validation 通过；
 - controlled fixtures 被确认仍然承载设计的 dirty/clean truth；

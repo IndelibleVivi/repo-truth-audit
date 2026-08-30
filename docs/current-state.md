@@ -77,20 +77,25 @@ Last reconciled: 2026-08-30
   Current `main` has not been installed; installed/source digest equality is
   therefore not claimed for the unreleased metadata change.
 - Next-turn Codex discovery: not observed.
-- Current-main CI: pending for the naming/eval/evidence patch. Earlier Actions
-  run `33299194074` passed all four Ubuntu/macOS and Python 3.10/3.13 jobs on
-  pre-patch head `6fe94527...`. Release run `33295744677` separately passed the
-  same matrix on the peeled `v0.1.0` release commit. Workflow source and live CI
-  remain separate facts.
+- Current-main CI: PASS. Actions run `33300477192` passed all four Ubuntu/macOS
+  and Python 3.10/3.13 jobs on substantive naming/eval/evidence commit
+  `8ef4b960dfd4beefd15ede83f5575f2688630259`. Release run `33295744677`
+  separately passed the same matrix on the peeled `v0.1.0` release commit.
+  Workflow source and live CI remain separate facts.
 - Release publication: PASS. GitHub Release `v0.1.0` was published on
   2026-08-30 and is neither draft nor prerelease. Anonymous tagged read-back,
   disposable public-tag installation, Skill validation, digest equality, and
-  pinned SUL text were verified. No new release is implied by the current
-  README architecture correction.
-- Current-main publication: pending for the naming/eval/evidence patch and
-  canonical remote rename to `https://github.com/IndelibleVivi/repo-truth-audit`.
-  The accepted architecture identity remains `9805fa52...` and is not rewritten
-  by this patch.
+  pinned SUL text were verified. After the repository rename, annotated tag
+  object `235be6e...` still peels to `0180e4c...`, and the release remains
+  available under the new canonical slug. No new release is implied by the
+  current-main corrections.
+- Current-main publication: PASS for substantive commit `8ef4b960...`. The
+  canonical public remote is
+  `https://github.com/IndelibleVivi/repo-truth-audit`; the previous repository
+  URL returns an HTTP 301 to it. Public read-back exposed the new README title,
+  formal-name line, unchanged Skill slug, and forward-behavior receipt. A later
+  status-only reconciliation may move `main` without changing this substantive
+  source identity. The accepted architecture identity remains `9805fa52...`.
 - Licensing: functional materials are source-available under SUL-1.0;
   standalone documentation, the renderer-neutral architecture model, and the
   Mermaid diagrams embedded in the README files are under CC BY-NC-SA 4.0

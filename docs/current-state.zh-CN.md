@@ -71,17 +71,22 @@
   `main` 未安装，因此不声称 unreleased metadata change 已达到 installed/source digest
   equality。
 - Next-turn Codex discovery：尚未观察。
-- Current-main CI：naming/eval/evidence patch 尚待观察。较早的 Actions run
-  `33299194074` 已在 pre-patch head `6fe94527...` 通过全部四个 Ubuntu/macOS、Python
+- Current-main CI：PASS。Actions run `33300477192` 已在 substantive
+  naming/eval/evidence commit
+  `8ef4b960dfd4beefd15ede83f5575f2688630259` 通过全部四个 Ubuntu/macOS、Python
   3.10/3.13 jobs。Release run `33295744677` 另行在 peeled `v0.1.0` release commit
   上通过同一 matrix。Workflow source 与 live CI 仍是不同事实。
 - Release publication：PASS。GitHub Release `v0.1.0` 已于 2026-08-30 发布，不是
   draft 或 prerelease。Anonymous tagged read-back、disposable public-tag install、
-  Skill validation、digest equality 与 pinned SUL text 已验证。当前 README architecture
-  correction 不暗示一个新 release。
-- Current-main publication：naming/eval/evidence patch 以及 canonical remote rename 到
-  `https://github.com/IndelibleVivi/repo-truth-audit` 尚待完成。Accepted architecture
-  identity 仍为 `9805fa52...`，本 patch 不重写它。
+  Skill validation、digest equality 与 pinned SUL text 已验证。Repository rename 后，
+  annotated tag object `235be6e...` 仍然 peel 到 `0180e4c...`，release 也继续存在于新的
+  canonical slug 下。Current-main corrections 不暗示一个新 release。
+- Current-main publication：substantive commit `8ef4b960...` PASS。Canonical public
+  remote 为 `https://github.com/IndelibleVivi/repo-truth-audit`；旧 repository URL
+  返回指向它的 HTTP 301。Public read-back 已暴露新的 README title、formal-name line、
+  保持不变的 Skill slug 与 forward-behavior receipt。后续 status-only reconciliation
+  可以移动 `main`，但不会改变这份 substantive source identity。Accepted architecture
+  identity 仍为 `9805fa52...`。
 - Licensing：functional materials 在 SUL-1.0 下 source-available；standalone
   documentation、renderer-neutral architecture model，以及嵌入 README 的 Mermaid
   diagrams 按 `LICENSING.zh-CN.md` 使用 CC BY-NC-SA 4.0。GitHub 将 layered repository

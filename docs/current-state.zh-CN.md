@@ -28,17 +28,19 @@
 - Independent forward behavior：2026-08-30 PASS。Artifact-split case 抵达 stale
   distributed entrypoint 与 false-green source test；clean control 把
   stable/development selection 裁定为 intentional multiplicity。
-- Git source identity：release source 是包含此状态的 repository commit。它尚未被 tag、
-  push 或从 public remote read back；这里不声称 public identity。
-- Local install：较早的 release-candidate Skill 仍处于 installed 状态。由于
-  package-local license 与 notice 会改变 Skill digest，最终 `0.1.0` installation 与
-  source/installed digest equality 等待 clean release commit。
+- Git source identity：canonical `0.1.0` Skill bytes 与 release source 已 commit 于
+  `e15dbabc84d3cae35c40dd9a0a87343fd57981d2`。该 commit 尚未 tag、push 或从 public
+  remote read back。
+- Local install：PASS。以上 clean source commit 已在 2026-08-30 以 transactional
+  方式安装；canonical 与 installed Skill digests 均为
+  `30d7ed369fad578c12d83291a17edaad4ad8c3195b2b7b31294c48ecf7ebe69e`。Local receipt
+  记录 clean source identity 与 recoverable backup。
 - Next-turn Codex discovery：尚未观察。
 - Remote/CI：public remote 与 public CI result 尚未创建或观察。Workflow source 不等于
   CI proof。
 - Publication：owner 已授权 public repository，并选择 functional materials 使用
   SUL-1.0、standalone documentation 与 diagrams 使用 CC BY-NC-SA 4.0。Source
-  preparation 正在进行；public visibility、tag、GitHub Release 与 tagged public install
-  仍是分开的 pending gates。
+  source 与 local installed acceptance 已完成；public visibility、CI、tag、GitHub
+  Release 与 tagged public install 仍是分开的 pending gates。
 
 在这里替换 superseded status，不要追加 development diary。

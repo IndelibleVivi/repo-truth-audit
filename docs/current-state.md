@@ -30,19 +30,20 @@ Last reconciled: 2026-08-30
 - Independent forward behavior: PASS on 2026-08-30. An artifact-split case
   reached the stale distributed entrypoint and false-green source test; a clean
   control treated stable/development selection as intentional multiplicity.
-- Git source identity: the release source is the repository commit containing
-  this state. It has not yet been tagged, pushed, or read back from a public
-  remote; no public identity claim is made here.
-- Local install: the earlier release-candidate Skill remains installed. Final
-  `0.1.0` installation and source/installed digest equality are pending the
-  clean release commit because package-local license and notice files change
-  the Skill digest.
+- Git source identity: canonical `0.1.0` Skill bytes and release source are
+  committed at `e15dbabc84d3cae35c40dd9a0a87343fd57981d2`. That commit has not yet
+  been tagged, pushed, or read back from a public remote.
+- Local install: PASS. The clean source commit above was transactionally
+  installed on 2026-08-30; canonical and installed Skill digests both equal
+  `30d7ed369fad578c12d83291a17edaad4ad8c3195b2b7b31294c48ecf7ebe69e`.
+  The local receipt records the clean source identity and recoverable backup.
 - Next-turn Codex discovery: not observed.
 - Remote/CI: the public remote and public CI result have not yet been created or
   observed. Workflow source is not CI proof.
 - Publication: the owner authorized a public repository and selected SUL-1.0
   for functional materials plus CC BY-NC-SA 4.0 for standalone documentation
-  and diagrams. Source preparation is in progress; public visibility, tag,
-  GitHub Release, and tagged public install remain separate pending gates.
+  and diagrams. Source and local installed acceptance are complete; public
+  visibility, CI, tag, GitHub Release, and tagged public install remain separate
+  pending gates.
 
 Replace superseded status here; do not append a development diary.

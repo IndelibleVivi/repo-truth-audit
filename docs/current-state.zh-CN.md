@@ -33,9 +33,12 @@
   parity、repository/publication validation、15 个 unit tests、六个 fixture truth
   checks、fixture self-test、system Skill quick validation 与 Git whitespace
   validation。
-- Mermaid render acceptance：local renderer 与 public GitHub README rendering 是
-  两个不同 proof layer，必须分别从精确 rendered output 记录；syntax/model parity
-  本身不是 visual acceptance。
+- Mermaid render acceptance：2026-08-30 对 public `main` architecture commit
+  `9805fa52f35a3635ee66e3f651ca891de4baad23` PASS。GitHub 在 light mode 下成功
+  render 两份 localized block；read-only、external-proof、fixed-point 与 end re-pin
+  boundaries 均存在，中文 rendered surface 还读回了全部 30 条 localized edge labels。
+  Native viewer 提供 zoom 与 pan。由于完整 topology 信息密度很高，default fit 仍然
+  紧凑；在不使用 native viewer 时，不把它冒充为 large-text acceptance。
 - Independent forward behavior：2026-08-30 PASS。Artifact-split case 抵达 stale
   distributed entrypoint 与 false-green source test；clean control 把
   stable/development selection 裁定为 intentional multiplicity。
@@ -48,13 +51,17 @@
   correction 不改变 Skill package bytes，因此不产生新的 install 或 next-turn
   discovery claim。
 - Next-turn Codex discovery：尚未观察。
-- Release CI：PASS。Actions run `33295744677` 在 peeled `v0.1.0` release commit 上
-  通过全部四个 Ubuntu/macOS、Python 3.10/3.13 jobs。Mermaid correction 的 live CI
-  必须从其精确 pushed `main` commit 读取；workflow source 与 live CI 仍是不同事实。
+- Current-main CI：PASS。Actions run `33299095186` 为 architecture commit
+  `9805fa52...` 通过全部四个 Ubuntu/macOS、Python 3.10/3.13 jobs。Release run
+  `33295744677` 另行在 peeled `v0.1.0` release commit 上通过同一 matrix。Workflow
+  source 与 live CI 仍是不同事实。
 - Release publication：PASS。GitHub Release `v0.1.0` 已于 2026-08-30 发布，不是
   draft 或 prerelease。Anonymous tagged read-back、disposable public-tag install、
   Skill validation、digest equality 与 pinned SUL text 已验证。当前 README architecture
   correction 不暗示一个新 release。
+- Current-main publication：architecture commit `9805fa52...` PASS。`origin/main`、
+  repo root README 与独立中文 README 均暴露 Mermaid correction。后续 status-only
+  reconciliation 可以移动 `main`，但不会改变该 architecture identity。
 - Licensing：functional materials 在 SUL-1.0 下 source-available；standalone
   documentation、renderer-neutral architecture model，以及嵌入 README 的 Mermaid
   diagrams 按 `LICENSING.zh-CN.md` 使用 CC BY-NC-SA 4.0。GitHub 将 layered repository

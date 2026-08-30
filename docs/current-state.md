@@ -34,9 +34,13 @@ Last reconciled: 2026-08-30
   connector-kind and locale parity, repository/publication validation, 15 unit
   tests, six fixture truth checks, fixture self-test, system Skill quick
   validation, and Git whitespace validation.
-- Mermaid render acceptance: local renderer and public GitHub README rendering
-  are separate proof layers and must be recorded from their exact rendered
-  outputs; syntax/model parity alone is not visual acceptance.
+- Mermaid render acceptance: PASS on 2026-08-30 for public `main` architecture
+  commit `9805fa52f35a3635ee66e3f651ca891de4baad23`. GitHub rendered both localized
+  blocks in light mode; all read-only, external-proof, fixed-point, and end
+  re-pin boundaries were present, and the Chinese rendered surface exposed all
+  30 localized edge labels. The native viewer supplied zoom and pan controls.
+  Default fit remains compact because the complete topology is dense; this is
+  not represented as large-text acceptance without using the native viewer.
 - Independent forward behavior: PASS on 2026-08-30. An artifact-split case
   reached the stale distributed entrypoint and false-green source test; a clean
   control treated stable/development selection as intentional multiplicity.
@@ -49,15 +53,19 @@ Last reconciled: 2026-08-30
   The Mermaid correction does not change Skill package bytes, so it does not
   create a new install or next-turn discovery claim.
 - Next-turn Codex discovery: not observed.
-- Release CI: PASS. Actions run `33295744677` passed all four Ubuntu/macOS and
-  Python 3.10/3.13 jobs on the peeled `v0.1.0` release commit. Live CI for the
-  Mermaid correction must be read from its exact pushed `main` commit; workflow
-  source and live CI remain separate facts.
+- Current-main CI: PASS. Actions run `33299095186` passed all four Ubuntu/macOS
+  and Python 3.10/3.13 jobs for architecture commit `9805fa52...`. Release run
+  `33295744677` separately passed the same matrix on the peeled `v0.1.0`
+  release commit. Workflow source and live CI remain separate facts.
 - Release publication: PASS. GitHub Release `v0.1.0` was published on
   2026-08-30 and is neither draft nor prerelease. Anonymous tagged read-back,
   disposable public-tag installation, Skill validation, digest equality, and
   pinned SUL text were verified. No new release is implied by the current
   README architecture correction.
+- Current-main publication: PASS for architecture commit `9805fa52...`.
+  `origin/main`, the repository root README, and the standalone Chinese README
+  exposed the Mermaid correction. A later status-only reconciliation may move
+  `main` without changing that architecture identity.
 - Licensing: functional materials are source-available under SUL-1.0;
   standalone documentation, the renderer-neutral architecture model, and the
   Mermaid diagrams embedded in the README files are under CC BY-NC-SA 4.0

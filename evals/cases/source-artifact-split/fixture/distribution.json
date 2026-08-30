@@ -1,0 +1,4 @@
+{
+  "entrypoint": "dist/cli.py",
+  "files": ["dist/cli.py"]
+}

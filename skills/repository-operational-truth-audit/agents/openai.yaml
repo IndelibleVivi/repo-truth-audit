@@ -1,0 +1,6 @@
+interface:
+  display_name: "Repository Operational Truth Audit"
+  short_description: "Reconstruct live repository truth for a decision"
+  default_prompt: "Use $repository-operational-truth-audit to reconstruct this repository's current operational truth for my decision, follow live entrypoints and artifacts, distinguish false-green evidence and intentional multiplicity, and keep unobserved runtime state explicit."
+policy:
+  allow_implicit_invocation: true

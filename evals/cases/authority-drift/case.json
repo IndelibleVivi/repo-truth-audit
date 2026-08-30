@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "case_id": "authority-drift",
+  "description": "A re-entry audit must identify durable agent instructions that contradict newer product authority.",
+  "prompt_file": "prompt.md",
+  "sandbox": "workspace-write",
+  "timeout_seconds": 600,
+  "tags": ["authority", "re-entry", "documentation-drift"],
+  "claim_ids": ["ROT-01", "ROT-02", "ROT-04"],
+  "assertions": [
+    {
+      "type": "file_exists",
+      "path": "AUDIT.md"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "Decision answer:"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "Current MVP"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "moved beyond the original MVP"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "2026-08-17"
+    },
+    {
+      "type": "changed_files_exact",
+      "paths": ["AUDIT.md"]
+    }
+  ],
+  "trace_assertions": {
+    "max_command_executions": 10,
+    "max_plan_updates": 1,
+    "max_subagent_events": 0
+  }
+}

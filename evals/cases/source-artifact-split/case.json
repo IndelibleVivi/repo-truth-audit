@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "case_id": "source-artifact-split",
+  "description": "A handoff audit must detect that green source tests do not prove the stale distributed entrypoint.",
+  "prompt_file": "prompt.md",
+  "sandbox": "workspace-write",
+  "timeout_seconds": 600,
+  "tags": ["artifact-identity", "false-green", "handoff"],
+  "claim_ids": ["ROT-04", "ROT-05", "ROT-06"],
+  "assertions": [
+    {
+      "type": "file_exists",
+      "path": "AUDIT.md"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "Decision answer:"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "not ready"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "dist/cli.py"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "artifact-v1"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "artifact-v2"
+    },
+    {
+      "type": "changed_files_exact",
+      "paths": ["AUDIT.md"]
+    },
+    {
+      "type": "command",
+      "argv": ["python3", "tests/test_source.py"],
+      "exit_code": 0,
+      "timeout_seconds": 20
+    },
+    {
+      "type": "command",
+      "argv": ["python3", "dist/cli.py"],
+      "exit_code": 0,
+      "timeout_seconds": 20
+    }
+  ],
+  "trace_assertions": {
+    "max_command_executions": 14,
+    "max_plan_updates": 1,
+    "max_subagent_events": 0
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "case_id": "false-green-ordering",
+  "description": "A release-handoff audit must expose a green presence gate that misses write-before-role-check ordering.",
+  "prompt_file": "prompt.md",
+  "sandbox": "workspace-write",
+  "timeout_seconds": 600,
+  "tags": ["false-green", "operator-order", "handoff"],
+  "claim_ids": ["ROT-04", "ROT-05"],
+  "assertions": [
+    {
+      "type": "file_exists",
+      "path": "AUDIT.md"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "Decision answer:"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "not ready"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "false-green"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "REMOTE_WRITE"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "ROLE_CHECK"
+    },
+    {
+      "type": "changed_files_exact",
+      "paths": ["AUDIT.md"]
+    },
+    {
+      "type": "command",
+      "argv": ["bash", "test_operator_surface.sh"],
+      "exit_code": 0,
+      "timeout_seconds": 20
+    },
+    {
+      "type": "command",
+      "argv": ["bash", "deploy.sh", "--trace"],
+      "exit_code": 0,
+      "timeout_seconds": 20
+    }
+  ],
+  "trace_assertions": {
+    "max_command_executions": 14,
+    "max_plan_updates": 1,
+    "max_subagent_events": 0
+  }
+}

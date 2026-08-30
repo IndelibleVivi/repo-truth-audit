@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+.fieldlab/
+.eval-runs/
+.pytest_cache/
+coverage/
+/dist/

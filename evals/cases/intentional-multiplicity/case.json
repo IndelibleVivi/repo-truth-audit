@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "case_id": "intentional-multiplicity",
+  "description": "An artifact-selection audit must keep an explicitly selected stable release and isolated development line clean.",
+  "prompt_file": "prompt.md",
+  "sandbox": "workspace-write",
+  "timeout_seconds": 600,
+  "tags": ["clean", "intentional-multiplicity", "installation"],
+  "claim_ids": ["ROT-07", "ROT-11", "ROT-12"],
+  "assertions": [
+    {
+      "type": "file_exists",
+      "path": "AUDIT.md"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "Decision answer:"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "ready"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "intentional multiplicity"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "v1.0.0"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "main"
+    },
+    {
+      "type": "changed_files_exact",
+      "paths": ["AUDIT.md"]
+    },
+    {
+      "type": "command",
+      "argv": ["python3", "selector.py", "--channel", "stable", "--ref", "v1.0.0"],
+      "exit_code": 0,
+      "timeout_seconds": 20
+    },
+    {
+      "type": "command",
+      "argv": ["python3", "selector.py", "--channel", "development"],
+      "exit_code": 0,
+      "timeout_seconds": 20
+    }
+  ],
+  "trace_assertions": {
+    "max_command_executions": 12,
+    "max_plan_updates": 1,
+    "max_subagent_events": 0
+  }
+}

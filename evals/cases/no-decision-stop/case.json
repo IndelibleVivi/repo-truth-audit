@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "case_id": "no-decision-stop",
+  "description": "A vague full-audit request must stop after bounded reconnaissance instead of manufacturing a universal audit programme.",
+  "prompt_file": "prompt.md",
+  "sandbox": "workspace-write",
+  "timeout_seconds": 480,
+  "tags": ["stopping", "routing", "no-owner-decision"],
+  "claim_ids": ["ROT-01", "ROT-12", "ROT-15"],
+  "assertions": [
+    {
+      "type": "file_exists",
+      "path": "AUDIT.md"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "Decision answer:"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "owner decision"
+    },
+    {
+      "type": "file_contains",
+      "path": "AUDIT.md",
+      "value": "reconnaissance"
+    },
+    {
+      "type": "file_not_contains",
+      "path": "AUDIT.md",
+      "value": "maturity score"
+    },
+    {
+      "type": "changed_files_exact",
+      "paths": ["AUDIT.md"]
+    }
+  ],
+  "trace_assertions": {
+    "max_command_executions": 6,
+    "max_plan_updates": 0,
+    "max_subagent_events": 0
+  }
+}

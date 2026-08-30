@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "pack_id": "repository-operational-truth-audit",
+  "description": "Controlled repository-truth cases for the standalone Repository Operational Truth Audit Skill.",
+  "cases_root": "evals/cases",
+  "subjects": {
+    "current-skill": {
+      "label": "Current Repository Operational Truth Audit Skill",
+      "attribution": "repo_scoped",
+      "overlays": [
+        {
+          "source": "skills",
+          "target": ".agents/skills"
+        }
+      ],
+      "notes": "Canonical source is overlaid into the disposable subject workspace; expected artifacts are never supplied to the target."
+    }
+  },
+  "defaults": {
+    "adapter": "codex-exec",
+    "approval_policy": "never",
+    "network_access": false,
+    "output_root": ".fieldlab",
+    "keep_workspace": false
+  },
+  "metadata": {
+    "activation_seed_file": "evals/activation-prompts.csv"
+  }
+}

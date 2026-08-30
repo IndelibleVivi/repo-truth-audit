@@ -259,6 +259,21 @@ def _validate_mermaid_readmes(
                 f"actual={rendered_region_order}"
             )
 
+        rendered_layout_constraints = re.findall(
+            r"^\s*(N[A-Z0-9_]+)\s+~~~\s+(N[A-Z0-9_]+)\s*$",
+            source,
+            re.MULTILINE,
+        )
+        expected_layout_constraints = [
+            tuple(pair) for pair in layout.get("layout_only_constraints", [])
+        ]
+        if rendered_layout_constraints != expected_layout_constraints:
+            errors.append(
+                f"{relative} layout-only constraints differ: "
+                f"expected={expected_layout_constraints} "
+                f"actual={rendered_layout_constraints}"
+            )
+
         lines = source.splitlines()
         for index, line in enumerate(lines):
             match = re.match(r"^\s*%%\s+(E[A-Z0-9_]+)\s*$", line)
@@ -372,6 +387,12 @@ def validate_model() -> list[str]:
             errors.append("external_region must equal R50_EXTERNAL")
         if layout.get("max_connector_meanings") != 3:
             errors.append("max_connector_meanings must equal 3")
+        if layout.get("layout_only_constraints") != [
+            ["N31_FALSE_GREEN", "N32_MULTIPLICITY"],
+            ["N32_MULTIPLICITY", "N33_EXTERNAL_UNKNOWN"],
+            ["N33_EXTERNAL_UNKNOWN", "N34_SPECIALIST"],
+        ]:
+            errors.append("layout_only_constraints must retain the narrow challenge stack")
         if "renderer defaults" not in layout.get("theme_contract", ""):
             errors.append("theme_contract must preserve renderer-default day/dark adaptation")
 

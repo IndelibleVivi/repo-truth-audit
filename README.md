@@ -1,6 +1,8 @@
-# Repository Operational Truth Audit
+# Repo Truth Audit
 
 [简体中文](README.zh-CN.md)
+
+Formally: **Repository Operational Truth Audit**
 
 A standalone, read-only-first Codex Skill for reconstructing what a
 long-evolved repository actually operates through **today** before an owner
@@ -8,6 +10,8 @@ makes a re-entry, migration, consolidation, safe-archive, handoff, or
 release-readiness decision.
 
 Current release: `v0.1.0`
+
+Skill invocation slug: `repository-operational-truth-audit` (unchanged).
 
 This is not a generic repository score or a public-launch checklist. It follows
 decision-bearing entrypoints, selectors, authority owners, durable state,
@@ -34,6 +38,17 @@ neither starting point is sufficient:
 - If a restore or release claim depends on an unavailable remote schema,
   secret, dashboard setting, device, or human step, how far can the current
   decision honestly go?
+
+## What a result looks like
+
+**Not ready**
+
+> Source tests pass, but `distribution.json` still selects a stale artifact.
+
+**Ready within repository scope**
+
+> Stable and development paths have explicit selectors, isolated identities,
+> and no cross-boundary caller.
 
 ## Architecture: what this diagram serves
 
@@ -195,7 +210,7 @@ Use the system Skill installer and pin the release tag:
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
-  --repo IndelibleVivi/repository-operational-truth-audit \
+  --repo IndelibleVivi/repo-truth-audit \
   --path skills/repository-operational-truth-audit \
   --ref v0.1.0
 ```
@@ -204,11 +219,15 @@ Installation creates a derived local copy. The canonical source remains this
 repository. A successful install proves installed bytes only; Codex discovery
 in a later turn is a separate observable boundary.
 
+The `v0.1.0` tag is immutable and retains its release-era full display name.
+Current `main` uses **Repo Truth Audit** as the human-facing display name; the
+Skill slug remains unchanged until an explicit identity migration is released.
+
 ## Validate or install from a source checkout
 
 ```bash
-git clone https://github.com/IndelibleVivi/repository-operational-truth-audit.git
-cd repository-operational-truth-audit
+git clone https://github.com/IndelibleVivi/repo-truth-audit.git
+cd repo-truth-audit
 
 python3 scripts/validate_architecture.py
 python3 scripts/validate_repository.py
@@ -282,6 +301,7 @@ contradiction or decision-critical unknown remained inside the pinned object.
 | `docs/product-spec.md` | Complete accepted product and acceptance contract |
 | `docs/evidence-model.md` | Proof, finding, unknown, clean-result, and stopping semantics |
 | `docs/architecture/` | Renderer-neutral architecture model and the paired English/Chinese README Mermaid contract |
+| `docs/forward-behavior-receipt.md` | Public-safe independent forward-test evidence and its explicit limits |
 | `docs/research-basis.md` | Public-safe research provenance and source decisions |
 | `docs/current-state.md` | Volatile source, Git, install, CI, and publication truth |
 | `evals/cases/` | Controlled behavior cases with evaluator-only expected artifacts |

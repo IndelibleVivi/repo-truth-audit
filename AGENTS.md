@@ -2,8 +2,11 @@
 
 ## Product and ownership
 
-This repository is the canonical source for the standalone
-`repository-operational-truth-audit` Codex Skill. It owns its Skill source,
+This repository is the canonical source for **Repo Truth Audit**, formally
+**Repository Operational Truth Audit**, and the standalone
+`repository-operational-truth-audit` Codex Skill. The human-facing display name
+and public repository slug may be shorter; the Skill invocation slug and
+canonical package path remain unchanged. This repository owns its Skill source,
 behavior contract, fixtures, validation, installation helper, documentation,
 version, and future release cadence.
 
@@ -50,6 +53,7 @@ authority.
 | `README.md` and `README.zh-CN.md` Mermaid blocks | Active localized architecture views and concise display composition |
 | `scripts/validate_architecture.py` | Model/source-anchor validation plus exact Mermaid topology, connector-kind, and locale-parity checks |
 | `docs/research-basis.md` | Public-safe research provenance and external-source decisions |
+| `docs/forward-behavior-receipt.md` | Public-safe independent forward-test evidence, observed proof layers, and explicit trace limits |
 | `docs/current-state.md` | Volatile source, Git, validation, installation, and publication state |
 | `evals/cases/` | Controlled behavior subjects; expected artifacts are evaluator evidence, not runtime instructions |
 | `scripts/` and `tests/` | Deterministic validation and local installation behavior |
@@ -139,7 +143,7 @@ afterward. Installed bytes do not prove that a running Codex turn has discovered
 the Skill.
 
 The canonical public remote is
-`https://github.com/IndelibleVivi/repository-operational-truth-audit`.
+`https://github.com/IndelibleVivi/repo-truth-audit`.
 Functional materials are source-available under SUL-1.0. Standalone public
 documentation and independent diagrams are under CC BY-NC-SA 4.0. Follow the
 exact path map in `LICENSING.md`; do not describe this project as OSI open

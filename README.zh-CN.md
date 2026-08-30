@@ -1,12 +1,16 @@
-# Repository Operational Truth Audit
+# Repo Truth Audit
 
 [English](README.md)
+
+正式名称：**Repository Operational Truth Audit**
 
 一个独立、read-only-first 的 Codex Skill：当一个长期演化的 repository owner
 准备做重新进入、迁移、整合、安全归档、交接或发布准备决策时，重建这个 repo
 **今天实际上通过什么运行**。
 
 当前发布版本：`v0.1.0`
+
+Skill invocation slug：`repository-operational-truth-audit`（保持不变）。
 
 它不是 generic repo score，也不是 public-launch checklist。它沿着与决策有关的
 entrypoints、selectors、authority owners、durable state、derived artifacts、installed
@@ -29,6 +33,17 @@ unknowns，或一份简短的 clean-within-scope 结论，然后停止。
 - 两套 mode 是有意选择且相互隔离，还是其中一条已经变成无人承认的 shadow path？
 - restore 或 release claim 若依赖无法观察的 remote schema、secret、dashboard
   setting、device 或 human step，当前 decision 到底能诚实地下到哪里？
+
+## 一个结果会长什么样
+
+**Not ready**
+
+> Source tests 虽然通过，但 `distribution.json` 仍然选中 stale artifact。
+
+**Ready within repository scope**
+
+> Stable 与 development 两条路径都有明确 selector 和隔离 identity，也不存在
+> cross-boundary caller。
 
 ## 架构图究竟 serve 什么
 
@@ -184,7 +199,7 @@ writes、account actions 或 publication。
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
-  --repo IndelibleVivi/repository-operational-truth-audit \
+  --repo IndelibleVivi/repo-truth-audit \
   --path skills/repository-operational-truth-audit \
   --ref v0.1.0
 ```
@@ -192,11 +207,15 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
 安装得到的是 derived local copy；canonical source 仍然是本 repo。成功 install 只证明
 installed bytes，Codex 在后续 turn 的 discovery 是另一个必须单独观察的边界。
 
+`v0.1.0` tag 保持 immutable，并保留 release 时的正式全名 display metadata。当前
+`main` 使用 **Repo Truth Audit** 作为 human-facing display name；Skill slug 在明确发布
+identity migration 前保持不变。
+
 ## 从 source checkout 验证或安装
 
 ```bash
-git clone https://github.com/IndelibleVivi/repository-operational-truth-audit.git
-cd repository-operational-truth-audit
+git clone https://github.com/IndelibleVivi/repo-truth-audit.git
+cd repo-truth-audit
 
 python3 scripts/validate_architecture.py
 python3 scripts/validate_repository.py
@@ -267,6 +286,7 @@ decision-critical unknown。
 | `docs/product-spec.md` | 完整 accepted product 与 acceptance contract |
 | `docs/evidence-model.md` | Proof、finding、unknown、clean-result 与 stopping semantics |
 | `docs/architecture/` | Renderer-neutral model 与 README 中分开的中英文 Mermaid contract |
+| `docs/forward-behavior-receipt.md` | Public-safe independent forward-test evidence 与明确 limitations |
 | `docs/research-basis.md` | Public-safe research provenance 与 source decisions |
 | `docs/current-state.md` | 易变化的 source、Git、install、CI 与 publication truth |
 | `evals/cases/` | Controlled behavior cases；expected artifacts 仅供 evaluator 使用 |

@@ -5,6 +5,9 @@
 Status: **ACCEPTED FOR COMPLETE IMPLEMENTATION**
 Accepted by owner: 2026-08-30
 Product form: standalone repository + standalone Codex Skill
+Formal product name: **Repository Operational Truth Audit**
+Human-facing display name: **Repo Truth Audit**
+Public repository slug: `repo-truth-audit`
 Skill name: `repository-operational-truth-audit`
 
 ## 1. Product outcome
@@ -244,6 +247,8 @@ Source-complete acceptance requires:
 - controlled fixtures are confirmed to carry their intended dirty/clean truth;
 - at least one independent forward test reaches a material cross-surface result
   without generic hygiene noise and treats intentional multiplicity cleanly;
+- a public-safe receipt records the tested subject, cases, material results,
+  proof layers, overhead fields, and limitations without publishing raw traces;
 - README, AGENTS, product spec, evidence model, current state, architecture docs,
   and changelog agree;
 - final diff and Git state are inspected.

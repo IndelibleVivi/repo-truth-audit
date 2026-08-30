@@ -8,6 +8,12 @@ Owner accepted：2026-08-30
 
 Product form：standalone repository + standalone Codex Skill
 
+Formal product name：**Repository Operational Truth Audit**
+
+Human-facing display name：**Repo Truth Audit**
+
+Public repository slug：`repo-truth-audit`
+
 Skill name：`repository-operational-truth-audit`
 
 ## 1. Product outcome
@@ -238,6 +244,8 @@ Source-complete acceptance 要求：
 - controlled fixtures 被确认仍然承载设计的 dirty/clean truth；
 - 至少一个 independent forward test 能抵达 material cross-surface result，不产生 generic
   hygiene noise，并把 intentional multiplicity 视为 clean；
+- 一份 public-safe receipt 记录 tested subject、cases、material results、proof layers、
+  overhead fields 与 limitations，同时不公开 raw traces；
 - README、AGENTS、product spec、evidence model、current state、architecture docs 与
   changelog 一致；
 - final diff 与 Git state 已检查。

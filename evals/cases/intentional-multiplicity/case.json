@@ -15,12 +15,12 @@
     {
       "type": "file_contains",
       "path": "AUDIT.md",
-      "value": "Decision answer:"
+      "value": "Decision answer: ready"
     },
     {
-      "type": "file_contains",
+      "type": "file_not_contains",
       "path": "AUDIT.md",
-      "value": "ready"
+      "value": "Decision answer: not ready"
     },
     {
       "type": "file_contains",

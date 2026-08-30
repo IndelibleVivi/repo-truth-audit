@@ -4,6 +4,13 @@
 
 ## Unreleased
 
+- 将 **Repo Truth Audit** 作为 human-facing display name，并将
+  `repo-truth-audit` 作为 public repository slug；formal product name 与
+  `repository-operational-truth-audit` Skill slug 保持不变。
+- 收紧 intentional-multiplicity clean-control canary，使以
+  `Decision answer: not ready` 开头的 verdict 不再能够通过 positive assertion。
+- 加入 public-safe independent forward-behavior receipt，并在 README 架构图前加入极短的
+  dirty/clean result examples。
 - 将当前 `main` 的 active architecture surface 替换为分别嵌入 English 与简体中文
   README 的原生 Mermaid diagrams。
 - 保留 renderer-neutral model、六个 region、全部 stable node IDs、全部 30 条 semantic

@@ -4,6 +4,13 @@
 
 ## Unreleased
 
+- Adopted **Repo Truth Audit** as the human-facing display name and
+  `repo-truth-audit` as the public repository slug while preserving the formal
+  product name and `repository-operational-truth-audit` Skill slug.
+- Tightened the intentional-multiplicity clean-control canary so a verdict that
+  begins `Decision answer: not ready` cannot satisfy the positive assertion.
+- Added a public-safe independent forward-behavior receipt and short dirty/clean
+  result examples before the README architecture diagrams.
 - Replaced the active architecture surface on `main` with separate native
   Mermaid diagrams embedded in the English and Simplified Chinese READMEs.
 - Preserved the renderer-neutral model, all six regions, all stable node IDs,

@@ -21,6 +21,7 @@ PUBLIC_DOC_PAIRS = {
     "LICENSING.md": "LICENSING.zh-CN.md",
     "docs/product-spec.md": "docs/product-spec.zh-CN.md",
     "docs/evidence-model.md": "docs/evidence-model.zh-CN.md",
+    "docs/forward-behavior-receipt.md": "docs/forward-behavior-receipt.zh-CN.md",
     "docs/research-basis.md": "docs/research-basis.zh-CN.md",
     "docs/current-state.md": "docs/current-state.zh-CN.md",
     "docs/architecture/README.md": "docs/architecture/README.zh-CN.md",
@@ -58,6 +59,8 @@ REQUIRED_FILES = {
     "docs/current-state.zh-CN.md",
     "docs/evidence-model.md",
     "docs/evidence-model.zh-CN.md",
+    "docs/forward-behavior-receipt.md",
+    "docs/forward-behavior-receipt.zh-CN.md",
     "docs/product-spec.md",
     "docs/product-spec.zh-CN.md",
     "docs/research-basis.md",
@@ -163,8 +166,12 @@ def validate() -> list[str]:
     readme_requirements = {
         "README.md": (
             "[简体中文](README.zh-CN.md)",
+            "# Repo Truth Audit",
+            "Formally: **Repository Operational Truth Audit**",
+            "## What a result looks like",
             "```mermaid",
             "flowchart TB",
+            "--repo IndelibleVivi/repo-truth-audit",
             "source-available, not OSI open source",
             "--ref v0.1.0",
             "Sustainable Use License 1.0",
@@ -172,8 +179,12 @@ def validate() -> list[str]:
         ),
         "README.zh-CN.md": (
             "[English](README.md)",
+            "# Repo Truth Audit",
+            "正式名称：**Repository Operational Truth Audit**",
+            "## 一个结果会长什么样",
             "```mermaid",
             "flowchart TB",
+            "--repo IndelibleVivi/repo-truth-audit",
             "source-available，不是 OSI open source",
             "--ref v0.1.0",
             "Sustainable Use License 1.0",
@@ -275,7 +286,7 @@ def validate() -> list[str]:
 
     agent_yaml = read(f"skills/{SKILL_NAME}/agents/openai.yaml", errors)
     for phrase in (
-        'display_name: "Repository Operational Truth Audit"',
+        'display_name: "Repo Truth Audit"',
         f"${SKILL_NAME}",
         "allow_implicit_invocation: true",
     ):
@@ -314,6 +325,31 @@ def validate() -> list[str]:
                 ]
                 if changed != [["AUDIT.md"]]:
                     errors.append(f"{case_id} must permit only AUDIT.md as target output")
+                if case_id == "intentional-multiplicity":
+                    verdict_assertions = {
+                        (
+                            assertion.get("type"),
+                            assertion.get("path"),
+                            assertion.get("value"),
+                        )
+                        for assertion in payload.get("assertions", [])
+                    }
+                    required_verdict_assertions = {
+                        ("file_contains", "AUDIT.md", "Decision answer: ready"),
+                        (
+                            "file_not_contains",
+                            "AUDIT.md",
+                            "Decision answer: not ready",
+                        ),
+                    }
+                    if not required_verdict_assertions.issubset(verdict_assertions):
+                        errors.append(
+                            "intentional-multiplicity must distinguish ready from not ready"
+                        )
+                    if ("file_contains", "AUDIT.md", "ready") in verdict_assertions:
+                        errors.append(
+                            "intentional-multiplicity retains ambiguous ready substring assertion"
+                        )
 
     activation_path = ROOT / "evals" / "activation-prompts.csv"
     if activation_path.is_file():

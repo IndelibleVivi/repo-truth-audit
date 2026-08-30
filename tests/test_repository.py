@@ -31,6 +31,22 @@ class RepositoryContractTests(unittest.TestCase):
             payload = json.loads(case_path.read_text(encoding="utf-8"))
             self.assertEqual(payload["case_id"], case_id)
 
+    def test_intentional_multiplicity_verdict_canary_is_unambiguous(self) -> None:
+        case_path = ROOT / "evals/cases/intentional-multiplicity/case.json"
+        payload = json.loads(case_path.read_text(encoding="utf-8"))
+        assertions = {
+            (item.get("type"), item.get("path"), item.get("value"))
+            for item in payload["assertions"]
+        }
+        self.assertIn(
+            ("file_contains", "AUDIT.md", "Decision answer: ready"), assertions
+        )
+        self.assertIn(
+            ("file_not_contains", "AUDIT.md", "Decision answer: not ready"),
+            assertions,
+        )
+        self.assertNotIn(("file_contains", "AUDIT.md", "ready"), assertions)
+
     def test_skill_identity_is_single_canonical_path(self) -> None:
         matches = [
             path

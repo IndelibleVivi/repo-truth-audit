@@ -7,11 +7,20 @@ Last reconciled: 2026-08-30
 ## Product
 
 - Product form: standalone public repository and standalone Codex Skill.
-- Version: public release `v0.1.0`; current `main` contains an unreleased
-  architecture-presentation correction and does not retag that release.
+- Naming: human-facing display name **Repo Truth Audit**; formal name
+  **Repository Operational Truth Audit**; public repository slug
+  `repo-truth-audit`; Skill invocation slug
+  `repository-operational-truth-audit` remains unchanged.
+- Version: public release `v0.1.0`; current `main` contains unreleased
+  architecture-presentation, naming, eval-fidelity, and public-evidence
+  corrections and does not retag that release.
 - Scope: complete topology-first, decision-bounded, read-only audit contract.
 - Canonical Skill: `skills/repository-operational-truth-audit/`.
 - Public documentation: separate English and Simplified Chinese editions.
+- Public forward evidence: the paired
+  [`forward-behavior-receipt`](forward-behavior-receipt.md) records the tested
+  subject identity, dirty and clean cases, material results, proof layers,
+  overhead limits, `UNKNOWN` trace fields, and explicit external boundaries.
 - Architecture on current `main`: one renderer-neutral semantic model plus one
   native Mermaid diagram in each localized README. Both diagrams retain six
   regions, 21 stable nodes, 30 semantic edges, exact connector-kind parity,
@@ -27,13 +36,20 @@ Last reconciled: 2026-08-30
 
 - Current source: the localized README Mermaid blocks are the active public
   architecture views; `docs/architecture/audit-runtime-model.json` remains the
-  semantic authority. Architecture docs, product spec, AGENTS, licensing map,
-  changelog, validators, tests, and CI commands are reconciled to that split.
-- Deterministic validation: local PASS on 2026-08-30 — architecture model,
-  source anchors, exact Mermaid topology, localized edge labels,
-  connector-kind and locale parity, repository/publication validation, 15 unit
-  tests, six fixture truth checks, fixture self-test, system Skill quick
-  validation, and Git whitespace validation.
+  semantic authority. The result examples precede the diagrams; the diagrams
+  themselves are unchanged by the naming/eval/evidence patch. Architecture
+  docs, product spec, AGENTS, changelog, validators, tests, and CI commands are
+  reconciled to that split.
+- Eval fidelity: the intentional-multiplicity clean canary now requires
+  `Decision answer: ready` and rejects `Decision answer: not ready`; a focused
+  regression test prevents the ambiguous `"ready"` substring assertion from
+  returning.
+- Deterministic validation: local PASS on 2026-08-30 for repository/publication
+  validation, architecture model and localized Mermaid parity, 16 unit tests,
+  six fixture truth checks, fixture self-test, system Skill quick validation,
+  and Git whitespace validation. The quick validator ran in an isolated `uv`
+  environment because the host Python runtimes do not provide PyYAML; no
+  dependency was added to the repository or Skill package.
 - Mermaid render acceptance: PASS on 2026-08-30 for public `main` architecture
   commit `9805fa52f35a3635ee66e3f651ca891de4baad23`. GitHub rendered both localized
   blocks in light mode; all read-only, external-proof, fixed-point, and end
@@ -44,28 +60,37 @@ Last reconciled: 2026-08-30
 - Independent forward behavior: PASS on 2026-08-30. An artifact-split case
   reached the stale distributed entrypoint and false-green source test; a clean
   control treated stable/development selection as intentional multiplicity.
+  The public-safe receipt exposes the material result and proof boundary while
+  preserving unavailable model, effort, command-count, and plan-count fields as
+  `UNKNOWN`.
 - Git release identity: canonical `0.1.0` Skill bytes entered at
   `e15dbabc84d3cae35c40dd9a0a87343fd57981d2`. Annotated tag object
   `235be6e839a87867b7a0758b47ce577c66380111` peels to release commit
   `0180e4c23413a0691f4e895a0d64d7efaa0a12bb`. The tag remains immutable.
-- Local install: PASS for `v0.1.0`. Canonical and installed Skill digests both
+- Local install: PASS for immutable `v0.1.0`. Tagged and installed Skill digests
   equal `30d7ed369fad578c12d83291a17edaad4ad8c3195b2b7b31294c48ecf7ebe69e`.
-  The Mermaid correction does not change Skill package bytes, so it does not
-  create a new install or next-turn discovery claim.
+  Current source digest is
+  `ca4fd01e20964c87884f4fe46a1ceb0864cf23b55061c90cd5bc24558a396a3a`
+  because `agents/openai.yaml` now carries the shorter display name. Runtime
+  `SKILL.md` remains byte-identical at SHA-256
+  `cc16bad2960a3d0e315c055cf5ec244ec57c2f7cc51da12d5d480b603bf1c15f`.
+  Current `main` has not been installed; installed/source digest equality is
+  therefore not claimed for the unreleased metadata change.
 - Next-turn Codex discovery: not observed.
-- Current-main CI: PASS. Actions run `33299095186` passed all four Ubuntu/macOS
-  and Python 3.10/3.13 jobs for architecture commit `9805fa52...`. Release run
-  `33295744677` separately passed the same matrix on the peeled `v0.1.0`
-  release commit. Workflow source and live CI remain separate facts.
+- Current-main CI: pending for the naming/eval/evidence patch. Earlier Actions
+  run `33299194074` passed all four Ubuntu/macOS and Python 3.10/3.13 jobs on
+  pre-patch head `6fe94527...`. Release run `33295744677` separately passed the
+  same matrix on the peeled `v0.1.0` release commit. Workflow source and live CI
+  remain separate facts.
 - Release publication: PASS. GitHub Release `v0.1.0` was published on
   2026-08-30 and is neither draft nor prerelease. Anonymous tagged read-back,
   disposable public-tag installation, Skill validation, digest equality, and
   pinned SUL text were verified. No new release is implied by the current
   README architecture correction.
-- Current-main publication: PASS for architecture commit `9805fa52...`.
-  `origin/main`, the repository root README, and the standalone Chinese README
-  exposed the Mermaid correction. A later status-only reconciliation may move
-  `main` without changing that architecture identity.
+- Current-main publication: pending for the naming/eval/evidence patch and
+  canonical remote rename to `https://github.com/IndelibleVivi/repo-truth-audit`.
+  The accepted architecture identity remains `9805fa52...` and is not rewritten
+  by this patch.
 - Licensing: functional materials are source-available under SUL-1.0;
   standalone documentation, the renderer-neutral architecture model, and the
   Mermaid diagrams embedded in the README files are under CC BY-NC-SA 4.0

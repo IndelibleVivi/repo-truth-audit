@@ -24,8 +24,14 @@ Last reconciled: 2026-08-30
   clean control treated stable/development selection as intentional
   multiplicity. Its first run exposed an incomplete fixture identity path;
   the fixture was corrected and independently rerun before acceptance.
-- Git source identity: initial local commit pending final staged inspection.
-- Local install: not installed yet; target and receipt were confirmed absent.
+- Git source identity: canonical Skill bytes are committed at
+  `5d6a9f78c0068c5ac3b0ba361fb94106390905d1`; the installation receipt records
+  that source as clean. This installation-state reconciliation changes docs
+  only and does not change the Skill digest.
+- Local install: PASS. The canonical and installed Skill digests both equal
+  `6d5a2c72cde925f3133fd64f3ec1eb119fcf2cbe9124042362f84c672eb87c11`.
+  The derived target is `~/.codex/skills/repository-operational-truth-audit/`;
+  its receipt is `~/.codex/skills/.repository-operational-truth-audit-install.json`.
 - Next-turn Codex discovery: not observed.
 - Remote/CI: no remote configured; workflow source will not count as CI proof.
 - Publication: not authorized; no public license, tag, release, or public install.

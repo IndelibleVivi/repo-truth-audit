@@ -46,6 +46,9 @@ authority.
 | `skills/repository-operational-truth-audit/SKILL.md` | Runtime behavior and invocation boundary |
 | `docs/product-spec.md` | Complete accepted product contract and acceptance requirements |
 | `docs/evidence-model.md` | Finding, clean-result, proof-layer, and stopping semantics |
+| `docs/architecture/audit-runtime-model.json` | Renderer-neutral architecture semantics, stable IDs, locale copy, boundaries, and source mapping |
+| `scripts/render_architecture_svg.py` | Canonical fixed geometry and condensed display composition for both localized SVGs |
+| `docs/architecture/audit-runtime.*.svg` | Tracked generated English/Chinese diagrams; never edit as source |
 | `docs/research-basis.md` | Public-safe research provenance and external-source decisions |
 | `docs/current-state.md` | Volatile source, Git, validation, installation, and publication state |
 | `evals/cases/` | Controlled behavior subjects; expected artifacts are evaluator evidence, not runtime instructions |
@@ -85,12 +88,19 @@ research packets and raw target-repository evidence outside this Git tree.
 - Do not add default repair, multi-agent fan-out, scores, maturity grades,
   generic hygiene lists, or durable target-repository audit backlogs.
 - Expected eval artifacts must not leak into the Skill prompt or fixture.
+- Architecture diagrams must answer the accepted audit-runtime reader question;
+  do not replace them with a banner, abstract concept, or Skill packaging view.
+- Change architecture meaning in `audit-runtime-model.json`, change composition
+  in the renderer, regenerate both SVGs, and preserve semantic/localization
+  parity. Never hot-edit one generated locale artifact.
 
 ## Documentation impact
 
 Update:
 
 - `README.md` when user-facing scope, invocation, installation, or limitations change;
+- the paired `.zh-CN.md` edition whenever an English public document's
+  substantive contract changes, and vice versa;
 - `AGENTS.md` when ownership, source/install boundaries, validation, or publication gates change;
 - `docs/product-spec.md` when accepted behavior or acceptance changes;
 - `docs/evidence-model.md` when proof or adjudication semantics change;
@@ -107,6 +117,8 @@ Run after meaningful changes:
 
 ```bash
 python3 scripts/validate_repository.py
+python3 scripts/validate_architecture.py
+python3 scripts/render_architecture_svg.py --check
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/selftest.py
 python3 "/path/to/skill-creator/scripts/quick_validate.py" \
@@ -125,10 +137,20 @@ Local installation is a separate reversible gate. Use
 afterward. Installed bytes do not prove that a running Codex turn has discovered
 the Skill.
 
-This repository currently has no public license and no remote release. Do not
-publish, create a remote, tag, release, or write public license terms without
-the owner's explicit selection and authorization. External research sources
-were used conceptually; no external Skill text or code is vendored here.
+The canonical public remote is
+`https://github.com/IndelibleVivi/repository-operational-truth-audit`.
+Functional materials are source-available under SUL-1.0. Standalone public
+documentation and independent diagrams are under CC BY-NC-SA 4.0. Follow the
+exact path map in `LICENSING.md`; do not describe this project as OSI open
+source or silently widen either grant. The Skill package must carry the exact
+SUL text and its package-local notice.
+
+Public source, commit, push, CI, annotated tag, GitHub Release, tagged public
+install, installed bytes, and later Codex discovery are separate gates. For a
+release, verify the public visibility/default branch, peeled tag commit, release
+target, CI result, raw license/README paths, and a disposable tagged install.
+External research sources were used conceptually; no external Skill text or
+code is vendored here.
 
 Before commit, inspect the intended and staged diffs, stage exact paths, and
 keep private continuity, raw audit evidence, generated run artifacts, and

@@ -1,5 +1,7 @@
 # Research basis and provenance
 
+[简体中文](research-basis.zh-CN.md)
+
 Status: public-safe synthesis of the 2026-08-30 pre-spec research. The full raw
 research packet and private repository evidence remain outside this repository.
 

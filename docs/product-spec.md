@@ -1,5 +1,7 @@
 # Repository Operational Truth Audit — product specification
 
+[简体中文](product-spec.zh-CN.md)
+
 Status: **ACCEPTED FOR COMPLETE IMPLEMENTATION**
 Accepted by owner: 2026-08-30
 Product form: standalone repository + standalone Codex Skill
@@ -18,8 +20,11 @@ The complete outcome includes:
 - a discriminating standalone Skill;
 - a stable evidence and stopping contract;
 - controlled behavior cases covering dirty and clean outcomes;
-- deterministic repository and fixture validation;
+- deterministic repository, architecture, and fixture validation;
 - a reversible local installation path with source provenance;
+- separate English and Simplified Chinese public documentation editions;
+- a day-first architecture SVG pair derived from one renderer-neutral semantic
+  model;
 - accurate user, agent, current-state, and research documentation;
 - no ownership or runtime dependency on Softpowers.
 
@@ -232,18 +237,32 @@ Local installation must:
 Source-complete acceptance requires:
 
 - repository validator passes;
+- architecture model, English/Chinese SVG parity, and deterministic render
+  checks pass;
 - unit and fixture self-tests pass;
 - system Skill quick validation passes;
 - controlled fixtures are confirmed to carry their intended dirty/clean truth;
 - at least one independent forward test reaches a material cross-surface result
   without generic hygiene noise and treats intentional multiplicity cleanly;
-- README, AGENTS, product spec, evidence model, current state, and changelog agree;
+- README, AGENTS, product spec, evidence model, current state, architecture docs,
+  and changelog agree;
 - final diff and Git state are inspected.
 
 Installed acceptance additionally requires an install receipt, exact digest
 equality between source and installed Skill, and a clean source commit identity.
 Next-turn discovery remains a later observable boundary.
 
-Publication acceptance is not part of the current authorization. It requires a
-separate license choice, public-safety review, remote creation, CI observation,
-tag/release decision, and public install proof.
+Publication acceptance additionally requires:
+
+- selected layered license texts, path map, and notices agree;
+- a public-safety scan finds no private paths, credentials, raw evidence, or
+  unrelated material;
+- public remote visibility, default branch, and the exact release commit are
+  freshly read back;
+- CI passes on the public commit;
+- the annotated `v0.1.0` tag and GitHub Release resolve to the same peeled
+  commit;
+- the tagged public Skill path installs to a disposable destination and its
+  identity validates; and
+- source, commit, push, tag, release, installed bytes, and later discovery
+  claims remain separate.

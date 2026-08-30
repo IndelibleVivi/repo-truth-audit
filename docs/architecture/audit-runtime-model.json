@@ -1,0 +1,1022 @@
+{
+  "schema_version": 1,
+  "diagram_id": "audit-runtime",
+  "artifact_role": {
+    "en": "Public README architecture view for the audit runtime contract",
+    "zh_cn": "面向公开 README 的审计运行契约架构图"
+  },
+  "audience": {
+    "en": "A repository owner or technical collaborator deciding whether this Skill fits a concrete re-entry, migration, consolidation, safe-archive, handoff, or release-readiness decision.",
+    "zh_cn": "正在为具体的重新进入、迁移、整合、安全归档、交接或发布准备决策选择审计方法的仓库所有者与技术协作者。"
+  },
+  "primary_question": {
+    "en": "How does one read-only audit turn a concrete owner decision and exact repository snapshot into a decision-bounded answer without crossing unobserved external boundaries?",
+    "zh_cn": "一次只读审计如何把明确的所有者决策与精确仓库快照转化为有决策边界的答案，并在未观察的外部边界前停下？"
+  },
+  "answer_contract": {
+    "en": "Pin the audit object, resolve authority and reachability, traverse proof layers, challenge green evidence, adjudicate every material candidate, stop at a fixed point, and report the decision plus its exact proof boundary.",
+    "zh_cn": "钉住审计对象，解析权威与可达路径，穿行证据层，挑战表面绿灯，裁定每个实质候选项，在固定点停止，并报告决策及其精确证明边界。"
+  },
+  "boundary": {
+    "includes": [
+      "One concrete owner decision",
+      "One exact start and end repository snapshot",
+      "Repository-observable authority, selectors, callers, state, artifacts, and evidence gates",
+      "Decision-relevant challenge and adjudication",
+      "Explicitly authorized fresh external observation when it can change the decision",
+      "A bounded decision answer and overhead receipt"
+    ],
+    "excludes": [
+      "Automatic repair or mutation of the target repository",
+      "A generic code review, quality score, compliance scan, or backlog",
+      "A full live-system or account audit without separate authorization",
+      "The packaging, installation, or release architecture of this Skill repository"
+    ]
+  },
+  "layout_contract": {
+    "surface": "day-first",
+    "canvas": {
+      "width": 1600,
+      "height": 1080
+    },
+    "title_band_max_ratio": 0.1,
+    "architecture_area_min_ratio": 0.78,
+    "readme_review_width_px": 900,
+    "region_order": [
+      "R00_PIN",
+      "R10_RESOLVE",
+      "R20_TRAVERSE",
+      "R30_CHALLENGE",
+      "R40_DECIDE"
+    ],
+    "external_region": "R50_EXTERNAL",
+    "max_connector_meanings": 3,
+    "localization": "Separate English and Simplified Chinese SVGs share semantic IDs but may tune line breaks and geometry independently."
+  },
+  "connector_legend": [
+    {
+      "kind": "observed",
+      "en": "In-scope, evidence-bearing traversal",
+      "zh_cn": "范围内、承载证据的穿行"
+    },
+    {
+      "kind": "conditional",
+      "en": "Optional specialist or explicitly authorized external observation",
+      "zh_cn": "可选 specialist 或经明确授权的外部观察"
+    },
+    {
+      "kind": "feedback",
+      "en": "A new decision-relevant evidence edge reopens traversal",
+      "zh_cn": "新的决策相关证据边使审计重新穿行"
+    }
+  ],
+  "regions": [
+    {
+      "id": "R00_PIN",
+      "index": "01",
+      "label": {
+        "en": "Pin the audit object",
+        "zh_cn": "钉住审计对象"
+      },
+      "purpose": {
+        "en": "Bind one owner decision to one exact repository identity before traversal.",
+        "zh_cn": "在穿行前，把一个所有者决策绑定到一个精确仓库身份。"
+      }
+    },
+    {
+      "id": "R10_RESOLVE",
+      "index": "02",
+      "label": {
+        "en": "Resolve authority + reachability",
+        "zh_cn": "解析权威与可达路径"
+      },
+      "purpose": {
+        "en": "Find what owns truth now and which selectors actually reach it.",
+        "zh_cn": "找到当前真正拥有事实的表面，以及实际到达它的 selectors。"
+      }
+    },
+    {
+      "id": "R20_TRAVERSE",
+      "index": "03",
+      "label": {
+        "en": "Traverse evidence layers",
+        "zh_cn": "穿行证据层"
+      },
+      "purpose": {
+        "en": "Keep source, derived artifacts, installed identity, and proof gates distinct.",
+        "zh_cn": "区分 source、derived artifacts、installed identity 与 proof gates。"
+      }
+    },
+    {
+      "id": "R30_CHALLENGE",
+      "index": "04",
+      "label": {
+        "en": "Challenge + adjudicate",
+        "zh_cn": "挑战与裁定"
+      },
+      "purpose": {
+        "en": "Close every material trace and distinguish defects, multiplicity, residue, and unknowns.",
+        "zh_cn": "闭合每条实质 trace，并区分缺陷、多重模式、残留与未知。"
+      }
+    },
+    {
+      "id": "R40_DECIDE",
+      "index": "05",
+      "label": {
+        "en": "Decide + stop",
+        "zh_cn": "决策与停止"
+      },
+      "purpose": {
+        "en": "Reach a decision fixed point, state the proof boundary, and reconcile the end snapshot.",
+        "zh_cn": "抵达决策固定点，说明证明边界，并核对结束快照。"
+      }
+    },
+    {
+      "id": "R50_EXTERNAL",
+      "index": "EXT",
+      "label": {
+        "en": "External proof boundary",
+        "zh_cn": "外部证明边界"
+      },
+      "purpose": {
+        "en": "Keep runtime, edge, device, account, and owner acceptance unclaimed until freshly and permissibly observed.",
+        "zh_cn": "在得到新鲜且获准的观察前，不声称 runtime、edge、device、account 或 owner acceptance。"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": "N00_OWNER_DECISION",
+      "region": "R00_PIN",
+      "visual_role": "input",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Owner decision",
+        "zh_cn": "所有者决策"
+      },
+      "responsibility": {
+        "en": "Name one decision: re-entry, migration, consolidation, safe archive, handoff, or release readiness.",
+        "zh_cn": "明确一个决策：重新进入、迁移、整合、安全归档、交接或发布准备。"
+      },
+      "limit": {
+        "en": "No decision means bounded reconnaissance, then ask — not an exhaustive audit.",
+        "zh_cn": "没有决策时只做有限侦察后询问，不启动穷尽审计。"
+      },
+      "sources": [
+        "docs/product-spec.md#2-audit-object",
+        "skills/repository-operational-truth-audit/SKILL.md#select-the-audit-object"
+      ]
+    },
+    {
+      "id": "N01_START_PIN",
+      "region": "R00_PIN",
+      "visual_role": "identity",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Exact start pin",
+        "zh_cn": "精确起始钉点"
+      },
+      "responsibility": {
+        "en": "Capture physical root, Git root, branch/HEAD, working tree, upstream, worktree, and submodule identity.",
+        "zh_cn": "记录 physical root、Git root、branch/HEAD、working tree、upstream、worktree 与 submodule identity。"
+      },
+      "limit": {
+        "en": "A clean sibling checkout proves nothing about the selected target.",
+        "zh_cn": "相邻 checkout 的 clean 状态不能证明所选目标。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-01--exact-start-pin",
+        "skills/repository-operational-truth-audit/SKILL.md#select-the-audit-object"
+      ]
+    },
+    {
+      "id": "N02_READ_ONLY",
+      "region": "R00_PIN",
+      "visual_role": "boundary",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Read-only contract",
+        "zh_cn": "只读契约"
+      },
+      "responsibility": {
+        "en": "Preserve concurrent work and observe without changing the target.",
+        "zh_cn": "保留并行工作，在不改变目标的前提下观察。"
+      },
+      "limit": {
+        "en": "Audit permission does not authorize fixes, commits, pushes, installs, deploys, or account actions.",
+        "zh_cn": "审计授权不包含修复、commit、push、install、deploy 或 account action。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-13--read-only-default",
+        "AGENTS.md#product-boundary"
+      ]
+    },
+    {
+      "id": "N10_AUTHORITY",
+      "region": "R10_RESOLVE",
+      "visual_role": "process",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Current authority owners",
+        "zh_cn": "当前权威所有者"
+      },
+      "responsibility": {
+        "en": "Separate canonical source, config, durable state, runbooks, generated copies, status, receipts, and history.",
+        "zh_cn": "区分 canonical source、config、durable state、runbooks、generated copies、status、receipts 与 history。"
+      },
+      "limit": {
+        "en": "Historical evidence and polished docs do not silently become current authority.",
+        "zh_cn": "历史证据与精美文档不会自动成为当前权威。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-02--authority-resolution",
+        "skills/repository-operational-truth-audit/SKILL.md#establish-authority-before-claims"
+      ]
+    },
+    {
+      "id": "N11_LIVE_SELECTORS",
+      "region": "R10_RESOLVE",
+      "visual_role": "process",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Live entrypoints + selectors",
+        "zh_cn": "实际入口与 selectors"
+      },
+      "responsibility": {
+        "en": "Trace registrations, metadata, manifests, imports, callers, build pipelines, service/config owners, persistence, install receipts, and operator routes.",
+        "zh_cn": "追踪 registrations、metadata、manifests、imports、callers、build pipelines、service/config owners、persistence、install receipts 与 operator routes。"
+      },
+      "limit": {
+        "en": "File presence is not reachability; labels and defaults are not selection proof.",
+        "zh_cn": "文件存在不等于可达；标签与 defaults 也不是选择证明。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-03--live-path-resolution",
+        "skills/repository-operational-truth-audit/SKILL.md#map-the-decision-bearing-topology"
+      ]
+    },
+    {
+      "id": "N12_OWNERSHIP_STATE",
+      "region": "R10_RESOLVE",
+      "visual_role": "process",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Ownership + state isolation",
+        "zh_cn": "所有权与状态隔离"
+      },
+      "responsibility": {
+        "en": "Resolve selector, owner/purpose, callers, state isolation, version/artifact identity, and compatibility or retirement intent.",
+        "zh_cn": "解析 selector、owner/purpose、callers、state isolation、version/artifact identity，以及 compatibility 或 retirement intent。"
+      },
+      "limit": {
+        "en": "Multiple paths are not drift until selection or isolation fails.",
+        "zh_cn": "多条路径并不天然构成 drift；关键是选择与隔离是否失效。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-07--intentional-multiplicity",
+        "docs/product-spec.md#rot-08--shadow-path-judgment"
+      ]
+    },
+    {
+      "id": "N20_SOURCE_STATE",
+      "region": "R20_TRAVERSE",
+      "visual_role": "evidence_layer",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Source · config · durable state",
+        "zh_cn": "Source · config · durable state"
+      },
+      "responsibility": {
+        "en": "Identify the layer that owns behavior or persistent truth for the decision.",
+        "zh_cn": "识别为该决策拥有行为或持久事实的层。"
+      },
+      "limit": {
+        "en": "Canonical source does not prove a built, installed, deployed, or accepted instance.",
+        "zh_cn": "Canonical source 不证明 built、installed、deployed 或 accepted instance。"
+      },
+      "sources": [
+        "docs/product-spec.md#3-truth-topology",
+        "docs/evidence-model.md#proof-layers"
+      ]
+    },
+    {
+      "id": "N21_DERIVED_ARTIFACT",
+      "region": "R20_TRAVERSE",
+      "visual_role": "evidence_layer",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Generated · built · packaged · projected",
+        "zh_cn": "Generated · built · packaged · projected"
+      },
+      "responsibility": {
+        "en": "Map derivation identity and the source-to-artifact relation that the decision depends on.",
+        "zh_cn": "映射决策所依赖的 derivation identity 与 source-to-artifact relation。"
+      },
+      "limit": {
+        "en": "A green build proves the artifact it produced, not installation or runtime behavior.",
+        "zh_cn": "Green build 只证明其产物，不证明 installation 或 runtime behavior。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-06--artifact-and-projection-identity",
+        "docs/evidence-model.md#proof-layers"
+      ]
+    },
+    {
+      "id": "N22_INSTALLED_IDENTITY",
+      "region": "R20_TRAVERSE",
+      "visual_role": "evidence_layer",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Installed · deployed identity",
+        "zh_cn": "Installed · deployed identity"
+      },
+      "responsibility": {
+        "en": "Record an exact installed or deployed instance only when it is freshly observed within scope.",
+        "zh_cn": "只有在范围内得到新鲜观察时，才记录精确的 installed 或 deployed instance。"
+      },
+      "limit": {
+        "en": "Source, package, receipt, and running instance remain separate identities.",
+        "zh_cn": "Source、package、receipt 与 running instance 始终是不同身份。"
+      },
+      "sources": [
+        "docs/product-spec.md#3-truth-topology",
+        "docs/evidence-model.md#proof-layers"
+      ]
+    },
+    {
+      "id": "N23_EVIDENCE_GATES",
+      "region": "R20_TRAVERSE",
+      "visual_role": "gate",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Evidence gates",
+        "zh_cn": "证据 gates"
+      },
+      "responsibility": {
+        "en": "For docs, tests, status, and receipts, name the exact input, assertion, proof layer, and observed identity.",
+        "zh_cn": "对 docs、tests、status 与 receipts，说明 exact input、assertion、proof layer 与 observed identity。"
+      },
+      "limit": {
+        "en": "Passing evidence never upgrades a claim to the next layer automatically.",
+        "zh_cn": "证据通过不会自动把 claim 升级到下一层。"
+      },
+      "sources": [
+        "docs/evidence-model.md#proof-layers",
+        "docs/evidence-model.md#false-green"
+      ]
+    },
+    {
+      "id": "N30_TRACE",
+      "region": "R30_CHALLENGE",
+      "visual_role": "process",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Decision-bearing candidate trace",
+        "zh_cn": "承载决策的候选 trace"
+      },
+      "responsibility": {
+        "en": "Close: claim/live surface → mechanism/state → contradiction or gap → decision impact → fresh validation.",
+        "zh_cn": "闭合：claim/live surface → mechanism/state → contradiction 或 gap → decision impact → fresh validation。"
+      },
+      "limit": {
+        "en": "A stale file, duplicate path, or missing observation alone is not a finding.",
+        "zh_cn": "旧文件、重复路径或缺失观察本身都不是 finding。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-04--cross-surface-trace",
+        "docs/evidence-model.md#finding-trace"
+      ]
+    },
+    {
+      "id": "N31_FALSE_GREEN",
+      "region": "R30_CHALLENGE",
+      "visual_role": "challenge",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "False-green challenge",
+        "zh_cn": "False-green challenge"
+      },
+      "responsibility": {
+        "en": "Ask whether the exact path ran, the assertion was observable, a broken invariant would fail, and the claimed layer was actually proved.",
+        "zh_cn": "追问 exact path 是否运行、assertion 是否可观察、破坏 invariant 是否会失败，以及 claimed layer 是否真的被证明。"
+      },
+      "limit": {
+        "en": "Use a disposable mutation challenge only when safe; never mutate the real target by default.",
+        "zh_cn": "只在安全时使用 disposable mutation challenge；默认绝不改动真实目标。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-05--false-green-detection",
+        "docs/evidence-model.md#false-green"
+      ]
+    },
+    {
+      "id": "N32_MULTIPLICITY",
+      "region": "R30_CHALLENGE",
+      "visual_role": "adjudication",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Multiplicity or shadow path?",
+        "zh_cn": "Intentional multiplicity 还是 shadow path？"
+      },
+      "responsibility": {
+        "en": "Adjudicate using selector, ownership, isolated state, version identity, callers, and compatibility or retirement intent.",
+        "zh_cn": "依据 selector、ownership、isolated state、version identity、callers 与 compatibility/retirement intent 裁定。"
+      },
+      "limit": {
+        "en": "Intentional, selected, isolated modes remain clean; reachable ambiguity can become a shadow path.",
+        "zh_cn": "有意、可选择且隔离的模式保持 clean；可达歧义才可能成为 shadow path。"
+      },
+      "sources": [
+        "docs/evidence-model.md#intentional-multiplicity-versus-shadow-paths",
+        "skills/repository-operational-truth-audit/SKILL.md#separate-multiplicity-from-drift"
+      ]
+    },
+    {
+      "id": "N33_EXTERNAL_UNKNOWN",
+      "region": "R30_CHALLENGE",
+      "visual_role": "boundary",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Decision-critical external unknown",
+        "zh_cn": "决策关键的外部未知"
+      },
+      "responsibility": {
+        "en": "State: missing observation → prevented claim → affected decision → exact fresh observation needed.",
+        "zh_cn": "说明：missing observation → prevented claim → affected decision → 所需的 exact fresh observation。"
+      },
+      "limit": {
+        "en": "Unavailable runtime or account state is not automatically a repository defect.",
+        "zh_cn": "不可得的 runtime 或 account state 不会自动成为仓库缺陷。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-09--external-and-hidden-state",
+        "docs/evidence-model.md#unknowns"
+      ]
+    },
+    {
+      "id": "N34_SPECIALIST",
+      "region": "R30_CHALLENGE",
+      "visual_role": "optional_adapter",
+      "evidence_status": "conditional_observation",
+      "label": {
+        "en": "Specialist adapter",
+        "zh_cn": "Specialist adapter"
+      },
+      "responsibility": {
+        "en": "Bring in a protocol, deployment, browser, storage, or domain specialist only for a material observation.",
+        "zh_cn": "仅为实质观察引入 protocol、deployment、browser、storage 或 domain specialist。"
+      },
+      "limit": {
+        "en": "No default fan-out; if its answer cannot change the decision, do not invoke it.",
+        "zh_cn": "不做默认 fan-out；若答案不能改变决策，就不调用。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-14--specialist-adapters",
+        "skills/repository-operational-truth-audit/SKILL.md#handle-unavailable-external-state"
+      ]
+    },
+    {
+      "id": "N40_OUTCOMES",
+      "region": "R40_DECIDE",
+      "visual_role": "outcome_register",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Adjudication register",
+        "zh_cn": "裁定结果簿"
+      },
+      "responsibility": {
+        "en": "Record validated contradiction, false-green evidence, shadow path, intentional multiplicity, non-material residue, decision-critical unknown, external boundary, or clean within scope.",
+        "zh_cn": "记录 validated contradiction、false-green evidence、shadow path、intentional multiplicity、non-material residue、decision-critical unknown、external boundary 或 clean within scope。"
+      },
+      "limit": {
+        "en": "Do not collapse distinct outcomes into a score, maturity grade, or generic issue list.",
+        "zh_cn": "不要把不同结果压成 score、maturity grade 或 generic issue list。"
+      },
+      "sources": [
+        "docs/evidence-model.md#adjudication-vocabulary",
+        "docs/evidence-model.md#clean-result"
+      ]
+    },
+    {
+      "id": "N41_STOPPING",
+      "region": "R40_DECIDE",
+      "visual_role": "gate",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Decision fixed-point test",
+        "zh_cn": "决策固定点测试"
+      },
+      "responsibility": {
+        "en": "Every candidate is adjudicated; no new decision-relevant evidence edge remains; other surfaces cannot change the answer; external limits are explicit.",
+        "zh_cn": "每个候选项均已裁定；不再出现新的决策相关证据边；其余表面不能改变答案；外部限制已明确。"
+      },
+      "limit": {
+        "en": "If a new material edge appears, traverse again; do not stop by checklist exhaustion.",
+        "zh_cn": "若出现新的实质证据边，就重新穿行；不能靠 checklist 耗尽来停止。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-12--stopping",
+        "docs/evidence-model.md#stopping"
+      ]
+    },
+    {
+      "id": "N42_DECISION_OUTPUT",
+      "region": "R40_DECIDE",
+      "visual_role": "output",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Decision answer + proof boundary",
+        "zh_cn": "决策答案与证明边界"
+      },
+      "responsibility": {
+        "en": "Report the answer, pinned identity, live topology, full finding/unknown traces, intentional non-findings, verification, and overhead receipt.",
+        "zh_cn": "报告答案、pinned identity、live topology、完整 findings/unknown traces、intentional non-findings、verification 与 overhead receipt。"
+      },
+      "limit": {
+        "en": "No default AUDIT.md, durable backlog, repair loop, or claim beyond the observed layer.",
+        "zh_cn": "不默认生成 AUDIT.md、durable backlog、repair loop，也不声称超出已观察层。"
+      },
+      "sources": [
+        "docs/product-spec.md#6-output-contract",
+        "skills/repository-operational-truth-audit/SKILL.md#report-the-result"
+      ]
+    },
+    {
+      "id": "N43_END_REPIN",
+      "region": "R40_DECIDE",
+      "visual_role": "receipt",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "End re-pin + mutation statement",
+        "zh_cn": "结束复钉与 mutation statement"
+      },
+      "responsibility": {
+        "en": "Reconcile the ending repository identity with the start pin and state whether the audit changed anything.",
+        "zh_cn": "把结束时的仓库身份与起始钉点核对，并说明审计是否改变了任何内容。"
+      },
+      "limit": {
+        "en": "An unexplained moving target invalidates the claimed snapshot-bound answer.",
+        "zh_cn": "未经解释的移动目标会使 snapshot-bound answer 失效。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-17--end-re-pin",
+        "skills/repository-operational-truth-audit/SKILL.md#stop-cleanly"
+      ]
+    },
+    {
+      "id": "N50_OBSERVATION_GATE",
+      "region": "R50_EXTERNAL",
+      "visual_role": "authorization_gate",
+      "evidence_status": "conditional_observation",
+      "label": {
+        "en": "Fresh observation gate",
+        "zh_cn": "新鲜观察 gate"
+      },
+      "responsibility": {
+        "en": "Cross only with explicit scope and authorization, using an exact current observation that can change the decision.",
+        "zh_cn": "只有在范围与授权明确时才跨越，并使用能够改变决策的精确当前观察。"
+      },
+      "limit": {
+        "en": "A source audit never silently authorizes browser, account, remote, deployment, or owner actions.",
+        "zh_cn": "Source audit 绝不会默许 browser、account、remote、deployment 或 owner action。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-09--external-and-hidden-state",
+        "AGENTS.md#product-boundary"
+      ]
+    },
+    {
+      "id": "N51_EXTERNAL_STATE",
+      "region": "R50_EXTERNAL",
+      "visual_role": "external_system",
+      "evidence_status": "unobserved_by_default",
+      "label": {
+        "en": "Runtime · edge · device · account · owner acceptance",
+        "zh_cn": "Runtime · edge · device · account · owner acceptance"
+      },
+      "responsibility": {
+        "en": "Provide a fresh named-instance observation only when the gate is crossed legitimately.",
+        "zh_cn": "仅在合法跨越 gate 后，提供对具名 instance 的新鲜观察。"
+      },
+      "limit": {
+        "en": "Until observed, this region remains an explicit unknown — never inferred from repository evidence.",
+        "zh_cn": "在被观察前，该区域保持显式未知，绝不从仓库证据推断。"
+      },
+      "sources": [
+        "docs/product-spec.md#3-truth-topology",
+        "docs/evidence-model.md#unknowns"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "E01_DECISION_BOUNDS_PIN",
+      "source": "N00_OWNER_DECISION",
+      "target": "N01_START_PIN",
+      "kind": "observed",
+      "label": {
+        "en": "bounds",
+        "zh_cn": "限定"
+      }
+    },
+    {
+      "id": "E02_PIN_BINDS_READ_ONLY",
+      "source": "N01_START_PIN",
+      "target": "N02_READ_ONLY",
+      "kind": "observed",
+      "label": {
+        "en": "bind scope",
+        "zh_cn": "绑定范围"
+      }
+    },
+    {
+      "id": "E03_PIN_TO_AUTHORITY",
+      "source": "N02_READ_ONLY",
+      "target": "N10_AUTHORITY",
+      "kind": "observed",
+      "label": {
+        "en": "observe",
+        "zh_cn": "观察"
+      }
+    },
+    {
+      "id": "E04_AUTHORITY_TO_SELECTORS",
+      "source": "N10_AUTHORITY",
+      "target": "N11_LIVE_SELECTORS",
+      "kind": "observed",
+      "label": {
+        "en": "resolve reachability",
+        "zh_cn": "解析可达性"
+      }
+    },
+    {
+      "id": "E05_SELECTORS_TO_OWNERSHIP",
+      "source": "N11_LIVE_SELECTORS",
+      "target": "N12_OWNERSHIP_STATE",
+      "kind": "observed",
+      "label": {
+        "en": "identify selection",
+        "zh_cn": "识别选择"
+      }
+    },
+    {
+      "id": "E06_OWNERSHIP_TO_SOURCE",
+      "source": "N12_OWNERSHIP_STATE",
+      "target": "N20_SOURCE_STATE",
+      "kind": "observed",
+      "label": {
+        "en": "reach owner",
+        "zh_cn": "到达所有者"
+      }
+    },
+    {
+      "id": "E07_SOURCE_TO_ARTIFACT",
+      "source": "N20_SOURCE_STATE",
+      "target": "N21_DERIVED_ARTIFACT",
+      "kind": "observed",
+      "label": {
+        "en": "derive",
+        "zh_cn": "派生"
+      }
+    },
+    {
+      "id": "E08_ARTIFACT_TO_INSTALL",
+      "source": "N21_DERIVED_ARTIFACT",
+      "target": "N22_INSTALLED_IDENTITY",
+      "kind": "observed",
+      "label": {
+        "en": "identify instance",
+        "zh_cn": "识别实例"
+      }
+    },
+    {
+      "id": "E09_SOURCE_TO_GATES",
+      "source": "N20_SOURCE_STATE",
+      "target": "N23_EVIDENCE_GATES",
+      "kind": "observed",
+      "label": {
+        "en": "prove layer",
+        "zh_cn": "证明本层"
+      }
+    },
+    {
+      "id": "E10_ARTIFACT_TO_GATES",
+      "source": "N21_DERIVED_ARTIFACT",
+      "target": "N23_EVIDENCE_GATES",
+      "kind": "observed",
+      "label": {
+        "en": "prove identity",
+        "zh_cn": "证明身份"
+      }
+    },
+    {
+      "id": "E11_INSTALL_TO_GATES",
+      "source": "N22_INSTALLED_IDENTITY",
+      "target": "N23_EVIDENCE_GATES",
+      "kind": "observed",
+      "label": {
+        "en": "prove exact instance",
+        "zh_cn": "证明精确实例"
+      }
+    },
+    {
+      "id": "E12_AUTHORITY_TO_TRACE",
+      "source": "N10_AUTHORITY",
+      "target": "N30_TRACE",
+      "kind": "observed",
+      "label": {
+        "en": "claim surface",
+        "zh_cn": "claim surface"
+      }
+    },
+    {
+      "id": "E13_SELECTION_TO_TRACE",
+      "source": "N12_OWNERSHIP_STATE",
+      "target": "N30_TRACE",
+      "kind": "observed",
+      "label": {
+        "en": "mechanism + state",
+        "zh_cn": "mechanism + state"
+      }
+    },
+    {
+      "id": "E14_GATES_TO_TRACE",
+      "source": "N23_EVIDENCE_GATES",
+      "target": "N30_TRACE",
+      "kind": "observed",
+      "label": {
+        "en": "fresh validation",
+        "zh_cn": "新鲜验证"
+      }
+    },
+    {
+      "id": "E15_TRACE_TO_FALSE_GREEN",
+      "source": "N30_TRACE",
+      "target": "N31_FALSE_GREEN",
+      "kind": "observed",
+      "label": {
+        "en": "challenge proof",
+        "zh_cn": "挑战证明"
+      }
+    },
+    {
+      "id": "E16_TRACE_TO_MULTIPLICITY",
+      "source": "N30_TRACE",
+      "target": "N32_MULTIPLICITY",
+      "kind": "observed",
+      "label": {
+        "en": "adjudicate paths",
+        "zh_cn": "裁定路径"
+      }
+    },
+    {
+      "id": "E17_TRACE_TO_UNKNOWN",
+      "source": "N30_TRACE",
+      "target": "N33_EXTERNAL_UNKNOWN",
+      "kind": "observed",
+      "label": {
+        "en": "name missing proof",
+        "zh_cn": "命名缺失证明"
+      }
+    },
+    {
+      "id": "E18_TRACE_TO_SPECIALIST",
+      "source": "N30_TRACE",
+      "target": "N34_SPECIALIST",
+      "kind": "conditional",
+      "label": {
+        "en": "only if material",
+        "zh_cn": "仅在实质相关时"
+      }
+    },
+    {
+      "id": "E19_SPECIALIST_TO_TRACE",
+      "source": "N34_SPECIALIST",
+      "target": "N30_TRACE",
+      "kind": "conditional",
+      "label": {
+        "en": "bounded observation",
+        "zh_cn": "有限观察"
+      }
+    },
+    {
+      "id": "E20_UNKNOWN_TO_GATE",
+      "source": "N33_EXTERNAL_UNKNOWN",
+      "target": "N50_OBSERVATION_GATE",
+      "kind": "conditional",
+      "label": {
+        "en": "scope + authorize",
+        "zh_cn": "限定范围并授权"
+      }
+    },
+    {
+      "id": "E21_GATE_TO_EXTERNAL",
+      "source": "N50_OBSERVATION_GATE",
+      "target": "N51_EXTERNAL_STATE",
+      "kind": "conditional",
+      "label": {
+        "en": "fresh named observation",
+        "zh_cn": "新鲜具名观察"
+      }
+    },
+    {
+      "id": "E22_EXTERNAL_TO_TRACE",
+      "source": "N51_EXTERNAL_STATE",
+      "target": "N30_TRACE",
+      "kind": "conditional",
+      "label": {
+        "en": "observed evidence only",
+        "zh_cn": "仅返回已观察证据"
+      }
+    },
+    {
+      "id": "E23_TRACE_TO_OUTCOMES",
+      "source": "N30_TRACE",
+      "target": "N40_OUTCOMES",
+      "kind": "observed",
+      "label": {
+        "en": "adjudicate",
+        "zh_cn": "裁定"
+      }
+    },
+    {
+      "id": "E24_FALSE_GREEN_TO_OUTCOMES",
+      "source": "N31_FALSE_GREEN",
+      "target": "N40_OUTCOMES",
+      "kind": "observed",
+      "label": {
+        "en": "record proof result",
+        "zh_cn": "记录证明结果"
+      }
+    },
+    {
+      "id": "E25_MULTIPLICITY_TO_OUTCOMES",
+      "source": "N32_MULTIPLICITY",
+      "target": "N40_OUTCOMES",
+      "kind": "observed",
+      "label": {
+        "en": "record path judgment",
+        "zh_cn": "记录路径判断"
+      }
+    },
+    {
+      "id": "E26_UNKNOWN_TO_OUTCOMES",
+      "source": "N33_EXTERNAL_UNKNOWN",
+      "target": "N40_OUTCOMES",
+      "kind": "observed",
+      "label": {
+        "en": "retain explicit unknown",
+        "zh_cn": "保留显式未知"
+      }
+    },
+    {
+      "id": "E27_OUTCOMES_TO_STOP",
+      "source": "N40_OUTCOMES",
+      "target": "N41_STOPPING",
+      "kind": "observed",
+      "label": {
+        "en": "test completeness",
+        "zh_cn": "测试完备性"
+      }
+    },
+    {
+      "id": "E28_STOP_FEEDBACK",
+      "source": "N41_STOPPING",
+      "target": "N10_AUTHORITY",
+      "kind": "feedback",
+      "label": {
+        "en": "new material evidence edge",
+        "zh_cn": "新的实质证据边"
+      }
+    },
+    {
+      "id": "E29_STOP_TO_OUTPUT",
+      "source": "N41_STOPPING",
+      "target": "N42_DECISION_OUTPUT",
+      "kind": "observed",
+      "label": {
+        "en": "fixed point reached",
+        "zh_cn": "抵达固定点"
+      }
+    },
+    {
+      "id": "E30_OUTPUT_TO_REPIN",
+      "source": "N42_DECISION_OUTPUT",
+      "target": "N43_END_REPIN",
+      "kind": "observed",
+      "label": {
+        "en": "close receipt",
+        "zh_cn": "闭合回执"
+      }
+    }
+  ],
+  "states": [
+    {
+      "id": "S00_UNBOUNDED",
+      "label": {
+        "en": "Awaiting an audit object",
+        "zh_cn": "等待审计对象"
+      },
+      "invariant": "Do not begin exhaustive traversal without a concrete decision."
+    },
+    {
+      "id": "S10_PINNED_READ_ONLY",
+      "label": {
+        "en": "Pinned and read-only",
+        "zh_cn": "已钉住且只读"
+      },
+      "invariant": "The selected repository identity and mutation boundary are explicit."
+    },
+    {
+      "id": "S20_TRAVERSING",
+      "label": {
+        "en": "Resolving and traversing",
+        "zh_cn": "正在解析与穿行"
+      },
+      "invariant": "Every explored surface remains connected to the owner decision."
+    },
+    {
+      "id": "S30_ADJUDICATING",
+      "label": {
+        "en": "Challenging and adjudicating",
+        "zh_cn": "正在挑战与裁定"
+      },
+      "invariant": "Every material candidate has a full trace or an explicit proof boundary."
+    },
+    {
+      "id": "S40_FIXED_POINT",
+      "label": {
+        "en": "Decision fixed point",
+        "zh_cn": "决策固定点"
+      },
+      "invariant": "No remaining repository-observable edge can change the bounded answer."
+    },
+    {
+      "id": "S50_REPORTED",
+      "label": {
+        "en": "Reported and re-pinned",
+        "zh_cn": "已报告并复钉"
+      },
+      "invariant": "The answer, unknowns, proof boundary, overhead, and ending identity are explicit."
+    }
+  ],
+  "state_transitions": [
+    {
+      "from": "S00_UNBOUNDED",
+      "to": "S10_PINNED_READ_ONLY",
+      "trigger": "N00_OWNER_DECISION + N01_START_PIN + N02_READ_ONLY"
+    },
+    {
+      "from": "S10_PINNED_READ_ONLY",
+      "to": "S20_TRAVERSING",
+      "trigger": "N10_AUTHORITY"
+    },
+    {
+      "from": "S20_TRAVERSING",
+      "to": "S30_ADJUDICATING",
+      "trigger": "N30_TRACE"
+    },
+    {
+      "from": "S30_ADJUDICATING",
+      "to": "S20_TRAVERSING",
+      "trigger": "E28_STOP_FEEDBACK"
+    },
+    {
+      "from": "S30_ADJUDICATING",
+      "to": "S40_FIXED_POINT",
+      "trigger": "N41_STOPPING passes"
+    },
+    {
+      "from": "S40_FIXED_POINT",
+      "to": "S50_REPORTED",
+      "trigger": "N42_DECISION_OUTPUT + N43_END_REPIN"
+    }
+  ],
+  "source_authorities": [
+    {
+      "path": "docs/product-spec.md",
+      "role": "Accepted product behavior and output contract"
+    },
+    {
+      "path": "docs/evidence-model.md",
+      "role": "Proof layers, findings, unknowns, clean-result, and stopping semantics"
+    },
+    {
+      "path": "skills/repository-operational-truth-audit/SKILL.md",
+      "role": "Runtime audit workflow and invocation boundary"
+    },
+    {
+      "path": "AGENTS.md",
+      "role": "Repository ownership, read-only, publication, and source/install boundaries"
+    }
+  ],
+  "render_acceptance": [
+    "The architecture, not a title or decorative field, occupies most of the canvas.",
+    "All six regions and all stable node IDs are visible in both locale artifacts.",
+    "Source, derived artifact, installed identity, and external state remain visually distinct.",
+    "The external proof boundary and read-only mutation boundary are visible without reading body prose.",
+    "The feedback loop from the stopping test to authority resolution is visible.",
+    "The diagram remains legible at approximately 900 CSS pixels wide and at full size.",
+    "The English and Simplified Chinese artifacts preserve semantic parity without sharing one bilingual canvas."
+  ]
+}

@@ -16,8 +16,8 @@ class RepositoryContractTests(unittest.TestCase):
     def test_repository_validator_is_clean(self) -> None:
         self.assertEqual(validate(), [])
 
-    def test_version_is_release_candidate(self) -> None:
-        self.assertEqual(read_version(), "0.1.0-rc1")
+    def test_version_is_public_release(self) -> None:
+        self.assertEqual(read_version(), "0.1.0")
 
     def test_skill_digest_is_stable_and_nonempty(self) -> None:
         first = directory_digest(SKILL_DIR)

@@ -1,5 +1,7 @@
 # Evidence model
 
+[简体中文](evidence-model.zh-CN.md)
+
 ## Evidence must answer a decision
 
 Repository Operational Truth Audit does not collect observations because they

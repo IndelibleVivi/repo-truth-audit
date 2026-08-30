@@ -10,7 +10,22 @@ import re
 import sys
 from typing import Iterable
 
-from common import ROOT, SKILL_DIR, SKILL_NAME, read_version
+from common import ROOT, SKILL_DIR, SKILL_NAME, file_sha256, read_version
+
+SUL_SHA256 = "c6d0dde0f0463c800e542d7d64237ffef37f43b17004975a558604f17b5d1af1"
+
+PUBLIC_DOC_PAIRS = {
+    "README.md": "README.zh-CN.md",
+    "CHANGELOG.md": "CHANGELOG.zh-CN.md",
+    "LICENSE-DOCUMENTATION.md": "LICENSE-DOCUMENTATION.zh-CN.md",
+    "LICENSING.md": "LICENSING.zh-CN.md",
+    "docs/product-spec.md": "docs/product-spec.zh-CN.md",
+    "docs/evidence-model.md": "docs/evidence-model.zh-CN.md",
+    "docs/research-basis.md": "docs/research-basis.zh-CN.md",
+    "docs/current-state.md": "docs/current-state.zh-CN.md",
+    "docs/architecture/README.md": "docs/architecture/README.zh-CN.md",
+    "docs/releases/v0.1.0.md": "docs/releases/v0.1.0.zh-CN.md",
+}
 
 EXPECTED_CASES = {
     "authority-drift",
@@ -26,22 +41,46 @@ REQUIRED_FILES = {
     ".gitignore",
     "AGENTS.md",
     "CHANGELOG.md",
+    "CHANGELOG.zh-CN.md",
+    "LICENSE",
+    "LICENSE-DOCUMENTATION.md",
+    "LICENSE-DOCUMENTATION.zh-CN.md",
+    "LICENSING.md",
+    "LICENSING.zh-CN.md",
+    "NOTICE.md",
     "README.md",
+    "README.zh-CN.md",
     "VERSION",
     "docs/current-state.md",
+    "docs/architecture/audit-runtime-model.json",
+    "docs/architecture/audit-runtime.en.svg",
+    "docs/architecture/audit-runtime.zh-CN.svg",
+    "docs/architecture/README.md",
+    "docs/architecture/README.zh-CN.md",
+    "docs/current-state.zh-CN.md",
     "docs/evidence-model.md",
+    "docs/evidence-model.zh-CN.md",
     "docs/product-spec.md",
+    "docs/product-spec.zh-CN.md",
     "docs/research-basis.md",
+    "docs/research-basis.zh-CN.md",
+    "docs/releases/v0.1.0.md",
+    "docs/releases/v0.1.0.zh-CN.md",
     "evals/README.md",
     "evals/activation-prompts.csv",
     "fieldlab-pack.json",
     "scripts/common.py",
     "scripts/install_skill.py",
+    "scripts/render_architecture_svg.py",
     "scripts/selftest.py",
+    "scripts/validate_architecture.py",
     "scripts/validate_repository.py",
     "skills/repository-operational-truth-audit/SKILL.md",
+    "skills/repository-operational-truth-audit/LICENSE.txt",
+    "skills/repository-operational-truth-audit/NOTICE.md",
     "skills/repository-operational-truth-audit/agents/openai.yaml",
     "tests/test_fixtures.py",
+    "tests/test_architecture.py",
     "tests/test_install_skill.py",
     "tests/test_repository.py",
 }
@@ -63,8 +102,42 @@ def text_files() -> Iterable[Path]:
     for path in ROOT.rglob("*"):
         if ".git" in path.parts or not path.is_file() or path.is_symlink():
             continue
-        if path.suffix.lower() in {".md", ".yaml", ".yml", ".json", ".csv", ".py", ".sh"}:
+        if path.suffix.lower() in {
+            ".md",
+            ".yaml",
+            ".yml",
+            ".json",
+            ".csv",
+            ".py",
+            ".sh",
+            ".svg",
+            ".txt",
+        }:
             yield path
+
+
+def validate_markdown_links(errors: list[str]) -> None:
+    link_pattern = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
+    for path in ROOT.rglob("*.md"):
+        if ".git" in path.parts or path.is_symlink():
+            continue
+        content = path.read_text(encoding="utf-8")
+        for match in link_pattern.finditer(content):
+            target = match.group(1).strip().strip("<>")
+            if not target or target.startswith(("#", "http://", "https://", "mailto:")):
+                continue
+            target_path = target.split("#", 1)[0]
+            if not target_path:
+                continue
+            resolved = (path.parent / target_path).resolve()
+            if resolved != ROOT and ROOT not in resolved.parents:
+                errors.append(
+                    f"{path.relative_to(ROOT)} contains repository-escaping link: {target!r}"
+                )
+            elif not resolved.exists():
+                errors.append(
+                    f"{path.relative_to(ROOT)} contains missing relative link: {target!r}"
+                )
 
 
 def validate() -> list[str]:
@@ -74,19 +147,101 @@ def validate() -> list[str]:
             errors.append(f"missing required file: {required}")
 
     version = read("VERSION", errors).strip()
-    if not re.fullmatch(r"\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?", version):
-        errors.append(f"VERSION is not supported semantic version text: {version!r}")
+    if version != "0.1.0":
+        errors.append(f"VERSION must be the public release version '0.1.0', got {version!r}")
 
     readme = read("README.md", errors)
+    readme_zh = read("README.zh-CN.md", errors)
     current_state = read("docs/current-state.md", errors)
-    for relative, content in (("README.md", readme), ("docs/current-state.md", current_state)):
-        if version and f"`{version}`" not in content:
+    current_state_zh = read("docs/current-state.zh-CN.md", errors)
+    for relative, content in (
+        ("README.md", readme),
+        ("README.zh-CN.md", readme_zh),
+        ("docs/current-state.md", current_state),
+        ("docs/current-state.zh-CN.md", current_state_zh),
+    ):
+        if version and f"`{version}`" not in content and f"`v{version}`" not in content:
             errors.append(f"{relative} is not aligned with VERSION {version}")
-    for phrase in ("no public license", "no remote release"):
-        if phrase not in readme.lower():
-            errors.append(f"README.md lost publication boundary phrase: {phrase!r}")
-    if (ROOT / "LICENSE").exists():
-        errors.append("LICENSE exists although no public license has been selected")
+
+    readme_requirements = {
+        "README.md": (
+            "[简体中文](README.zh-CN.md)",
+            "docs/architecture/audit-runtime.en.svg",
+            "source-available, not OSI open source",
+            "--ref v0.1.0",
+            "Sustainable Use License 1.0",
+            "CC BY-NC-SA 4.0",
+        ),
+        "README.zh-CN.md": (
+            "[English](README.md)",
+            "docs/architecture/audit-runtime.zh-CN.svg",
+            "source-available，不是 OSI open source",
+            "--ref v0.1.0",
+            "Sustainable Use License 1.0",
+            "CC BY-NC-SA 4.0",
+        ),
+    }
+    for relative, phrases in readme_requirements.items():
+        content = read(relative, errors)
+        for phrase in phrases:
+            if phrase not in content:
+                errors.append(f"{relative} lost public contract phrase: {phrase!r}")
+
+    for english, chinese in PUBLIC_DOC_PAIRS.items():
+        if not (ROOT / english).is_file() or not (ROOT / chinese).is_file():
+            errors.append(f"localized documentation pair is incomplete: {english} / {chinese}")
+
+    root_license = ROOT / "LICENSE"
+    skill_license = SKILL_DIR / "LICENSE.txt"
+    if root_license.is_file() and file_sha256(root_license) != SUL_SHA256:
+        errors.append("root LICENSE is not the exact pinned SUL-1.0 text")
+    if skill_license.is_file() and file_sha256(skill_license) != SUL_SHA256:
+        errors.append("Skill LICENSE.txt is not the exact pinned SUL-1.0 text")
+    if root_license.is_file() and skill_license.is_file():
+        if root_license.read_bytes() != skill_license.read_bytes():
+            errors.append("root and Skill SUL-1.0 license texts differ")
+
+    documentation_license = read("LICENSE-DOCUMENTATION.md", errors)
+    for phrase in (
+        "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en",
+        "This notice does not apply the Creative Commons license to the Skill",
+    ):
+        if phrase not in documentation_license:
+            errors.append(f"LICENSE-DOCUMENTATION.md lost scope phrase: {phrase!r}")
+
+    licensing = read("LICENSING.md", errors)
+    licensing_lower = licensing.lower()
+    for phrase in (
+        "source-available, not OSI open source",
+        "skills/repository-operational-truth-audit/**",
+        "README.md` and `README.zh-CN.md",
+        "docs/**",
+        "No external Skill text",
+    ):
+        if phrase.lower() not in licensing_lower:
+            errors.append(f"LICENSING.md lost path or provenance phrase: {phrase!r}")
+
+    stale_publication_phrases = (
+        "no public license",
+        "no remote release",
+        "publication: not authorized",
+        "publication acceptance is not part of the current authorization",
+    )
+    for path in (
+        ROOT / "README.md",
+        ROOT / "README.zh-CN.md",
+        ROOT / "AGENTS.md",
+        ROOT / "docs" / "product-spec.md",
+        ROOT / "docs" / "current-state.md",
+        ROOT / "docs" / "current-state.zh-CN.md",
+    ):
+        if not path.is_file():
+            continue
+        content = path.read_text(encoding="utf-8").lower()
+        for phrase in stale_publication_phrases:
+            if phrase in content:
+                errors.append(f"{path.relative_to(ROOT)} retains stale phrase: {phrase!r}")
 
     skill = read(f"skills/{SKILL_NAME}/SKILL.md", errors)
     match = re.match(r"^---\n(.*?)\n---\n", skill, re.DOTALL)
@@ -172,6 +327,8 @@ def validate() -> list[str]:
 
     workflow = read(".github/workflows/validate.yml", errors)
     for command in (
+        "python3 scripts/validate_architecture.py",
+        "python3 scripts/render_architecture_svg.py --check",
         "python3 scripts/validate_repository.py",
         "python3 -m unittest discover -s tests -p 'test_*.py'",
         "python3 scripts/selftest.py",
@@ -191,6 +348,8 @@ def validate() -> list[str]:
         for pattern, label in forbidden_patterns.items():
             if pattern in content:
                 errors.append(f"{relative} contains forbidden {label}: {pattern!r}")
+
+    validate_markdown_links(errors)
 
     return errors
 

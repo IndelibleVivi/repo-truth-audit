@@ -44,12 +44,16 @@
 - Windows source portability：tracked text files 在普通 checkout 中保持 LF，从而保留
   精确 pinned-license hashes；Skill digest inventory 按规范化后的 POSIX relative paths
   排序。Fixture self-test 仍要求 Bash；本轮不声称更广泛的 Windows operator support。
-- Deterministic validation：2026-08-31 本地已对 repository/publication validation、
-  architecture model 与 localized Mermaid parity、17 个 unit tests、六个 fixture truth
-  checks、fixture self-test、system Skill quick validation、普通 Windows
-  `core.autocrlf=true` checkout validation 与 Git whitespace validation 得到 PASS。由于
-  host Python runtimes 不带 PyYAML，quick validator 使用与 repository 隔离的 PyYAML
-  运行；repo 或 Skill package 没有因此新增 dependency。
+- Deterministic validation：2026-08-31 在 maintainer 本地已对
+  repository/publication validation、architecture model 与 localized Mermaid parity、17 个
+  unit tests、六个 fixture truth checks、fixture self-test、system Skill quick
+  validation 与 Git whitespace validation 得到 PASS。由于 host Python runtimes 不带
+  PyYAML，quick validator 使用与 repository 隔离的 PyYAML 运行；repo 或 Skill
+  package 没有因此新增 dependency。[Pull request #1](https://github.com/IndelibleVivi/repo-truth-audit/pull/1)
+  另行记录了 contributor head `ee30a874d84c54af56637dc2417fdb351859964e` 的全新
+  Windows `core.autocrlf=true` checkout：两份 pinned license files 均保持 LF，
+  repository validation 通过，source 与 checkout Skill digests 一致，且在 Git Bash
+  可用时通过全部 17 个 unit tests。
 - Mermaid render acceptance：2026-08-30 对 public `main` architecture commit
   `9805fa52f35a3635ee66e3f651ca891de4baad23` PASS。GitHub 在 light mode 下成功
   render 两份 localized block；read-only、external-proof、fixed-point 与 end re-pin
@@ -75,9 +79,8 @@
   `main` 未安装，因此不声称 unreleased metadata change 已达到 installed/source digest
   equality。
 - Next-turn Codex discovery：尚未观察。
-- Current-main CI：PASS。Actions run `33300477192` 已在 substantive
-  naming/eval/evidence commit
-  `8ef4b960dfd4beefd15ede83f5575f2688630259` 通过全部四个 Ubuntu/macOS、Python
+- Current-main CI：PASS。Actions run `33345355658` 已在 merged Windows-portability
+  commit `611e035bb6462d3462b326fc0ce4d6d4b80feb5e` 通过全部四个 Ubuntu/macOS、Python
   3.10/3.13 jobs。Release run `33295744677` 另行在 peeled `v0.1.0` release commit
   上通过同一 matrix。Workflow source 与 live CI 仍是不同事实。
 - Release publication：PASS。GitHub Release `v0.1.0` 已于 2026-08-30 发布，不是
@@ -85,12 +88,12 @@
   Skill validation、digest equality 与 pinned SUL text 已验证。Repository rename 后，
   annotated tag object `235be6e...` 仍然 peel 到 `0180e4c...`，release 也继续存在于新的
   canonical slug 下。Current-main corrections 不暗示一个新 release。
-- Current-main publication：substantive commit `8ef4b960...` PASS。Canonical public
+- Current-main publication：substantive commit `611e035b...` PASS。Canonical public
   remote 为 `https://github.com/IndelibleVivi/repo-truth-audit`；旧 repository URL
-  返回指向它的 HTTP 301。Public read-back 已暴露新的 README title、formal-name line、
-  保持不变的 Skill slug 与 forward-behavior receipt。后续 status-only reconciliation
-  可以移动 `main`，但不会改变这份 substantive source identity。Accepted architecture
-  identity 仍为 `9805fa52...`。
+  返回指向它的 HTTP 301。Public read-back 已确认精确 `main` commit 与
+  `.gitattributes` 中的 LF policy；pull request #1 保留 contributor 的 Windows
+  reproduction。后续 status-only reconciliation 可以移动 `main`，但不会改变这份
+  substantive source identity。Accepted architecture identity 仍为 `9805fa52...`。
 - Licensing：functional materials 在 SUL-1.0 下 source-available；standalone
   documentation、renderer-neutral architecture model，以及嵌入 README 的 Mermaid
   diagrams 按 `LICENSING.zh-CN.md` 使用 CC BY-NC-SA 4.0。GitHub 将 layered repository

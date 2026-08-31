@@ -49,13 +49,17 @@ Last reconciled: 2026-08-31
   checkouts, preserving exact pinned-license hashes, and Skill digest inventory
   ordering uses normalized POSIX relative paths. Bash remains required for the
   fixture self-test; broader Windows operator support is not claimed.
-- Deterministic validation: local PASS on 2026-08-31 for repository/publication
-  validation, architecture model and localized Mermaid parity, 17 unit tests,
-  six fixture truth checks, fixture self-test, system Skill quick validation,
-  ordinary Windows `core.autocrlf=true` checkout validation, and Git whitespace
-  validation. The quick validator ran with PyYAML isolated from the repository
-  because the host Python runtimes do not provide it; no dependency was added
-  to the repository or Skill package.
+- Deterministic validation: maintainer-local PASS on 2026-08-31 for
+  repository/publication validation, architecture model and localized Mermaid
+  parity, 17 unit tests, six fixture truth checks, fixture self-test, system
+  Skill quick validation, and Git whitespace validation. The quick validator
+  ran with PyYAML isolated from the repository because the host Python runtimes
+  do not provide it; no dependency was added to the repository or Skill
+  package. [Pull request #1](https://github.com/IndelibleVivi/repo-truth-audit/pull/1)
+  separately records a fresh Windows `core.autocrlf=true` checkout at
+  contributor head `ee30a874d84c54af56637dc2417fdb351859964e`: both pinned
+  license files retained LF, repository validation passed, source and checkout
+  Skill digests matched, and all 17 unit tests passed with Git Bash.
 - Mermaid render acceptance: PASS on 2026-08-30 for public `main` architecture
   commit `9805fa52f35a3635ee66e3f651ca891de4baad23`. GitHub rendered both localized
   blocks in light mode; all read-only, external-proof, fixed-point, and end
@@ -83,9 +87,9 @@ Last reconciled: 2026-08-31
   Current `main` has not been installed; installed/source digest equality is
   therefore not claimed for the unreleased metadata change.
 - Next-turn Codex discovery: not observed.
-- Current-main CI: PASS. Actions run `33300477192` passed all four Ubuntu/macOS
-  and Python 3.10/3.13 jobs on substantive naming/eval/evidence commit
-  `8ef4b960dfd4beefd15ede83f5575f2688630259`. Release run `33295744677`
+- Current-main CI: PASS. Actions run `33345355658` passed all four Ubuntu/macOS
+  and Python 3.10/3.13 jobs on merged Windows-portability commit
+  `611e035bb6462d3462b326fc0ce4d6d4b80feb5e`. Release run `33295744677`
   separately passed the same matrix on the peeled `v0.1.0` release commit.
   Workflow source and live CI remain separate facts.
 - Release publication: PASS. GitHub Release `v0.1.0` was published on
@@ -95,13 +99,14 @@ Last reconciled: 2026-08-31
   object `235be6e...` still peels to `0180e4c...`, and the release remains
   available under the new canonical slug. No new release is implied by the
   current-main corrections.
-- Current-main publication: PASS for substantive commit `8ef4b960...`. The
+- Current-main publication: PASS for substantive commit `611e035b...`. The
   canonical public remote is
   `https://github.com/IndelibleVivi/repo-truth-audit`; the previous repository
-  URL returns an HTTP 301 to it. Public read-back exposed the new README title,
-  formal-name line, unchanged Skill slug, and forward-behavior receipt. A later
-  status-only reconciliation may move `main` without changing this substantive
-  source identity. The accepted architecture identity remains `9805fa52...`.
+  URL returns an HTTP 301 to it. Public read-back confirmed the exact `main`
+  commit and the LF policy in `.gitattributes`; pull request #1 preserves the
+  contributor's Windows reproduction. A later status-only reconciliation may
+  move `main` without changing this substantive source identity. The accepted
+  architecture identity remains `9805fa52...`.
 - Licensing: functional materials are source-available under SUL-1.0;
   standalone documentation, the renderer-neutral architecture model, and the
   Mermaid diagrams embedded in the README files are under CC BY-NC-SA 4.0

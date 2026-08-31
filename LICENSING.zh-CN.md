@@ -17,7 +17,7 @@ documentation 的用途不同。它是 **source-available，不是 OSI open sour
 - `evals/**`；
 - `fieldlab-pack.json`；
 - 作为 functional repository/agent contract 的 `AGENTS.md`；
-- `.gitignore`；
+- `.gitattributes` 与 `.gitignore`；
 - `VERSION`。
 
 Skill package 在 `skills/repository-operational-truth-audit/LICENSE.txt` 携带

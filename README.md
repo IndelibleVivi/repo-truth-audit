@@ -236,6 +236,13 @@ python3 scripts/selftest.py
 python3 scripts/install_skill.py
 ```
 
+Tracked text files are pinned to LF by `.gitattributes`, so an ordinary Windows
+checkout preserves the exact license hashes used by repository validation.
+Skill digests sort entries by normalized POSIX relative path, which keeps
+source/install receipts comparable across Windows, macOS, and Linux. The
+fixture self-test still requires Bash; this does not make every operator
+command shell-native on Windows.
+
 The local installer refuses to overwrite a conflicting target. Use
 `--replace` only for an intentional upgrade; the replaced copy is preserved in
 a recoverable backup and the installer writes a provenance receipt.

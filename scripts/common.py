@@ -36,7 +36,10 @@ def directory_digest(path: Path) -> str:
         raise ValueError(f"not a directory: {path}")
 
     digest = hashlib.sha256()
-    files = sorted(item for item in path.rglob("*") if item.is_file() or item.is_symlink())
+    files = sorted(
+        (item for item in path.rglob("*") if item.is_file() or item.is_symlink()),
+        key=lambda item: item.relative_to(path).as_posix(),
+    )
     for item in files:
         relative = item.relative_to(path).as_posix()
         if item.is_symlink():

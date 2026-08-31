@@ -39,6 +39,7 @@ EXPECTED_CASES = {
 
 REQUIRED_FILES = {
     ".github/workflows/validate.yml",
+    ".gitattributes",
     ".gitignore",
     "AGENTS.md",
     "CHANGELOG.md",
@@ -149,6 +150,14 @@ def validate() -> list[str]:
     version = read("VERSION", errors).strip()
     if version != "0.1.0":
         errors.append(f"VERSION must be the public release version '0.1.0', got {version!r}")
+
+    attributes = {
+        line.strip()
+        for line in read(".gitattributes", errors).splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    }
+    if "* text=auto eol=lf" not in attributes:
+        errors.append(".gitattributes must preserve LF for tracked text files")
 
     readme = read("README.md", errors)
     readme_zh = read("README.zh-CN.md", errors)

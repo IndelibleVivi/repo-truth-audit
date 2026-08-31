@@ -224,6 +224,12 @@ python3 scripts/selftest.py
 python3 scripts/install_skill.py
 ```
 
+Tracked text files 通过 `.gitattributes` 固定为 LF，因此普通 Windows checkout 也会
+保留 repository validation 使用的精确 license hashes。Skill digest 按规范化后的
+POSIX relative path 排序，使 Windows、macOS 与 Linux 的 source/install receipts
+可互相比对。Fixture self-test 仍然需要 Bash；这并不表示全部 operator commands 已在
+Windows 上变成 shell-native。
+
 Local installer 会拒绝覆盖内容不同的目标。只有在明确升级时才使用 `--replace`；被替换
 的 copy 会保留在可恢复 backup 中，installer 同时写入 provenance receipt。
 

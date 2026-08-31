@@ -2,7 +2,7 @@
 
 [English](current-state.md)
 
-最后核对：2026-08-30
+最后核对：2026-08-31
 
 ## Product
 
@@ -12,8 +12,8 @@
   `repo-truth-audit`；Skill invocation slug
   `repository-operational-truth-audit` 保持不变。
 - Version：public release `v0.1.0`；当前 `main` 包含尚未另行发布的 architecture
-  presentation、naming、eval-fidelity 与 public-evidence corrections，并不重打该
-  release tag。
+  presentation、naming、eval-fidelity、public-evidence 与 Windows checkout/digest
+  portability corrections，并不重打该 release tag。
 - Scope：完整 topology-first、decision-bounded、read-only audit contract。
 - Canonical Skill：`skills/repository-operational-truth-audit/`。
 - Public documentation：分开的 English 与简体中文 editions。
@@ -41,11 +41,15 @@
 - Eval fidelity：intentional-multiplicity clean canary 现在要求
   `Decision answer: ready`，并排除 `Decision answer: not ready`；focused regression
   test 阻止含混的 `"ready"` substring assertion 回归。
-- Deterministic validation：2026-08-30 本地已对 repository/publication validation、
-  architecture model 与 localized Mermaid parity、16 个 unit tests、六个 fixture truth
-  checks、fixture self-test、system Skill quick validation 与 Git whitespace validation
-  得到 PASS。由于 host Python runtimes 不带 PyYAML，quick validator 通过 isolated `uv`
-  environment 运行；repo 或 Skill package 没有因此新增 dependency。
+- Windows source portability：tracked text files 在普通 checkout 中保持 LF，从而保留
+  精确 pinned-license hashes；Skill digest inventory 按规范化后的 POSIX relative paths
+  排序。Fixture self-test 仍要求 Bash；本轮不声称更广泛的 Windows operator support。
+- Deterministic validation：2026-08-31 本地已对 repository/publication validation、
+  architecture model 与 localized Mermaid parity、17 个 unit tests、六个 fixture truth
+  checks、fixture self-test、system Skill quick validation、普通 Windows
+  `core.autocrlf=true` checkout validation 与 Git whitespace validation 得到 PASS。由于
+  host Python runtimes 不带 PyYAML，quick validator 使用与 repository 隔离的 PyYAML
+  运行；repo 或 Skill package 没有因此新增 dependency。
 - Mermaid render acceptance：2026-08-30 对 public `main` architecture commit
   `9805fa52f35a3635ee66e3f651ca891de4baad23` PASS。GitHub 在 light mode 下成功
   render 两份 localized block；read-only、external-proof、fixed-point 与 end re-pin

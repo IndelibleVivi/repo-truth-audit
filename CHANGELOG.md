@@ -4,6 +4,9 @@
 
 ## Unreleased
 
+- Made ordinary Windows source checkouts deterministic by preserving LF for
+  tracked text files and sorting Skill digest entries by normalized POSIX
+  relative path, with regression coverage for both boundaries.
 - Adopted **Repo Truth Audit** as the human-facing display name and
   `repo-truth-audit` as the public repository slug while preserving the formal
   product name and `repository-operational-truth-audit` Skill slug.

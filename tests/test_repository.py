@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +26,26 @@ class RepositoryContractTests(unittest.TestCase):
         second = directory_digest(SKILL_DIR)
         self.assertEqual(first, second)
         self.assertEqual(len(first), 64)
+
+    def test_directory_digest_uses_portable_relative_path_order(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            payloads = {
+                "B.txt": b"uppercase\n",
+                "a.txt": b"lowercase\n",
+            }
+            for relative, content in payloads.items():
+                (root / relative).write_bytes(content)
+
+            expected = hashlib.sha256()
+            for relative in sorted(payloads):
+                expected.update(relative.encode("utf-8"))
+                expected.update(b"\0")
+                expected.update(b"0\0")
+                expected.update(payloads[relative])
+                expected.update(b"\0")
+
+            self.assertEqual(directory_digest(root), expected.hexdigest())
 
     def test_all_expected_cases_have_matching_ids(self) -> None:
         for case_id in EXPECTED_CASES:

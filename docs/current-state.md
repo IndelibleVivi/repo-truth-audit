@@ -2,7 +2,7 @@
 
 [简体中文](current-state.zh-CN.md)
 
-Last reconciled: 2026-08-30
+Last reconciled: 2026-08-31
 
 ## Product
 
@@ -49,7 +49,7 @@ Last reconciled: 2026-08-30
   checkouts, preserving exact pinned-license hashes, and Skill digest inventory
   ordering uses normalized POSIX relative paths. Bash remains required for the
   fixture self-test; broader Windows operator support is not claimed.
-- Deterministic validation: local PASS on 2026-08-30 for repository/publication
+- Deterministic validation: local PASS on 2026-08-31 for repository/publication
   validation, architecture model and localized Mermaid parity, 17 unit tests,
   six fixture truth checks, fixture self-test, system Skill quick validation,
   ordinary Windows `core.autocrlf=true` checkout validation, and Git whitespace

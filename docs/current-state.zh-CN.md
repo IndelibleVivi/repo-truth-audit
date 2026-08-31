@@ -2,7 +2,7 @@
 
 [English](current-state.md)
 
-最后核对：2026-08-30
+最后核对：2026-08-31
 
 ## Product
 
@@ -44,7 +44,7 @@
 - Windows source portability：tracked text files 在普通 checkout 中保持 LF，从而保留
   精确 pinned-license hashes；Skill digest inventory 按规范化后的 POSIX relative paths
   排序。Fixture self-test 仍要求 Bash；本轮不声称更广泛的 Windows operator support。
-- Deterministic validation：2026-08-30 本地已对 repository/publication validation、
+- Deterministic validation：2026-08-31 本地已对 repository/publication validation、
   architecture model 与 localized Mermaid parity、17 个 unit tests、六个 fixture truth
   checks、fixture self-test、system Skill quick validation、普通 Windows
   `core.autocrlf=true` checkout validation 与 Git whitespace validation 得到 PASS。由于

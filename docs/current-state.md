@@ -12,8 +12,9 @@ Last reconciled: 2026-08-30
   `repo-truth-audit`; Skill invocation slug
   `repository-operational-truth-audit` remains unchanged.
 - Version: public release `v0.1.0`; current `main` contains unreleased
-  architecture-presentation, naming, eval-fidelity, and public-evidence
-  corrections and does not retag that release.
+  architecture-presentation, naming, eval-fidelity, public-evidence, and
+  Windows checkout/digest portability corrections and does not retag that
+  release.
 - Scope: complete topology-first, decision-bounded, read-only audit contract.
 - Canonical Skill: `skills/repository-operational-truth-audit/`.
 - Public documentation: separate English and Simplified Chinese editions.
@@ -44,12 +45,17 @@ Last reconciled: 2026-08-30
   `Decision answer: ready` and rejects `Decision answer: not ready`; a focused
   regression test prevents the ambiguous `"ready"` substring assertion from
   returning.
+- Windows source portability: tracked text files retain LF in ordinary
+  checkouts, preserving exact pinned-license hashes, and Skill digest inventory
+  ordering uses normalized POSIX relative paths. Bash remains required for the
+  fixture self-test; broader Windows operator support is not claimed.
 - Deterministic validation: local PASS on 2026-08-30 for repository/publication
-  validation, architecture model and localized Mermaid parity, 16 unit tests,
+  validation, architecture model and localized Mermaid parity, 17 unit tests,
   six fixture truth checks, fixture self-test, system Skill quick validation,
-  and Git whitespace validation. The quick validator ran in an isolated `uv`
-  environment because the host Python runtimes do not provide PyYAML; no
-  dependency was added to the repository or Skill package.
+  ordinary Windows `core.autocrlf=true` checkout validation, and Git whitespace
+  validation. The quick validator ran with PyYAML isolated from the repository
+  because the host Python runtimes do not provide it; no dependency was added
+  to the repository or Skill package.
 - Mermaid render acceptance: PASS on 2026-08-30 for public `main` architecture
   commit `9805fa52f35a3635ee66e3f651ca891de4baad23`. GitHub rendered both localized
   blocks in light mode; all read-only, external-proof, fixed-point, and end

@@ -18,7 +18,7 @@ materials, including:
 - `evals/**`;
 - `fieldlab-pack.json`;
 - `AGENTS.md` as a functional repository/agent contract;
-- `.gitignore`; and
+- `.gitattributes` and `.gitignore`; and
 - `VERSION`.
 
 The Skill package carries a byte-identical copy at

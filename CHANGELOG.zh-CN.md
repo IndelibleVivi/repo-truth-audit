@@ -4,6 +4,9 @@
 
 ## Unreleased
 
+- 为 tracked text files 保留 LF，并按规范化后的 POSIX relative path 排序 Skill digest
+  entries，使普通 Windows source checkout 具备 deterministic behavior；同时为两个
+  boundaries 加入 regression coverage。
 - 将 **Repo Truth Audit** 作为 human-facing display name，并将
   `repo-truth-audit` 作为 public repository slug；formal product name 与
   `repository-operational-truth-audit` Skill slug 保持不变。

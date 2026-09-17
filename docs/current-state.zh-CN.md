@@ -11,8 +11,8 @@
   **Repository Operational Truth Audit**；public repository slug 为
   `repo-truth-audit`；Skill invocation slug
   `repository-operational-truth-audit` 保持不变。
-- Version split：canonical worktree 中是已经过验证的 `0.2.0` release target；最新
-  public release 仍是 immutable `v0.1.0`，暂不存在 `0.2.0` tag 或 GitHub Release。
+- Version split：source version `0.2.0` 已通过 annotated tag 与 GitHub Release
+  `v0.2.0` 发布；历史 `v0.1.0` 保持 immutable 与 Audit-only。
 - Scope：一条渐进式 Audit / Plan / Operate engagement。Audit 默认 read-only；Plan
   在 mutation 前终止；Operate 只有在收到 explicit、finite implementation request 且
   effect authority 匹配时才能写入。
@@ -69,9 +69,9 @@
 - Recovery：private continuity 与 cited evidence 只是 recovery aids，不是 authority。
   Resume 必须重新 pin exact repository state、检查被保留的 owner work、重跑受影响
   witnesses，并把 Recovered 与 Complete 分开。
-- Git 与 CI：pre-release reader surfaces 已公开至
-  `57ed5c830d7624372e967d72402ae83feafb29e3`。GitHub Actions run
-  [`35239646950`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35239646950)
+- Git 与 CI：annotated tag `v0.2.0` peel 到 release commit
+  `5d25c581a7d331329d39be9f6bace11371dd4437`。GitHub Actions run
+  [`35240303414`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35240303414)
   已为该 exact commit 通过 Ubuntu／macOS 与 Python 3.10／3.13 全部四个 jobs。公开仓库仍为
   public、默认分支仍为 `main`；GitHub About 已更新并回读为 “Evidence-led repository
   diagnosis and verified structural change for Codex.”
@@ -84,10 +84,13 @@
   Audit 保持只读并闭合 selected-artifact contradiction；Plan 在零 mutation 下产出可施工计划；
   one-request Operate 自行完成有限 synthetic refactor、退役 legacy owner，并通过五项 behavior／
   structure／delivery／usefulness checks。主线程另行通过 selected-entry 与 exactly-once state checks。
-- Release publication：GitHub Release `v0.1.0` 仍是最新 public release。Source-candidate
-  已获得 publication 授权，`v0.2.0` ref 与 `PUBLIC_RELEASE_VERSION` 现在共同标识 release
-  target，但 tag 存在前 install command 明确不可用。Release-note draft assertion 在本次
-  pre-publication commit 继续生效，只有 tag／Release／public install 回读 gate 通过后才迁移。
+- Release publication：[GitHub Release `v0.2.0`](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.2.0)
+  已于 2026-09-17 发布，并回读为 latest、non-draft、non-prerelease release。Annotated tag
+  object 为 `8c739ea505066662c60e7afa994ee2948b2fea64`，peel 到上面的 release commit。
+  公开 tag 下的 README、license、Skill router 与 operation reference 均返回 HTTP 200；从
+  public tag 用 system installer 安装到 disposable root 后，只有声明的八个文件、没有
+  undeclared entry，digest 为
+  `80863c9796a2364d99f43cd81d6f53c8d6059f0c303061d18362ba683411a29f`。
 - Licensing：functional materials 按 SUL-1.0 source-available；standalone
   documentation、renderer-neutral architecture model、成对 SVG reader map，以及嵌入
   README 的 Mermaid diagrams 按 `LICENSING.zh-CN.md` 使用 CC BY-NC-SA 4.0。权威是

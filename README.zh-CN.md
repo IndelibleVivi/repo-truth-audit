@@ -9,15 +9,14 @@
 这是面向仓库接手、迁移、整合和旧路径退役的 Codex Skill。它适合一次有明确目标的工程介入，
 完成后回到普通开发；无需每个任务、每次提交都调用。
 
-发布目标：`0.2.0` — Audit / Plan / Operate。
-最新公开版本：`v0.1.0` — 仅 Audit。
+当前源码版本：`0.2.0` — Audit / Plan / Operate。
+最新公开版本：`v0.2.0` — Audit / Plan / Operate。
 
-**下方固定到 v0.2.0 的命令是发布目标，只有 tag 与 GitHub Release 发布并核验后才可用。**
-在此之前，请用独立的[源码验证与安装说明](#从-source-checkout-验证或安装)。这份发布前 README
-不声称 v0.2.0 已经发布或在宿主中生效。
+**下方稳定安装命令固定到已经核验的 v0.2.0 tag。** 装好 package 仍不等于当前宿主已经发现；
+请在 fresh task 中确认实际选中的 Skill path 与行为。
 
 [使用指南](docs/usage.zh-CN.md) · [现有验证证据](docs/forward-0.2.0-receipt.zh-CN.md) ·
-[发布准备](docs/release-preparation.zh-CN.md) · [v0.2.0 发布说明草稿](docs/releases/v0.2.0.zh-CN.md)
+[发布记录](docs/release-preparation.zh-CN.md) · [v0.2.0 发布说明](docs/releases/v0.2.0.zh-CN.md)
 
 ## 它解决什么问题
 
@@ -85,7 +84,7 @@ Audit、Plan、Operate 是行为模式，无需记忆一套命令。
 
 ## 从公开 release 安装
 
-`v0.2.0` tag 与 GitHub Release 发布并核验后，首次安装 Audit / Plan / Operate 使用：
+首次安装 Audit / Plan / Operate `v0.2.0`，使用系统安装器：
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
@@ -94,13 +93,12 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
   --ref v0.2.0
 ```
 
-发布前，这条命令会因为公开 tag 尚不存在而有意无法解析。已有副本发生冲突时，使用下面的显式升级
-流程，不要先删除安装目录。
+这是已经核验的公开 release。已有副本发生冲突时，使用下面的显式升级流程，不要先删除安装目录。
 
 ## 从 source checkout 验证或安装
 
 以下命令使用 Bash、Git 与 Python 3.10+。请克隆到**新目录**，不要覆盖正在工作的仓库。
-`main` 是持续变化的候选源码，安装前记录并审阅确切提交。
+`main` 可能继续前进到 tag 之后；安装前记录并审阅确切提交。
 
 ```bash
 git clone https://github.com/IndelibleVivi/repo-truth-audit.git
@@ -162,7 +160,7 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 | 维护这个仓库 | [AGENTS.md](AGENTS.md) 与[产品契约](docs/product-spec.zh-CN.md) |
 | 理解证明和完成标准 | [证据模型](docs/evidence-model.zh-CN.md) |
 | 查看实测行为与当前状态 | [0.2.0 回执](docs/forward-0.2.0-receipt.zh-CN.md)、[历史回执](docs/forward-behavior-receipt.zh-CN.md)、[当前状态](docs/current-state.zh-CN.md) |
-| 准备发布 | [发布流程](docs/release-preparation.zh-CN.md)、[发布说明草稿](docs/releases/v0.2.0.zh-CN.md) |
+| 查看 v0.2.0 发布 | [发布记录](docs/release-preparation.zh-CN.md)、[发布说明](docs/releases/v0.2.0.zh-CN.md) |
 | 查看架构与研究来源 | [架构模型](docs/architecture/README.zh-CN.md)、[研究依据](docs/research-basis.zh-CN.md) |
 
 `evals/cases/` 和 `evals/operation-lab/` 是评测材料，不应成为目标代理的指令。

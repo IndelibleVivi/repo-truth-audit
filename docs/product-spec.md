@@ -2,10 +2,10 @@
 
 [简体中文](product-spec.zh-CN.md)
 
-Status: **ACCEPTED FOR COMPLETE IMPLEMENTATION**
+Status: **IMPLEMENTED AND RELEASED — v0.2.0**
 Expanded scope accepted by owner: 2026-09-17
-Source candidate version: 0.2.0
-Latest public release: v0.1.0
+Source version: 0.2.0
+Latest public release: v0.2.0
 Product form: standalone repository + standalone Codex Skill
 Skill name: repository-operational-truth-audit
 
@@ -269,10 +269,10 @@ substitute for model forward evidence.
 
 ## 8. Version, installation, and publication
 
-VERSION identifies the current source candidate and follows stable semantic
-version syntax. It is not required to equal the latest public release tag.
-README and current-state documents distinguish source candidate 0.2.0 from the
-immutable v0.1.0 public release.
+VERSION identifies the current source version and follows stable semantic
+version syntax. It may diverge from a later public release tag during future
+development. For this release snapshot, source version and latest public tag
+both identify 0.2.0; README and current-state still report their gates separately.
 
 Local installation validates source, requires explicit replacement of different
 bytes, preserves a recoverable backup, and records source Git identity, dirty

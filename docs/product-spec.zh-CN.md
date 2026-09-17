@@ -2,10 +2,10 @@
 
 [English](product-spec.md)
 
-状态：**已批准完整实现**
+状态：**已实现并发布 — v0.2.0**
 扩展范围经所有者确认：2026-09-17
-source candidate 版本：0.2.0
-最新公开 release：v0.1.0
+source 版本：0.2.0
+最新公开 release：v0.2.0
 产品形态：独立 repository + 独立 Codex Skill
 Skill 名称：repository-operational-truth-audit
 
@@ -233,9 +233,9 @@ Synthetic operation-lab 成功是必要的 evaluator evidence，不能代替 mod
 
 ## 8. Version、installation 与 publication
 
-VERSION 表示当前 source candidate，并遵循稳定 SemVer 语法。它不必等于最新 public release
-tag。README 与 current-state docs 要区分 source candidate 0.2.0 与 immutable v0.1.0 public
-release。
+VERSION 表示当前 source version，并遵循稳定 SemVer 语法。未来开发时，它可以与后续 public
+release tag 暂时不同；在本次 release snapshot 中，source version 与最新 public tag 都是
+0.2.0，README 与 current-state 仍分别报告各自 gate。
 
 本地 installation 会先验证 source；内容不同的目标必须显式 replace；被替换的版本进入可恢复
 backup；receipt 记录 source Git identity、dirty state、version 与 source/installed digests。

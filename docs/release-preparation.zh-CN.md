@@ -1,11 +1,12 @@
-# v0.2.0 发布准备
+# v0.2.0 发布记录与流程
 
-[English](release-preparation.md) · [发布说明草稿](releases/v0.2.0.zh-CN.md)
+[English](release-preparation.md) · [发布说明](releases/v0.2.0.zh-CN.md)
 
-状态：**PREPARATION ONLY**
+状态：**COMPLETED — v0.2.0 PUBLISHED**
 
-这是维护者流程，不授予安装或发布权限，也不会自动执行发布。候选范围以[产品契约](product-spec.zh-CN.md)
-为准；新版本真正创建并核验前，已发布版本仍为 v0.1.0。维护工作遵循 [AGENTS.md](../AGENTS.md)。
+这是已经用于正式 [v0.2.0 Release](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.2.0)
+的维护者流程记录；它不授予安装或发布权限，也不会自动执行发布。未来 release 必须重新确认自身授权
+和版本事实，并遵循 [AGENTS.md](../AGENTS.md)。
 
 ## 1. 固定并验证候选
 
@@ -65,11 +66,10 @@ PYTHONDONTWRITEBYTECODE=1 python3 scripts/install_skill.py --dest "$preview_root
 current-state、changelog 和发布说明。现有仓库测试写死了旧稳定引用：需有意迁移到新发布契约，
 保留引用不一致时失败的检查，不能删断言换绿色。历史 v0.1.0 文件和 tag 保留，不全仓替换旧版本字符串。
 
-在新 tag／Release 尚不存在时，把新引用写作 **release target（发布目标）**，说明安装命令仅在发布后
-可用，并与当前已发布事实区分。说明草稿可以准备完成，不能提前写“已发布”。即使
-`PUBLIC_RELEASE_VERSION` 已改为 `0.2.0`，仍须保留 `DRAFT — NOT PUBLISHED` 标记及其无条件
-repository assertion；修改该常量不能证明发布。`VERSION` 已标记 0.2.0 源码候选，同样不能证明
-公开版本存在。
+在 pre-publication 阶段，把新引用写作 **release target（发布目标）**，说明安装命令仅在发布后
+可用，并与当时的已发布事实区分。本次 release 在 `PUBLIC_RELEASE_VERSION` 改为 `0.2.0` 后，
+仍保留 `DRAFT — NOT PUBLISHED` 标记及其无条件 repository assertion；只有后续 public read-back
+gate 通过后才迁移状态。Package `VERSION` 本身不能证明公开版本存在。
 
 一并检查 GitHub About。建议描述：
 
@@ -97,6 +97,10 @@ published 状态，并迁移对应 repository assertion；该 test change 不得
 
 ## 完成记录
 
-公开记录保留必要事实：源码／tag 提交、载荷身份、验证与 CI、一次性公开 tag 安装、实际宿主发现、
-所有者验收、发布回读和剩余边界。本地安装、公开发布、其他用户今后的发现分别描述。
-无需为此建立第二套发布调度器或永久目标审计日志。
+- Release／tag commit：`5d25c581a7d331329d39be9f6bace11371dd4437`。
+- Annotated tag object：`8c739ea505066662c60e7afa994ee2948b2fea64`。
+- Release-commit CI：[run `35240303414`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35240303414)，四项 jobs 全部通过。
+- 正式 Release：[v0.2.0](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.2.0)，回读为 latest、non-draft、non-prerelease。
+- Declared／public-tag install digest：`80863c9796a2364d99f43cd81d6f53c8d6059f0c303061d18362ba683411a29f`，恰好八个文件且无 undeclared entry。
+- Host gate：日常副本 transactional upgrade 并保留 backup；随后在 synthetic target 上新开
+  Audit、Plan 与 one-request Operate task。这不证明其他用户今后的 discovery，也不证明通用生产重构。

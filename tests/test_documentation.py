@@ -73,14 +73,14 @@ class DocumentationTests(unittest.TestCase):
             refs = re.findall(r"--ref\s+(v[0-9]+\.[0-9]+\.[0-9]+)", content)
             self.assertEqual(refs, [f"v{PUBLIC_RELEASE_VERSION}"], relative)
 
-    def test_publication_draft_remains_explicit_until_post_publication_transition(self) -> None:
-        # The deterministic repository cannot observe GitHub publication. Keep
-        # this guard active even when PUBLIC_RELEASE_VERSION becomes the release
-        # target; migrate it only after tag/Release read-back has succeeded.
+    def test_publication_status_is_recorded_after_readback(self) -> None:
         for relative in PAIRS[3]:
-            self.assertIn("DRAFT — NOT PUBLISHED", (ROOT / relative).read_text(encoding="utf-8"))
+            self.assertIn("PUBLISHED — 2026-09-17", (ROOT / relative).read_text(encoding="utf-8"))
         for relative in PAIRS[2]:
-            self.assertIn("PREPARATION ONLY", (ROOT / relative).read_text(encoding="utf-8"))
+            self.assertIn(
+                "COMPLETED — v0.2.0 PUBLISHED",
+                (ROOT / relative).read_text(encoding="utf-8"),
+            )
 
     def test_readme_does_not_mix_validation_and_daily_install_commands(self) -> None:
         for relative in PAIRS[0]:

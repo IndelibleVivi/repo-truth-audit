@@ -1,13 +1,14 @@
-# Preparing v0.2.0
+# v0.2.0 release record and procedure
 
-[简体中文](release-preparation.zh-CN.md) · [Draft notes](releases/v0.2.0.md)
+[简体中文](release-preparation.zh-CN.md) · [Release notes](releases/v0.2.0.md)
 
-Status: **PREPARATION ONLY**
+Status: **COMPLETED — v0.2.0 PUBLISHED**
 
-This is a maintainer runbook, not installation authority or an automatic release
-script. It prepares the source candidate already described in the
-[product spec](product-spec.md). The published release remains v0.1.0 until a
-new release is actually created and verified. Follow [AGENTS.md](../AGENTS.md).
+This maintainer runbook records the procedure used for the published
+[v0.2.0 release](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.2.0).
+It is not installation authority or an automatic release script. Future release
+work must re-establish its own authorization and version-specific facts under
+[AGENTS.md](../AGENTS.md).
 
 ## 1. Freeze and validate the candidate
 
@@ -87,14 +88,13 @@ release contract and retain checks that a mismatched reference fails. Do not
 remove assertions merely to get green CI. Preserve historical v0.1.0 files and
 tags; do not globally replace every occurrence of the old version.
 
-Before the tag/Release exists, label the new ref as the **release target** and
+At the pre-publication stage, label the new ref as the **release target** and
 state that the install command becomes usable only after publication. Keep
-current publication facts separate from that target. Draft notes may be ready
-without claiming "published". Keep the `DRAFT — NOT PUBLISHED` marker and its
-unconditional repository assertion intact even after `PUBLIC_RELEASE_VERSION`
-becomes `0.2.0`; changing that constant does not prove publication. The
-package's `VERSION` already identifies the 0.2.0 source candidate and likewise
-does not prove a public release exists.
+current publication facts separate from that target. This release retained the
+`DRAFT — NOT PUBLISHED` marker and its unconditional repository assertion after
+`PUBLIC_RELEASE_VERSION` became `0.2.0`; only the later public read-back gate
+allowed the status transition. The package's `VERSION` alone did not prove a
+public release existed.
 
 Review GitHub About metadata too. Suggested description:
 
@@ -132,8 +132,11 @@ activation or synthetic checks as general production capability.
 
 ## Completion record
 
-Record only useful public-safe facts: selected source/tag commit, payload
-identity, validation/CI, disposable tagged installation, observed host discovery,
-owner acceptance, publication read-back, and remaining boundaries. Distinguish
-local installation, publication and someone else's future discovery. There is
-no need to build a second release scheduler or permanent per-target audit log.
+- Release/tag commit: `5d25c581a7d331329d39be9f6bace11371dd4437`.
+- Annotated tag object: `8c739ea505066662c60e7afa994ee2948b2fea64`.
+- Release-commit CI: [run `35240303414`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35240303414), four jobs passed.
+- Published Release: [v0.2.0](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.2.0), latest, non-draft and non-prerelease on read-back.
+- Declared/public-tag install digest: `80863c9796a2364d99f43cd81d6f53c8d6059f0c303061d18362ba683411a29f`, exactly eight files with no undeclared entries.
+- Host gate: transactional daily upgrade with backup, followed by fresh Audit,
+  Plan and one-request Operate tasks on synthetic targets. This does not prove
+  another user's future discovery or general production refactoring.

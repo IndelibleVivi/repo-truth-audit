@@ -91,6 +91,5 @@ Validator 要求七个 region、全部 stable nodes、全部 46 条 semantic edg
 external proof boundary。它还要求两份 SVG 可访问、standalone、semantic group 一致，并在两份
 README 中保持 overview 先于 detail 的嵌入顺序。
 
-Immutable `v0.1.0` release 仍作为早期 audit-only architecture 的历史证据。当前 `main`
-使用成对 reader overview 与扩展后的 README Mermaid view，服务尚未发布的 0.2.0 source
-candidate。
+Immutable `v0.1.0` release 仍作为早期 audit-only architecture 的历史证据。已经发布的
+`v0.2.0` 使用成对 reader overview 与默认可见的完整 README Mermaid view。

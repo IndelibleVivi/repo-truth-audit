@@ -11,9 +11,8 @@ Last reconciled: 2026-09-17
   **Repository Operational Truth Audit**; public repository slug
   `repo-truth-audit`; Skill invocation slug
   `repository-operational-truth-audit` remains unchanged.
-- Version split: the canonical worktree contains the validated `0.2.0` release
-  target. The latest public release remains immutable `v0.1.0`; no `0.2.0` tag
-  or GitHub Release exists yet.
+- Version split: source version `0.2.0` is published as annotated tag and GitHub
+  Release `v0.2.0`. Historical `v0.1.0` remains immutable and Audit-only.
 - Scope: one progressive Audit / Plan / Operate engagement. Audit is the
   read-only default, Plan terminates before mutation, and Operate requires an
   explicit finite implementation request plus matching effect authority.
@@ -80,9 +79,9 @@ Last reconciled: 2026-09-17
 - Recovery: private continuity and cited evidence are recovery aids, not
   authority. Resume must re-pin the exact repository state, inspect preserved
   owner work, rerun changed witnesses, and distinguish Recovered from Complete.
-- Git and CI: the pre-release reader surfaces are public through
-  `57ed5c830d7624372e967d72402ae83feafb29e3`. GitHub Actions run
-  [`35239646950`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35239646950)
+- Git and CI: annotated tag `v0.2.0` peels to release commit
+  `5d25c581a7d331329d39be9f6bace11371dd4437`. GitHub Actions run
+  [`35240303414`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35240303414)
   passed all four Ubuntu/macOS and Python 3.10/3.13 jobs for that exact commit.
   The public repository is still `main`-default and public; its About description
   was updated and read back as “Evidence-led repository diagnosis and verified
@@ -98,12 +97,14 @@ Last reconciled: 2026-09-17
   mutation; one-request Operate completed the finite synthetic refactor, retired
   the legacy owner, and passed five behavior/structure/delivery/usefulness checks.
   Coordinator-side selected-entry and exactly-once state checks also passed.
-- Release publication: GitHub Release `v0.1.0` remains the latest public
-  release. Publication is authorized and the `v0.2.0` ref plus
-  `PUBLIC_RELEASE_VERSION` now identify the release target, but the install
-  command is explicitly unavailable until the tag exists. The release-note draft
-  assertion stays active through this pre-publication commit and changes only
-  after the tag/Release/public-install read-back gate succeeds.
+- Release publication: [GitHub Release `v0.2.0`](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.2.0)
+  was published on 2026-09-17 and read back as the latest, non-draft,
+  non-prerelease release. Its annotated tag object is `8c739ea505066662c60e7afa994ee2948b2fea64`
+  and peels to the release commit above. Public tagged README, license, Skill
+  router, and operation reference returned HTTP 200. A system-installer run from
+  the public tag into a disposable root produced exactly the eight declared files,
+  no undeclared entries, and digest
+  `80863c9796a2364d99f43cd81d6f53c8d6059f0c303061d18362ba683411a29f`.
 - Licensing: functional materials are source-available under SUL-1.0;
   standalone documentation, the renderer-neutral architecture model, the
   paired SVG reader maps, and the Mermaid diagrams embedded in the README files

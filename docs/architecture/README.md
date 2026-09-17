@@ -107,5 +107,5 @@ SVGs with matching semantic groups and the correct overview-before-detail embed
 order in both READMEs.
 
 The immutable `v0.1.0` release remains historical evidence of the earlier
-audit-only architecture. Current `main` uses the paired reader overviews and
-expanded README Mermaid views for the unreleased 0.2.0 source candidate.
+audit-only architecture. Released `v0.2.0` uses the paired reader overviews and
+default-visible complete README Mermaid views.

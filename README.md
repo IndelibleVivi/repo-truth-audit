@@ -11,16 +11,15 @@ A Codex Skill for repository re-entry, migrations, consolidation and legacy-path
 retirement. Use it for a focused engineering intervention; finish the agreed job
 and return to normal development. It need not run on every task or every commit.
 
-Release target: `0.2.0` — Audit / Plan / Operate.
-Latest public release: `v0.1.0` — Audit only.
+Current source version: `0.2.0` — Audit / Plan / Operate.
+Latest public release: `v0.2.0` — Audit / Plan / Operate.
 
-**The pinned v0.2.0 command below is the release target and becomes usable only
-after its tag and GitHub Release are published and verified.** Until then, use
-the separate [source-checkout instructions](#validate-or-install-from-a-source-checkout).
-This pre-publication README does not claim a v0.2.0 release or host activation.
+**The stable install below is pinned to the verified v0.2.0 tag.** Installing
+the package still does not prove that a running host has discovered it; confirm
+the selected Skill path and behavior in a fresh task.
 
 [Using the Skill](docs/usage.md) · [Current evidence](docs/forward-0.2.0-receipt.md) ·
-[Release preparation](docs/release-preparation.md) · [Draft v0.2.0 notes](docs/releases/v0.2.0.md)
+[Release record](docs/release-preparation.md) · [v0.2.0 notes](docs/releases/v0.2.0.md)
 
 ## What problem it solves
 
@@ -112,8 +111,7 @@ before more writes. It does not autonomously resume in the background.
 
 ## Install from the public release
 
-After the `v0.2.0` tag and GitHub Release are published and verified, use the
-system installer for a fresh Audit / Plan / Operate installation:
+For a fresh Audit / Plan / Operate `v0.2.0` installation, use the system installer:
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
@@ -122,15 +120,14 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
   --ref v0.2.0
 ```
 
-Before publication this exact command intentionally has no public tag to resolve.
-For an existing conflicting copy, use the deliberate upgrade path below rather
-than deleting installed files.
+This is the verified public release. For an existing conflicting copy, use the
+deliberate upgrade path below rather than deleting installed files.
 
 ## Validate or install from a source checkout
 
 The commands below use Bash, Git and Python 3.10+. Clone into a **new** directory;
-do not overwrite a working checkout. `main` is moving candidate source: record
-and review its exact commit before installing.
+do not overwrite a working checkout. `main` can move beyond the tagged release:
+record and review its exact commit before installing.
 
 ```bash
 git clone https://github.com/IndelibleVivi/repo-truth-audit.git
@@ -203,7 +200,7 @@ For related-tool distinctions, see [the usage guide](docs/usage.md#related-tools
 | Maintain this repository | [AGENTS.md](AGENTS.md) and [product spec](docs/product-spec.md) |
 | Understand proof and completion | [Evidence model](docs/evidence-model.md) |
 | Inspect tested behavior and present state | [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [historical receipt](docs/forward-behavior-receipt.md), [current state](docs/current-state.md) |
-| Prepare a release | [Release preparation](docs/release-preparation.md), [draft notes](docs/releases/v0.2.0.md) |
+| Inspect the v0.2.0 release | [Release record](docs/release-preparation.md), [release notes](docs/releases/v0.2.0.md) |
 | Inspect architecture and research | [Architecture model](docs/architecture/README.md), [research basis](docs/research-basis.md) |
 
 `evals/cases/` and `evals/operation-lab/` contain evaluator material, not target

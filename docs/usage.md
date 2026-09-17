@@ -2,9 +2,9 @@
 
 [简体中文](usage.zh-CN.md) · [README](../README.md)
 
-This guide explains the 0.2.0 source candidate. The currently published v0.1.0
-release has Audit only. Choose the intended version using the README's separate
-stable-install and source-checkout instructions.
+This guide explains the published v0.2.0 Audit / Plan / Operate workflow.
+Use the README's tagged-release instructions for stable installation, or its
+source-checkout path when you deliberately want a reviewed `main` revision.
 
 ## Is this the right tool?
 
@@ -124,17 +124,17 @@ necessarily a location your current host discovers.
 
 After installation, inspect the receipt and actual target. Start a fresh task,
 restarting or reloading Codex when needed, and confirm which `SKILL.md` it selects.
-The name alone cannot distinguish the old release from the new candidate.
+The name alone cannot distinguish the old release from v0.2.0.
 [OpenAI's Skill catalog](https://github.com/openai/skills#installing-a-skill)
 also documents restarting after installation; the observed behavior of your
 specific host remains the acceptance check.
 
 When the old Audit-only behavior remains, check the installed file and receipt,
 then competing copies in host-configured Skill roots or the target repository.
-Do not delete copies speculatively. Installing the published v0.1.0 tag will
-continue to give v0.1.0; updating this Git repository does not update a separate
-installed directory. Do not feed evaluator answer files to the agent to make a
-smoke test pass.
+Do not delete copies speculatively. Installing the published v0.2.0 tag gives
+the declared v0.2.0 package; updating this Git repository does not update a
+separate installed directory. Do not feed evaluator answer files to the agent
+to make a smoke test pass.
 
 No extra provider key, worker service or scheduler is required by this Skill.
 The host still needs its normal model access, repository tools and actual

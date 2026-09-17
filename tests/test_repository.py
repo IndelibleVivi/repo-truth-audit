@@ -18,8 +18,13 @@ class RepositoryContractTests(unittest.TestCase):
     def test_repository_validator_is_clean(self) -> None:
         self.assertEqual(validate(), [])
 
-    def test_version_is_public_release(self) -> None:
-        self.assertEqual(read_version(), "0.1.0")
+    def test_source_version_is_stable_semver(self) -> None:
+        self.assertRegex(read_version(), r"^[0-9]+\.[0-9]+\.[0-9]+$")
+
+    def test_public_release_install_ref_remains_immutable(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("--ref v0.1.0", readme)
+        self.assertNotIn("--ref v0.2.0", readme)
 
     def test_skill_digest_is_stable_and_nonempty(self) -> None:
         first = directory_digest(SKILL_DIR)
@@ -52,6 +57,26 @@ class RepositoryContractTests(unittest.TestCase):
             case_path = ROOT / "evals" / "cases" / case_id / "case.json"
             payload = json.loads(case_path.read_text(encoding="utf-8"))
             self.assertEqual(payload["case_id"], case_id)
+
+    def test_mode_controls_keep_write_authority_explicit(self) -> None:
+        import csv
+
+        with (ROOT / "evals/mode-prompts.csv").open(encoding="utf-8", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        for row in rows:
+            expected = "yes" if row["expected_mode"] == "operate" else "no"
+            self.assertEqual(row["target_mutation"], expected, row["id"])
+        by_id = {row["id"]: row for row in rows}
+        self.assertEqual(by_id["unbounded-cleanup"]["expected_mode"], "reconnaissance")
+
+    def test_runtime_body_excludes_bounded_non_topology_work(self) -> None:
+        skill = (SKILL_DIR / "SKILL.md").read_text(encoding="utf-8")
+        body = skill.split("---", 2)[2]
+        operation = (SKILL_DIR / "references/operation.md").read_text(encoding="utf-8")
+        for text in (body, operation):
+            normalized = " ".join(text.split())
+            self.assertIn("isolated known-bug repair", normalized)
+            self.assertIn("no repository-topology question", normalized)
 
     def test_intentional_multiplicity_verdict_canary_is_unambiguous(self) -> None:
         case_path = ROOT / "evals/cases/intentional-multiplicity/case.json"

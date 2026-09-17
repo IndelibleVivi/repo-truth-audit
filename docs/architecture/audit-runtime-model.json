@@ -2,34 +2,37 @@
   "schema_version": 1,
   "diagram_id": "audit-runtime",
   "artifact_role": {
-    "en": "Public README architecture view for the audit runtime contract",
-    "zh_cn": "面向公开 README 的审计运行契约架构图"
+    "en": "Public README architecture view for the Audit / Plan / Operate runtime contract",
+    "zh_cn": "面向公开 README 的 Audit / Plan / Operate 运行契约架构图"
   },
   "audience": {
-    "en": "A repository owner or technical collaborator deciding whether this Skill fits a concrete re-entry, migration, consolidation, safe-archive, handoff, or release-readiness decision.",
-    "zh_cn": "正在为具体的重新进入、迁移、整合、安全归档、交接或发布准备决策选择审计方法的仓库所有者与技术协作者。"
+    "en": "A repository owner or technical collaborator deciding whether this Skill fits a concrete re-entry, migration, consolidation, retirement, handoff, or evidence-led structural-change outcome.",
+    "zh_cn": "正在为具体的重新进入、迁移、整合、退役、交接或证据驱动结构变更选择方法的仓库所有者与技术协作者。"
   },
   "primary_question": {
-    "en": "How does one read-only audit turn a concrete owner decision and an exact repository snapshot into a decision-bounded answer without crossing unobserved external boundaries?",
-    "zh_cn": "一次只读审计如何把明确的所有者决策与精确仓库快照转化为有决策边界的答案，并在未观察的外部边界前停下？"
+    "en": "How does Repo Truth Audit turn an exact repository snapshot and a concrete owner intent into a bounded read-only answer, a decision-ready plan, or an authorized structural change with verified completion without overclaiming evidence or external state?",
+    "zh_cn": "Repo Truth Audit 如何把精确仓库快照与明确所有者意图转化为有界只读答案、可执行计划，或经过验证完成的获授权结构变更，同时不夸大证据或外部状态？"
   },
   "answer_contract": {
-    "en": "Pin the audit object, resolve authority and reachability, traverse proof layers, challenge green evidence, adjudicate every material candidate, stop at a fixed point, and report the decision plus its exact proof boundary.",
-    "zh_cn": "钉住审计对象，解析权威与可达路径，穿行证据层，挑战表面绿灯，裁定每个实质候选项，在固定点停止，并报告决策及其精确证明边界。"
+    "en": "Pin the engagement, reconstruct current truth, stop at the requested Audit or Plan boundary, or cross an explicit implementation gate and iterate through protected witnesses, checkpoints, recovery, and whole-goal acceptance.",
+    "zh_cn": "钉住工作对象，重建当前事实，在请求的 Audit 或 Plan 边界停止，或跨过显式实施 gate，并经由受保护 witnesses、checkpoints、recovery 与完整目标验收完成工作。"
   },
   "boundary": {
     "includes": [
-      "One concrete owner decision",
+      "One concrete owner intent and requested terminal boundary",
       "One exact start and end repository snapshot",
       "Repository-observable authority, selectors, callers, state, artifacts, and evidence gates",
       "Decision-relevant challenge and adjudication",
+      "A read-only Plan result or explicitly authorized repository-local structural change",
+      "Verified checkpoints, recovery reconciliation, and whole-goal acceptance",
       "Explicitly authorized fresh external observation when it can change the decision",
-      "A bounded decision answer and overhead receipt"
+      "A bounded result and exact proof boundary"
     ],
     "excludes": [
-      "Automatic repair or mutation of the target repository",
+      "Mutation from Audit, Plan, or ambiguous cleanup language",
       "A generic code review, quality score, compliance scan, or backlog",
       "A full live-system or account audit without separate authorization",
+      "Universal rollback, exactly-once external effects, or a second orchestration engine",
       "The packaging, installation, or release architecture of this Skill repository"
     ]
   },
@@ -47,6 +50,7 @@
       "R20_TRAVERSE",
       "R30_CHALLENGE",
       "R40_DECIDE",
+      "R60_OPERATE",
       "R50_EXTERNAL"
     ],
     "external_region": "R50_EXTERNAL",
@@ -57,18 +61,18 @@
   "connector_legend": [
     {
       "kind": "observed",
-      "en": "In-scope, evidence-bearing traversal",
-      "zh_cn": "范围内、承载证据的穿行"
+      "en": "In-scope evidence or implementation flow",
+      "zh_cn": "范围内的证据或实现流程"
     },
     {
       "kind": "conditional",
-      "en": "Optional specialist or explicitly authorized external observation",
-      "zh_cn": "可选 specialist 或经明确授权的外部观察"
+      "en": "Conditional authority, specialist, or external observation",
+      "zh_cn": "有条件的授权、specialist 或外部观察"
     },
     {
       "kind": "feedback",
-      "en": "A new decision-relevant evidence edge reopens traversal",
-      "zh_cn": "新的决策相关证据边使审计重新穿行"
+      "en": "New evidence reopens diagnosis or the next increment",
+      "zh_cn": "新证据重新打开诊断或下一 increment"
     }
   ],
   "regions": [
@@ -76,12 +80,12 @@
       "id": "R00_PIN",
       "index": "01",
       "label": {
-        "en": "Pin the audit object",
-        "zh_cn": "钉住审计对象"
+        "en": "Pin intent + repository",
+        "zh_cn": "钉住意图与仓库"
       },
       "purpose": {
-        "en": "Bind one owner decision to one exact repository identity before traversal.",
-        "zh_cn": "在穿行前，把一个所有者决策绑定到一个精确仓库身份。"
+        "en": "Bind one owner intent and requested terminal boundary to one exact repository identity.",
+        "zh_cn": "把一个所有者意图及请求终点绑定到一个精确仓库身份。"
       }
     },
     {
@@ -124,12 +128,24 @@
       "id": "R40_DECIDE",
       "index": "05",
       "label": {
-        "en": "Decide + stop",
-        "zh_cn": "决策与停止"
+        "en": "Audit / Plan exits",
+        "zh_cn": "Audit / Plan 出口"
       },
       "purpose": {
-        "en": "Reach a decision fixed point, state the proof boundary, and reconcile the end snapshot.",
-        "zh_cn": "抵达决策固定点，说明证明边界，并核对结束快照。"
+        "en": "Reach a truth fixed point, then close Audit or Plan without target mutation.",
+        "zh_cn": "抵达事实固定点，再在不改变目标的情况下闭合 Audit 或 Plan。"
+      }
+    },
+    {
+      "id": "R60_OPERATE",
+      "index": "06",
+      "label": {
+        "en": "Authorize + operate",
+        "zh_cn": "授权与实施"
+      },
+      "purpose": {
+        "en": "Cross a real implementation gate, preserve protected witnesses, and distinguish verified checkpoints from whole-goal completion.",
+        "zh_cn": "跨过真实实施 gate，保留受保护 witnesses，并区分 verified checkpoint 与完整目标完成。"
       }
     },
     {
@@ -152,20 +168,20 @@
       "visual_role": "input",
       "evidence_status": "verified_repository_contract",
       "label": {
-        "en": "Owner decision",
-        "zh_cn": "所有者决策"
+        "en": "Owner intent + terminal boundary",
+        "zh_cn": "所有者意图与终点边界"
       },
       "responsibility": {
-        "en": "Name one decision: re-entry, migration, consolidation, safe archive, handoff, or release readiness.",
-        "zh_cn": "明确一个决策：重新进入、迁移、整合、安全归档、交接或发布准备。"
+        "en": "Name one decision or finite change outcome and whether the requested terminal is Audit, Plan, or Operate.",
+        "zh_cn": "明确一个决策或有限变更结果，并识别请求终点是 Audit、Plan 还是 Operate。"
       },
       "limit": {
-        "en": "No decision means bounded reconnaissance, then ask — not an exhaustive audit.",
-        "zh_cn": "没有决策时只做有限侦察后询问，不启动穷尽审计。"
+        "en": "Mode selects the outcome, not powers; ambiguous cleanup remains read-only reconnaissance.",
+        "zh_cn": "Mode 选择结果而不创造权力；含糊 cleanup 只能进入只读 reconnaissance。"
       },
       "sources": [
-        "docs/product-spec.md#2-audit-object",
-        "skills/repository-operational-truth-audit/SKILL.md#select-the-audit-object"
+        "docs/product-spec.md#2-engagement-object-and-authority",
+        "skills/repository-operational-truth-audit/SKILL.md#route-from-the-request"
       ]
     },
     {
@@ -186,8 +202,8 @@
         "zh_cn": "相邻 checkout 的 clean 状态不能证明所选目标。"
       },
       "sources": [
-        "docs/product-spec.md#rot-01--exact-start-pin",
-        "skills/repository-operational-truth-audit/SKILL.md#select-the-audit-object"
+        "docs/product-spec.md#rot-01--exact-pin",
+        "skills/repository-operational-truth-audit/SKILL.md#pin-the-object-and-recover-authority"
       ]
     },
     {
@@ -196,19 +212,19 @@
       "visual_role": "boundary",
       "evidence_status": "verified_repository_contract",
       "label": {
-        "en": "Read-only contract",
-        "zh_cn": "只读契约"
+        "en": "Read-only diagnosis contract",
+        "zh_cn": "只读诊断契约"
       },
       "responsibility": {
-        "en": "Preserve concurrent work and observe without changing the target.",
-        "zh_cn": "保留并行工作，在不改变目标的前提下观察。"
+        "en": "Audit and Plan stay read-only; Operate also reconstructs current truth before its separate implementation gate.",
+        "zh_cn": "Audit 与 Plan 保持只读；Operate 也先重建当前事实，再到独立实施 gate。"
       },
       "limit": {
-        "en": "Audit permission does not authorize fixes, commits, pushes, installs, deploys, or account actions.",
-        "zh_cn": "审计授权不包含修复、commit、push、install、deploy 或 account action。"
+        "en": "A mode, plan, report, worker, or record cannot grant mutation authority.",
+        "zh_cn": "Mode、plan、report、worker 或 record 都不能创造修改权限。"
       },
       "sources": [
-        "docs/product-spec.md#rot-13--read-only-default",
+        "docs/product-spec.md#2-engagement-object-and-authority",
         "AGENTS.md#product-boundary"
       ]
     },
@@ -231,7 +247,7 @@
       },
       "sources": [
         "docs/product-spec.md#rot-02--authority-resolution",
-        "skills/repository-operational-truth-audit/SKILL.md#establish-authority-before-claims"
+        "skills/repository-operational-truth-audit/references/audit.md#establish-authority-before-claims"
       ]
     },
     {
@@ -253,7 +269,7 @@
       },
       "sources": [
         "docs/product-spec.md#rot-03--live-path-resolution",
-        "skills/repository-operational-truth-audit/SKILL.md#map-the-decision-bearing-topology"
+        "skills/repository-operational-truth-audit/references/audit.md#map-the-decision-bearing-topology"
       ]
     },
     {
@@ -274,8 +290,8 @@
         "zh_cn": "多条路径并不天然构成 drift；关键是选择与隔离是否失效。"
       },
       "sources": [
-        "docs/product-spec.md#rot-07--intentional-multiplicity",
-        "docs/product-spec.md#rot-08--shadow-path-judgment"
+        "docs/product-spec.md#rot-07--multiplicity-and-retirement",
+        "skills/repository-operational-truth-audit/references/audit.md#separate-multiplicity-from-drift"
       ]
     },
     {
@@ -296,7 +312,7 @@
         "zh_cn": "Canonical source 不证明 built、installed、deployed 或 accepted instance。"
       },
       "sources": [
-        "docs/product-spec.md#3-truth-topology",
+        "docs/product-spec.md#3-shared-operational-truth-method",
         "docs/evidence-model.md#proof-layers"
       ]
     },
@@ -318,7 +334,7 @@
         "zh_cn": "Green build 只证明其产物，不证明 installation 或 runtime behavior。"
       },
       "sources": [
-        "docs/product-spec.md#rot-06--artifact-and-projection-identity",
+        "docs/product-spec.md#rot-06--layer-separation",
         "docs/evidence-model.md#proof-layers"
       ]
     },
@@ -340,7 +356,7 @@
         "zh_cn": "Source、package、receipt 与 running instance 始终是不同身份。"
       },
       "sources": [
-        "docs/product-spec.md#3-truth-topology",
+        "docs/product-spec.md#3-shared-operational-truth-method",
         "docs/evidence-model.md#proof-layers"
       ]
     },
@@ -363,7 +379,7 @@
       },
       "sources": [
         "docs/evidence-model.md#proof-layers",
-        "docs/evidence-model.md#false-green"
+        "docs/evidence-model.md#false-green-and-anti-self-certification"
       ]
     },
     {
@@ -384,8 +400,8 @@
         "zh_cn": "旧文件、重复路径或缺失观察本身都不是 finding。"
       },
       "sources": [
-        "docs/product-spec.md#rot-04--cross-surface-trace",
-        "docs/evidence-model.md#finding-trace"
+        "docs/product-spec.md#rot-04--material-finding-trace",
+        "docs/evidence-model.md#audit-finding-trace"
       ]
     },
     {
@@ -406,8 +422,8 @@
         "zh_cn": "只在安全时使用 disposable mutation challenge；默认绝不改动真实目标。"
       },
       "sources": [
-        "docs/product-spec.md#rot-05--false-green-detection",
-        "docs/evidence-model.md#false-green"
+        "docs/product-spec.md#rot-05--false-green-challenge",
+        "docs/evidence-model.md#false-green-and-anti-self-certification"
       ]
     },
     {
@@ -428,8 +444,8 @@
         "zh_cn": "有意、可选择且隔离的模式保持 clean；可达歧义才可能成为 shadow path。"
       },
       "sources": [
-        "docs/evidence-model.md#intentional-multiplicity-versus-shadow-paths",
-        "skills/repository-operational-truth-audit/SKILL.md#separate-multiplicity-from-drift"
+        "docs/product-spec.md#rot-07--multiplicity-and-retirement",
+        "skills/repository-operational-truth-audit/references/audit.md#separate-multiplicity-from-drift"
       ]
     },
     {
@@ -450,7 +466,7 @@
         "zh_cn": "不可得的 runtime 或 account state 不会自动成为仓库缺陷。"
       },
       "sources": [
-        "docs/product-spec.md#rot-09--external-and-hidden-state",
+        "docs/product-spec.md#rot-08--external-unknowns",
         "docs/evidence-model.md#unknowns"
       ]
     },
@@ -472,8 +488,8 @@
         "zh_cn": "不做默认 fan-out；若答案不能改变决策，就不调用。"
       },
       "sources": [
-        "docs/product-spec.md#rot-14--specialist-adapters",
-        "skills/repository-operational-truth-audit/SKILL.md#handle-unavailable-external-state"
+        "docs/product-spec.md#rot-09--bounded-specialists",
+        "skills/repository-operational-truth-audit/references/audit.md#handle-unavailable-external-state"
       ]
     },
     {
@@ -495,7 +511,7 @@
       },
       "sources": [
         "docs/evidence-model.md#adjudication-vocabulary",
-        "docs/evidence-model.md#clean-result"
+        "docs/evidence-model.md#clean-audit-and-terminal-operation-states"
       ]
     },
     {
@@ -516,7 +532,7 @@
         "zh_cn": "若出现新的实质证据边，就重新穿行；不能靠 checklist 耗尽来停止。"
       },
       "sources": [
-        "docs/product-spec.md#rot-12--stopping",
+        "docs/product-spec.md#rot-10--audit-fixed-point",
         "docs/evidence-model.md#stopping"
       ]
     },
@@ -526,8 +542,8 @@
       "visual_role": "output",
       "evidence_status": "verified_repository_contract",
       "label": {
-        "en": "Decision answer + proof boundary",
-        "zh_cn": "决策答案与证明边界"
+        "en": "Audit answer + proof boundary",
+        "zh_cn": "Audit 答案与证明边界"
       },
       "responsibility": {
         "en": "Report the answer, pinned identity, live topology, full finding/unknown traces, intentional non-findings, verification, and overhead receipt.",
@@ -539,7 +555,7 @@
       },
       "sources": [
         "docs/product-spec.md#6-output-contract",
-        "skills/repository-operational-truth-audit/SKILL.md#report-the-result"
+        "skills/repository-operational-truth-audit/references/audit.md#report-the-result"
       ]
     },
     {
@@ -552,16 +568,236 @@
         "zh_cn": "结束复钉与 mutation statement"
       },
       "responsibility": {
-        "en": "Reconcile the ending repository identity with the start pin and state whether the audit changed anything.",
-        "zh_cn": "把结束时的仓库身份与起始钉点核对，并说明审计是否改变了任何内容。"
+        "en": "Reconcile the ending repository identity with the start pin and state the mode, mutations, terminal status, and proof layer.",
+        "zh_cn": "把结束时的仓库身份与起始钉点核对，并说明 mode、mutations、terminal status 与 proof layer。"
       },
       "limit": {
         "en": "An unexplained moving target invalidates the claimed snapshot-bound answer.",
         "zh_cn": "未经解释的移动目标会使 snapshot-bound answer 失效。"
       },
       "sources": [
-        "docs/product-spec.md#rot-17--end-re-pin",
-        "skills/repository-operational-truth-audit/SKILL.md#stop-cleanly"
+        "docs/product-spec.md#rot-01--exact-pin",
+        "skills/repository-operational-truth-audit/SKILL.md#close-at-the-proven-layer"
+      ]
+    },
+    {
+      "id": "N44_PLAN_CONTRACT",
+      "region": "R40_DECIDE",
+      "visual_role": "output",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Plan contract · no mutation",
+        "zh_cn": "Plan contract · 不修改目标"
+      },
+      "responsibility": {
+        "en": "State the finite end state, effect envelope, dependency order, witnesses, recovery boundary, acceptance obligations, and unresolved decisions.",
+        "zh_cn": "说明有限 end state、effect envelope、依赖顺序、witnesses、recovery boundary、acceptance obligations 与未决决策。"
+      },
+      "limit": {
+        "en": "A plan is a complete read-only result; it carries no latent implementation authority.",
+        "zh_cn": "Plan 是完整只读结果，不携带潜在实施权限。"
+      },
+      "sources": [
+        "docs/product-spec.md#6-output-contract",
+        "skills/repository-operational-truth-audit/SKILL.md#route-from-the-request"
+      ]
+    },
+    {
+      "id": "N60_AGREED_OUTCOME",
+      "region": "R60_OPERATE",
+      "visual_role": "operation_contract",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Finite agreed outcome",
+        "zh_cn": "有限约定结果"
+      },
+      "responsibility": {
+        "en": "Bind concrete change pressure to a testable end state, preserved behavior, agreed changes, and applicable B/S/D/U obligations.",
+        "zh_cn": "把具体 change pressure 绑定到可测试 end state、保留行为、约定变化与适用的 B/S/D/U obligations。"
+      },
+      "limit": {
+        "en": "File length, old names, or an unbounded cleanup wish do not define an operation.",
+        "zh_cn": "文件长度、旧名字或无界 cleanup 愿望都不能定义一场 operation。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-11--finite-end-state",
+        "skills/repository-operational-truth-audit/references/operation.md#choose-the-outcome-before-the-technique"
+      ]
+    },
+    {
+      "id": "N61_IMPLEMENTATION_GATE",
+      "region": "R60_OPERATE",
+      "visual_role": "authorization_gate",
+      "evidence_status": "conditional_observation",
+      "label": {
+        "en": "Explicit implementation gate",
+        "zh_cn": "显式实施 gate"
+      },
+      "responsibility": {
+        "en": "Require explicit action intent, an identifiable target, a finite outcome, and a real effect envelope before target mutation.",
+        "zh_cn": "在修改目标前，要求显式 action intent、可识别 target、有限 outcome 与真实 effect envelope。"
+      },
+      "limit": {
+        "en": "Mode, plans, reports, workers, receipts, and records cannot grant powers; new effects require matching authority.",
+        "zh_cn": "Mode、plan、report、worker、receipt 与 record 不能创造权力；新增效果需要匹配授权。"
+      },
+      "sources": [
+        "docs/product-spec.md#2-engagement-object-and-authority",
+        "skills/repository-operational-truth-audit/references/operation.md#resolve-authority-once-escalate-on-changed-effects"
+      ]
+    },
+    {
+      "id": "N62_PROTECTED_WITNESSES",
+      "region": "R60_OPERATE",
+      "visual_role": "control",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Protected behavior + structure witnesses",
+        "zh_cn": "受保护的 behavior + structure witnesses"
+      },
+      "responsibility": {
+        "en": "Observe the selected entry, failures, compatibility and state effects; add a separate falsifiable structural-completion check.",
+        "zh_cn": "观察 selected entry、failures、compatibility 与 state effects，并增加独立、可判错的 structural-completion check。"
+      },
+      "limit": {
+        "en": "The candidate cannot erase, skip, relearn, or weaken its own decisive witness merely to pass.",
+        "zh_cn": "Candidate 不能为了通过而删除、skip、重学或弱化自己的关键 witness。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-13--protected-witnesses",
+        "skills/repository-operational-truth-audit/references/operation.md#operate-only--establish-behavior-and-structural-witnesses"
+      ]
+    },
+    {
+      "id": "N63_COHERENT_INCREMENT",
+      "region": "R60_OPERATE",
+      "visual_role": "process",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Coherent increment",
+        "zh_cn": "Coherent increment"
+      },
+      "responsibility": {
+        "en": "Reconcile current inputs, implement one convergent semantic change, inspect the real diff and preserve unrelated owner work.",
+        "zh_cn": "核对当前 inputs，实现一个收敛的 semantic change，检查真实 diff 并保留无关 owner work。"
+      },
+      "limit": {
+        "en": "A first safe cut is progress, not permission to shrink the whole agreed goal.",
+        "zh_cn": "第一刀安全完成只是进展，不是缩小完整约定目标的许可。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-14--convergent-increments",
+        "skills/repository-operational-truth-audit/references/operation.md#operate-only--the-implementation-loop"
+      ]
+    },
+    {
+      "id": "N64_VERIFY_CHALLENGE",
+      "region": "R60_OPERATE",
+      "visual_role": "challenge",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Verify + challenge current source",
+        "zh_cn": "验证并挑战当前 source"
+      },
+      "responsibility": {
+        "en": "Run current behavioral, structural, and delivery checks; attempt the strongest plausible falsifier and label self-check versus independent review honestly.",
+        "zh_cn": "运行当前 behavior、structure 与 delivery checks；尝试最强可信 falsifier，并诚实标记 self-check 或 independent review。"
+      },
+      "limit": {
+        "en": "Worker completion, CI, byte matches, and reviewer confidence are evidence inputs, not automatic acceptance.",
+        "zh_cn": "Worker completion、CI、byte match 与 reviewer confidence 都只是 evidence input，不会自动构成验收。"
+      },
+      "sources": [
+        "docs/evidence-model.md#challenge-and-independence",
+        "skills/repository-operational-truth-audit/references/operation.md#operate-only--the-implementation-loop"
+      ]
+    },
+    {
+      "id": "N65_CHECKPOINT",
+      "region": "R60_OPERATE",
+      "visual_role": "checkpoint",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Verified checkpoint",
+        "zh_cn": "Verified checkpoint"
+      },
+      "responsibility": {
+        "en": "Retain one coherent increment with current proof while keeping the original goal and remaining obligations explicit.",
+        "zh_cn": "保留一个拥有当前证明的 coherent increment，同时明确原目标与剩余 obligations。"
+      },
+      "limit": {
+        "en": "Checkpoint is not Complete while required callers, owners, selectors, artifacts, or retirement work remain.",
+        "zh_cn": "当必要 caller、owner、selector、artifact 或 retirement work 仍存在时，Checkpoint 不是 Complete。"
+      },
+      "sources": [
+        "docs/evidence-model.md#checkpoint-versus-whole-goal-completion",
+        "docs/product-spec.md#rot-15--checkpoint-is-not-completion"
+      ]
+    },
+    {
+      "id": "N66_RECOVERY",
+      "region": "R60_OPERATE",
+      "visual_role": "recovery",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Reconcile before resume",
+        "zh_cn": "续做前重新核对"
+      },
+      "responsibility": {
+        "en": "Classify effects as absent, complete, partial, concurrently changed, or unobservable before another write or replay.",
+        "zh_cn": "再次写入或 replay 前，把 effects 分类为 absent、complete、partial、concurrently changed 或 unobservable。"
+      },
+      "limit": {
+        "en": "A record is neither permission nor freshness proof; uncertain data, install, remote, or public effects are not replayed blindly.",
+        "zh_cn": "Record 既不是权限也不是 freshness proof；不盲目 replay 不确定的 data、install、remote 或 public effect。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-19--recovery-aware-continuity",
+        "skills/repository-operational-truth-audit/references/recovery.md#reconcile-before-continuing"
+      ]
+    },
+    {
+      "id": "N67_WHOLE_GOAL",
+      "region": "R60_OPERATE",
+      "visual_role": "gate",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Whole-goal B/S/D/U acceptance",
+        "zh_cn": "完整目标 B/S/D/U 验收"
+      },
+      "responsibility": {
+        "en": "Require current evidence for every applicable Behavior, Structure, Delivery, and Usefulness obligation at the requested proof layer.",
+        "zh_cn": "在请求 proof layer 为每个适用的 Behavior、Structure、Delivery 与 Usefulness obligation 要求当前证据。"
+      },
+      "limit": {
+        "en": "Missing delivery evidence blocks only an included delivery goal; source completion never masquerades as deployment or owner acceptance.",
+        "zh_cn": "缺少 delivery evidence 只阻塞已纳入的 delivery goal；source completion 不冒充 deployment 或 owner acceptance。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-17--four-acceptance-obligations",
+        "skills/repository-operational-truth-audit/references/operation.md#operate-only--verify-the-actual-end-state"
+      ]
+    },
+    {
+      "id": "N68_OPERATION_OUTPUT",
+      "region": "R60_OPERATE",
+      "visual_role": "output",
+      "evidence_status": "verified_repository_contract",
+      "label": {
+        "en": "Complete · checkpoint · blocked · recovered",
+        "zh_cn": "Complete · checkpoint · blocked · recovered"
+      },
+      "responsibility": {
+        "en": "Report the actual terminal state, changes and effects, decisive current evidence, proof layer, remaining unknowns, and final workspace identity.",
+        "zh_cn": "报告真实 terminal state、changes/effects、关键当前证据、proof layer、剩余 unknown 与最终 workspace identity。"
+      },
+      "limit": {
+        "en": "Owner acceptance is claimed only when separately observed; incomplete scope is never renamed success.",
+        "zh_cn": "只有单独观察后才声称 owner acceptance；未完成范围绝不改名为 success。"
+      },
+      "sources": [
+        "docs/product-spec.md#rot-20--honest-terminal-states",
+        "skills/repository-operational-truth-audit/references/recovery.md#stop-in-an-honest-state"
       ]
     },
     {
@@ -582,7 +818,7 @@
         "zh_cn": "Source audit 绝不会默许 browser、account、remote、deployment 或 owner action。"
       },
       "sources": [
-        "docs/product-spec.md#rot-09--external-and-hidden-state",
+        "docs/product-spec.md#2-engagement-object-and-authority",
         "AGENTS.md#product-boundary"
       ]
     },
@@ -604,7 +840,7 @@
         "zh_cn": "在被观察前，该区域保持显式未知，绝不从仓库证据推断。"
       },
       "sources": [
-        "docs/product-spec.md#3-truth-topology",
+        "docs/product-spec.md#3-shared-operational-truth-method",
         "docs/evidence-model.md#unknowns"
       ]
     }
@@ -909,24 +1145,184 @@
         "en": "close receipt",
         "zh_cn": "闭合回执"
       }
+    },
+    {
+      "id": "E31_STOP_TO_PLAN",
+      "source": "N41_STOPPING",
+      "target": "N44_PLAN_CONTRACT",
+      "kind": "observed",
+      "label": {
+        "en": "Plan requested",
+        "zh_cn": "请求 Plan"
+      }
+    },
+    {
+      "id": "E32_PLAN_TO_REPIN",
+      "source": "N44_PLAN_CONTRACT",
+      "target": "N43_END_REPIN",
+      "kind": "observed",
+      "label": {
+        "en": "close without mutation",
+        "zh_cn": "不修改并闭合"
+      }
+    },
+    {
+      "id": "E33_STOP_TO_OUTCOME",
+      "source": "N41_STOPPING",
+      "target": "N60_AGREED_OUTCOME",
+      "kind": "conditional",
+      "label": {
+        "en": "explicit Operate request",
+        "zh_cn": "显式 Operate 请求"
+      }
+    },
+    {
+      "id": "E34_OUTCOME_TO_GATE",
+      "source": "N60_AGREED_OUTCOME",
+      "target": "N61_IMPLEMENTATION_GATE",
+      "kind": "conditional",
+      "label": {
+        "en": "match effect authority",
+        "zh_cn": "匹配 effect authority"
+      }
+    },
+    {
+      "id": "E35_GATE_TO_WITNESSES",
+      "source": "N61_IMPLEMENTATION_GATE",
+      "target": "N62_PROTECTED_WITNESSES",
+      "kind": "observed",
+      "label": {
+        "en": "authority confirmed",
+        "zh_cn": "授权已确认"
+      }
+    },
+    {
+      "id": "E36_WITNESSES_TO_INCREMENT",
+      "source": "N62_PROTECTED_WITNESSES",
+      "target": "N63_COHERENT_INCREMENT",
+      "kind": "observed",
+      "label": {
+        "en": "protect + implement",
+        "zh_cn": "保护并实现"
+      }
+    },
+    {
+      "id": "E37_INCREMENT_TO_VERIFY",
+      "source": "N63_COHERENT_INCREMENT",
+      "target": "N64_VERIFY_CHALLENGE",
+      "kind": "observed",
+      "label": {
+        "en": "inspect diff + effects",
+        "zh_cn": "检查 diff 与 effects"
+      }
+    },
+    {
+      "id": "E38_VERIFY_TO_CHECKPOINT",
+      "source": "N64_VERIFY_CHALLENGE",
+      "target": "N65_CHECKPOINT",
+      "kind": "observed",
+      "label": {
+        "en": "current evidence",
+        "zh_cn": "当前证据"
+      }
+    },
+    {
+      "id": "E39_CHECKPOINT_FEEDBACK",
+      "source": "N65_CHECKPOINT",
+      "target": "N60_AGREED_OUTCOME",
+      "kind": "feedback",
+      "label": {
+        "en": "remaining obligations",
+        "zh_cn": "剩余 obligations"
+      }
+    },
+    {
+      "id": "E40_CHECKPOINT_TO_GOAL",
+      "source": "N65_CHECKPOINT",
+      "target": "N67_WHOLE_GOAL",
+      "kind": "observed",
+      "label": {
+        "en": "all increments ready",
+        "zh_cn": "所有 increments 已就绪"
+      }
+    },
+    {
+      "id": "E41_CHECKPOINT_TO_RECOVERY",
+      "source": "N65_CHECKPOINT",
+      "target": "N66_RECOVERY",
+      "kind": "conditional",
+      "label": {
+        "en": "interrupted or drifted",
+        "zh_cn": "中断或 drift"
+      }
+    },
+    {
+      "id": "E42_RECOVERY_FEEDBACK",
+      "source": "N66_RECOVERY",
+      "target": "N60_AGREED_OUTCOME",
+      "kind": "feedback",
+      "label": {
+        "en": "reconcile + resume",
+        "zh_cn": "核对并续做"
+      }
+    },
+    {
+      "id": "E43_GOAL_TO_OUTPUT",
+      "source": "N67_WHOLE_GOAL",
+      "target": "N68_OPERATION_OUTPUT",
+      "kind": "observed",
+      "label": {
+        "en": "applicable obligations pass",
+        "zh_cn": "适用 obligations 通过"
+      }
+    },
+    {
+      "id": "E44_OPERATION_TO_REPIN",
+      "source": "N68_OPERATION_OUTPUT",
+      "target": "N43_END_REPIN",
+      "kind": "observed",
+      "label": {
+        "en": "close at proven layer",
+        "zh_cn": "在已证明层闭合"
+      }
+    },
+    {
+      "id": "E45_GOAL_TO_EXTERNAL",
+      "source": "N67_WHOLE_GOAL",
+      "target": "N50_OBSERVATION_GATE",
+      "kind": "conditional",
+      "label": {
+        "en": "external layer included",
+        "zh_cn": "纳入 external layer"
+      }
+    },
+    {
+      "id": "E46_EXTERNAL_TO_GOAL",
+      "source": "N51_EXTERNAL_STATE",
+      "target": "N67_WHOLE_GOAL",
+      "kind": "conditional",
+      "label": {
+        "en": "observed completion evidence",
+        "zh_cn": "已观察完成证据"
+      }
     }
   ],
   "states": [
     {
       "id": "S00_UNBOUNDED",
       "label": {
-        "en": "Awaiting an audit object",
-        "zh_cn": "等待审计对象"
+        "en": "Awaiting an engagement object",
+        "zh_cn": "等待工作对象"
       },
-      "invariant": "Do not begin exhaustive traversal without a concrete decision."
+      "invariant": "Do not begin exhaustive traversal or mutation without a concrete decision or finite outcome."
     },
     {
       "id": "S10_PINNED_READ_ONLY",
       "label": {
-        "en": "Pinned and read-only",
-        "zh_cn": "已钉住且只读"
+        "en": "Pinned read-only diagnosis",
+        "zh_cn": "已钉住的只读诊断"
       },
-      "invariant": "The selected repository identity and mutation boundary are explicit."
+      "invariant": "The selected repository identity is explicit and no implementation gate has been crossed."
     },
     {
       "id": "S20_TRAVERSING",
@@ -955,10 +1351,34 @@
     {
       "id": "S50_REPORTED",
       "label": {
-        "en": "Reported and re-pinned",
-        "zh_cn": "已报告并复钉"
+        "en": "Closed and re-pinned",
+        "zh_cn": "已闭合并复钉"
       },
-      "invariant": "The answer, unknowns, proof boundary, overhead, and ending identity are explicit."
+      "invariant": "The mode, terminal status, result, unknowns, mutations, proof boundary, and ending identity are explicit."
+    },
+    {
+      "id": "S60_AUTHORIZED_OPERATE",
+      "label": {
+        "en": "Operate gate crossed",
+        "zh_cn": "已跨过 Operate gate"
+      },
+      "invariant": "Explicit action intent, target, finite outcome, and effect authority are current."
+    },
+    {
+      "id": "S70_INCREMENTING",
+      "label": {
+        "en": "Implementing or reconciling a checkpoint",
+        "zh_cn": "正在实现或核对 checkpoint"
+      },
+      "invariant": "One writer owns each shared state boundary and the whole agreed goal remains explicit."
+    },
+    {
+      "id": "S80_WHOLE_GOAL",
+      "label": {
+        "en": "Whole goal verified",
+        "zh_cn": "完整目标已验证"
+      },
+      "invariant": "Every applicable Behavior, Structure, Delivery, and Usefulness obligation has current evidence at the requested layer."
     }
   ],
   "state_transitions": [
@@ -991,32 +1411,62 @@
       "from": "S40_FIXED_POINT",
       "to": "S50_REPORTED",
       "trigger": "N42_DECISION_OUTPUT + N43_END_REPIN"
+    },
+    {
+      "from": "S40_FIXED_POINT",
+      "to": "S50_REPORTED",
+      "trigger": "N44_PLAN_CONTRACT + N43_END_REPIN"
+    },
+    {
+      "from": "S40_FIXED_POINT",
+      "to": "S60_AUTHORIZED_OPERATE",
+      "trigger": "N60_AGREED_OUTCOME + N61_IMPLEMENTATION_GATE"
+    },
+    {
+      "from": "S60_AUTHORIZED_OPERATE",
+      "to": "S70_INCREMENTING",
+      "trigger": "N62_PROTECTED_WITNESSES + N63_COHERENT_INCREMENT"
+    },
+    {
+      "from": "S70_INCREMENTING",
+      "to": "S70_INCREMENTING",
+      "trigger": "E39_CHECKPOINT_FEEDBACK or E42_RECOVERY_FEEDBACK"
+    },
+    {
+      "from": "S70_INCREMENTING",
+      "to": "S80_WHOLE_GOAL",
+      "trigger": "N67_WHOLE_GOAL passes"
+    },
+    {
+      "from": "S80_WHOLE_GOAL",
+      "to": "S50_REPORTED",
+      "trigger": "N68_OPERATION_OUTPUT + N43_END_REPIN"
     }
   ],
   "source_authorities": [
     {
       "path": "docs/product-spec.md",
-      "role": "Accepted product behavior and output contract"
+      "role": "Accepted Audit / Plan / Operate behavior, authority, and output contract"
     },
     {
       "path": "docs/evidence-model.md",
-      "role": "Proof layers, findings, unknowns, clean-result, and stopping semantics"
+      "role": "Proof layers, findings, checkpoints, completion obligations, recovery, and stopping semantics"
     },
     {
       "path": "skills/repository-operational-truth-audit/SKILL.md",
-      "role": "Runtime audit workflow and invocation boundary"
+      "role": "Runtime router, authority boundary, and shared engagement workflow"
     },
     {
       "path": "AGENTS.md",
-      "role": "Repository ownership, read-only, publication, and source/install boundaries"
+      "role": "Repository ownership, mode/effect authority, publication, and source/install boundaries"
     }
   ],
   "render_acceptance": [
-    "The audit topology is embedded directly in each localized README as a native Mermaid block.",
-    "All six regions and all stable node IDs are present in both locale diagrams.",
+    "The Audit / Plan / Operate topology is embedded directly in each localized README as a native Mermaid block.",
+    "All seven regions and all stable node IDs are present in both locale diagrams.",
     "Source, derived artifact, installed identity, and external state remain visually distinct.",
-    "The external proof boundary and read-only mutation boundary are visible without reading body prose.",
-    "The feedback loop from the stopping test to authority resolution is visible.",
+    "The read-only diagnosis boundary, explicit implementation gate, and external proof boundary are visible without reading body prose.",
+    "The feedback loops from the audit stopping test, verified checkpoint, and recovery reconciliation are visible.",
     "The diagram remains readable in GitHub's normal README rendering without fixed-canvas microtext.",
     "The English and Simplified Chinese diagrams preserve semantic parity without sharing one bilingual canvas.",
     "The Mermaid source contains no custom theme colors, scripts, network dependencies, or embedded image content."

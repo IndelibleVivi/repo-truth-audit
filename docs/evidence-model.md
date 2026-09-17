@@ -1,126 +1,160 @@
-# Evidence model
+# Evidence and completion model
 
 [简体中文](evidence-model.zh-CN.md)
 
-## Evidence must answer a decision
+## Evidence must answer a decision or obligation
 
-Repository Operational Truth Audit does not collect observations because they
-are available. Each command, file read, adapter, or history query must support a
-named claim or determine the next live edge.
+Repo Truth Audit does not collect observations because they are available. Each
+file read, command, adapter, worker return, or history query must support a named
+Audit decision, determine the next live edge, or test an agreed Plan/Operate
+obligation.
 
 ## Proof layers
 
 Keep these layers separate:
 
-1. claim or instruction surface;
+1. claim, instruction, or agreed-outcome surface;
 2. source/configuration contract;
-3. process-level behavior;
+3. process-level behavior and state effects;
 4. generated or distributed artifact identity;
 5. installed/deployed identity;
 6. exact runtime, edge, device, or account state;
 7. owner-observed acceptance.
 
-Evidence at one layer does not automatically prove the next. A test can be
-correct and the package stale; the package can be correct and the old installed
-copy active; deployment can succeed without owner acceptance.
+Evidence at one layer does not prove the next. Source can be correct while a
+package is stale; an installed copy can be correct but inactive; deployment can
+succeed without owner acceptance.
 
-## Finding trace
+## Audit finding trace
 
-A reportable finding has five connected elements:
+A reportable finding connects:
 
-- **claim/live surface:** the statement, selector, entrypoint, or gate that
-  makes the issue relevant;
+- **claim/live surface:** the statement, selector, entrypoint, or gate making it
+  decision-relevant;
 - **mechanism/state:** the caller, owner, mutation, artifact, persistence, or
-  configuration that causes the current behavior;
+  configuration causing current behavior;
 - **contradiction/gap:** the exact disagreement or missing evidence;
-- **impact:** how it can change the current owner decision;
-- **validation:** fresh source, command, fixture, or observation that rules out
-  a merely hypothetical concern.
+- **impact:** how it changes the current decision or operation;
+- **validation:** fresh source, command, fixture, or authorized observation that
+  rules out a hypothetical concern.
 
 Omit candidates that cannot close this trace.
 
 ## Adjudication vocabulary
 
-Use only when it helps explain the decision:
+Use only when it clarifies the decision:
 
-- **Validated contradiction:** current live surfaces make incompatible claims
-  or produce incompatible behavior.
-- **False-green evidence:** a gate remains green when its claimed protected
+- **Validated contradiction:** current live surfaces make incompatible claims or
+  produce incompatible behavior.
+- **False-green evidence:** a gate stays green when its claimed protected
   contract is broken.
-- **Shadow path:** a reachable path can affect current state/artifacts without
-  an intentional ownership or selection boundary.
-- **Intentional multiplicity:** multiple modes are explicit, isolated,
-  versioned/owned, and correctly selected.
+- **Shadow path:** a reachable path can affect current state/artifacts without an
+  intentional ownership or selection boundary.
+- **Intentional multiplicity:** modes are explicit, isolated, versioned/owned,
+  and correctly selected.
 - **Non-material residue:** an old surface cannot affect runtime, distribution,
   state, or the current decision.
-- **Decision-critical unknown:** missing observation can change the decision.
-- **External/environment/policy boundary:** the missing or rejected behavior is
-  owned outside the repository mechanism being audited.
+- **Decision-critical unknown:** missing observation can change the decision or
+  a required operation obligation.
+- **External/environment/policy boundary:** another owner or unavailable
+  environment governs the missing observation.
 
-These labels are not a score or required report schema.
+These labels are not a score or mandatory report schema.
 
-## False green
+## False-green and anti-self-certification
 
-For every material green result, ask:
+For material green evidence, ask:
 
-1. What exact input/path did it exercise?
-2. What observable outcome did it assert?
+1. What exact input and selected path did it exercise?
+2. What observable outcome and state effect did it assert?
 3. Would the protected contract being broken make it fail?
-4. Which artifact/runtime identity did it actually use?
+4. Which source, artifact, installation, or runtime identity did it use?
 
-Mutation proof is useful when it is safe and bounded: deliberately break the
-protected invariant in a disposable copy and confirm the gate turns red. Do not
-mutate the real target merely to make this point.
+Mutation proof is useful only in a safely controlled disposable subject. In an
+Operate workflow, tests may legitimately change, but removing assertions,
+adding skips, broadening tolerances, or regenerating expectations does not prove
+the candidate. Accepted behavior changes require their own explicit witness.
 
-## Intentional multiplicity versus shadow paths
+A cited-byte match proves only the named bytes. A JSON schema pass proves only
+shape. Neither proves semantics, authority, completion, or safe execution.
 
-Multiplicity is normally intentional when all material questions have clear
-answers:
+## Checkpoint versus whole-goal completion
 
-- What selects each mode/version?
-- Are their states isolated?
-- Who owns each path?
-- How is version or artifact identity distinguished?
-- Can an unintended caller reach the old path?
-- Is retirement or compatibility status current and explicit?
+A checkpoint is a coherent increment with current evidence at its claimed
+layer. It can be retained and resumed. It is not completion when the original
+agreed outcome still has unresolved callers, state owners, selectors,
+artifacts, compatibility, retirement, or delivery obligations.
 
-One ambiguous selector or shared state does not automatically prove a shadow
-path; trace the actual reachability and impact.
+Completion requires current evidence for every applicable obligation:
+
+- **Behavior:** agreed outputs, failures, compatibility, and state effects.
+- **Structure:** the intended ownership/dependency change or retirement, not
+  merely a new facade or file.
+- **Delivery:** every requested manifest, package, installed, activation, or
+  runtime surface selects the intended implementation.
+- **Usefulness:** where material and practical, a follow-on change demonstrates
+  that the original change pressure is reduced.
+
+Exclusions are justified against the agreed goal. Passing a broad suite does
+not erase an applicable structural or delivery obligation.
+
+## Challenge and independence
+
+Consequential completion claims should be challenged from current source with
+the strongest plausible counterexample: old owner still selected, stale artifact,
+duplicate state write, compatibility break, or unchanged change pressure.
+
+Record whether the challenge was independent or a same-agent self-check. An
+independent reviewer adds evidence but is not a mandatory panel for every small
+change. Reviewer confidence, worker completion, and green CI remain claims until
+reconciled with the actual diff and required proof surfaces.
+
+## Recovery evidence
+
+An operation record preserves provenance and resumption context; it does not
+prove freshness or permission. On resume, classify an in-flight effect as
+absent, complete, partial, concurrently changed, or unobservable before retry.
+
+Code recovery is bounded to task-owned changes whose current postimage still
+matches. Durable-state recovery needs schema/version compatibility,
+backup/compensation, intervening-write, idempotency, and safe-rollback evidence.
+A lost acknowledgement never proves that an external or data effect did not
+happen.
 
 ## Unknowns
 
 Write an unknown as:
 
-```text
-Missing observation -> claim it prevents -> decision it can change -> exact
-fresh observation needed
-```
+~~~text
+Missing observation -> claim or obligation it prevents -> decision or outcome
+it can change -> exact fresh observation needed
+~~~
 
-Do not write “runtime unverified” twelve times. Group external boundaries by the
-decision they affect. If the missing observation cannot change the decision,
-omit it or name it once as out of scope.
+Group unknowns by the decision they affect. If missing observation cannot change
+the decision or agreed operation result, omit it or name it once as out of
+scope.
 
-## Clean result
+## Clean audit and terminal operation states
 
-A clean result says:
+A clean Audit result names the decision and snapshot, live selectors and truth
+owners followed, proof layers reached, external boundary not observed, and why
+remaining traversal cannot change the decision. It does not claim the repository
+has no defects.
 
-- which decision and snapshot were audited;
-- which live entrypoints/selectors and truth owners were followed;
-- which proof layer was reached;
-- which external boundary remained unobserved;
-- why remaining traversal could not change the decision.
+An Operate result is one of:
 
-Clean does not mean “the repository has no defects.” It means no material
-contradiction or decision-critical unknown was found within the explicit object.
+- **Complete:** the whole agreed outcome has current evidence.
+- **Checkpoint:** a coherent increment is verified and remaining obligations are
+  explicit.
+- **Blocked:** a specific missing observation, capability, authority, or
+  dependency prevents the next required step.
+- **Aborted/recovered:** last known good state, retained edits, effects actually
+  undone, and unresolved effects are explicit.
 
 ## Stopping
 
-Stop when:
-
-- every candidate contradiction is true, false, intentional, non-material, or
-  an explicit decision-critical unknown;
-- no new decision-relevant evidence edge appears;
-- remaining surfaces cannot change the owner decision;
-- the clean result or bounded findings can be stated without qualification
-  drift;
-- start/end snapshot identity is reconciled.
+Audit stops at its decision fixed point. Plan stops when the finite outcome,
+sequence, witnesses, authority boundaries, recovery, and unresolved decisions
+are decision-ready. Operate stops only at Complete or an honestly reported
+Checkpoint, Blocked, or Aborted/recovered state. Start/end identity is reconciled
+for every mode.

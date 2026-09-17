@@ -6,6 +6,11 @@
 
 状态：**在下述 evidence boundary 内 PASS**
 
+> **Historical evidence boundary：**本 receipt 只适用于下文标识的 `v0.1.0`
+> Audit-only runtime。`0.2.0` source candidate 已把 runtime contract 扩展为 Audit /
+> Plan / Operate，因此不受这两次运行验证。当前 gate 见
+> [`current-state.zh-CN.md`](current-state.zh-CN.md)。
+
 这是一份由两次 independent、read-only forward run 投影出的 public-safe receipt。它
 记录 tested decisions、material results、proof layers 与 limitations；它不是 transcript，
 也不替代 evaluator artifacts。
@@ -22,8 +27,9 @@
 | Observed model | **UNKNOWN** |
 | Observed reasoning effort | **UNKNOWN** |
 
-后来采用 **Repo Truth Audit** 只改变 UI metadata，不改变本 receipt 所记录 digest 的
-runtime `SKILL.md`。
+后来采用 **Repo Truth Audit** 这一 display name 本身只改变 UI metadata，不改变本
+receipt 所记录 digest 的 runtime `SKILL.md`；随后的 `0.2.0` runtime 扩展则确实改变了
+`SKILL.md`，因此超出本 receipt 范围。
 
 ## Case results
 

@@ -2,7 +2,7 @@
 
 [English](current-state.md)
 
-最后核对：2026-08-31
+最后核对：2026-09-17
 
 ## Product
 
@@ -11,92 +11,60 @@
   **Repository Operational Truth Audit**；public repository slug 为
   `repo-truth-audit`；Skill invocation slug
   `repository-operational-truth-audit` 保持不变。
-- Version：public release `v0.1.0`；当前 `main` 包含尚未另行发布的 architecture
-  presentation、naming、eval-fidelity、public-evidence 与 Windows checkout/digest
-  portability corrections，并不重打该 release tag。
-- Scope：完整 topology-first、decision-bounded、read-only audit contract。
-- Canonical Skill：`skills/repository-operational-truth-audit/`。
-- Public documentation：分开的 English 与简体中文 editions。
-- Public forward evidence：成对的
-  [`forward-behavior-receipt`](forward-behavior-receipt.zh-CN.md) 记录 tested subject
-  identity、dirty/clean cases、material results、proof layers、overhead limits、
-  `UNKNOWN` trace fields 与 explicit external boundaries。
-- 当前 `main` 的 architecture：一个 renderer-neutral semantic model，加上两份
-  localized README 各自的一张原生 Mermaid diagram。两版均保留六个 region、21 个
-  stable nodes、30 条 semantic edges、精确 connector-kind parity，以及明确的
-  read-only、external-proof 与 fixed-point boundaries。
-- 历史 release architecture：immutable `v0.1.0` 包含更早的 localized SVG pair 与
-  deterministic renderer。Tagged bytes 继续作为 release evidence；generated SVG 与
-  renderer 已从当前 source 退役，而不是作为平行 active path 继续维护。
-- Softpowers relationship：只作为可选 companion/reference；不拥有 generation、
-  bundling、installation 或 version。
+- Version split：canonical worktree 中是尚未发布的 `0.2.0` source candidate；最新
+  public release 仍是 immutable `v0.1.0`，不存在 `0.2.0` tag 或 GitHub Release。
+- Scope：一条渐进式 Audit / Plan / Operate engagement。Audit 默认 read-only；Plan
+  在 mutation 前终止；Operate 只有在收到 explicit、finite implementation request 且
+  effect authority 匹配时才能写入。
+- Canonical Skill：`skills/repository-operational-truth-audit/`；`SKILL.md` 是 compact
+  router，`references/` 下分别承载渐进式 Audit、Operation 与 Recovery 方法。
+- Architecture：`docs/architecture/audit-runtime-model.json` 是 semantic authority；
+  两份 localized README Mermaid views 与其保持七个 region、31 个 stable nodes、46 条
+  semantic edges 的 parity。原 Audit topology 被完整保留，并接入可见的 Plan exit 与
+  guarded Operate loop。
+- Deterministic operation evidence：`evals/operation-lab/` 不调用 target model，只检验
+  新增 operation invariants；其结果是 synthetic process evidence，不是 forward model
+  evidence。
+- Optional evidence helper：
+  `skills/repository-operational-truth-audit/scripts/check_evidence.py` 只检查 cited-byte
+  continuity，不证明 semantics、Git snapshot identity、atomicity、authorization 或
+  completion。
 
 ## Gates
 
-- Current source：localized README Mermaid blocks 是 active public architecture
-  views；`docs/architecture/audit-runtime-model.json` 仍是 semantic authority。
-  Result examples 位于 diagram 之前；本轮 naming/eval/evidence patch 不改变 diagram
-  本身。Architecture docs、product spec、AGENTS、changelog、validators、tests 与 CI
-  commands 已按这一分工完成对账。
-- Eval fidelity：intentional-multiplicity clean canary 现在要求
-  `Decision answer: ready`，并排除 `Decision answer: not ready`；focused regression
-  test 阻止含混的 `"ready"` substring assertion 回归。
-- Windows source portability：tracked text files 在普通 checkout 中保持 LF，从而保留
-  精确 pinned-license hashes；Skill digest inventory 按规范化后的 POSIX relative paths
-  排序。Fixture self-test 仍要求 Bash；本轮不声称更广泛的 Windows operator support。
-- Deterministic validation：2026-08-31 在 maintainer 本地已对
-  repository/publication validation、architecture model 与 localized Mermaid parity、17 个
-  unit tests、六个 fixture truth checks、fixture self-test、system Skill quick
-  validation 与 Git whitespace validation 得到 PASS。由于 host Python runtimes 不带
-  PyYAML，quick validator 使用与 repository 隔离的 PyYAML 运行；repo 或 Skill
-  package 没有因此新增 dependency。[Pull request #1](https://github.com/IndelibleVivi/repo-truth-audit/pull/1)
-  另行记录了 contributor head `ee30a874d84c54af56637dc2417fdb351859964e` 的全新
-  Windows `core.autocrlf=true` checkout：两份 pinned license files 均保持 LF，
-  repository validation 通过，source 与 checkout Skill digests 一致，且在 Git Bash
-  可用时通过全部 17 个 unit tests。
-- Mermaid render acceptance：2026-08-30 对 public `main` architecture commit
-  `9805fa52f35a3635ee66e3f651ca891de4baad23` PASS。GitHub 在 light mode 下成功
-  render 两份 localized block；read-only、external-proof、fixed-point 与 end re-pin
-  boundaries 均存在，中文 rendered surface 还读回了全部 30 条 localized edge labels。
-  Native viewer 提供 zoom 与 pan。由于完整 topology 信息密度很高，default fit 仍然
-  紧凑；在不使用 native viewer 时，不把它冒充为 large-text acceptance。
-- Independent forward behavior：2026-08-30 PASS。Artifact-split case 抵达 stale
-  distributed entrypoint 与 false-green source test；clean control 把
-  stable/development selection 裁定为 intentional multiplicity。Public-safe receipt
-  暴露 material result 与 proof boundary，并把不可得的 model、effort、command-count
-  与 plan-count fields 保持为 `UNKNOWN`。
-- Git release identity：canonical `0.1.0` Skill bytes 在
-  `e15dbabc84d3cae35c40dd9a0a87343fd57981d2` 写入。Annotated tag object
-  `235be6e839a87867b7a0758b47ce577c66380111` peeled 到 release commit
-  `0180e4c23413a0691f4e895a0d64d7efaa0a12bb`；tag 保持 immutable。
-- Local install：immutable `v0.1.0` PASS。Tagged 与 installed Skill digests 均为
-  `30d7ed369fad578c12d83291a17edaad4ad8c3195b2b7b31294c48ecf7ebe69e`。Current
-  source digest 为
-  `ca4fd01e20964c87884f4fe46a1ceb0864cf23b55061c90cd5bc24558a396a3a`，因为
-  `agents/openai.yaml` 现在使用更短的 display name。Runtime `SKILL.md` 仍为
-  byte-identical，SHA-256 是
-  `cc16bad2960a3d0e315c055cf5ec244ec57c2f7cc51da12d5d480b603bf1c15f`。Current
-  `main` 未安装，因此不声称 unreleased metadata change 已达到 installed/source digest
-  equality。
-- Next-turn Codex discovery：尚未观察。
-- Current-main CI：PASS。Actions run `33345355658` 已在 merged Windows-portability
-  commit `611e035bb6462d3462b326fc0ce4d6d4b80feb5e` 通过全部四个 Ubuntu/macOS、Python
-  3.10/3.13 jobs。Release run `33295744677` 另行在 peeled `v0.1.0` release commit
-  上通过同一 matrix。Workflow source 与 live CI 仍是不同事实。
-- Release publication：PASS。GitHub Release `v0.1.0` 已于 2026-08-30 发布，不是
-  draft 或 prerelease。Anonymous tagged read-back、disposable public-tag install、
-  Skill validation、digest equality 与 pinned SUL text 已验证。Repository rename 后，
-  annotated tag object `235be6e...` 仍然 peel 到 `0180e4c...`，release 也继续存在于新的
-  canonical slug 下。Current-main corrections 不暗示一个新 release。
-- Current-main publication：substantive commit `611e035b...` PASS。Canonical public
-  remote 为 `https://github.com/IndelibleVivi/repo-truth-audit`；旧 repository URL
-  返回指向它的 HTTP 301。Public read-back 已确认精确 `main` commit 与
-  `.gitattributes` 中的 LF policy；pull request #1 保留 contributor 的 Windows
-  reproduction。后续 status-only reconciliation 可以移动 `main`，但不会改变这份
-  substantive source identity。Accepted architecture identity 仍为 `9805fa52...`。
-- Licensing：functional materials 在 SUL-1.0 下 source-available；standalone
+- Source integration：`0.2.0` candidate 已在 canonical worktree 内达到 source-complete，
+  边界限于已记录的 repository、synthetic-fixture 与 declared-artifact layers；这里尚不把
+  它描述为已 commit、push、release、install、activate 或 owner-accepted。
+- Deterministic validation：2026-09-17 maintainer-local PASS，覆盖 repository 与
+  publication contracts、Audit / Plan / Operate architecture 与 localized Mermaid
+  parity、全部 73 个 unit tests、六个 Audit fixtures、two-increment operation lab、
+  system Skill validation 与 Git whitespace validation。Operation lab 自身报告 target-model
+  invocations 为 0，并与独立 forward receipt 保持分层。
+- Forward behavior：成对的
+  [`forward-behavior-receipt`](forward-behavior-receipt.zh-CN.md) 只属于历史
+  `v0.1.0` Audit-only evidence。独立的
+  [`0.2.0` receipt](forward-0.2.0-receipt.zh-CN.md) 记录 focused target-model routing、
+  fresh Audit regression 与同一 session 内的 two-increment Operate run；主线程 evaluator
+  在 checkpoint 与 whole-goal B/S/D/U boundaries 均已验收。它只在 receipt 所述
+  synthetic source 与 declared-artifact scope 内关闭 source-candidate forward gate。
+- Checkpoint 与 completion：一个 coherent verified increment 可以在 whole goal 尚未完成
+  时安全保留。Whole-goal completion 必须通过约定的 Behavior、Structure、Delivery、
+  Usefulness witnesses；green source test 或 helper 文件存在都不够。
+- Recovery：private continuity 与 cited evidence 只是 recovery aids，不是 authority。
+  Resume 必须重新 pin exact repository state、检查被保留的 owner work、重跑受影响
+  witnesses，并把 Recovered 与 Complete 分开。
+- Git 与 CI：当前 public `main` 及既有 CI 结果都早于本轮 `0.2.0` candidate。在其 exact
+  commit 被 push 并实际观察前，不为 candidate 声称 current-main CI。
+- Local install：此前验证过的 installed copy 是 immutable `v0.1.0`。`0.2.0` source
+  candidate 尚未 install 或 activate，也不声称 installed/source equality。
+- Next-turn Codex discovery：尚未观察 `0.2.0`。
+- Release publication：GitHub Release `v0.1.0` 仍是最新 public release。Source-candidate
+  工作不授权、也不暗示一个新 release。
+  未来若获得 `0.2.0` release 授权，必须同时更新 README pinned install ref 与
+  `PUBLIC_RELEASE_VERSION`；当前 tests 有意在 release gate 打开前拒绝该变化。
+- Licensing：functional materials 按 SUL-1.0 source-available；standalone
   documentation、renderer-neutral architecture model，以及嵌入 README 的 Mermaid
-  diagrams 按 `LICENSING.zh-CN.md` 使用 CC BY-NC-SA 4.0。GitHub 将 layered repository
-  license 显示为 `Other`；权威是 path map，不是单一 license badge。
+  diagrams 按 `LICENSING.zh-CN.md` 使用 CC BY-NC-SA 4.0。权威是 path map，而不是
+  single-license badge。
 
 在这里替换 superseded status，不要追加 development diary。

@@ -27,20 +27,23 @@ as source.
 ## Product boundary
 
 The Skill reconstructs repository-observable operational truth for one concrete
-owner decision. It traces decision-bearing entrypoints, selectors, authority,
-state, artifacts, installed/deployed evidence, documentation, and gates. It
-reports validated contradictions, intentional multiplicity, non-material
-residue, or decision-critical unknowns and then stops.
+owner decision and, when the user explicitly asks for implementation, can carry
+a bounded structural change through current-source diagnosis, planning,
+implementation, recovery-aware checkpoints, and verified completion. Audit,
+Plan, and Operate are request-derived behavior modes, not CLI subcommands or a
+parallel orchestration engine.
 
 It is not a generic quality score, compliance scan, public-launch checklist,
-code review, one-claim verifier, automatic repair workflow, live-system audit,
-or issue backlog generator.
+ordinary code review, one-claim verifier, universal automatic fixer,
+live-system audit, or issue backlog generator.
 
-Audit mode is read-only by default. A request to audit does not authorize fixes,
-commits, pushes, installs, deploys, account actions, remote writes, browser
-actions, or publication. If the user separately asks to repair a finding, treat
-that as a new implementation boundary and follow the target repository's
-authority.
+Audit mode is read-only by default, and Plan mode does not edit the target. A
+request to audit or plan does not authorize fixes, commits, pushes, installs,
+deploys, account actions, remote writes, browser actions, or publication. An
+explicit Operate request may authorize the local code, test, documentation, and
+superseded-source changes required for its finite outcome; public API removal,
+durable-data mutation, production activation, paid or privileged actions,
+publication, and other materially new effects still require matching authority.
 
 ## Truth surfaces
 
@@ -48,14 +51,14 @@ authority.
 | --- | --- |
 | `skills/repository-operational-truth-audit/SKILL.md` | Runtime behavior and invocation boundary |
 | `docs/product-spec.md` | Complete accepted product contract and acceptance requirements |
-| `docs/evidence-model.md` | Finding, clean-result, proof-layer, and stopping semantics |
-| `docs/architecture/audit-runtime-model.json` | Renderer-neutral architecture semantics, stable IDs, locale copy, boundaries, and source mapping |
+| `docs/evidence-model.md` | Finding, checkpoint/completion, proof-layer, acceptance, and stopping semantics |
+| `docs/architecture/audit-runtime-model.json` | Renderer-neutral Audit/Plan/Operate architecture semantics, stable IDs, locale copy, boundaries, and source mapping |
 | `README.md` and `README.zh-CN.md` Mermaid blocks | Active localized architecture views and concise display composition |
 | `scripts/validate_architecture.py` | Model/source-anchor validation plus exact Mermaid topology, connector-kind, and locale-parity checks |
 | `docs/research-basis.md` | Public-safe research provenance and external-source decisions |
 | `docs/forward-behavior-receipt.md` | Public-safe independent forward-test evidence, observed proof layers, and explicit trace limits |
 | `docs/current-state.md` | Volatile source, Git, validation, installation, and publication state |
-| `evals/cases/` | Controlled behavior subjects; expected artifacts are evaluator evidence, not runtime instructions |
+| `evals/cases/` and `evals/operation-lab/` | Controlled behavior subjects and deterministic operation rehearsal; expected artifacts and known patches are evaluator evidence, not runtime instructions |
 | `scripts/` and `tests/` | Deterministic validation and local installation behavior |
 | installed Skill directory and install receipt | Installed bytes only; not source authority or proof of next-turn discovery |
 
@@ -78,22 +81,32 @@ research packets and raw target-repository evidence outside this Git tree.
 ## Implementation rules
 
 - Preserve the complete accepted contract. Simpler machinery is welcome; a
-  reduced audit object, placeholder workflow, or abbreviated product is not.
+  reduced audit object, handoff-only workflow, first-cut-only result, or
+  abbreviated product is not.
 - Keep one canonical Skill implementation. Do not generate or maintain a
   parallel router-owned copy.
 - Keep activation discriminating. Ordinary PR review, debugging, license audit,
   security scanning, and one known verification claim must not route here.
-- The audit must follow decision-bearing topology rather than raw file count.
+- Audit and operation diagnosis must follow decision-bearing topology rather
+  than raw file count.
 - A finding must close the path from claim/live surface through mechanism or
   state to contradiction/gap and decision impact.
 - Missing runtime observation is not automatically a repository defect.
 - Intentional multiple modes remain clean when selection, ownership, state, and
   version boundaries are explicit and isolated.
-- Do not add default repair, multi-agent fan-out, scores, maturity grades,
-  generic hygiene lists, or durable target-repository audit backlogs.
+- Do not turn Audit or Plan into implicit repair. Do not add default multi-agent
+  fan-out, scores, maturity grades, generic hygiene lists, durable
+  target-repository audit backlogs, or a second provider/orchestration engine.
+- In Operate mode, preserve the whole agreed outcome across increments.
+  Distinguish a verified checkpoint from completion, and verify the applicable
+  behavior, structure, delivery, and usefulness obligations before closing.
+- Treat operation records, byte receipts, worktrees, timeouts, and permission
+  fields as evidence or workflow aids, never as authorization, OS isolation,
+  exactly-once execution, or universal rollback guarantees.
 - Expected eval artifacts must not leak into the Skill prompt or fixture.
-- Architecture diagrams must answer the accepted audit-runtime reader question;
-  do not replace them with a banner, abstract concept, or Skill packaging view.
+- Architecture diagrams must answer the accepted evidence-led change reader
+  question across Audit, Plan, and Operate; do not replace them with a banner,
+  abstract concept, or Skill packaging view.
 - Change architecture meaning in `audit-runtime-model.json`; change localized
   composition in both README Mermaid blocks in the same edit. Preserve stable
   IDs, exact edge topology, connector kinds, and localization parity. Use

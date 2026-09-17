@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the renderer-neutral audit model and paired README Mermaid views."""
+"""Validate the renderer-neutral Audit / Plan / Operate model and README views."""
 
 from __future__ import annotations
 
@@ -24,6 +24,7 @@ REQUIRED_REGIONS = {
     "R20_TRAVERSE",
     "R30_CHALLENGE",
     "R40_DECIDE",
+    "R60_OPERATE",
     "R50_EXTERNAL",
 }
 
@@ -47,8 +48,18 @@ REQUIRED_NODES = {
     "N41_STOPPING",
     "N42_DECISION_OUTPUT",
     "N43_END_REPIN",
+    "N44_PLAN_CONTRACT",
     "N50_OBSERVATION_GATE",
     "N51_EXTERNAL_STATE",
+    "N60_AGREED_OUTCOME",
+    "N61_IMPLEMENTATION_GATE",
+    "N62_PROTECTED_WITNESSES",
+    "N63_COHERENT_INCREMENT",
+    "N64_VERIFY_CHALLENGE",
+    "N65_CHECKPOINT",
+    "N66_RECOVERY",
+    "N67_WHOLE_GOAL",
+    "N68_OPERATION_OUTPUT",
 }
 
 REQUIRED_STATES = {
@@ -58,6 +69,9 @@ REQUIRED_STATES = {
     "S30_ADJUDICATING",
     "S40_FIXED_POINT",
     "S50_REPORTED",
+    "S60_AUTHORIZED_OPERATE",
+    "S70_INCREMENTING",
+    "S80_WHOLE_GOAL",
 }
 
 LOCALES = ("en", "zh_cn")
@@ -337,10 +351,10 @@ def validate_model() -> list[str]:
     if isinstance(question, dict):
         english = question.get("en", "")
         chinese = question.get("zh_cn", "")
-        for phrase in ("read-only audit", "owner decision", "repository snapshot", "external"):
+        for phrase in ("read-only answer", "owner intent", "repository snapshot", "authorized structural change", "external"):
             if phrase not in english:
                 errors.append(f"primary_question.en lost purpose phrase: {phrase!r}")
-        for phrase in ("只读审计", "所有者决策", "仓库快照", "外部"):
+        for phrase in ("只读答案", "所有者意图", "仓库快照", "获授权结构变更", "外部"):
             if phrase not in chinese:
                 errors.append(f"primary_question.zh_cn lost purpose phrase: {phrase!r}")
 
@@ -365,9 +379,10 @@ def validate_model() -> list[str]:
             "R20_TRAVERSE",
             "R30_CHALLENGE",
             "R40_DECIDE",
+            "R60_OPERATE",
             "R50_EXTERNAL",
         ]:
-            errors.append("architecture region_order must retain all six day-first regions")
+            errors.append("architecture region_order must retain all seven day-first regions")
         if layout.get("external_region") != "R50_EXTERNAL":
             errors.append("external_region must equal R50_EXTERNAL")
         if layout.get("max_connector_meanings") != 3:
@@ -499,7 +514,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}", file=sys.stderr)
         return 1
-    print("Audit architecture model, README Mermaid parity, and proof boundaries: PASS")
+    print("Audit / Plan / Operate architecture, README Mermaid parity, and proof boundaries: PASS")
     return 0
 
 

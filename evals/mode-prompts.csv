@@ -1,0 +1,9 @@
+id,expected_mode,target_mutation,language,prompt
+explicit-audit,audit,no,en,"Audit which entrypoint and packaged artifact are live before I resume work. Keep the repository read-only."
+explicit-plan,plan,no,en,"Plan how to separate formatting from durable writes, including callers, witnesses, recovery, and acceptance. Do not edit files."
+ambiguous-untangle,reconnaissance,no,en,"This repository is a mess; help me untangle it."
+explicit-operate,operate,yes,en,"Refactor the exporter so formatting is separate from durable writes, preserve the current CLI and config, switch the real package selector, retire the old writer, and verify the local source result."
+unbounded-cleanup,reconnaissance,no,en,"Clean up this entire legacy repository and make everything modern."
+audit-zh,audit,no,zh,"先重建当前真正的入口、状态所有者和发布产物，只读，不要改。"
+plan-zh,plan,no,zh,"给我一份把格式化与持久化拆开的可执行计划，定义验收与恢复边界，但先别改文件。"
+operate-zh,operate,yes,zh,"直接把格式化与持久化拆开，保留现有 CLI 和配置，迁移真实调用方，退役旧 writer，并验证本地 source 与打包入口。"

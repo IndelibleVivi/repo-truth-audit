@@ -2,8 +2,9 @@
 
 [简体中文](research-basis.zh-CN.md)
 
-Status: public-safe synthesis of the 2026-08-30 pre-spec research. The full raw
-research packet and private repository evidence remain outside this repository.
+Status: public-safe synthesis of the 2026-08-30 pre-spec research and the
+2026-09-17 Audit / Plan / Operate expansion research. The full raw research
+packets and private repository evidence remain outside this repository.
 
 ## Product-form decision
 
@@ -45,6 +46,51 @@ carried into this repository.
 - Rejected: coupling read-only audit to repair, merge, release, and deployment.
 - No file-level material is reused; any future reuse requires explicit MPL-2.0
   compliance and attribution review.
+
+## Structural-operation sources reviewed on 2026-09-17
+
+These sources informed individual mechanisms after the owner expanded the
+product boundary. They do not supply authority to edit a target repository and
+were not copied into this Skill.
+
+### Cloudflare / `security-audit-skill`
+
+- Source: <https://github.com/cloudflare/security-audit-skill> at observed
+  `main` commit `c1c8a8c1471069fb0e188eeaff69b8e8db6564a8`.
+- Retained conceptually: a consequential claim should face a fresh challenge
+  that tries to disprove it; confirmed, unresolved, and rejected outcomes must
+  remain distinct; target-controlled execution needs a real host sandbox rather
+  than prompt language.
+- Rejected: security-specialist scope, default multi-agent panels, permanent
+  ledgers, and its report schemas as requirements for this product.
+- No Skill text, validator, schema, prompt, or source code is copied.
+
+### Martin Fowler / Branch by Abstraction
+
+- Source: <https://martinfowler.com/bliki/BranchByAbstraction.html>.
+- Retained conceptually: temporary coexistence can be a migration state; the
+  actual caller must switch; the superseded supplier and temporary abstraction
+  should be removed once no longer needed.
+- Rejected: mandatory facades, feature flags, or gradual replacement when a
+  direct bounded cut is safer and simpler.
+
+### Git worktree documentation
+
+- Source: <https://git-scm.com/docs/git-worktree> (observed 2026-09-17).
+- Retained conceptually: a linked worktree can isolate an editable checkout,
+  but it remains linked to the same repository and shares common Git state.
+  Therefore treating it as an execution-security sandbox would be an
+  unsupported inference.
+
+### Alibaba / `open-code-review`
+
+- Source: <https://github.com/alibaba/open-code-review> at observed `main`
+  commit `f6f0f792eade540d0ae0145bc187e59201e43dfa`.
+- Compared conceptually: deterministic scope selection and explicit accounting
+  can support a bounded reviewer.
+- Rejected: a code-review CLI dependency, automatic review/fix machinery, or a
+  separate orchestration engine inside this repository-level product.
+- No code, rules, templates, or Skill text is copied.
 
 ## Negative controls
 

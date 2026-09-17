@@ -4,6 +4,28 @@
 
 ## Unreleased
 
+- Expanded the `0.2.0` source candidate from a read-only-only audit into one
+  progressive Audit / Plan / Operate product while preserving Audit as the
+  default, keeping Plan mutation-free, and requiring an explicit finite
+  implementation request plus matching effect authority before Operate writes.
+- Split the runtime into a compact router plus progressive Audit, Operation, and
+  Recovery references; added verified-checkpoint versus whole-goal completion,
+  Behavior/Structure/Delivery/Usefulness acceptance, and honest Complete /
+  Checkpoint / Blocked / Recovered terminal states.
+- Added an optional POSIX cited-byte continuity helper that fails closed and
+  explicitly denies semantic, Git-snapshot, atomicity, and authorization claims.
+- Added a 16-test deterministic operation lab covering a two-increment synthetic
+  refactor, selected delivery artifact, facade/unused/stale false completion,
+  duplicate state effects, drift, selective recovery, preservation of unrelated
+  owner work, and a formatter-only usefulness probe. The lab invokes no target
+  model and is not represented as forward model evidence.
+- Added a separate public-safe `0.2.0` forward receipt for focused routing, a
+  fresh read-only Audit regression, and a real-model, same-session two-increment
+  Operate run independently checked at checkpoint and whole-goal B/S/D/U
+  boundaries.
+- Added bilingual Audit / Plan / Operate mode controls and public contract
+  updates; decoupled source `VERSION` (`0.2.0`) from the immutable public
+  `v0.1.0` release identity.
 - Made ordinary Windows source checkouts deterministic by preserving LF for
   tracked text files and sorting Skill digest entries by normalized POSIX
   relative path, with regression coverage for both boundaries.
@@ -16,9 +38,10 @@
   result examples before the README architecture diagrams.
 - Replaced the active architecture surface on `main` with separate native
   Mermaid diagrams embedded in the English and Simplified Chinese READMEs.
-- Preserved the renderer-neutral model, all six regions, all stable node IDs,
-  all 30 semantic edges, and the read-only, external-proof, and fixed-point
-  boundaries while retiring the fixed-canvas SVG renderer from current source.
+- Expanded the renderer-neutral model to seven regions, 31 stable nodes, and
+  46 semantic edges while preserving the original audit topology and adding a
+  visible Plan exit, implementation gate, checkpoint/recovery loop, B/S/D/U
+  whole-goal acceptance, and external-proof boundary.
 - Added exact Mermaid topology, localized edge-label, connector-kind,
   theme-neutrality, and locale-parity validation.
 

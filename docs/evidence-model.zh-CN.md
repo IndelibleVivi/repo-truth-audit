@@ -1,118 +1,137 @@
-# Evidence model
+# 证据与完成模型
 
 [English](evidence-model.md)
 
-## Evidence 必须回答一个决策
+## 证据必须回答决策或义务
 
-Repository Operational Truth Audit 不会因为观察容易取得就收集它。每个 command、
-file read、adapter 或 history query，都必须支持一个具名 claim，或决定下一条 live edge。
+Repo Truth Audit 不会因为某个观察容易获得就收集它。每次文件读取、command、adapter、
+worker return 或 history query，都必须支持一个已命名的 Audit 决策、决定下一条 live edge，
+或检验一个已接受的 Plan/Operate obligation。
 
-## Proof layers
+## Proof layer
 
-始终分开这些层：
+严格区分：
 
-1. claim 或 instruction surface；
+1. claim、instruction 或 accepted-outcome surface；
 2. source/configuration contract；
-3. process-level behavior；
+3. process-level behavior 与 state effect；
 4. generated 或 distributed artifact identity；
 5. installed/deployed identity；
-6. 精确的 runtime、edge、device 或 account state；
+6. 精确 runtime、edge、device 或 account state；
 7. owner-observed acceptance。
 
-一层 evidence 不会自动证明下一层。Test 可以正确而 package 已陈旧；package 可以正确而
-旧 installed copy 仍然 active；deployment 可以成功而 owner acceptance 尚未发生。
+一层证据不会证明下一层。Source 可以正确而 package 过期；installed copy 可以正确但未
+activated；deployment 可以成功但没有 owner acceptance。
 
-## Finding trace
+## Audit finding trace
 
-可报告的 finding 有五个彼此连接的元素：
+可报告 finding 必须连接：
 
-- **claim/live surface：** 让问题与当前决策相关的 statement、selector、entrypoint 或
-  gate；
-- **mechanism/state：** 造成当前行为的 caller、owner、mutation、artifact、
-  persistence 或 configuration；
-- **contradiction/gap：** 精确的不一致或缺失 evidence；
-- **impact：** 它如何改变当前 owner decision；
-- **validation：** 排除纯假设担忧的新鲜 source、command、fixture 或 observation。
+- **claim/live surface：**使问题与决策相关的 statement、selector、entrypoint 或 gate；
+- **mechanism/state：**造成当前行为的 caller、owner、mutation、artifact、persistence 或
+  configuration；
+- **contradiction/gap：**精确的不一致或缺失证据；
+- **impact：**它如何改变当前 decision 或 operation；
+- **validation：**排除纯假设担忧的新鲜 source、command、fixture 或获授权观察。
 
-无法闭合这条 trace 的 candidate 不进入报告。
+无法闭合这条 trace 的候选应省略。
 
-## Adjudication vocabulary
+## 裁定词汇
 
-只在能够解释 decision 时使用：
+只在有助于解释决策时使用：
 
-- **Validated contradiction：** 当前 live surfaces 提出不相容 claim，或产生不相容
-  behavior。
-- **False-green evidence：** 被声称保护的 contract 已破坏，而 gate 仍然 green。
-- **Shadow path：** 一条 reachable path 能影响当前 state/artifacts，却没有有意的
-  ownership 或 selection boundary。
-- **Intentional multiplicity：** 多种 mode 是显式的、隔离的、具备 version/owner，且被
-  正确选择。
-- **Non-material residue：** 旧 surface 无法影响 runtime、distribution、state 或当前
-  decision。
-- **Decision-critical unknown：** 缺失 observation 能够改变 decision。
-- **External/environment/policy boundary：** 缺失或被拒绝的 behavior 由当前被审计
-  repository mechanism 之外的 owner 负责。
+- **Validated contradiction：**当前 live surfaces 提出不相容 claim 或产生不相容行为。
+- **False-green evidence：**所声称保护的 contract 已破坏，但 gate 仍保持 green。
+- **Shadow path：**可达路径能够影响当前 state/artifact，却没有有意 ownership/selection
+  boundary。
+- **Intentional multiplicity：**多个 mode 明确、隔离、versioned/owned 且被正确选择。
+- **Non-material residue：**旧 surface 无法影响 runtime、distribution、state 或当前决策。
+- **Decision-critical unknown：**缺失观察会改变决策或一个必要 operation obligation。
+- **External/environment/policy boundary：**缺失观察由仓库之外的 owner 或不可用环境管理。
 
-这些 labels 不是 score，也不是必填 report schema。
+这些标签不是 score，也不是强制 report schema。
 
-## False green
+## False-green 与反自证
 
-对每个 material green result 追问：
+对实质 green evidence，询问：
 
-1. 它运行了哪个 exact input/path？
-2. 它 assertion 的 observable outcome 是什么？
-3. 被保护的 contract 破坏后，它会失败吗？
-4. 它实际使用了哪个 artifact/runtime identity？
+1. 它执行了哪个精确 input 与 selected path？
+2. 它断言了哪个 observable outcome 与 state effect？
+3. 被保护 contract 破坏时，它会失败吗？
+4. 它实际使用了哪个 source、artifact、installation 或 runtime identity？
 
-Mutation proof 在安全且 bounded 时有价值：在 disposable copy 中故意破坏 protected
-invariant，并确认 gate 变红。不要为了证明这一点而 mutation 真实 target。
+Mutation proof 只适用于受安全控制的一次性对象。Operate workflow 中可以合理修改 tests，
+但删除断言、增加 skip、放宽 tolerance 或重新生成 expectation 都不能证明 candidate。
+有意 behavior change 需要单独的显式 witness。
 
-## Intentional multiplicity 与 shadow path
+Cited-byte match 只证明命名 bytes；JSON schema 通过只证明 shape。两者都不证明 semantics、
+authority、completion 或 safe execution。
 
-当所有 material questions 都有明确答案时，multiplicity 通常是 intentional：
+## Checkpoint 与完整目标完成
 
-- 什么选择每个 mode/version？
-- 它们的 state 是否隔离？
-- 谁拥有每条 path？
-- version 或 artifact identity 如何区分？
-- unintended caller 能否到达 old path？
-- retirement 或 compatibility status 是否当前且明确？
+Checkpoint 是一个在自身 claim layer 获得当前证据的 coherent increment，可以保留并续做。
+当原始 accepted outcome 仍有未解决的 caller、state owner、selector、artifact、compatibility、
+retirement 或 delivery obligation 时，它不是完成。
 
-一个 ambiguous selector 或 shared state 不会自动证明 shadow path；必须追踪真实
-reachability 与 impact。
+完成要求每个适用义务都有当前证据：
 
-## Unknowns
+- **Behavior：**约定的 output、failure、compatibility 与 state effect。
+- **Structure：**目标 ownership/dependency change 或 retirement，而不只是新 facade 或文件。
+- **Delivery：**每个请求覆盖的 manifest、package、installed、activation 或 runtime surface
+  都选择预期实现。
+- **Usefulness：**在实质相关且可行时，用 follow-on change 证明原始 change pressure 降低。
 
-按照以下形式写 unknown：
+任何排除都要依据 accepted goal 说明。宽泛 suite 通过不能抹去适用的 structure 或 delivery
+obligation。
 
-```text
-Missing observation -> 它阻止的 claim -> 它能改变的 decision -> 所需的 exact
-fresh observation
-```
+## Challenge 与独立性
 
-不要重复十二次“runtime unverified”。按它们影响的 decision 对 external boundaries
-分组。如果缺失 observation 不能改变 decision，就省略它，或只说明一次 out of scope。
+关键完成声明应从当前 source 出发，尝试最强的可信反例：旧 owner 仍被选择、stale artifact、
+重复 state write、compatibility break，或 change pressure 根本没减轻。
 
-## Clean result
+记录 challenge 是独立 review 还是同一 agent 的 self-check。Independent reviewer 可以增加
+证据，但不是每个小改动都必须召开 panel。Reviewer confidence、worker completion 与 green CI
+都只是 claim，必须与实际 diff 和所需 proof surfaces 核对。
 
-一份 clean result 说明：
+## Recovery evidence
 
-- 被审计的是哪个 decision 与 snapshot；
-- 沿着哪些 live entrypoints/selectors 与 truth owners 穿行；
-- 抵达了哪个 proof layer；
-- 哪个 external boundary 没有被观察；
-- 为什么继续穿行无法改变 decision。
+Operation record 保存 provenance 与 resumption context，不证明 freshness 或 permission。续做时，
+先把 in-flight effect 分类为 absent、complete、partial、concurrently changed 或 unobservable，
+再决定是否重试。
 
-Clean 不等于“repository 没有 defects”。它表示在 explicit audit object 内，没有发现
-material contradiction 或 decision-critical unknown。
+Code recovery 只处理当前 postimage 仍匹配的 task-owned change。Durable-state recovery 需要
+schema/version compatibility、backup/compensation、intervening-write、idempotency 与
+safe-rollback evidence。acknowledgement 丢失绝不证明 external 或 data effect 没有发生。
 
-## Stopping
+## Unknown
 
-在以下条件成立时停止：
+把 unknown 写成：
 
-- 每个 candidate contradiction 已被裁定为 true、false、intentional、non-material，
-  或显式 decision-critical unknown；
-- 不再出现新的 decision-relevant evidence edge；
-- 剩余 surfaces 无法改变 owner decision；
-- clean result 或 bounded findings 可以在不发生 qualification drift 的情况下表述；
-- start/end snapshot identity 已核对。
+~~~text
+缺失观察 -> 被阻止的 claim 或 obligation -> 它能改变的 decision 或 outcome
+-> 所需精确新鲜观察
+~~~
+
+按受影响决策合并 unknown。若缺失观察无法改变决策或 accepted operation result，则省略，
+或只将其标记一次为 out of scope。
+
+## Clean Audit 与 operation terminal state
+
+Clean Audit result 说明 decision 与 snapshot、已跟随的 live selector 与 truth owner、达到的
+proof layer、未观察的 external boundary，以及为什么剩余 traversal 无法改变决策。它不声称
+仓库没有 defect。
+
+Operate result 只能是：
+
+- **Complete：**整个 agreed outcome 拥有当前证据。
+- **Checkpoint：**coherent increment 已验证，剩余义务明确。
+- **Blocked：**精确缺失的观察、能力、权限或依赖阻止下一必要步骤。
+- **Aborted/recovered：**last known good state、保留 edits、实际撤销的 effects 与未解决 effects
+  均明确。
+
+## 停止
+
+Audit 在 decision fixed point 停止。Plan 在 finite outcome、sequence、witness、authority
+boundary、recovery 与 unresolved decision 均已 decision-ready 时停止。Operate 只在 Complete，
+或诚实报告的 Checkpoint、Blocked、Aborted/recovered 状态停止。每个 mode 都要核对 start/end
+identity。

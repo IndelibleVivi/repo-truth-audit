@@ -13,6 +13,8 @@ from typing import Iterable
 from common import ROOT, SKILL_DIR, SKILL_NAME, file_sha256, read_version
 
 SUL_SHA256 = "c6d0dde0f0463c800e542d7d64237ffef37f43b17004975a558604f17b5d1af1"
+PUBLIC_RELEASE_VERSION = "0.1.0"
+SEMVER = re.compile(r"[0-9]+\.[0-9]+\.[0-9]+\Z")
 
 PUBLIC_DOC_PAIRS = {
     "README.md": "README.zh-CN.md",
@@ -22,6 +24,7 @@ PUBLIC_DOC_PAIRS = {
     "docs/product-spec.md": "docs/product-spec.zh-CN.md",
     "docs/evidence-model.md": "docs/evidence-model.zh-CN.md",
     "docs/forward-behavior-receipt.md": "docs/forward-behavior-receipt.zh-CN.md",
+    "docs/forward-0.2.0-receipt.md": "docs/forward-0.2.0-receipt.zh-CN.md",
     "docs/research-basis.md": "docs/research-basis.zh-CN.md",
     "docs/current-state.md": "docs/current-state.zh-CN.md",
     "docs/architecture/README.md": "docs/architecture/README.zh-CN.md",
@@ -62,6 +65,8 @@ REQUIRED_FILES = {
     "docs/evidence-model.zh-CN.md",
     "docs/forward-behavior-receipt.md",
     "docs/forward-behavior-receipt.zh-CN.md",
+    "docs/forward-0.2.0-receipt.md",
+    "docs/forward-0.2.0-receipt.zh-CN.md",
     "docs/product-spec.md",
     "docs/product-spec.zh-CN.md",
     "docs/research-basis.md",
@@ -70,6 +75,8 @@ REQUIRED_FILES = {
     "docs/releases/v0.1.0.zh-CN.md",
     "evals/README.md",
     "evals/activation-prompts.csv",
+    "evals/mode-prompts.csv",
+    "evals/operation-lab/run_operation_lab.py",
     "fieldlab-pack.json",
     "scripts/common.py",
     "scripts/install_skill.py",
@@ -80,9 +87,15 @@ REQUIRED_FILES = {
     "skills/repository-operational-truth-audit/LICENSE.txt",
     "skills/repository-operational-truth-audit/NOTICE.md",
     "skills/repository-operational-truth-audit/agents/openai.yaml",
+    "skills/repository-operational-truth-audit/references/audit.md",
+    "skills/repository-operational-truth-audit/references/operation.md",
+    "skills/repository-operational-truth-audit/references/recovery.md",
+    "skills/repository-operational-truth-audit/scripts/check_evidence.py",
+    "tests/test_cited_evidence.py",
     "tests/test_fixtures.py",
     "tests/test_architecture.py",
     "tests/test_install_skill.py",
+    "tests/test_operation_lab.py",
     "tests/test_repository.py",
 }
 
@@ -148,8 +161,8 @@ def validate() -> list[str]:
             errors.append(f"missing required file: {required}")
 
     version = read("VERSION", errors).strip()
-    if version != "0.1.0":
-        errors.append(f"VERSION must be the public release version '0.1.0', got {version!r}")
+    if not SEMVER.fullmatch(version):
+        errors.append(f"VERSION must be a stable semantic version, got {version!r}")
 
     attributes = {
         line.strip()
@@ -182,7 +195,7 @@ def validate() -> list[str]:
             "flowchart TB",
             "--repo IndelibleVivi/repo-truth-audit",
             "source-available, not OSI open source",
-            "--ref v0.1.0",
+            f"--ref v{PUBLIC_RELEASE_VERSION}",
             "Sustainable Use License 1.0",
             "CC BY-NC-SA 4.0",
         ),
@@ -195,7 +208,7 @@ def validate() -> list[str]:
             "flowchart TB",
             "--repo IndelibleVivi/repo-truth-audit",
             "source-available，不是 OSI open source",
-            "--ref v0.1.0",
+            f"--ref v{PUBLIC_RELEASE_VERSION}",
             "Sustainable Use License 1.0",
             "CC BY-NC-SA 4.0",
         ),
@@ -284,6 +297,7 @@ def validate() -> list[str]:
                 "current operational truth",
                 "Do not use for code review",
                 "generic repo hygiene",
+                "structural change",
             ):
                 if phrase not in description:
                     errors.append(f"SKILL.md description lost routing phrase: {phrase!r}")
@@ -293,11 +307,19 @@ def validate() -> list[str]:
     if len(skill.split()) > 3600:
         errors.append("SKILL.md exceeds the 3600-word context budget")
 
+    for reference in ("audit.md", "operation.md", "recovery.md"):
+        if f"references/{reference}" not in skill:
+            errors.append(f"SKILL.md does not route to references/{reference}")
+    for mode in ("**Audit:**", "**Plan:**", "**Operate:**"):
+        if mode not in skill:
+            errors.append(f"SKILL.md lost request mode: {mode}")
+
     agent_yaml = read(f"skills/{SKILL_NAME}/agents/openai.yaml", errors)
     for phrase in (
         'display_name: "Repo Truth Audit"',
         f"${SKILL_NAME}",
         "allow_implicit_invocation: true",
+        "audit, plan, or carry the structural change",
     ):
         if phrase not in agent_yaml:
             errors.append(f"agents/openai.yaml lost required value: {phrase!r}")
@@ -368,6 +390,25 @@ def validate() -> list[str]:
         negatives = sum(row.get("expected") == "do-not-activate" for row in rows)
         if positives < 4 or negatives < 5:
             errors.append("activation prompts need at least 4 positive and 5 negative controls")
+
+    mode_path = ROOT / "evals" / "mode-prompts.csv"
+    if mode_path.is_file():
+        with mode_path.open(encoding="utf-8", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        counts = {
+            mode: sum(row.get("expected_mode") == mode for row in rows)
+            for mode in ("audit", "plan", "operate", "reconnaissance")
+        }
+        if counts["audit"] < 2 or counts["plan"] < 2 or counts["operate"] < 2:
+            errors.append("mode prompts need at least 2 Audit, Plan, and Operate controls")
+        if counts["reconnaissance"] < 1:
+            errors.append("mode prompts need an ambiguous read-only reconnaissance control")
+        for row in rows:
+            expected_mutation = "yes" if row.get("expected_mode") == "operate" else "no"
+            if row.get("target_mutation") != expected_mutation:
+                errors.append(
+                    f"mode prompt {row.get('id')!r} has inconsistent target_mutation"
+                )
 
     workflow = read(".github/workflows/validate.yml", errors)
     for command in (

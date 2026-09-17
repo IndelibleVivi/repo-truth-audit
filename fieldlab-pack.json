@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "pack_id": "repository-operational-truth-audit",
-  "description": "Controlled repository-truth cases for the standalone Repository Operational Truth Audit Skill.",
+  "description": "Controlled Audit cases for Repo Truth Audit; operation-lab evaluation remains a separate deterministic harness.",
   "cases_root": "evals/cases",
   "subjects": {
     "current-skill": {
@@ -24,6 +24,7 @@
     "keep_workspace": false
   },
   "metadata": {
-    "activation_seed_file": "evals/activation-prompts.csv"
+    "activation_seed_file": "evals/activation-prompts.csv",
+    "mode_seed_file": "evals/mode-prompts.csv"
   }
 }

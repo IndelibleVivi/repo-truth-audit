@@ -4,19 +4,19 @@
 
 正式名称：**Repository Operational Truth Audit**
 
-一个独立、read-only-first 的 Codex Skill：当一个长期演化的 repository owner
-准备做重新进入、迁移、整合、安全归档、交接或发布准备决策时，重建这个 repo
-**今天实际上通过什么运行**。
+一个独立、evidence-led 的 Codex Skill：恢复长期演化仓库**今天实际上通过什么运行**，
+并在用户明确要求时，把有限结构变更一路做到实现与验证。
 
-当前发布版本：`v0.1.0`
+当前 source candidate：`0.2.0`
+最新公开 release：`v0.1.0`
 
 Skill invocation slug：`repository-operational-truth-audit`（保持不变）。
 
-它不是 generic repo score，也不是 public-launch checklist。它沿着与决策有关的
-entrypoints、selectors、authority owners、durable state、derived artifacts、installed
-identities、evidence gates 与明确的 external proof boundaries 穿行；最后返回 validated
-contradictions、intentional multiplicity、non-material residue、decision-critical
-unknowns，或一份简短的 clean-within-scope 结论，然后停止。
+它不是 generic repo score、public-launch checklist 或通用 automatic fixer。它沿着与
+决策有关的 entrypoints、selectors、authority owners、durable state、derived artifacts、
+installed identities、evidence gates 与明确 external boundaries 穿行。Audit 默认只读；
+Plan 在编辑前停止；显式 Operate 请求可以继续完成 protected witnesses、coherent increments、
+recovery-aware checkpoints、superseded path retirement，以及请求 source/delivery layer 的验收。
 
 ## 它解决什么问题
 
@@ -33,6 +33,10 @@ unknowns，或一份简短的 clean-within-scope 结论，然后停止。
 - 两套 mode 是有意选择且相互隔离，还是其中一条已经变成无人承认的 shadow path？
 - restore 或 release claim 若依赖无法观察的 remote schema、secret、dashboard
   setting、device 或 human step，当前 decision 到底能诚实地下到哪里？
+- 当 formatting、persistence、selection 与 delivery 已经纠缠在一起，第一处值得改变的
+  结构边界是什么？
+- Refactor 是否既保住行为，又真的迁移了 ownership 与 selected artifact，还是只加了一层 facade？
+- 改完之后，下一个小功能是否真的可以不再穿过旧 owners？
 
 ## 一个结果会长什么样
 
@@ -45,25 +49,35 @@ unknowns，或一份简短的 clean-within-scope 结论，然后停止。
 > Stable 与 development 两条路径都有明确 selector 和隔离 identity，也不存在
 > cross-boundary caller。
 
+**Verified checkpoint，但完整目标仍未完成**
+
+> Formatting 已隔离且行为受保护，但 manifest 仍选择 legacy writer；这一步可以安全保留，
+> 不能宣称整场改造完成。
+
+**在约定 source + artifact 层完成**
+
+> Shipping selector 已选择新 owners，旧 writer 不可达且已退役，behavior/state witnesses
+> 通过，declared artifact 与目标实现一致。
+
 ## 架构图究竟 serve 什么
 
 这张图只回答一个 public reader question：
 
-> 一次只读审计如何把明确的所有者决策与精确仓库快照转化为有决策边界的答案，并在
-> 未观察的外部边界前停下？
+> Repo Truth Audit 如何把精确仓库快照与明确所有者意图转化为有界只读答案、可执行计划，
+> 或经过验证完成的获授权结构变更，同时不夸大证据或外部状态？
 
-因此它画的是**审计运行契约**。这个 Skill 自身的 packaging、installation 与 release
-属于另一项 reader job，没有被硬塞进同一张图。
+因此它画的是 **Audit / Plan / Operate 运行契约**。这个 Skill 自身的 packaging、
+installation 与 release 属于另一项 reader job。
 
-实线箭头表示范围内、承载证据的穿行；点线箭头表示 conditional specialist 或经明确
-授权的外部观察；粗回箭头表示新的决策相关证据会重新打开审计。
+实线箭头表示范围内 evidence 或 implementation flow；点线箭头表示有条件的 authority、
+specialist 或外部观察；粗回箭头表示新证据重新打开诊断或下一 increment。
 
 ```mermaid
 flowchart TB
-  subgraph R00_PIN["01 · 钉住审计对象"]
-    N00_OWNER_DECISION["所有者决策<br/>重新进入 · 迁移 · 归档 · 交接 · 发布准备"]
+  subgraph R00_PIN["01 · 钉住意图与仓库"]
+    N00_OWNER_DECISION["所有者意图与终点边界<br/>Audit · Plan · Operate"]
     N01_START_PIN["精确起始钉点<br/>physical/Git root · branch · HEAD · working tree"]
-    N02_READ_ONLY["只读契约<br/>只观察，不修复、不 commit、不 install、不 deploy"]
+    N02_READ_ONLY["只读诊断契约<br/>Audit + Plan 不编辑 · Operate 另有实施 gate"]
   end
 
   subgraph R10_RESOLVE["02 · 解析权威与可达路径"]
@@ -87,11 +101,24 @@ flowchart TB
     N34_SPECIALIST["Specialist adapter<br/>只做有实质意义的有限观察；不默认 fan-out"]
   end
 
-  subgraph R40_DECIDE["05 · 决策与停止"]
+  subgraph R40_DECIDE["05 · Audit / Plan 出口"]
     N40_OUTCOMES["裁定结果簿<br/>矛盾 · false green · shadow path · intentional multiplicity<br/>residue · unknown · external boundary · 范围内 clean"]
     N41_STOPPING{"决策固定点测试<br/>每个候选项均已裁定 · 不再有新的实质证据边"}
-    N42_DECISION_OUTPUT["决策答案与证明边界<br/>pin · live topology · traces · non-findings · verification · overhead"]
-    N43_END_REPIN["结束复钉与 mutation statement<br/>把结束身份与起始钉点核对"]
+    N42_DECISION_OUTPUT["Audit 答案与证明边界<br/>pin · live topology · traces · non-findings · verification · overhead"]
+    N44_PLAN_CONTRACT["Plan contract · 不修改目标<br/>有限 end state · sequence · witnesses · recovery · acceptance"]
+    N43_END_REPIN["结束复钉与 mutation statement<br/>mode · status · proof layer · ending identity"]
+  end
+
+  subgraph R60_OPERATE["06 · 授权与实施"]
+    N60_AGREED_OUTCOME["有限约定结果<br/>change pressure · end state · 适用 B/S/D/U obligations"]
+    N61_IMPLEMENTATION_GATE["显式实施 gate<br/>action intent · target · finite outcome · effect authority"]
+    N62_PROTECTED_WITNESSES["受保护的 behavior + structure witnesses<br/>selected entry · failures · state effects · falsifier"]
+    N63_COHERENT_INCREMENT["Coherent increment<br/>核对 inputs · 实现 · 检查 diff · 保留 owner work"]
+    N64_VERIFY_CHALLENGE["验证并挑战当前 source<br/>behavior · structure · delivery · 最强反例"]
+    N65_CHECKPOINT["Verified checkpoint<br/>保留安全 increment · 原目标与剩余 obligations 持续可见"]
+    N66_RECOVERY["续做前重新核对<br/>absent · complete · partial · concurrent · unobservable effects"]
+    N67_WHOLE_GOAL["完整目标 B/S/D/U 验收<br/>每个适用 obligation 在请求层得到证明"]
+    N68_OPERATION_OUTPUT["Complete · checkpoint · blocked · recovered<br/>changes · effects · evidence · unknowns · final identity"]
   end
 
   subgraph R50_EXTERNAL["外部证明边界"]
@@ -159,6 +186,38 @@ flowchart TB
   N41_STOPPING -->|抵达固定点| N42_DECISION_OUTPUT
   %% E30_OUTPUT_TO_REPIN
   N42_DECISION_OUTPUT -->|闭合回执| N43_END_REPIN
+  %% E31_STOP_TO_PLAN
+  N41_STOPPING -->|请求 Plan| N44_PLAN_CONTRACT
+  %% E32_PLAN_TO_REPIN
+  N44_PLAN_CONTRACT -->|不修改并闭合| N43_END_REPIN
+  %% E33_STOP_TO_OUTCOME
+  N41_STOPPING -. 显式 Operate 请求 .-> N60_AGREED_OUTCOME
+  %% E34_OUTCOME_TO_GATE
+  N60_AGREED_OUTCOME -. 匹配 effect authority .-> N61_IMPLEMENTATION_GATE
+  %% E35_GATE_TO_WITNESSES
+  N61_IMPLEMENTATION_GATE -->|授权已确认| N62_PROTECTED_WITNESSES
+  %% E36_WITNESSES_TO_INCREMENT
+  N62_PROTECTED_WITNESSES -->|保护并实现| N63_COHERENT_INCREMENT
+  %% E37_INCREMENT_TO_VERIFY
+  N63_COHERENT_INCREMENT -->|检查 diff 与 effects| N64_VERIFY_CHALLENGE
+  %% E38_VERIFY_TO_CHECKPOINT
+  N64_VERIFY_CHALLENGE -->|当前证据| N65_CHECKPOINT
+  %% E39_CHECKPOINT_FEEDBACK
+  N65_CHECKPOINT == 剩余 obligations ==> N60_AGREED_OUTCOME
+  %% E40_CHECKPOINT_TO_GOAL
+  N65_CHECKPOINT -->|所有 increments 已就绪| N67_WHOLE_GOAL
+  %% E41_CHECKPOINT_TO_RECOVERY
+  N65_CHECKPOINT -. 中断或 drift .-> N66_RECOVERY
+  %% E42_RECOVERY_FEEDBACK
+  N66_RECOVERY == 核对并续做 ==> N60_AGREED_OUTCOME
+  %% E43_GOAL_TO_OUTPUT
+  N67_WHOLE_GOAL -->|适用 obligations 通过| N68_OPERATION_OUTPUT
+  %% E44_OPERATION_TO_REPIN
+  N68_OPERATION_OUTPUT -->|在已证明层闭合| N43_END_REPIN
+  %% E45_GOAL_TO_EXTERNAL
+  N67_WHOLE_GOAL -. 纳入 external layer .-> N50_OBSERVATION_GATE
+  %% E46_EXTERNAL_TO_GOAL
+  N51_EXTERNAL_STATE -. 已观察完成证据 .-> N67_WHOLE_GOAL
 ```
 
 Renderer-neutral model、稳定 semantic IDs、evidence mapping 与两份 Mermaid source
@@ -176,7 +235,10 @@ contract 位于 [`docs/architecture/`](docs/architecture/README.zh-CN.md)。
 - assertion 可能没有覆盖其声称 contract 的 false-green gate；
 - stable/development、legacy/current、local/remote 或 source/deployment 路径的归属与
   选择不明确；
-- repo claim 所依赖的决定性 external state 尚未被观察。
+- repo claim 所依赖的决定性 external state 尚未被观察；
+- live ownership 与 delivery path 不清楚时，为有限 extraction、consolidation、replacement
+  或 retirement 制定计划；
+- 用户明确要求实施并验证结构结果，而不是在 audit handoff 处停止。
 
 ## 什么时候不要使用
 
@@ -184,14 +246,15 @@ contract 位于 [`docs/architecture/`](docs/architecture/README.zh-CN.md)。
 
 - review 一个 diff、commit、branch 或 pull request；
 - verify 一个已经明确的 claim；
-- 修复一个已知 bug；
+- 修复一个不涉及 repository topology 的孤立已知 bug；
 - 做 license、security、compliance 或 dependency 专项审计；
 - generic repo hygiene 或 documentation cleanup；
 - 在没有 repo-state decision 与明确授权时，检查或改变 live host、account、database、
   browser、deployment 或 owner-controlled surface。
 
-审计默认只读。它不授权 fixes、commits、pushes、installation、deployment、remote
-writes、account actions 或 publication。
+Audit 默认只读，Plan 不编辑目标。Operate 需要显式 implementation request，且仍受真实
+authority 限制。Local source authorization 不等于公共 API 删除、durable-data mutation、
+install、deployment、push、account action 或 release。
 
 ## 从公开 release 安装
 
@@ -207,9 +270,9 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
 安装得到的是 derived local copy；canonical source 仍然是本 repo。成功 install 只证明
 installed bytes，Codex 在后续 turn 的 discovery 是另一个必须单独观察的边界。
 
-`v0.1.0` tag 保持 immutable，并保留 release 时的正式全名 display metadata。当前
-`main` 使用 **Repo Truth Audit** 作为 human-facing display name；Skill slug 在明确发布
-identity migration 前保持不变。
+`v0.1.0` tag 保持 immutable，并保留 release 时的正式全名 display metadata。当前 `main`
+承载尚未发布的 `0.2.0` Audit / Plan / Operate source candidate；安装 `v0.1.0` 不会获得这些
+候选能力。Skill slug 保持不变。
 
 ## 从 source checkout 验证或安装
 
@@ -221,6 +284,7 @@ python3 scripts/validate_architecture.py
 python3 scripts/validate_repository.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/selftest.py
+python3 evals/operation-lab/run_operation_lab.py
 python3 scripts/install_skill.py
 ```
 
@@ -235,13 +299,31 @@ Local installer 会拒绝覆盖内容不同的目标。只有在明确升级时�
 
 ## 调用方式
 
+Audit（只读）：
+
 ```text
 在我重新进入这个 repo 前，用 $repository-operational-truth-audit 重建它当前的
 operational truth。重点看哪些 entrypoints 与 artifacts 仍然 live、现有 tests 真正证明了
 什么，以及哪些 unknowns 会改变 re-entry decision。保持只读。
 ```
 
-一次完整运行绑定：
+Plan（不编辑目标）：
+
+```text
+用 $repository-operational-truth-audit 规划怎样把 formatting 与 durable writes 分开。
+追踪实际 CLI 与 distribution selector，保留当前行为，定义 structure/delivery 验收，
+并在编辑前停止。
+```
+
+Operate（显式实施授权）：
+
+```text
+用 $repository-operational-truth-audit 把 formatting 与 durable writes 分开，保留当前
+CLI/config 兼容，切换真实 distribution，退役旧 writer，并验证 behavior、structure、
+delivery 以及下一次 formatter-only extension。实施本地 source change。
+```
+
+一次完整 engagement 绑定：
 
 ```text
 一个 owner decision + 一个精确 repository snapshot
@@ -250,8 +332,11 @@ operational truth。重点看哪些 entrypoints 与 artifacts 仍然 live、现�
   -> generated / built / packaged / projected artifacts
   -> installed 或 deployed identity（仅在得到新鲜观察时）
   -> challenge、adjudication 与显式 external unknowns
-  -> decision fixed point
-  -> bounded answer + verification receipt + end re-pin
+  -> Audit answer、Plan boundary 或显式 Operate authority
+  -> protected behavior + structural witnesses
+  -> coherent increments + checkpoint/recovery loop
+  -> behavior / structure / delivery / usefulness acceptance
+  -> bounded result + proof limits + end re-pin
 ```
 
 Tests、receipts、status documents 与 successful commands 都只是 evidence surfaces。
@@ -284,29 +369,42 @@ claim 或 live surface
 “这个 repo 没有任何缺陷”，而是 pinned object 内没有留下 material contradiction 或
 decision-critical unknown。
 
+Operate 把 checkpoint 与完整目标完成分开，并核对适用 obligations：
+
+- **behavior：**outputs、failures、compatibility 与 state effects；
+- **structure：**ownership/dependency change 与真实 retirement，而不是 facade；
+- **delivery：**请求覆盖的 manifest、package、installation 或 runtime selector；
+- **usefulness：**具体 change pressure 得到缓解，并在可行时用小型 follow-on change 证明。
+
+Terminal status 为 complete、checkpoint、blocked 或 aborted/recovered。Tests 通过、worker
+completion、byte match 或 state JSON field 都不能单独把一种 status 升级成另一种。
+
 ## Repository map
 
 | Path | Authority |
 | --- | --- |
-| `skills/repository-operational-truth-audit/` | Canonical Skill source 与 UI metadata |
+| `skills/repository-operational-truth-audit/` | Canonical Skill router、progressive Audit/Operate/Recovery references、可选 cited-byte helper 与 UI metadata |
 | `docs/product-spec.md` | 完整 accepted product 与 acceptance contract |
-| `docs/evidence-model.md` | Proof、finding、unknown、clean-result 与 stopping semantics |
+| `docs/evidence-model.md` | Proof、finding、checkpoint/completion、recovery 与 stopping semantics |
 | `docs/architecture/` | Renderer-neutral model 与 README 中分开的中英文 Mermaid contract |
-| `docs/forward-behavior-receipt.md` | Public-safe independent forward-test evidence 与明确 limitations |
+| `docs/forward-behavior-receipt.md` | 历史 public-safe `v0.1.0` Audit-only forward evidence |
+| `docs/forward-0.2.0-receipt.md` | Public-safe `0.2.0` Audit regression 与 two-increment Operate evidence |
 | `docs/research-basis.md` | Public-safe research provenance 与 source decisions |
 | `docs/current-state.md` | 易变化的 source、Git、install、CI 与 publication truth |
-| `evals/cases/` | Controlled behavior cases；expected artifacts 仅供 evaluator 使用 |
+| `evals/cases/` | Controlled 只读 behavior cases；expected artifacts 仅供 evaluator 使用 |
+| `evals/operation-lab/` | Deterministic known-patch rehearsal 与 anti-false-completion controls；不是 model evidence |
 | `scripts/` | Architecture/repository validation、fixture self-test 与 transactional install |
-| `tests/` | Repository、architecture、fixture 与 installer regressions |
+| `tests/` | Repository、architecture、evidence-helper、operation-lab、fixture 与 installer regressions |
 
 中文文档使用 `.zh-CN.md` 后缀，与英文版保持同一文档边界，不把两种语言机械混排进
 一个文件。
 
 ## 验证边界
 
-Ordinary validation 不调用 target model，也不执行 network、browser、account、
-deployment 或 live-system mutation。CI workflow 在 macOS 与 Ubuntu 上分别使用
-Python 3.10 和 3.13。
+Ordinary validation 与受控 operation lab 不调用 target model，也不执行 network、browser、
+account、deployment 或 live-system mutation。Lab 只对 synthetic subject 应用 evaluator
+编写的已知 edits，不证明 autonomous model performance。CI workflow 在 macOS 与 Ubuntu 上
+分别使用 Python 3.10 和 3.13。
 
 Skill Field Lab 可以在 disposable workspaces 中评估 controlled cases，但它只是可选
 evaluation infrastructure，不是 runtime dependency，也不拥有这个 Skill。

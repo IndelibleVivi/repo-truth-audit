@@ -4,6 +4,23 @@
 
 ## Unreleased
 
+- 将 `0.2.0` source candidate 从 read-only-only audit 扩展为一套 progressive
+  Audit / Plan / Operate 产品：Audit 继续默认只读，Plan 不修改目标，Operate 只有在显式、
+  有限的 implementation request 与匹配 effect authority 存在时才写入。
+- 把 runtime 拆为精简 router 与 progressive Audit、Operation、Recovery references；加入
+  verified checkpoint 与 whole-goal completion 的区分、Behavior/Structure/Delivery/
+  Usefulness 验收，以及诚实的 Complete / Checkpoint / Blocked / Recovered terminal states。
+- 加入可选 POSIX cited-byte continuity helper；unsupported host fail closed，并明确不声称
+  semantic、Git-snapshot、atomicity 或 authorization proof。
+- 加入 16 项 deterministic operation-lab tests，覆盖 two-increment synthetic refactor、
+  selected delivery artifact、facade/unused/stale false completion、重复 state effect、
+  drift、selective recovery、无关 owner work 保留与 formatter-only usefulness probe。
+  Lab 不调用 target model，也不冒充 forward model evidence。
+- 加入独立的 public-safe `0.2.0` forward receipt，记录 focused routing、fresh read-only
+  Audit regression 与真实模型在同一 session 中完成的 two-increment Operate run，并在
+  checkpoint 与 whole-goal B/S/D/U boundaries 由主线程独立验收。
+- 加入双语 Audit / Plan / Operate mode controls 与 public contract 更新；将 source `VERSION`
+  (`0.2.0`) 与 immutable public `v0.1.0` release identity 解耦。
 - 为 tracked text files 保留 LF，并按规范化后的 POSIX relative path 排序 Skill digest
   entries，使普通 Windows source checkout 具备 deterministic behavior；同时为两个
   boundaries 加入 regression coverage。
@@ -16,9 +33,9 @@
   dirty/clean result examples。
 - 将当前 `main` 的 active architecture surface 替换为分别嵌入 English 与简体中文
   README 的原生 Mermaid diagrams。
-- 保留 renderer-neutral model、六个 region、全部 stable node IDs、全部 30 条 semantic
-  edges，以及 read-only、external-proof 与 fixed-point boundaries；同时从当前 source
-  退役 fixed-canvas SVG renderer。
+- 将 renderer-neutral model 扩展为七个 region、31 个 stable nodes 与 46 条 semantic
+  edges；保留原 audit topology，并加入可见 Plan exit、implementation gate、checkpoint/
+  recovery loop、B/S/D/U whole-goal acceptance 与 external-proof boundary。
 - 加入精确 Mermaid topology、localized edge-label、connector-kind、theme-neutrality 与
   locale-parity validation。
 

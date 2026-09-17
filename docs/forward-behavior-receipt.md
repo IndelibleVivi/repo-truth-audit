@@ -6,6 +6,11 @@ Observed: 2026-08-30
 
 Status: **PASS within the evidence boundary below**
 
+> **Historical evidence boundary:** this receipt applies only to the
+> `v0.1.0` Audit-only runtime identified below. The `0.2.0` source candidate
+> changes the runtime contract to Audit / Plan / Operate and is not validated
+> by these runs. See [`current-state.md`](current-state.md) for the active gate.
+
 This is a public-safe projection of two independent, read-only forward runs. It
 records the tested decisions, material results, proof layers, and limitations;
 it is not a transcript or a replacement for the evaluator artifacts.
@@ -22,8 +27,9 @@ it is not a transcript or a replacement for the evaluator artifacts.
 | Observed model | **UNKNOWN** |
 | Observed reasoning effort | **UNKNOWN** |
 
-The later **Repo Truth Audit** display-name change affects UI metadata, not the
-runtime `SKILL.md` whose digest is recorded here.
+The later **Repo Truth Audit** display-name change alone affected UI metadata,
+not the runtime `SKILL.md` whose digest is recorded here. The subsequent
+`0.2.0` runtime expansion does change `SKILL.md` and lies outside this receipt.
 
 ## Case results
 

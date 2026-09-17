@@ -53,7 +53,9 @@ Last reconciled: 2026-09-17
   integrated through PR #2 merge commit
   `22b8007908b0feb8681794bdb449667a1d35d9ff` without changing the declared
   Skill payload. Nothing is released, installed, activated, or owner-accepted
-  on an external target.
+  on an external target. The paired reader maps, plain-language B/S/D/U key,
+  and their architecture validation are integrated on public `main` at
+  `19a679b79f3e71f0eb44a11c6278a966b924f208`; exact-commit CI is recorded below.
 - Deterministic validation: maintainer-local PASS on 2026-09-17 for repository
   and publication contracts, Audit / Plan / Operate architecture and localized
   Mermaid parity, all 85 unit tests (including six documentation-navigation and
@@ -77,11 +79,13 @@ Last reconciled: 2026-09-17
 - Recovery: private continuity and cited evidence are recovery aids, not
   authority. Resume must re-pin the exact repository state, inspect preserved
   owner work, rerun changed witnesses, and distinguish Recovered from Complete.
-- Git and CI: PR #2 is merged into public `main` at
-  `22b8007908b0feb8681794bdb449667a1d35d9ff`. GitHub Actions run
-  [`35222725782`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35222725782)
-  passed all four Ubuntu/macOS and Python 3.10/3.13 jobs for that exact merge
-  commit.
+- Git and CI: the reader-map integration is public at
+  `19a679b79f3e71f0eb44a11c6278a966b924f208`. GitHub Actions run
+  [`35234645623`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35234645623)
+  passed all four Ubuntu/macOS and Python 3.10/3.13 jobs for that exact commit.
+  The public repository is still `main`-default and public; its About description
+  was updated and read back as “Evidence-led repository diagnosis and verified
+  structural change for Codex.”
 - Local install: the previously verified installed copy is immutable `v0.1.0`.
   The `0.2.0` source candidate has not been installed or activated, and
   installed/source equality is not claimed.

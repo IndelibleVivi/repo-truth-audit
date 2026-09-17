@@ -46,7 +46,9 @@
   documentation 已通过 PR #2 merge commit
   `22b8007908b0feb8681794bdb449667a1d35d9ff` 集成，且未改变 declared Skill payload。
   本 snapshot 不把它描述为已 release、install、activate 或在 external target 上
-  owner-accepted。
+  owner-accepted。成对 reader map、B/S/D/U 人话图例与相应 architecture validation 已在
+  public `main` 的 `19a679b79f3e71f0eb44a11c6278a966b924f208` 集成；对应 exact-commit
+  CI 见下文。
 - Deterministic validation：2026-09-17 maintainer-local PASS，覆盖 repository 与
   publication contracts、Audit / Plan / Operate architecture 与 localized Mermaid
   parity、全部 85 个 unit tests（其中六项覆盖 documentation navigation 与 release
@@ -67,10 +69,12 @@
 - Recovery：private continuity 与 cited evidence 只是 recovery aids，不是 authority。
   Resume 必须重新 pin exact repository state、检查被保留的 owner work、重跑受影响
   witnesses，并把 Recovered 与 Complete 分开。
-- Git 与 CI：PR #2 已在
-  `22b8007908b0feb8681794bdb449667a1d35d9ff` merge 到 public `main`；GitHub Actions
-  run [`35222725782`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35222725782)
-  已为该 exact merge commit 通过 Ubuntu/macOS 与 Python 3.10/3.13 全部四个 jobs。
+- Git 与 CI：reader-map integration 已公开于
+  `19a679b79f3e71f0eb44a11c6278a966b924f208`。GitHub Actions run
+  [`35234645623`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35234645623)
+  已为该 exact commit 通过 Ubuntu／macOS 与 Python 3.10／3.13 全部四个 jobs。公开仓库仍为
+  public、默认分支仍为 `main`；GitHub About 已更新并回读为 “Evidence-led repository
+  diagnosis and verified structural change for Codex.”
 - Local install：此前验证过的 installed copy 是 immutable `v0.1.0`。`0.2.0` source
   candidate 尚未 install 或 activate，也不声称 installed/source equality。
 - Next-turn Codex discovery：尚未观察 `0.2.0`。

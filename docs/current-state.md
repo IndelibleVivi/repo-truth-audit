@@ -42,10 +42,11 @@ Last reconciled: 2026-09-17
 - Source integration: the original `0.2.0` core integration is public at
   `8b66e8d6608fdbb2ba2ab7908644a5c32061133a`. A pre-release review of later
   `main` at `f84b22c...` found that all-files hashing/copying could include an
-  ignored `.pyc`; the current checkout contains the declared-payload correction
-  and clean-payload forward follow-up. This snapshot does not yet claim a pushed
-  correction commit or CI result. Nothing is released, installed, activated,
-  or owner-accepted on an external target.
+  ignored `.pyc`. The declared-payload correction and clean-payload forward
+  follow-up are public at
+  `2259892e8a9af918b131d7ec7a9a5d70949684f3`, with the matching CI result
+  recorded below. Nothing is released, installed, activated, or owner-accepted
+  on an external target.
 - Deterministic validation: maintainer-local PASS on 2026-09-17 for repository
   and publication contracts, Audit / Plan / Operate architecture and localized
   Mermaid parity, all 79 unit tests, six Audit fixtures, the two-increment
@@ -68,12 +69,11 @@ Last reconciled: 2026-09-17
 - Recovery: private continuity and cited evidence are recovery aids, not
   authority. Resume must re-pin the exact repository state, inspect preserved
   owner work, rerun changed witnesses, and distinguish Recovered from Complete.
-- Git and CI: the last freshly read public `main` before this correction was
-  `f84b22c97e49ff5eb0e777f28fb3c7cb11f0ce4b`; GitHub Actions run
-  [`35198731808`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35198731808)
-  passed all four Ubuntu/macOS and Python 3.10/3.13 jobs there. The payload
-  correction and follow-up receipt are not described here as pushed or CI-green
-  until a later status reconciliation observes those gates.
+- Git and CI: correction commit
+  `2259892e8a9af918b131d7ec7a9a5d70949684f3` is pushed to public `main`.
+  GitHub Actions run
+  [`35214605650`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35214605650)
+  passed all four Ubuntu/macOS and Python 3.10/3.13 jobs for that exact commit.
 - Local install: the previously verified installed copy is immutable `v0.1.0`.
   The `0.2.0` source candidate has not been installed or activated, and
   installed/source equality is not claimed.

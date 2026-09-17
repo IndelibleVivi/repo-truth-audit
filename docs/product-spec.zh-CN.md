@@ -241,6 +241,12 @@ release。
 backup；receipt 记录 source Git identity、dirty state、version 与 source/installed digests。
 Installation 不证明下一 turn discovery 或 activation。
 
+一份显式 declared file set 同时定义 source validation、digest、staging、installed comparison
+与 receipt 所使用的 installable Skill payload。已知 local runtime residue 不属于这份 payload，
+也不会进入 staging；其他 undeclared source 或 executable entry 必须 fail closed。因此
+matching source/installed digest 只证明 declared payload 相等，不证明 activation，也不证明
+installed tree 中没有后续运行生成的 residue。
+
 Commit、push、CI、annotated tag、GitHub Release、tagged install、installed bytes、runtime
 discovery 与 owner acceptance 是不同 gate。本规范不授权 installation、release、deployment、
 account mutation 或 publication。

@@ -59,6 +59,7 @@ publication, and other materially new effects still require matching authority.
 | `docs/forward-behavior-receipt.md` | Public-safe independent forward-test evidence, observed proof layers, and explicit trace limits |
 | `docs/current-state.md` | Volatile source, Git, validation, installation, and publication state |
 | `evals/cases/` and `evals/operation-lab/` | Controlled behavior subjects and deterministic operation rehearsal; expected artifacts and known patches are evaluator evidence, not runtime instructions |
+| `scripts/common.py::SKILL_PAYLOAD_FILES` | Exact installable Skill payload shared by source validation, digesting, staging, installed comparison, and receipts |
 | `scripts/` and `tests/` | Deterministic validation and local installation behavior |
 | installed Skill directory and install receipt | Installed bytes only; not source authority or proof of next-turn discovery |
 
@@ -104,6 +105,10 @@ research packets and raw target-repository evidence outside this Git tree.
   fields as evidence or workflow aids, never as authorization, OS isolation,
   exactly-once execution, or universal rollback guarantees.
 - Expected eval artifacts must not leak into the Skill prompt or fixture.
+- Keep one explicit Skill payload definition. Known runtime residue may be
+  excluded from payload identity and staging; any other undeclared source or
+  executable entry must fail validation, and unexpected installed content must
+  not satisfy the unchanged check.
 - Architecture diagrams must answer the accepted evidence-led change reader
   question across Audit, Plan, and Operate; do not replace them with a banner,
   abstract concept, or Skill packaging view.
@@ -153,7 +158,9 @@ dependency or start a target-model invocation during ordinary validation.
 Local installation is a separate reversible gate. Use
 `scripts/install_skill.py`; verify the install receipt and installed digest
 afterward. Installed bytes do not prove that a running Codex turn has discovered
-the Skill.
+the Skill. Validation, hashing, staging, installed comparison, and receipts must
+all use `SKILL_PAYLOAD_FILES`; do not restore whole-directory `copytree` or
+all-files hashing that can absorb ignored runtime cache into the package.
 
 The canonical public remote is
 `https://github.com/IndelibleVivi/repo-truth-audit`.

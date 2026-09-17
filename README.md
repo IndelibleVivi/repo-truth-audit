@@ -308,14 +308,20 @@ python3 scripts/install_skill.py
 
 Tracked text files are pinned to LF by `.gitattributes`, so an ordinary Windows
 checkout preserves the exact license hashes used by repository validation.
-Skill digests sort entries by normalized POSIX relative path, which keeps
-source/install receipts comparable across Windows, macOS, and Linux. The
-fixture self-test still requires Bash; this does not make every operator
+The installable Skill is one explicit eight-file payload shared by validation,
+digesting, staging, installed comparison, and receipts. Digests sort its
+normalized POSIX relative paths, which keeps source/install receipts comparable
+across Windows, macOS, and Linux. Known runtime residue such as `__pycache__`,
+bytecode, and `.DS_Store` is not payload and is never staged; any other
+undeclared source entry fails validation instead of disappearing from identity.
+The fixture self-test still requires Bash; this does not make every operator
 command shell-native on Windows.
 
 The local installer refuses to overwrite a conflicting target. Use
 `--replace` only for an intentional upgrade; the replaced copy is preserved in
-a recoverable backup and the installer writes a provenance receipt.
+a recoverable backup and the installer writes a provenance receipt. Known
+post-install runtime residue does not change the declared payload identity, but
+an undeclared source or executable file makes the installed target different.
 
 ## Invoke it
 
@@ -414,12 +420,12 @@ itself upgrade one status to another.
 | `docs/evidence-model.md` | Proof, finding, checkpoint/completion, recovery, and stopping semantics |
 | `docs/architecture/` | Renderer-neutral architecture model and the paired English/Chinese README Mermaid contract |
 | `docs/forward-behavior-receipt.md` | Historical public-safe `v0.1.0` Audit-only forward evidence |
-| `docs/forward-0.2.0-receipt.md` | Public-safe `0.2.0` Audit regression and two-increment Operate evidence |
+| `docs/forward-0.2.0-receipt.md` | Public-safe `0.2.0` Audit, payload reconciliation, actual Plan, and Operate forward evidence |
 | `docs/research-basis.md` | Public-safe research provenance and source decisions |
 | `docs/current-state.md` | Volatile source, Git, install, CI, and publication truth |
 | `evals/cases/` | Controlled read-only behavior cases with evaluator-only expected artifacts |
 | `evals/operation-lab/` | Deterministic known-patch rehearsal and anti-false-completion controls; not model evidence |
-| `scripts/` | Architecture/repository validation, fixture self-test, and transactional install |
+| `scripts/` | Architecture/repository validation, declared Skill payload, fixture self-test, and transactional install |
 | `tests/` | Repository, architecture, evidence-helper, operation-lab, fixture, and installer regressions |
 
 Chinese editions use the `.zh-CN.md` suffix and preserve the same document

@@ -10,7 +10,13 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from common import SKILL_DIR, SKILL_NAME, directory_digest, read_version  # noqa: E402
+from common import (  # noqa: E402
+    SKILL_DIR,
+    SKILL_NAME,
+    SKILL_PAYLOAD_FILES,
+    directory_digest,
+    read_version,
+)
 from validate_repository import EXPECTED_CASES, validate  # noqa: E402
 
 
@@ -27,8 +33,8 @@ class RepositoryContractTests(unittest.TestCase):
         self.assertNotIn("--ref v0.2.0", readme)
 
     def test_skill_digest_is_stable_and_nonempty(self) -> None:
-        first = directory_digest(SKILL_DIR)
-        second = directory_digest(SKILL_DIR)
+        first = directory_digest(SKILL_DIR, SKILL_PAYLOAD_FILES)
+        second = directory_digest(SKILL_DIR, SKILL_PAYLOAD_FILES)
         self.assertEqual(first, second)
         self.assertEqual(len(first), 64)
 
@@ -50,7 +56,9 @@ class RepositoryContractTests(unittest.TestCase):
                 expected.update(payloads[relative])
                 expected.update(b"\0")
 
-            self.assertEqual(directory_digest(root), expected.hexdigest())
+            self.assertEqual(
+                directory_digest(root, ["B.txt", "a.txt"]), expected.hexdigest()
+            )
 
     def test_all_expected_cases_have_matching_ids(self) -> None:
         for case_id in EXPECTED_CASES:

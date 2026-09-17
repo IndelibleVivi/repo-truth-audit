@@ -10,7 +10,16 @@ import re
 import sys
 from typing import Iterable
 
-from common import ROOT, SKILL_DIR, SKILL_NAME, file_sha256, read_version
+from common import (
+    ROOT,
+    SKILL_DIR,
+    SKILL_NAME,
+    SKILL_PAYLOAD_FILES,
+    directory_digest,
+    file_sha256,
+    read_version,
+    undeclared_payload_entries,
+)
 
 SUL_SHA256 = "c6d0dde0f0463c800e542d7d64237ffef37f43b17004975a558604f17b5d1af1"
 PUBLIC_RELEASE_VERSION = "0.1.0"
@@ -159,6 +168,16 @@ def validate() -> list[str]:
     for required in sorted(REQUIRED_FILES):
         if not (ROOT / required).is_file():
             errors.append(f"missing required file: {required}")
+
+    for relative in undeclared_payload_entries(SKILL_DIR):
+        errors.append(
+            f"Skill source contains an undeclared payload entry: "
+            f"skills/{SKILL_NAME}/{relative}"
+        )
+    try:
+        directory_digest(SKILL_DIR, SKILL_PAYLOAD_FILES)
+    except (OSError, ValueError) as exc:
+        errors.append(f"Skill source payload is not hashable: {exc}")
 
     version = read("VERSION", errors).strip()
     if not SEMVER.fullmatch(version):

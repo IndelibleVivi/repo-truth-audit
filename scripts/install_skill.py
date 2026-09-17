@@ -17,10 +17,14 @@ from common import (
     ROOT,
     SKILL_DIR,
     SKILL_NAME,
+    SKILL_PAYLOAD_FILES,
     atomic_write_json,
+    copy_payload,
     directory_digest,
     git_identity,
+    payload_matches,
     read_version,
+    undeclared_payload_entries,
 )
 from validate_repository import validate
 
@@ -40,11 +44,17 @@ def install(destination: Path, *, replace: bool = False) -> dict[str, Any]:
     destination = destination.expanduser().resolve()
     destination.mkdir(parents=True, exist_ok=True)
     target = destination / SKILL_NAME
-    source_digest = directory_digest(SKILL_DIR)
+    undeclared = undeclared_payload_entries(SKILL_DIR)
+    if undeclared:
+        raise RuntimeError(
+            "canonical Skill source contains undeclared payload entries: "
+            + ", ".join(undeclared)
+        )
+    source_digest = directory_digest(SKILL_DIR, SKILL_PAYLOAD_FILES)
 
     if target.exists() and not target.is_dir():
         raise RuntimeError(f"install target exists and is not a directory: {target}")
-    if target.is_dir() and directory_digest(target) == source_digest:
+    if payload_matches(SKILL_DIR, target):
         return {
             "status": "unchanged",
             "target": str(target),
@@ -63,10 +73,12 @@ def install(destination: Path, *, replace: bool = False) -> dict[str, Any]:
     backup: Path | None = None
     installed = False
     try:
-        shutil.copytree(SKILL_DIR, staged_skill)
-        staged_digest = directory_digest(staged_skill)
+        copy_payload(SKILL_DIR, staged_skill, SKILL_PAYLOAD_FILES)
+        staged_digest = directory_digest(staged_skill, SKILL_PAYLOAD_FILES)
         if staged_digest != source_digest:
             raise RuntimeError("staged Skill digest does not match canonical source")
+        if undeclared_payload_entries(staged_skill):
+            raise RuntimeError("staged Skill payload contains undeclared entries")
 
         if target.exists():
             stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
@@ -77,8 +89,8 @@ def install(destination: Path, *, replace: bool = False) -> dict[str, Any]:
 
         os.replace(staged_skill, target)
         installed = True
-        installed_digest = directory_digest(target)
-        if installed_digest != source_digest:
+        installed_digest = directory_digest(target, SKILL_PAYLOAD_FILES)
+        if installed_digest != source_digest or undeclared_payload_entries(target):
             raise RuntimeError("installed Skill digest does not match canonical source")
 
         source_git = git_identity(ROOT)

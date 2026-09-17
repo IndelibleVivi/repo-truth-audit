@@ -4,6 +4,13 @@
 
 ## Unreleased
 
+- 为 validation、hashing、staging、installed comparison 与 receipt 定义一份精确的
+  eight-file Skill payload。Runtime bytecode/cache residue 不再改变或进入 install；
+  undeclared source/executable file 会 fail closed，installer regression 也会对比 clean 与
+  post-import payload。
+- 将原始 `0.2.0` forward directory digest 对账到一个被复制的 `.pyc` residue file，保留
+  历史 receipt 而不改写旧事实；随后新增 clean-payload forward evidence，覆盖一次真正
+  mutation-free Plan 与一次 single-request whole-goal Operate，并独立验收 B/S/D/U。
 - 将 `0.2.0` source candidate 从 read-only-only audit 扩展为一套 progressive
   Audit / Plan / Operate 产品：Audit 继续默认只读，Plan 不修改目标，Operate 只有在显式、
   有限的 implementation request 与匹配 effect authority 存在时才写入。

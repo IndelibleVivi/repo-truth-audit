@@ -279,6 +279,13 @@ bytes, preserves a recoverable backup, and records source Git identity, dirty
 state, version, and source/installed digests. Installation does not prove
 next-turn discovery or activation.
 
+One explicit declared file set defines the installable Skill payload for source
+validation, digesting, staging, installed comparison, and receipts. Known local
+runtime residue is outside that payload and is never staged; other undeclared
+source or executable entries fail closed. A matching source/installed digest
+therefore proves equality of the declared payload only, not activation or the
+absence of post-install runtime residue.
+
 Commit, push, CI, annotated tag, GitHub Release, tagged install, installed bytes,
 runtime discovery, and owner acceptance are separate gates. This specification
 does not authorize installation, release, deployment, account mutation, or

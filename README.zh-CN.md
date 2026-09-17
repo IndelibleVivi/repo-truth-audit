@@ -289,13 +289,18 @@ python3 scripts/install_skill.py
 ```
 
 Tracked text files 通过 `.gitattributes` 固定为 LF，因此普通 Windows checkout 也会
-保留 repository validation 使用的精确 license hashes。Skill digest 按规范化后的
-POSIX relative path 排序，使 Windows、macOS 与 Linux 的 source/install receipts
-可互相比对。Fixture self-test 仍然需要 Bash；这并不表示全部 operator commands 已在
-Windows 上变成 shell-native。
+保留 repository validation 使用的精确 license hashes。可安装 Skill 是一份显式声明的
+eight-file payload；repository validation、digest、staging、installed comparison 与 receipt
+共同使用这一个定义。Digest 按规范化后的 POSIX relative path 排序，使 Windows、macOS 与
+Linux 的 source/install receipts 可互相比对。`__pycache__`、bytecode 与 `.DS_Store` 等已知
+runtime residue 不属于 payload，也不会进入 staging；其他 undeclared source entry 会让
+validation 失败，而不是从 identity 中悄悄消失。Fixture self-test 仍然需要 Bash；这并不表示
+全部 operator commands 已在 Windows 上变成 shell-native。
 
 Local installer 会拒绝覆盖内容不同的目标。只有在明确升级时才使用 `--replace`；被替换
-的 copy 会保留在可恢复 backup 中，installer 同时写入 provenance receipt。
+的 copy 会保留在可恢复 backup 中，installer 同时写入 provenance receipt。已安装树中的
+已知 post-install runtime residue 不改变 declared payload identity；undeclared source 或
+executable file 则会使 installed target 被判定为不同内容。
 
 ## 调用方式
 
@@ -388,12 +393,12 @@ completion、byte match 或 state JSON field 都不能单独把一种 status 升
 | `docs/evidence-model.md` | Proof、finding、checkpoint/completion、recovery 与 stopping semantics |
 | `docs/architecture/` | Renderer-neutral model 与 README 中分开的中英文 Mermaid contract |
 | `docs/forward-behavior-receipt.md` | 历史 public-safe `v0.1.0` Audit-only forward evidence |
-| `docs/forward-0.2.0-receipt.md` | Public-safe `0.2.0` Audit regression 与 two-increment Operate evidence |
+| `docs/forward-0.2.0-receipt.md` | Public-safe `0.2.0` Audit、payload 对账、实际 Plan 与 Operate forward evidence |
 | `docs/research-basis.md` | Public-safe research provenance 与 source decisions |
 | `docs/current-state.md` | 易变化的 source、Git、install、CI 与 publication truth |
 | `evals/cases/` | Controlled 只读 behavior cases；expected artifacts 仅供 evaluator 使用 |
 | `evals/operation-lab/` | Deterministic known-patch rehearsal 与 anti-false-completion controls；不是 model evidence |
-| `scripts/` | Architecture/repository validation、fixture self-test 与 transactional install |
+| `scripts/` | Architecture/repository validation、declared Skill payload、fixture self-test 与 transactional install |
 | `tests/` | Repository、architecture、evidence-helper、operation-lab、fixture 与 installer regressions |
 
 中文文档使用 `.zh-CN.md` 后缀，与英文版保持同一文档边界，不把两种语言机械混排进

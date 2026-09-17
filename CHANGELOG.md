@@ -4,6 +4,14 @@
 
 ## Unreleased
 
+- Defined one exact eight-file Skill payload for validation, hashing, staging,
+  installed comparison, and receipts. Runtime bytecode/cache residue no longer
+  changes or enters an install; undeclared source/executable files fail closed,
+  and installer regressions now compare clean versus post-import payloads.
+- Reconciled the original `0.2.0` forward directory digest to one copied `.pyc`
+  residue file without rewriting the historical receipt, then added clean-payload
+  forward evidence for an actual mutation-free Plan and a one-request whole-goal
+  Operate run independently checked through B/S/D/U.
 - Expanded the `0.2.0` source candidate from a read-only-only audit into one
   progressive Audit / Plan / Operate product while preserving Audit as the
   default, keeping Plan mutation-free, and requiring an explicit finite

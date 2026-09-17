@@ -4,18 +4,20 @@
 
 观察日期：2026-09-17
 
-状态：**在下述 synthetic source 与 declared-artifact boundary 内 PASS**
+状态：**在下述 synthetic source 与 declared-artifact boundary 内 PASS；historical
+payload residue 已完成对账，clean-payload follow-up 通过**
 
 这份 public-safe receipt 记录了针对尚未发布的 `0.2.0` source candidate 所做的 focused
-routing check、fresh Audit regression 与 two-increment Operate run。它补充、但不改写历史
+routing check、fresh Audit regression 与 two-increment Operate run，并追加 clean-payload
+Plan 与 one-request Operate 检查。它补充、但不改写历史
 [`v0.1.0` Audit-only receipt](forward-behavior-receipt.zh-CN.md)。
 
-## Subject identity
+## 原始 forward subject identity
 
 | Field | 记录值 |
 | --- | --- |
 | Source candidate | `0.2.0`；从以 Git HEAD `d2aebdfd82200d48dff7df4c1a8a0a9e72e1b85b` 为基底的 canonical dirty worktree 复制 |
-| Complete Skill directory digest | `8dc185ad608e1a94af3c37206f92c540b8be519cbd88c7238b9622dabc8b210b` |
+| Historical copied Skill directory digest | `8dc185ad608e1a94af3c37206f92c540b8be519cbd88c7238b9622dabc8b210b` |
 | Runtime `SKILL.md` digest | `810b8756aa53174a3c11420f50871017aac0884b5eba9884b7d66f35448b5916` |
 | Adapter-reported model | `commandcode/deepseek-v4.1-flash` |
 | Provider identity | **未验证**——adapter report 不是 provider attestation |
@@ -101,6 +103,67 @@ recovery 或 general selective rollback 的证据。
 Unrelated untracked owner file 保持 byte-identical。模型没有 commit、push、install、使用
 network，也没有修改 canonical source tree。
 
+## Pre-release payload identity 对账
+
+后续针对 public `main`
+`f84b22c97e49ff5eb0e777f28fb3c7cb11f0ce4b` 的 review 复现了一处 packaging defect：普通
+import-based tests 会生成被忽略的
+`scripts/__pycache__/check_evidence.cpython-313.pyc`，而旧 digest 与 installer 会复制 Skill
+directory 下的全部文件。
+
+保留的原始 forward-session evidence 闭合了先前的 digest gap：
+
+- disposable operation repo 中的 `find` 显示，被复制 Skill 包含八个 declared source files，
+  以及且仅有上述 `.pyc`；
+- `git ls-files` 显示该 `.pyc` 被一起复制并 commit 进 synthetic subject，因此它属于
+  historical directory bytes；
+- 所以 historical `8dc185ad...` 仍准确标识当时接受评测的 directory，但它不是 clean、
+  distributable payload identity；
+- 八个 clean Git payload files 的 digest 为
+  `80863c9796a2364d99f43cd81d6f53c8d6059f0c303061d18362ba683411a29f`；
+  `SKILL.md` 仍为
+  `810b8756aa53174a3c11420f50871017aac0884b5eba9884b7d66f35448b5916`。
+
+Installer 现在由一份显式 eight-file definition 统一管理 validation、digest、staging、
+installed comparison 与 receipt。已知 runtime residue 不再被复制或 hash；其他 undeclared
+source 或 executable file 会 fail closed。旧 receipt value 没有被 clean value 替换。
+
+## Clean-payload Plan 与 one-request Operate follow-up
+
+两个新的 disposable Git subjects 都只收到八个 declared files；clean payload digest 均为
+`80863c...`，没有 undeclared entry。
+
+### 实际 Plan run
+
+一个 model turn 收到真正的 planning-only request，而不是 classification question。它追踪了
+selected `legacy` entry、mixed state writer 与 declared bundle，并给出 finite end state、
+preserved/deliberately changed behavior、coherent increments、protected witnesses、B/S/D/U
+acceptance、recovery、stop conditions 与 authority boundary，最终在 response 中返回计划。
+
+Coordinator read-back 证实 ending Git snapshot 与起点相同：tracked content 保持 clean，
+pre-existing untracked `owner-notes.txt` 仍是唯一 status entry，也没有产生 bytecode/cache。
+
+### Single-request whole-goal Operate run
+
+一个 model turn 只接收一次完整 finite outcome。没有第二条人工 “continue” prompt，它建立
+fresh behavior/state witnesses，拆分 formatting 与 durable writer，切换真实 delivery selector，
+对齐 declared bundle，删除 `legacy.py`，挑战 false completion，重建 artifact，并把 whole goal
+报告为 complete，而不是停在 extraction checkpoint。
+
+Worker 的 18-case comparison 观察到 exit code、stdout、stderr 与 state bytes 完全一致；
+coordinator-side checks 随后独立确认：
+
+| Dimension | Clean-payload follow-up observation |
+| --- | --- |
+| Behavior | 七个固定 evaluator success/failure/state cases 通过 selected entry。 |
+| Structure | `runner.py` 组合 `formatting.py` 与唯一 writer `storage.py`；`legacy.py` 与 legacy import 均不存在。 |
+| Delivery | 只依赖 `bundle.json` 重建的 artifact 通过相同固定 cases 与 structural checks。 |
+| Usefulness | 第二份 copy 只修改 `formatting.py` 就加入 `compact`；selected-entry behavior 与 exactly-once state 仍正确。 |
+
+`owner-notes.txt`、`entry.py`、`AGENTS.md` 与 copied Skill 均保持 unchanged；没有文件被 stage
+或 commit。这里观察到的是该 finite synthetic shape 上的 one-request whole-goal follow-through，
+不是 general autonomous refactoring reliability。
+
 ## Evidence boundary
 
 - 这些是针对 public synthetic repository shapes 的真实 model turns，不是 deterministic
@@ -109,6 +172,10 @@ network，也没有修改 canonical source tree。
 - 已观察从 verified checkpoint 继续同一 session。Process crash、lost context、stale cited
   bytes、selective rollback 与 OS-enforced sandbox behavior 没有在本次 forward run 中被
   运行；它们仍只有 deterministic lab 或 contract evidence。
+- Clean-payload follow-up 新增一次真实 Plan turn 与一次真实 Operate turn；后者无需第二条
+  prompt 就完成 finite whole goal。它没有检验 arbitrary planning/refactoring、durable-data
+  migration 或 crash resumption；这个小型 subject 也不证明大型任务中能够稳定自主选择多个
+  checkpoints。
 - 未运行 private repository、production data、installed copy、activated runtime、GitHub
   CI、public release 或 owner-operated target。
 - 本次运行只证明这些 fixtures 上实际观察到的 routing、Audit 与 Operate outcomes；不证明

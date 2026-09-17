@@ -25,6 +25,14 @@ Evidence at one layer does not prove the next. Source can be correct while a
 package is stale; an installed copy can be correct but inactive; deployment can
 succeed without owner acceptance.
 
+Package identity is defined over the declared payload, not every incidental
+file below a working or installed directory. Equality of declared-payload
+digests proves that selected file set, executable bits, and bytes match. It does
+not prove that no runtime cache exists beside an installed payload, that the
+Skill was discovered, or that it was activated. Conversely, an all-files digest
+can be reproducibly wrong for delivery when ignored runtime residue is copied
+and hashed on both sides.
+
 ## Audit finding trace
 
 A reportable finding connects:

@@ -23,6 +23,12 @@ worker return 或 history query，都必须支持一个已命名的 Audit 决策
 一层证据不会证明下一层。Source 可以正确而 package 过期；installed copy 可以正确但未
 activated；deployment 可以成功但没有 owner acceptance。
 
+Package identity 应定义在 declared payload 上，而不是 working 或 installed directory 下每个
+偶然出现的文件。Declared-payload digest 相等只证明被选择的 file set、executable bits 与
+bytes 相等；不证明 installed payload 旁边没有 runtime cache，也不证明 Skill 已被 discovered
+或 activated。相反，如果 ignored runtime residue 在两侧一起被复制和 hash，一个 all-files
+digest 即使稳定相等，也可能给出错误的 delivery 结论。
+
 ## Audit finding trace
 
 可报告 finding 必须连接：

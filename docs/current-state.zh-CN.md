@@ -29,35 +29,44 @@
   `skills/repository-operational-truth-audit/scripts/check_evidence.py` 只检查 cited-byte
   continuity，不证明 semantics、Git snapshot identity、atomicity、authorization 或
   completion。
+- Installable payload：`scripts/common.py::SKILL_PAYLOAD_FILES` 声明 validation、digest、
+  staging、installed comparison 与 receipt 共用的八个 runtime files。已知 cache/bytecode
+  residue 不属于 payload；其他 undeclared source entry 会 fail closed。Clean payload digest
+  为 `80863c9796a2364d99f43cd81d6f53c8d6059f0c303061d18362ba683411a29f`。
 
 ## Gates
 
-- Source integration：`0.2.0` candidate 已在已记录的 repository、synthetic-fixture 与
-  declared-artifact boundaries 内达到 source-complete。Substantive commit
-  `8b66e8d6608fdbb2ba2ab7908644a5c32061133a` 已 push 到 canonical public `main`；
-  这里仍不把它描述为已 release、install、activate 或在 external target 上 owner-accepted。
+- Source integration：原始 `0.2.0` core integration 已公开于
+  `8b66e8d6608fdbb2ba2ab7908644a5c32061133a`。后续对 `f84b22c...` public `main` 的
+  pre-release review 发现 all-files hashing/copying 会吸收 ignored `.pyc`；当前 checkout
+  已包含 declared-payload correction 与 clean-payload forward follow-up。本 snapshot 尚不
+  声称 correction commit 已 push 或 CI 已通过，也不把它描述为已 release、install、activate
+  或在 external target 上 owner-accepted。
 - Deterministic validation：2026-09-17 maintainer-local PASS，覆盖 repository 与
   publication contracts、Audit / Plan / Operate architecture 与 localized Mermaid
-  parity、全部 73 个 unit tests、六个 Audit fixtures、two-increment operation lab、
+  parity、全部 79 个 unit tests、六个 Audit fixtures、two-increment operation lab、
   system Skill validation 与 Git whitespace validation。Operation lab 自身报告 target-model
   invocations 为 0，并与独立 forward receipt 保持分层。
 - Forward behavior：成对的
   [`forward-behavior-receipt`](forward-behavior-receipt.zh-CN.md) 只属于历史
   `v0.1.0` Audit-only evidence。独立的
-  [`0.2.0` receipt](forward-0.2.0-receipt.zh-CN.md) 记录 focused target-model routing、
-  fresh Audit regression 与同一 session 内的 two-increment Operate run；主线程 evaluator
-  在 checkpoint 与 whole-goal B/S/D/U boundaries 均已验收。它只在 receipt 所述
-  synthetic source 与 declared-artifact scope 内关闭 source-candidate forward gate。
+  [`0.2.0` receipt](forward-0.2.0-receipt.zh-CN.md) 保留 focused target-model routing、
+  fresh Audit regression 与 same-session two-increment Operate run；现在也把旧 directory
+  digest 对账到一个被复制的 `.pyc`，并新增 clean eight-file payload 上的实际 mutation-free
+  Plan 与 one-request whole-goal Operate evidence。主线程只在 receipt 所述 synthetic source
+  与 declared-artifact scope 内接受 B/S/D/U。
 - Checkpoint 与 completion：一个 coherent verified increment 可以在 whole goal 尚未完成
   时安全保留。Whole-goal completion 必须通过约定的 Behavior、Structure、Delivery、
   Usefulness witnesses；green source test 或 helper 文件存在都不够。
 - Recovery：private continuity 与 cited evidence 只是 recovery aids，不是 authority。
   Resume 必须重新 pin exact repository state、检查被保留的 owner work、重跑受影响
   witnesses，并把 Recovered 与 Complete 分开。
-- Git 与 CI：substantive commit `8b66e8d...` 已发布到 canonical `main`。GitHub Actions
-  run [`35198597031`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35198597031)
-  已在该 exact SHA 通过 Ubuntu/macOS 与 Python 3.10/3.13 的全部四个 jobs。后续
-  status-only reconciliation 可以移动 `main`，但不改变 substantive source identity。
+- Git 与 CI：本 correction 开始前最后 fresh read 的 public `main` 是
+  `f84b22c97e49ff5eb0e777f28fb3c7cb11f0ce4b`；GitHub Actions run
+  [`35198731808`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35198731808)
+  已在该 SHA 通过 Ubuntu/macOS 与 Python 3.10/3.13 全部四个 jobs。在后续 status
+  reconciliation 新鲜观察之前，这里不把 payload correction 与 follow-up receipt 描述为已
+  push 或 CI-green。
 - Local install：此前验证过的 installed copy 是 immutable `v0.1.0`。`0.2.0` source
   candidate 尚未 install 或 activate，也不声称 installed/source equality。
 - Next-turn Codex discovery：尚未观察 `0.2.0`。

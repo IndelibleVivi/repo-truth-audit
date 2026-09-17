@@ -11,9 +11,9 @@ Last reconciled: 2026-09-17
   **Repository Operational Truth Audit**; public repository slug
   `repo-truth-audit`; Skill invocation slug
   `repository-operational-truth-audit` remains unchanged.
-- Version split: the canonical worktree contains the unreleased `0.2.0` source
-  candidate. The latest public release remains immutable `v0.1.0`; no `0.2.0`
-  tag or GitHub Release exists.
+- Version split: the canonical worktree contains the validated `0.2.0` release
+  target. The latest public release remains immutable `v0.1.0`; no `0.2.0` tag
+  or GitHub Release exists yet.
 - Scope: one progressive Audit / Plan / Operate engagement. Audit is the
   read-only default, Plan terminates before mutation, and Operate requires an
   explicit finite implementation request plus matching effect authority.
@@ -22,7 +22,7 @@ Last reconciled: 2026-09-17
   methods under `references/`.
 - Architecture: `docs/architecture/audit-runtime-model.json` remains the
   semantic authority. Paired day-first SVG reader maps now lead each localized
-  README with the owner-approved compressed view; the collapsible Mermaid maps
+  README with the owner-approved compressed view; the default-visible Mermaid maps
   retain all seven regions, 31 stable nodes, and 46 semantic edges. The original
   Audit topology remains intact and feeds a visible Plan exit or guarded
   Operate loop.
@@ -52,10 +52,11 @@ Last reconciled: 2026-09-17
   release-preparation documentation is
   integrated through PR #2 merge commit
   `22b8007908b0feb8681794bdb449667a1d35d9ff` without changing the declared
-  Skill payload. Nothing is released, installed, activated, or owner-accepted
-  on an external target. The paired reader maps, plain-language B/S/D/U key,
-  and their architecture validation are integrated on public `main` at
-  `19a679b79f3e71f0eb44a11c6278a966b924f208`; exact-commit CI is recorded below.
+  Skill payload. The paired reader maps and B/S/D/U key landed at `19a679b...`;
+  Linux-font overflow was corrected at `c23dce842624e1e2ffc128db828174b88b2c09b1`,
+  and the complete Mermaid map became default-visible at
+  `57ed5c830d7624372e967d72402ae83feafb29e3`. None of those reader-facing
+  changes changed the declared Skill payload.
 - Deterministic validation: maintainer-local PASS on 2026-09-17 for repository
   and publication contracts, Audit / Plan / Operate architecture and localized
   Mermaid parity, all 85 unit tests (including six documentation-navigation and
@@ -79,23 +80,30 @@ Last reconciled: 2026-09-17
 - Recovery: private continuity and cited evidence are recovery aids, not
   authority. Resume must re-pin the exact repository state, inspect preserved
   owner work, rerun changed witnesses, and distinguish Recovered from Complete.
-- Git and CI: the reader-map integration is public at
-  `19a679b79f3e71f0eb44a11c6278a966b924f208`. GitHub Actions run
-  [`35234645623`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35234645623)
+- Git and CI: the pre-release reader surfaces are public through
+  `57ed5c830d7624372e967d72402ae83feafb29e3`. GitHub Actions run
+  [`35239646950`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35239646950)
   passed all four Ubuntu/macOS and Python 3.10/3.13 jobs for that exact commit.
   The public repository is still `main`-default and public; its About description
   was updated and read back as “Evidence-led repository diagnosis and verified
   structural change for Codex.”
-- Local install: the previously verified installed copy is immutable `v0.1.0`.
-  The `0.2.0` source candidate has not been installed or activated, and
-  installed/source equality is not claimed.
-- Next-turn Codex discovery: not observed for `0.2.0`.
+- Local install: the daily copy was transactionally upgraded from `v0.1.0` with
+  a retained backup. Its receipt records version `0.2.0`, clean source commit
+  `c23dce842624e1e2ffc128db828174b88b2c09b1`, and equal source/installed digest
+  `80863c9796a2364d99f43cd81d6f53c8d6059f0c303061d18362ba683411a29f` with no
+  undeclared installed files. Later commits changed reader documentation only.
+- Next-turn Codex discovery: three fresh tasks loaded the installed Skill from
+  the default user Skill root. Audit remained read-only and closed a selected-
+  artifact contradiction; Plan produced an implementation-ready plan without
+  mutation; one-request Operate completed the finite synthetic refactor, retired
+  the legacy owner, and passed five behavior/structure/delivery/usefulness checks.
+  Coordinator-side selected-entry and exactly-once state checks also passed.
 - Release publication: GitHub Release `v0.1.0` remains the latest public
-  release. Source-candidate work does not authorize or imply a new release.
-  A future authorized `0.2.0` release must update the pinned README install ref
-  and `PUBLIC_RELEASE_VERSION` together. The release-note draft assertion stays
-  active through the pre-publication candidate and changes only after the
-  tag/Release/public-install read-back gate succeeds.
+  release. Publication is authorized and the `v0.2.0` ref plus
+  `PUBLIC_RELEASE_VERSION` now identify the release target, but the install
+  command is explicitly unavailable until the tag exists. The release-note draft
+  assertion stays active through this pre-publication commit and changes only
+  after the tag/Release/public-install read-back gate succeeds.
 - Licensing: functional materials are source-available under SUL-1.0;
   standalone documentation, the renderer-neutral architecture model, the
   paired SVG reader maps, and the Mermaid diagrams embedded in the README files

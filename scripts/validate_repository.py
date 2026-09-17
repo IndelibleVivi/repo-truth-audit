@@ -22,7 +22,7 @@ from common import (
 )
 
 SUL_SHA256 = "c6d0dde0f0463c800e542d7d64237ffef37f43b17004975a558604f17b5d1af1"
-PUBLIC_RELEASE_VERSION = "0.1.0"
+PUBLIC_RELEASE_VERSION = "0.2.0"
 SEMVER = re.compile(r"[0-9]+\.[0-9]+\.[0-9]+\Z")
 
 PUBLIC_DOC_PAIRS = {

@@ -11,13 +11,13 @@ A Codex Skill for repository re-entry, migrations, consolidation and legacy-path
 retirement. Use it for a focused engineering intervention; finish the agreed job
 and return to normal development. It need not run on every task or every commit.
 
-Current source candidate: `0.2.0` — Audit / Plan / Operate.
+Release target: `0.2.0` — Audit / Plan / Operate.
 Latest public release: `v0.1.0` — Audit only.
 
-**The stable install below still installs v0.1.0.** To evaluate the unreleased
-0.2.0 candidate or upgrade an existing local copy, use the separate
-[source-checkout instructions](#validate-or-install-from-a-source-checkout).
-No v0.2.0 release or local activation is implied by this README.
+**The pinned v0.2.0 command below is the release target and becomes usable only
+after its tag and GitHub Release are published and verified.** Until then, use
+the separate [source-checkout instructions](#validate-or-install-from-a-source-checkout).
+This pre-publication README does not claim a v0.2.0 release or host activation.
 
 [Using the Skill](docs/usage.md) · [Current evidence](docs/forward-0.2.0-receipt.md) ·
 [Release preparation](docs/release-preparation.md) · [Draft v0.2.0 notes](docs/releases/v0.2.0.md)
@@ -112,17 +112,19 @@ before more writes. It does not autonomously resume in the background.
 
 ## Install from the public release
 
-For a **fresh Audit-only v0.1.0 installation**, use the system installer:
+After the `v0.2.0` tag and GitHub Release are published and verified, use the
+system installer for a fresh Audit / Plan / Operate installation:
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo IndelibleVivi/repo-truth-audit \
   --path skills/repository-operational-truth-audit \
-  --ref v0.1.0
+  --ref v0.2.0
 ```
 
-This is the published release, not the new candidate. For an existing conflicting
-copy, use the deliberate upgrade path below rather than deleting installed files.
+Before publication this exact command intentionally has no public tag to resolve.
+For an existing conflicting copy, use the deliberate upgrade path below rather
+than deleting installed files.
 
 ## Validate or install from a source checkout
 

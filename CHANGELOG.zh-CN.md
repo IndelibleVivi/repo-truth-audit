@@ -4,8 +4,10 @@
 
 ## Unreleased
 
+## 0.2.0 — 2026-09-17
+
 - 在完整 README Mermaid topology 之前加入成对、day-first 的 English 与简体中文 SVG
-  reader map；把 B/S/D/U 解释为四个普通 completion questions，并为新 overview artifacts
+  reader map，两种视图均默认可见；把 B/S/D/U 解释为四个普通 completion questions，并为新 overview artifacts
   加入 accessibility、safety、embed-order 与 locale-parity validation。
 - 为 validation、hashing、staging、installed comparison 与 receipt 定义一份精确的
   eight-file Skill payload。Runtime bytecode/cache residue 不再改变或进入 install；

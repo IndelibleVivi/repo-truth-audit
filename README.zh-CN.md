@@ -9,11 +9,12 @@
 这是面向仓库接手、迁移、整合和旧路径退役的 Codex Skill。它适合一次有明确目标的工程介入，
 完成后回到普通开发；无需每个任务、每次提交都调用。
 
-当前源码候选：`0.2.0` — Audit / Plan / Operate。
+发布目标：`0.2.0` — Audit / Plan / Operate。
 最新公开版本：`v0.1.0` — 仅 Audit。
 
-**下方稳定安装命令仍会安装 v0.1.0。** 试用尚未发布的 0.2.0 或升级已有副本，请看独立的
-[源码验证与安装说明](#从-source-checkout-验证或安装)。README 不代表新版已经发布或在本机生效。
+**下方固定到 v0.2.0 的命令是发布目标，只有 tag 与 GitHub Release 发布并核验后才可用。**
+在此之前，请用独立的[源码验证与安装说明](#从-source-checkout-验证或安装)。这份发布前 README
+不声称 v0.2.0 已经发布或在宿主中生效。
 
 [使用指南](docs/usage.zh-CN.md) · [现有验证证据](docs/forward-0.2.0-receipt.zh-CN.md) ·
 [发布准备](docs/release-preparation.zh-CN.md) · [v0.2.0 发布说明草稿](docs/releases/v0.2.0.zh-CN.md)
@@ -84,16 +85,17 @@ Audit、Plan、Operate 是行为模式，无需记忆一套命令。
 
 ## 从公开 release 安装
 
-**首次安装已发布的 Audit-only v0.1.0**，使用系统安装器：
+`v0.2.0` tag 与 GitHub Release 发布并核验后，首次安装 Audit / Plan / Operate 使用：
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo IndelibleVivi/repo-truth-audit \
   --path skills/repository-operational-truth-audit \
-  --ref v0.1.0
+  --ref v0.2.0
 ```
 
-这是稳定发布版，不包含新候选能力。已有副本发生冲突时，使用下面的显式升级流程，不要先删除安装目录。
+发布前，这条命令会因为公开 tag 尚不存在而有意无法解析。已有副本发生冲突时，使用下面的显式升级
+流程，不要先删除安装目录。
 
 ## 从 source checkout 验证或安装
 

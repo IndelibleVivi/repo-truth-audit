@@ -4,8 +4,11 @@
 
 ## Unreleased
 
+## 0.2.0 — 2026-09-17
+
 - Added paired, day-first English and Simplified Chinese SVG reader maps before
-  the complete README Mermaid topology; documented B/S/D/U as four plain
+  the complete README Mermaid topology, with both views visible by default;
+  documented B/S/D/U as four plain
   completion questions and added accessibility, safety, embed-order, and
   locale-parity validation for the new overview artifacts.
 - Defined one exact eight-file Skill payload for validation, hashing, staging,

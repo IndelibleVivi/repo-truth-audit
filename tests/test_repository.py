@@ -27,10 +27,10 @@ class RepositoryContractTests(unittest.TestCase):
     def test_source_version_is_stable_semver(self) -> None:
         self.assertRegex(read_version(), r"^[0-9]+\.[0-9]+\.[0-9]+$")
 
-    def test_public_release_install_ref_remains_immutable(self) -> None:
+    def test_release_target_install_ref_is_pinned_and_old_ref_is_absent(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("--ref v0.1.0", readme)
-        self.assertNotIn("--ref v0.2.0", readme)
+        self.assertIn("--ref v0.2.0", readme)
+        self.assertNotIn("--ref v0.1.0", readme)
 
     def test_skill_digest_is_stable_and_nonempty(self) -> None:
         first = directory_digest(SKILL_DIR, SKILL_PAYLOAD_FILES)

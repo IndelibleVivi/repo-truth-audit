@@ -234,8 +234,10 @@ def observe(root: Path, records: Any, mode: str, state_is_directory: bool = Fals
                                 timeout=5, check=False)
         if len(result.stdout) + len(result.stderr) > 32768:
             raise AssertionError('synthetic probe exceeded expected output')
-        return {'exit': result.returncode, 'stdout': result.stdout.decode('utf-8'),
-                'stderr': result.stderr.decode('utf-8'),
+        # Child text-mode stdio emits CRLF on Windows; the lab contract is LF.
+        stdout = result.stdout.decode('utf-8').replace('\r\n', '\n')
+        stderr = result.stderr.decode('utf-8').replace('\r\n', '\n')
+        return {'exit': result.returncode, 'stdout': stdout, 'stderr': stderr,
                 'state': '<directory>' if state_path.is_dir() else state_path.read_text(encoding='utf-8')}
 
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 from pathlib import Path
 import sys
 import tempfile
@@ -229,7 +230,10 @@ class InstallSkillTests(unittest.TestCase):
             build_payload_tree(root)
             link = root / "NOTICE.md"
             link.unlink()
-            link.symlink_to(SKILL_DIR / "NOTICE.md")
+            try:
+                link.symlink_to(SKILL_DIR / "NOTICE.md")
+            except (NotImplementedError, OSError) as exc:
+                self.skipTest(f"symlink creation unavailable on this host: {exc}")
             with self.assertRaisesRegex(ValueError, "symlink"):
                 directory_digest(root, SKILL_PAYLOAD_FILES)
             with self.assertRaisesRegex(ValueError, "symlink"):
@@ -243,8 +247,11 @@ class InstallSkillTests(unittest.TestCase):
             build_payload_tree(root)
             stray = root / "scripts" / "helper.py"
             stray.write_text("x = 1\n", encoding="utf-8")
-            stray.chmod(0o755)
-            self.assertTrue(stray.stat().st_mode & 0o111)
+            if os.name == "posix":
+                # Executable bits are a POSIX concept; the undeclared-entry
+                # rejection below is platform-neutral.
+                stray.chmod(0o755)
+                self.assertTrue(stray.stat().st_mode & 0o111)
             self.assertEqual(undeclared_payload_entries(root), ["scripts/helper.py"])
             with tempfile.TemporaryDirectory() as dest_raw:
                 with mock.patch.object(install_skill, "SKILL_DIR", root):

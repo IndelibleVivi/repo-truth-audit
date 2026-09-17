@@ -32,9 +32,10 @@
 
 ## Gates
 
-- Source integration：`0.2.0` candidate 已在 canonical worktree 内达到 source-complete，
-  边界限于已记录的 repository、synthetic-fixture 与 declared-artifact layers；这里尚不把
-  它描述为已 commit、push、release、install、activate 或 owner-accepted。
+- Source integration：`0.2.0` candidate 已在已记录的 repository、synthetic-fixture 与
+  declared-artifact boundaries 内达到 source-complete。Substantive commit
+  `8b66e8d6608fdbb2ba2ab7908644a5c32061133a` 已 push 到 canonical public `main`；
+  这里仍不把它描述为已 release、install、activate 或在 external target 上 owner-accepted。
 - Deterministic validation：2026-09-17 maintainer-local PASS，覆盖 repository 与
   publication contracts、Audit / Plan / Operate architecture 与 localized Mermaid
   parity、全部 73 个 unit tests、六个 Audit fixtures、two-increment operation lab、
@@ -53,8 +54,10 @@
 - Recovery：private continuity 与 cited evidence 只是 recovery aids，不是 authority。
   Resume 必须重新 pin exact repository state、检查被保留的 owner work、重跑受影响
   witnesses，并把 Recovered 与 Complete 分开。
-- Git 与 CI：当前 public `main` 及既有 CI 结果都早于本轮 `0.2.0` candidate。在其 exact
-  commit 被 push 并实际观察前，不为 candidate 声称 current-main CI。
+- Git 与 CI：substantive commit `8b66e8d...` 已发布到 canonical `main`。GitHub Actions
+  run [`35198597031`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35198597031)
+  已在该 exact SHA 通过 Ubuntu/macOS 与 Python 3.10/3.13 的全部四个 jobs。后续
+  status-only reconciliation 可以移动 `main`，但不改变 substantive source identity。
 - Local install：此前验证过的 installed copy 是 immutable `v0.1.0`。`0.2.0` source
   candidate 尚未 install 或 activate，也不声称 installed/source equality。
 - Next-turn Codex discovery：尚未观察 `0.2.0`。

@@ -34,10 +34,11 @@ Last reconciled: 2026-09-17
 
 ## Gates
 
-- Source integration: the `0.2.0` candidate is source-complete in the canonical
-  worktree within the documented repository, synthetic-fixture, and declared-
-  artifact boundaries. It is not yet represented here as committed, pushed,
-  released, installed, activated, or owner-accepted.
+- Source integration: the `0.2.0` candidate is source-complete within the
+  documented repository, synthetic-fixture, and declared-artifact boundaries.
+  Substantive commit `8b66e8d6608fdbb2ba2ab7908644a5c32061133a` is pushed to the
+  canonical public `main`. It is not released, installed, activated, or
+  owner-accepted on an external target.
 - Deterministic validation: maintainer-local PASS on 2026-09-17 for repository
   and publication contracts, Audit / Plan / Operate architecture and localized
   Mermaid parity, all 73 unit tests, six Audit fixtures, the two-increment
@@ -59,9 +60,12 @@ Last reconciled: 2026-09-17
 - Recovery: private continuity and cited evidence are recovery aids, not
   authority. Resume must re-pin the exact repository state, inspect preserved
   owner work, rerun changed witnesses, and distinguish Recovered from Complete.
-- Git and CI: current public `main` and its prior CI results predate this
-  `0.2.0` candidate. No current-main CI claim is made for the candidate until
-  its exact commit is pushed and observed.
+- Git and CI: substantive commit `8b66e8d...` is published on canonical `main`.
+  GitHub Actions run
+  [`35198597031`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35198597031)
+  passed all four Ubuntu/macOS and Python 3.10/3.13 jobs on that exact SHA. A
+  later status-only reconciliation may move `main` without changing the
+  substantive source identity.
 - Local install: the previously verified installed copy is immutable `v0.1.0`.
   The `0.2.0` source candidate has not been installed or activated, and
   installed/source equality is not claimed.

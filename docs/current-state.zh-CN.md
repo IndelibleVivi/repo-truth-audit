@@ -44,9 +44,10 @@
   描述为已 release、install、activate 或在 external target 上 owner-accepted。
 - Deterministic validation：2026-09-17 maintainer-local PASS，覆盖 repository 与
   publication contracts、Audit / Plan / Operate architecture 与 localized Mermaid
-  parity、全部 79 个 unit tests、六个 Audit fixtures、two-increment operation lab、
-  system Skill validation 与 Git whitespace validation。Operation lab 自身报告 target-model
-  invocations 为 0，并与独立 forward receipt 保持分层。
+  parity、全部 85 个 unit tests（其中六项覆盖 documentation navigation 与 release
+  preparation）、六个 Audit fixtures、two-increment operation lab、system Skill validation
+  与 Git whitespace validation。Operation lab 自身报告 target-model invocations 为 0，
+  并与独立 forward receipt 保持分层。
 - Forward behavior：成对的
   [`forward-behavior-receipt`](forward-behavior-receipt.zh-CN.md) 只属于历史
   `v0.1.0` Audit-only evidence。独立的
@@ -71,7 +72,8 @@
 - Release publication：GitHub Release `v0.1.0` 仍是最新 public release。Source-candidate
   工作不授权、也不暗示一个新 release。
   未来若获得 `0.2.0` release 授权，必须同时更新 README pinned install ref 与
-  `PUBLIC_RELEASE_VERSION`；当前 tests 有意在 release gate 打开前拒绝该变化。
+  `PUBLIC_RELEASE_VERSION`。Release-note draft assertion 在 pre-publication candidate 阶段
+  持续生效，只有 tag／Release／public install 回读 gate 通过后才迁移。
 - Licensing：functional materials 按 SUL-1.0 source-available；standalone
   documentation、renderer-neutral architecture model，以及嵌入 README 的 Mermaid
   diagrams 按 `LICENSING.zh-CN.md` 使用 CC BY-NC-SA 4.0。权威是 path map，而不是

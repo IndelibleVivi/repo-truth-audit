@@ -73,12 +73,12 @@ class DocumentationTests(unittest.TestCase):
             refs = re.findall(r"--ref\s+(v[0-9]+\.[0-9]+\.[0-9]+)", content)
             self.assertEqual(refs, [f"v{PUBLIC_RELEASE_VERSION}"], relative)
 
-    def test_publication_draft_remains_explicit_until_release_transition(self) -> None:
-        # Preparation documents may remain historical after publication. Before
-        # 0.2.0 becomes the declared public release, they cannot claim release.
-        if tuple(map(int, PUBLIC_RELEASE_VERSION.split("."))) < (0, 2, 0):
-            for relative in PAIRS[3]:
-                self.assertIn("DRAFT — NOT PUBLISHED", (ROOT / relative).read_text(encoding="utf-8"))
+    def test_publication_draft_remains_explicit_until_post_publication_transition(self) -> None:
+        # The deterministic repository cannot observe GitHub publication. Keep
+        # this guard active even when PUBLIC_RELEASE_VERSION becomes the release
+        # target; migrate it only after tag/Release read-back has succeeded.
+        for relative in PAIRS[3]:
+            self.assertIn("DRAFT — NOT PUBLISHED", (ROOT / relative).read_text(encoding="utf-8"))
         for relative in PAIRS[2]:
             self.assertIn("PREPARATION ONLY", (ROOT / relative).read_text(encoding="utf-8"))
 
@@ -91,6 +91,16 @@ class DocumentationTests(unittest.TestCase):
                     self.assertNotIn("scripts/install_skill.py", block)
             self.assertTrue(any("--dest \"$preview_root\"" in block for block in blocks))
             self.assertTrue(any("scripts/install_skill.py --replace" in block for block in blocks))
+
+        for relative in PAIRS[2]:
+            content = (ROOT / relative).read_text(encoding="utf-8")
+            preview_blocks = [
+                block
+                for block in re.findall(r"```bash\n(.*?)\n```", content, flags=re.S)
+                if "scripts/install_skill.py --dest" in block
+            ]
+            self.assertEqual(len(preview_blocks), 1, relative)
+            self.assertIn("PYTHONDONTWRITEBYTECODE=1", preview_blocks[0], relative)
 
 
 if __name__ == "__main__":

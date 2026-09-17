@@ -101,6 +101,7 @@ REQUIRED_FILES = {
     "skills/repository-operational-truth-audit/references/recovery.md",
     "skills/repository-operational-truth-audit/scripts/check_evidence.py",
     "tests/test_cited_evidence.py",
+    "tests/test_documentation.py",
     "tests/test_fixtures.py",
     "tests/test_architecture.py",
     "tests/test_install_skill.py",

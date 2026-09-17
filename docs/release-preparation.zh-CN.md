@@ -34,11 +34,12 @@ git diff --check
 
 ## 2. 检查安装，再检查真实宿主使用
 
-在已验证工作区中，先把真实安装器指向一次性 Skill 根目录。写入限于选中的临时安装目标：
+在已验证工作区中，先把真实安装器指向一次性 Skill 根目录。禁用 Python bytecode 写入，确保该命令只写
+选中的临时安装目标：
 
 ```bash
 preview_root=$(mktemp -d)
-python3 scripts/install_skill.py --dest "$preview_root"
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/install_skill.py --dest "$preview_root"
 ```
 
 核对实际文件集合、源码与安装摘要、安装回执。替换流程也先在一次性空间验证：旧副本保留为备份，
@@ -65,8 +66,10 @@ current-state、changelog 和发布说明。现有仓库测试写死了旧稳定
 保留引用不一致时失败的检查，不能删断言换绿色。历史 v0.1.0 文件和 tag 保留，不全仓替换旧版本字符串。
 
 在新 tag／Release 尚不存在时，把新引用写作 **release target（发布目标）**，说明安装命令仅在发布后
-可用，并与当前已发布事实区分。说明草稿可以准备完成，不能提前写“已发布”。`VERSION` 已标记 0.2.0
-源码候选，但它不能证明公开版本存在。
+可用，并与当前已发布事实区分。说明草稿可以准备完成，不能提前写“已发布”。即使
+`PUBLIC_RELEASE_VERSION` 已改为 `0.2.0`，仍须保留 `DRAFT — NOT PUBLISHED` 标记及其无条件
+repository assertion；修改该常量不能证明发布。`VERSION` 已标记 0.2.0 源码候选，同样不能证明
+公开版本存在。
 
 一并检查 GitHub About。建议描述：
 
@@ -85,6 +88,9 @@ GitHub Release。tag 应解析到该提交，Release 应引用该 tag。不移�
 
 发布后，回读公开仓库与默认分支、tag 指向、Release 状态和 CI，再从公开 tag 安装到一次性目录，
 核对声明载荷与测试候选一致，确认 README、许可和 Skill 路径公开可读。仅有 API 成功响应不够。
+
+只有完成上述发布与回读 gate 后，status-only commit 才可把 release-note draft marker 改为已观察到的
+published 状态，并迁移对应 repository assertion；该 test change 不得提前进入 pre-publication candidate。
 
 状态文档只填写实际观察到的事实。后续状态提交可以推进 main，无需移动已经发布的 tag。
 待完成或失败的步骤继续如实保留。公开安装成功不等于宿主已激活，合成测试也不能泛化为生产能力。

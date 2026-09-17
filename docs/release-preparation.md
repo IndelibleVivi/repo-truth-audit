@@ -44,11 +44,12 @@ not a claim of newly tested model behavior.
 ## 2. Check installation, then actual host use
 
 From the validated checkout, first exercise the real installer in a disposable
-Skill root. This writes only to the chosen disposable installation destination:
+Skill root. Disable Python bytecode writes so this command writes only to the
+chosen disposable installation destination:
 
 ```bash
 preview_root=$(mktemp -d)
-python3 scripts/install_skill.py --dest "$preview_root"
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/install_skill.py --dest "$preview_root"
 ```
 
 Check the exact installed file set, source/installed digest equality and receipt.
@@ -89,8 +90,11 @@ tags; do not globally replace every occurrence of the old version.
 Before the tag/Release exists, label the new ref as the **release target** and
 state that the install command becomes usable only after publication. Keep
 current publication facts separate from that target. Draft notes may be ready
-without claiming "published". The package's `VERSION` already identifies the
-0.2.0 source candidate; it does not prove a public release exists.
+without claiming "published". Keep the `DRAFT — NOT PUBLISHED` marker and its
+unconditional repository assertion intact even after `PUBLIC_RELEASE_VERSION`
+becomes `0.2.0`; changing that constant does not prove publication. The
+package's `VERSION` already identifies the 0.2.0 source candidate and likewise
+does not prove a public release exists.
 
 Review GitHub About metadata too. Suggested description:
 
@@ -115,6 +119,11 @@ Release state and CI, then install from the public tag into a disposable root
 and compare the declared payload with the tested candidate. Verify the README,
 license and package paths are publicly readable. An API success response alone
 does not close all these checks.
+
+Only after that publication/read-back gate succeeds may a status-only commit
+replace the release-note draft marker with an observed published status and
+migrate the corresponding repository assertion. Do not make that test change
+part of the pre-publication release candidate.
 
 Update status documents with the observations that actually happened. A later
 status-only commit can move main without changing the published tag. Preserve

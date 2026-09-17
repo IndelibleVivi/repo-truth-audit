@@ -69,14 +69,14 @@
     <circle cx="100" cy="415" r="3.5" fill="#56658F"/>
     <text x="132" y="395" class="meta" data-readability="supporting">02 / OPERATIONAL REALITY</text>
     <text x="132" y="431" class="rail-title">Pin snapshot, path, and owner.</text>
-    <text x="132" y="463" class="rail-body" data-readability="supporting">Entrypoint · state owner · selected artifact.</text>
+    <text x="132" y="463" class="rail-body" data-readability="supporting">Entry · state owner · selected artifact.</text>
   </g>
 
   <g id="node-route" data-readability-background="#FBFAF7">
     <circle cx="100" cy="560" r="8" fill="#FBFAF7" stroke="#9B5B49" stroke-width="2"/>
     <line x1="92" y1="560" x2="108" y2="560" stroke="#9B5B49" stroke-width="2"/>
     <text x="132" y="540" class="meta" data-readability="supporting">03 / TERMINAL BOUNDARY</text>
-    <text x="132" y="576" class="rail-title">The request sets the stopping point.</text>
+    <text x="132" y="576" class="rail-title">The request sets where to stop.</text>
     <text x="132" y="608" class="rail-body" data-readability="supporting">Modes are outcomes—not commands.</text>
   </g>
 

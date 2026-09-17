@@ -49,10 +49,11 @@ Last reconciled: 2026-09-17
   on an external target.
 - Deterministic validation: maintainer-local PASS on 2026-09-17 for repository
   and publication contracts, Audit / Plan / Operate architecture and localized
-  Mermaid parity, all 79 unit tests, six Audit fixtures, the two-increment
-  operation lab, system Skill validation, and Git whitespace validation. The
-  operation lab itself reports zero target-model invocations and remains
-  distinct from the separate forward receipt.
+  Mermaid parity, all 85 unit tests (including six documentation-navigation and
+  release-preparation checks), six Audit fixtures, the two-increment operation
+  lab, system Skill validation, and Git whitespace validation. The operation
+  lab itself reports zero target-model invocations and remains distinct from
+  the separate forward receipt.
 - Forward behavior: the paired
   [`forward-behavior-receipt`](forward-behavior-receipt.md) is historical
   `v0.1.0` Audit-only evidence. The separate
@@ -81,8 +82,9 @@ Last reconciled: 2026-09-17
 - Release publication: GitHub Release `v0.1.0` remains the latest public
   release. Source-candidate work does not authorize or imply a new release.
   A future authorized `0.2.0` release must update the pinned README install ref
-  and `PUBLIC_RELEASE_VERSION` together; current tests intentionally reject
-  that change before the release gate is opened.
+  and `PUBLIC_RELEASE_VERSION` together. The release-note draft assertion stays
+  active through the pre-publication candidate and changes only after the
+  tag/Release/public-install read-back gate succeeds.
 - Licensing: functional materials are source-available under SUL-1.0;
   standalone documentation, the renderer-neutral architecture model, and the
   Mermaid diagrams embedded in the README files are under CC BY-NC-SA 4.0

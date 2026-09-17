@@ -3,7 +3,7 @@
 [English](README.md)
 
 本目录拥有公开 Repo Truth Audit 架构背后的 semantic 与 presentation contract。两份根 README
-先嵌入对应 locale 的 reader-first SVG overview，再保留可折叠的原生 Mermaid 完整拓扑图。
+先嵌入对应 locale 的 reader-first SVG overview，再保留默认展开的原生 Mermaid 完整拓扑图。
 两层视图共同解释一场 evidence-led engagement 如何在 Audit 或 Plan 停止，或跨过显式实施
 gate，最终抵达经过验证的 Operate completion。它们不描述本 repo 自身的 packaging 或
 release pipeline。

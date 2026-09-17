@@ -4,7 +4,7 @@
 
 This directory owns the semantic and presentation contract behind the public
 Repo Truth Audit architecture. Each root README first embeds a localized,
-reader-first SVG overview, then retains a collapsible native Mermaid map with
+reader-first SVG overview, then retains a visible native Mermaid map with
 the complete modeled topology. Together they explain how one evidence-led
 engagement stops at Audit or Plan, or crosses an explicit implementation gate
 and reaches verified Operate completion. They do not depict this repository's

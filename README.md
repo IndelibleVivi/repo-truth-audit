@@ -235,8 +235,10 @@ questions:
 | **Delivery** | The actual entrypoint, selector, or artifact uses the intended implementation. |
 | **Usefulness** | The original change pressure is lower; where useful, a small follow-on change proves it. |
 
-<details>
-<summary><strong>Open the full semantic Mermaid map</strong> — seven regions, 31 stable nodes, and 46 decision-bearing edges</summary>
+### Full semantic Mermaid map
+
+Seven regions, 31 stable nodes, and 46 decision-bearing edges remain visible
+alongside the reader-first overview.
 
 The detailed map keeps every modeled relationship visible. Solid arrows are
 in-scope evidence or implementation flow. Dotted arrows are conditional
@@ -390,8 +392,6 @@ flowchart TB
   %% E46_EXTERNAL_TO_GOAL
   N51_EXTERNAL_STATE -. observed completion evidence .-> N67_WHOLE_GOAL
 ```
-
-</details>
 
 The renderer-neutral model, stable semantic IDs, evidence mapping, paired SVG
 reader maps, and complete Mermaid source contract live in

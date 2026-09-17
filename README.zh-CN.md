@@ -188,8 +188,9 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 | **交付（Delivery）** | 真实入口、selector 或产物确实选中新实现。 |
 | **用途（Usefulness）** | 最初的改动阻力已经下降；适合时，用一个小型后续改动证明。 |
 
-<details>
-<summary><strong>展开完整 Mermaid 语义图</strong>——七个 region、31 个 stable node、46 条决策边</summary>
+### 完整 Mermaid 语义图
+
+七个 region、31 个 stable node 与 46 条决策边和 reader-first 总览一起默认可见。
 
 详细图保留全部 modeled relationship。实线为范围内证据或实施流程；点线为有条件的权限、
 专门工具或外部观察路径；粗回箭头表示新证据重新打开诊断或下一阶段工作。
@@ -341,8 +342,6 @@ flowchart TB
   %% E46_EXTERNAL_TO_GOAL
   N51_EXTERNAL_STATE -. 已观察完成证据 .-> N67_WHOLE_GOAL
 ```
-
-</details>
 
 语义模型、稳定节点 ID、证据映射、双语 SVG reader map 与完整 Mermaid 契约位于
 [docs/architecture/](docs/architecture/README.zh-CN.md)。

@@ -45,7 +45,10 @@ Last reconciled: 2026-09-17
   ignored `.pyc`. The declared-payload correction and clean-payload forward
   follow-up are public at
   `2259892e8a9af918b131d7ec7a9a5d70949684f3`, with the matching CI result
-  recorded below. Nothing is released, installed, activated, or owner-accepted
+  recorded below. Bilingual usage and release-preparation documentation is
+  integrated through PR #2 merge commit
+  `22b8007908b0feb8681794bdb449667a1d35d9ff` without changing the declared
+  Skill payload. Nothing is released, installed, activated, or owner-accepted
   on an external target.
 - Deterministic validation: maintainer-local PASS on 2026-09-17 for repository
   and publication contracts, Audit / Plan / Operate architecture and localized
@@ -70,11 +73,11 @@ Last reconciled: 2026-09-17
 - Recovery: private continuity and cited evidence are recovery aids, not
   authority. Resume must re-pin the exact repository state, inspect preserved
   owner work, rerun changed witnesses, and distinguish Recovered from Complete.
-- Git and CI: correction commit
-  `2259892e8a9af918b131d7ec7a9a5d70949684f3` is pushed to public `main`.
-  GitHub Actions run
-  [`35214605650`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35214605650)
-  passed all four Ubuntu/macOS and Python 3.10/3.13 jobs for that exact commit.
+- Git and CI: PR #2 is merged into public `main` at
+  `22b8007908b0feb8681794bdb449667a1d35d9ff`. GitHub Actions run
+  [`35222725782`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35222725782)
+  passed all four Ubuntu/macOS and Python 3.10/3.13 jobs for that exact merge
+  commit.
 - Local install: the previously verified installed copy is immutable `v0.1.0`.
   The `0.2.0` source candidate has not been installed or activated, and
   installed/source equality is not claimed.

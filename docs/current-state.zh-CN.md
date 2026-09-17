@@ -40,8 +40,11 @@
   `8b66e8d6608fdbb2ba2ab7908644a5c32061133a`。后续对 `f84b22c...` public `main` 的
   pre-release review 发现 all-files hashing/copying 会吸收 ignored `.pyc`。Declared-payload
   correction 与 clean-payload forward follow-up 已公开于
-  `2259892e8a9af918b131d7ec7a9a5d70949684f3`，对应 CI 结果见下文。本 snapshot 不把它
-  描述为已 release、install、activate 或在 external target 上 owner-accepted。
+  `2259892e8a9af918b131d7ec7a9a5d70949684f3`，对应 CI 结果见下文。双语 usage 与
+  release-preparation documentation 已通过 PR #2 merge commit
+  `22b8007908b0feb8681794bdb449667a1d35d9ff` 集成，且未改变 declared Skill payload。
+  本 snapshot 不把它描述为已 release、install、activate 或在 external target 上
+  owner-accepted。
 - Deterministic validation：2026-09-17 maintainer-local PASS，覆盖 repository 与
   publication contracts、Audit / Plan / Operate architecture 与 localized Mermaid
   parity、全部 85 个 unit tests（其中六项覆盖 documentation navigation 与 release
@@ -62,10 +65,10 @@
 - Recovery：private continuity 与 cited evidence 只是 recovery aids，不是 authority。
   Resume 必须重新 pin exact repository state、检查被保留的 owner work、重跑受影响
   witnesses，并把 Recovered 与 Complete 分开。
-- Git 与 CI：correction commit
-  `2259892e8a9af918b131d7ec7a9a5d70949684f3` 已 push 到 public `main`；GitHub Actions
-  run [`35214605650`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35214605650)
-  已为该 exact commit 通过 Ubuntu/macOS 与 Python 3.10/3.13 全部四个 jobs。
+- Git 与 CI：PR #2 已在
+  `22b8007908b0feb8681794bdb449667a1d35d9ff` merge 到 public `main`；GitHub Actions
+  run [`35222725782`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35222725782)
+  已为该 exact merge commit 通过 Ubuntu/macOS 与 Python 3.10/3.13 全部四个 jobs。
 - Local install：此前验证过的 installed copy 是 immutable `v0.1.0`。`0.2.0` source
   candidate 尚未 install 或 activate，也不声称 installed/source equality。
 - Next-turn Codex discovery：尚未观察 `0.2.0`。

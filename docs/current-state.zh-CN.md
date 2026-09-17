@@ -18,10 +18,10 @@
   effect authority 匹配时才能写入。
 - Canonical Skill：`skills/repository-operational-truth-audit/`；`SKILL.md` 是 compact
   router，`references/` 下分别承载渐进式 Audit、Operation 与 Recovery 方法。
-- Architecture：`docs/architecture/audit-runtime-model.json` 是 semantic authority；
-  两份 localized README Mermaid views 与其保持七个 region、31 个 stable nodes、46 条
-  semantic edges 的 parity。原 Audit topology 被完整保留，并接入可见的 Plan exit 与
-  guarded Operate loop。
+- Architecture：`docs/architecture/audit-runtime-model.json` 仍是 semantic authority。
+  成对的 day-first SVG reader map 现在以 owner-approved compressed view 进入两份 localized
+  README；可折叠 Mermaid maps 保留全部七个 region、31 个 stable nodes 与 46 条 semantic
+  edges。原 Audit topology 被完整保留，并接入可见的 Plan exit 与 guarded Operate loop。
 - Deterministic operation evidence：`evals/operation-lab/` 不调用 target model，只检验
   新增 operation invariants；其结果是 synthetic process evidence，不是 forward model
   evidence。
@@ -40,8 +40,10 @@
   `8b66e8d6608fdbb2ba2ab7908644a5c32061133a`。后续对 `f84b22c...` public `main` 的
   pre-release review 发现 all-files hashing/copying 会吸收 ignored `.pyc`。Declared-payload
   correction 与 clean-payload forward follow-up 已公开于
-  `2259892e8a9af918b131d7ec7a9a5d70949684f3`，对应 CI 结果见下文。双语 usage 与
-  release-preparation documentation 已通过 PR #2 merge commit
+  `2259892e8a9af918b131d7ec7a9a5d70949684f3`；对应四项
+  [CI run `35214605650`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35214605650)
+  已在 Ubuntu／macOS 与 Python 3.10／3.13 通过。双语 usage 与 release-preparation
+  documentation 已通过 PR #2 merge commit
   `22b8007908b0feb8681794bdb449667a1d35d9ff` 集成，且未改变 declared Skill payload。
   本 snapshot 不把它描述为已 release、install、activate 或在 external target 上
   owner-accepted。
@@ -78,8 +80,8 @@
   `PUBLIC_RELEASE_VERSION`。Release-note draft assertion 在 pre-publication candidate 阶段
   持续生效，只有 tag／Release／public install 回读 gate 通过后才迁移。
 - Licensing：functional materials 按 SUL-1.0 source-available；standalone
-  documentation、renderer-neutral architecture model，以及嵌入 README 的 Mermaid
-  diagrams 按 `LICENSING.zh-CN.md` 使用 CC BY-NC-SA 4.0。权威是 path map，而不是
-  single-license badge。
+  documentation、renderer-neutral architecture model、成对 SVG reader map，以及嵌入
+  README 的 Mermaid diagrams 按 `LICENSING.zh-CN.md` 使用 CC BY-NC-SA 4.0。权威是
+  path map，而不是 single-license badge。
 
 在这里替换 superseded status，不要追加 development diary。

@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1020" viewBox="0 0 1600 1020" role="img" aria-labelledby="overview-title overview-desc" lang="zh-CN">
+  <title id="overview-title">Repo Truth Audit 运行地图</title>
+  <desc id="overview-desc">一张 day-first 编辑式运行地图。一个有限仓库问题经过被钉住的运行现实与停止边界，停在 Audit、Plan，或得到显式授权的 Operate。Operate 按行为、结构、交付与用途验收；检查点返回 Operate，只有整体目标得到证明后才完成。外部状态仍位于独立证明边界之外。</desc>
+  <!-- 项目原创文档图；许可边界见 LICENSING.zh-CN.md。 -->
+  <defs>
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1L9 5L1 9Z" fill="#2B302E"/>
+    </marker>
+    <marker id="arrow-accent" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1L9 5L1 9Z" fill="#56658F"/>
+    </marker>
+    <style>
+      /* 字体灰度：主墨色、正文、辅助文字、元数据；结构线使用最安静的灰度。 */
+      .display { font-family: "Songti SC", "Noto Serif CJK SC", "STSong", serif; font-size: 44px; font-weight: 600; letter-spacing: -0.25px; fill: #232826; }
+      .subtitle { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 24px; font-weight: 400; fill: #4F5753; }
+      .kicker { font-family: "Helvetica Neue", "PingFang SC", "Noto Sans CJK SC", sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 1.6px; fill: #56658F; }
+      .meta { font-family: "Helvetica Neue", "PingFang SC", "Noto Sans CJK SC", sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.9px; fill: #666D69; }
+      .rail-title { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 24px; font-weight: 500; fill: #232826; }
+      .rail-body { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 20px; font-weight: 400; fill: #555D59; }
+      .mode-title { font-family: Georgia, "Times New Roman", serif; font-size: 40px; font-weight: 400; letter-spacing: -0.35px; }
+      .mode-caption { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 24px; font-weight: 500; fill: #343A37; }
+      .mode-lead { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 24px; font-weight: 500; fill: #343A37; }
+      .support { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 20px; font-weight: 400; fill: #58605C; }
+      .status { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.6px; fill: #5E6662; }
+      .status-authorized { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.6px; fill: #8E503F; }
+      .audit-ink { fill: #3F4743; }
+      .plan-ink { fill: #56658F; }
+      .operate-ink { fill: #8E503F; }
+      .accept-head { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.3px; fill: #4E5C85; }
+      .accept-letter { font-family: Georgia, "Times New Roman", serif; font-size: 34px; font-weight: 600; fill: #56658F; }
+      .accept-title { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 20px; font-weight: 500; fill: #2B302E; }
+      .outcome { font-family: "Songti SC", "Noto Serif CJK SC", "STSong", serif; font-size: 30px; font-weight: 600; fill: #232826; }
+      .external-kicker { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.8px; fill: #8E503F; }
+      .external-title { font-family: "Songti SC", "Noto Serif CJK SC", "STSong", serif; font-size: 29px; font-weight: 600; fill: #232826; }
+      .external-list { font-family: "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif; font-size: 20px; font-weight: 500; fill: #3F4642; }
+      .hairline { stroke: #D5D8D3; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+      .spine { fill: none; stroke: #AEB4B0; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+      .branch { fill: none; stroke: #C3C7C3; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+      .operate-line { fill: none; stroke: #9B5B49; stroke-width: 2; vector-effect: non-scaling-stroke; }
+      .return { fill: none; stroke: #56658F; stroke-width: 1.8; marker-end: url(#arrow-accent); vector-effect: non-scaling-stroke; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1020" fill="#FBFAF7"/>
+
+  <g id="diagram-header" data-readability-background="#FBFAF7">
+    <line x1="80" y1="42" x2="136" y2="42" stroke="#56658F" stroke-width="4"/>
+    <text x="80" y="72" class="kicker" data-readability="supporting">REPO TRUTH AUDIT · 阅读地图</text>
+    <text x="80" y="142" class="display" data-readability="critical">一个问题，三个诚实停止点。</text>
+    <line x1="900" y1="90" x2="900" y2="166" class="hairline"/>
+    <text x="940" y="116" class="subtitle">先看清仓库真实怎样运行。</text>
+    <text x="940" y="158" class="subtitle">再停在答案、方案，或经过验证的结构改造。</text>
+  </g>
+
+  <g id="common-path" data-readability-background="#FBFAF7">
+    <line x1="100" y1="270" x2="100" y2="560" class="spine"/>
+    <path d="M500 560H530V270M530 270H560M530 420H560M530 560H560" class="branch"/>
+  </g>
+
+  <g id="node-question" data-readability-background="#FBFAF7">
+    <circle cx="100" cy="270" r="7" fill="#2B302E"/>
+    <text x="132" y="250" class="meta" data-readability="supporting">01 / 所有者问题</text>
+    <text x="132" y="286" class="rail-title">到底要查清，还是做到结束？</text>
+    <text x="132" y="318" class="rail-body" data-readability="supporting">一个有限、具体的仓库决策。</text>
+  </g>
+
+  <g id="node-pin" data-readability-background="#FBFAF7">
+    <circle cx="100" cy="415" r="10" fill="#FBFAF7" stroke="#56658F" stroke-width="2"/>
+    <circle cx="100" cy="415" r="3.5" fill="#56658F"/>
+    <text x="132" y="395" class="meta" data-readability="supporting">02 / 运行现实</text>
+    <text x="132" y="431" class="rail-title">钉住快照、真实路径与 owner。</text>
+    <text x="132" y="463" class="rail-body" data-readability="supporting">entrypoint · 状态 owner · 选中产物。</text>
+  </g>
+
+  <g id="node-route" data-readability-background="#FBFAF7">
+    <circle cx="100" cy="560" r="8" fill="#FBFAF7" stroke="#9B5B49" stroke-width="2"/>
+    <line x1="92" y1="560" x2="108" y2="560" stroke="#9B5B49" stroke-width="2"/>
+    <text x="132" y="540" class="meta" data-readability="supporting">03 / 停止边界</text>
+    <text x="132" y="576" class="rail-title">请求决定诚实的停止位置。</text>
+    <text x="132" y="608" class="rail-body" data-readability="supporting">三种模式是结果，而不是命令。</text>
+  </g>
+
+  <line x1="500" y1="225" x2="500" y2="930" class="hairline"/>
+
+  <g id="mode-audit" data-readability-background="#FBFAF7">
+    <line x1="560" y1="225" x2="1520" y2="225" class="hairline"/>
+    <text x="600" y="281" class="mode-title audit-ink">Audit</text>
+    <line x1="760" y1="246" x2="760" y2="330" stroke="#B7BDB9" stroke-width="1.4"/>
+    <text x="792" y="278" class="mode-caption">只读决策答案</text>
+    <text x="792" y="318" class="support" data-readability="supporting">证据 · 未知项 · 证明边界</text>
+    <text x="1438" y="277" text-anchor="end" class="status" data-readability="supporting">到此收口</text>
+    <line x1="1450" y1="270" x2="1464" y2="270" stroke="#8E9591" stroke-width="1.5"/>
+    <circle cx="1476" cy="270" r="5" fill="#8E9591"/>
+  </g>
+
+  <g id="mode-plan" data-readability-background="#FBFAF7">
+    <line x1="560" y1="375" x2="1520" y2="375" class="hairline"/>
+    <text x="600" y="431" class="mode-title plan-ink">Plan</text>
+    <line x1="760" y1="396" x2="760" y2="480" stroke="#8995B5" stroke-width="1.4"/>
+    <text x="792" y="428" class="mode-caption">有限终点与施工顺序</text>
+    <text x="792" y="468" class="support" data-readability="supporting">保护见证 · 恢复 · 验收</text>
+    <text x="1438" y="427" text-anchor="end" class="status plan-ink" data-readability="supporting">到此收口</text>
+    <line x1="1450" y1="420" x2="1464" y2="420" stroke="#56658F" stroke-width="1.5"/>
+    <circle cx="1476" cy="420" r="5" fill="#56658F"/>
+  </g>
+
+  <g id="mode-operate" data-readability-background="#FBFAF7">
+    <line x1="560" y1="525" x2="1520" y2="525" class="operate-line"/>
+    <text x="600" y="581" class="mode-title operate-ink">Operate</text>
+    <line x1="760" y1="546" x2="760" y2="630" stroke="#B97863" stroke-width="1.4"/>
+    <text x="792" y="578" class="mode-caption">在真实路径上完成一个完整增量</text>
+    <text x="792" y="618" class="support" data-readability="supporting">接入选中产物 · 退役被替代的旧实现</text>
+    <text x="1438" y="567" text-anchor="end" class="status-authorized" data-readability="supporting">需要显式授权</text>
+    <line x1="1450" y1="560" x2="1464" y2="560" stroke="#8E503F" stroke-width="1.5"/>
+    <circle cx="1476" cy="560" r="5" fill="#8E503F"/>
+    <path d="M1040 653V690" stroke="#9B5B49" stroke-width="1.8" fill="none" marker-end="url(#arrow-ink)"/>
+  </g>
+
+  <g id="acceptance" data-readability-background="#F0F1F4">
+    <rect x="560" y="700" width="960" height="142" fill="#F0F1F4"/>
+    <text x="584" y="732" class="accept-head" data-readability="supporting">整体目标验收 · 仅 OPERATE</text>
+    <text x="1492" y="732" text-anchor="end" class="support" data-readability="supporting">所有适用义务都必须成立。</text>
+    <line x1="584" y1="750" x2="1492" y2="750" stroke="#D5D9E2" stroke-width="1.2"/>
+  </g>
+
+  <g id="acceptance-behavior" data-readability-background="#F0F1F4">
+    <text x="584" y="801" class="accept-letter" data-readability="critical">B</text>
+    <text x="620" y="783" class="accept-title" data-readability="supporting">行为</text>
+    <text x="620" y="809" class="support" data-readability="supporting">结果与状态副作用</text>
+  </g>
+
+  <g id="acceptance-structure" data-readability-background="#F0F1F4">
+    <line x1="800" y1="768" x2="800" y2="820" stroke="#D5D9E2" stroke-width="1.2"/>
+    <text x="824" y="801" class="accept-letter" data-readability="critical">S</text>
+    <text x="860" y="783" class="accept-title" data-readability="supporting">结构</text>
+    <text x="860" y="809" class="support" data-readability="supporting">职责真的迁移</text>
+  </g>
+
+  <g id="acceptance-delivery" data-readability-background="#F0F1F4">
+    <line x1="1040" y1="768" x2="1040" y2="820" stroke="#D5D9E2" stroke-width="1.2"/>
+    <text x="1064" y="801" class="accept-letter" data-readability="critical">D</text>
+    <text x="1100" y="783" class="accept-title" data-readability="supporting">交付</text>
+    <text x="1100" y="809" class="support" data-readability="supporting">真实路径选中它</text>
+  </g>
+
+  <g id="acceptance-usefulness" data-readability-background="#F0F1F4">
+    <line x1="1280" y1="768" x2="1280" y2="820" stroke="#D5D9E2" stroke-width="1.2"/>
+    <text x="1304" y="801" class="accept-letter" data-readability="critical">U</text>
+    <text x="1340" y="783" class="accept-title" data-readability="supporting">用途</text>
+    <text x="1340" y="809" class="support" data-readability="supporting">原始改动更容易</text>
+  </g>
+
+  <g id="outcome-branch" data-readability-background="#FBFAF7">
+    <path d="M1040 842V870H760M1040 870H1260" class="branch"/>
+    <circle cx="760" cy="870" r="4.5" fill="#56658F"/>
+    <circle cx="1260" cy="870" r="4.5" fill="#2B302E"/>
+  </g>
+
+  <g id="outcome-checkpoint" data-readability-background="#FBFAF7">
+    <text x="580" y="907" class="outcome" fill="#56658F">检查点 ↺</text>
+    <text x="580" y="939" class="support" data-readability="supporting">保留安全进展；剩余义务保持可见。</text>
+  </g>
+
+  <g id="outcome-complete" data-readability-background="#FBFAF7">
+    <text x="1080" y="907" class="outcome">完成 ✓</text>
+    <text x="1080" y="939" class="support" data-readability="supporting">全部适用义务均已得到证明。</text>
+  </g>
+
+  <g id="checkpoint-loop" data-readability-background="#FBFAF7">
+    <path d="M760 950C760 972 790 976 824 976H1548V590C1548 570 1532 560 1508 560" class="return"/>
+  </g>
+
+  <g id="external-proof-boundary" data-readability-background="#FBFAF7">
+    <line x1="80" y1="700" x2="460" y2="700" stroke="#B97863" stroke-width="1.8" stroke-dasharray="3 8"/>
+    <text x="80" y="734" class="external-kicker" data-readability="supporting">仓库证据之外</text>
+    <text x="80" y="778" class="external-title">需要独立权限与新鲜观察</text>
+    <text x="80" y="821" class="external-list" data-readability="supporting">安装 · 激活 · 运行</text>
+    <text x="80" y="853" class="external-list" data-readability="supporting">部署 · 账号 · 所有者验收</text>
+    <line x1="80" y1="882" x2="460" y2="882" class="hairline"/>
+    <text x="80" y="916" class="support" data-readability="supporting">仓库内证据不会静默证明</text>
+    <text x="80" y="946" class="support" data-readability="supporting">这些外部层。</text>
+  </g>
+</svg>

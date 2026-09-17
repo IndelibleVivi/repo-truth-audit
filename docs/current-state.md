@@ -20,10 +20,12 @@ Last reconciled: 2026-09-17
 - Canonical Skill: `skills/repository-operational-truth-audit/`, with the
   compact router in `SKILL.md` and progressive Audit, Operation, and Recovery
   methods under `references/`.
-- Architecture: `docs/architecture/audit-runtime-model.json` is the semantic
-  authority; the localized README Mermaid views mirror seven regions, 31 stable
-  nodes, and 46 semantic edges. The original Audit topology remains intact and
-  now feeds a visible Plan exit or guarded Operate loop.
+- Architecture: `docs/architecture/audit-runtime-model.json` remains the
+  semantic authority. Paired day-first SVG reader maps now lead each localized
+  README with the owner-approved compressed view; the collapsible Mermaid maps
+  retain all seven regions, 31 stable nodes, and 46 semantic edges. The original
+  Audit topology remains intact and feeds a visible Plan exit or guarded
+  Operate loop.
 - Deterministic operation evidence: `evals/operation-lab/` exercises the new
   operation invariants without invoking a target model. Its results are
   synthetic process evidence, not forward model evidence.
@@ -44,8 +46,10 @@ Last reconciled: 2026-09-17
   `main` at `f84b22c...` found that all-files hashing/copying could include an
   ignored `.pyc`. The declared-payload correction and clean-payload forward
   follow-up are public at
-  `2259892e8a9af918b131d7ec7a9a5d70949684f3`, with the matching CI result
-  recorded below. Bilingual usage and release-preparation documentation is
+  `2259892e8a9af918b131d7ec7a9a5d70949684f3`; its four-job
+  [CI run `35214605650`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35214605650)
+  passed on Ubuntu/macOS and Python 3.10/3.13. Bilingual usage and
+  release-preparation documentation is
   integrated through PR #2 merge commit
   `22b8007908b0feb8681794bdb449667a1d35d9ff` without changing the declared
   Skill payload. Nothing is released, installed, activated, or owner-accepted
@@ -89,9 +93,9 @@ Last reconciled: 2026-09-17
   active through the pre-publication candidate and changes only after the
   tag/Release/public-install read-back gate succeeds.
 - Licensing: functional materials are source-available under SUL-1.0;
-  standalone documentation, the renderer-neutral architecture model, and the
-  Mermaid diagrams embedded in the README files are under CC BY-NC-SA 4.0
-  according to `LICENSING.md`. The path map, not a single-license badge, is
-  authoritative.
+  standalone documentation, the renderer-neutral architecture model, the
+  paired SVG reader maps, and the Mermaid diagrams embedded in the README files
+  are under CC BY-NC-SA 4.0 according to `LICENSING.md`. The path map, not a
+  single-license badge, is authoritative.
 
 Replace superseded status here; do not append a development diary.

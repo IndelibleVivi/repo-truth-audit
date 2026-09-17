@@ -53,8 +53,9 @@ publication, and other materially new effects still require matching authority.
 | `docs/product-spec.md` | Complete accepted product contract and acceptance requirements |
 | `docs/evidence-model.md` | Finding, checkpoint/completion, proof-layer, acceptance, and stopping semantics |
 | `docs/architecture/audit-runtime-model.json` | Renderer-neutral Audit/Plan/Operate architecture semantics, stable IDs, locale copy, boundaries, and source mapping |
-| `README.md` and `README.zh-CN.md` Mermaid blocks | Active localized architecture views and concise display composition |
-| `scripts/validate_architecture.py` | Model/source-anchor validation plus exact Mermaid topology, connector-kind, and locale-parity checks |
+| `docs/architecture/repo-truth-audit-overview.*.svg` | Paired reader-first, day-first architecture overviews; compressed presentation, not semantic authority |
+| `README.md` and `README.zh-CN.md` | Localized overview embeds, plain-language B/S/D/U keys, and complete Mermaid topology views |
+| `scripts/validate_architecture.py` | Model/source-anchor validation, exact Mermaid topology, connector kinds, SVG accessibility/safety, embed order, and locale parity |
 | `docs/research-basis.md` | Public-safe research provenance and external-source decisions |
 | `docs/forward-behavior-receipt.md` | Public-safe independent forward-test evidence, observed proof layers, and explicit trace limits |
 | `docs/current-state.md` | Volatile source, Git, validation, installation, and publication state |
@@ -113,10 +114,12 @@ research packets and raw target-repository evidence outside this Git tree.
   question across Audit, Plan, and Operate; do not replace them with a banner,
   abstract concept, or Skill packaging view.
 - Change architecture meaning in `audit-runtime-model.json`; change localized
-  composition in both README Mermaid blocks in the same edit. Preserve stable
-  IDs, exact edge topology, connector kinds, and localization parity. Use
-  renderer-default theming rather than fixed colors so GitHub can adapt to day
-  and dark surfaces.
+  composition in both README Mermaid blocks in the same edit, and update both
+  SVG overviews whenever the changed claim appears in their compressed view.
+  Preserve stable IDs, exact edge topology, connector kinds, and localization
+  parity. Mermaid uses renderer-default theming for day/dark adaptation; the
+  accepted SVG overview remains explicitly day-first with a self-contained
+  paper background.
 
 ## Documentation impact
 

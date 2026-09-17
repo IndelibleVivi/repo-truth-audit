@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from validate_architecture import (  # noqa: E402
     MODEL_PATH,
+    OVERVIEW_PATHS,
     README_PATHS,
     REQUIRED_NODES,
     REQUIRED_REGIONS,
@@ -50,12 +51,16 @@ class ArchitectureContractTests(unittest.TestCase):
         )
 
     def test_each_locale_has_one_native_mermaid_view(self) -> None:
-        for path in README_PATHS.values():
+        for locale, path in README_PATHS.items():
             source = path.read_text(encoding="utf-8")
             self.assertEqual(source.count("```mermaid"), 1)
             self.assertEqual(source.count("flowchart TB"), 1)
             self.assertNotIn("audit-runtime.en.svg", source)
             self.assertNotIn("audit-runtime.zh-CN.svg", source)
+            overview = OVERVIEW_PATHS[locale].relative_to(ROOT).as_posix()
+            embed = f"]({overview})"
+            self.assertEqual(source.count(embed), 1)
+            self.assertLess(source.index(embed), source.index("```mermaid"))
 
 
 if __name__ == "__main__":

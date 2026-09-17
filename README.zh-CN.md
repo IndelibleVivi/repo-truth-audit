@@ -175,8 +175,24 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 > 或经过验证完成的获授权结构变更，同时不夸大证据或外部状态？
 
 图中展示 **Audit / Plan / Operate 运行契约**。Skill 自身的打包、安装和发布另见发布流程。
-实线为范围内的证据或实施流程；点线为有条件的权限、专门工具或外部观察路径；粗回箭头表示新证据
-重新打开诊断或下一阶段工作。
+这张 reader map 有意压缩完整拓扑，只保留三种诚实停止点、Operate 验收与外部证明边界。
+
+![Repo Truth Audit 中文阅读地图](docs/architecture/repo-truth-audit-overview.zh-CN.svg)
+
+在 Operate 中，**B/S/D/U** 不是四条命令，而是四个普通的完成问题：
+
+| 检查 | 必须成立的事实 |
+| --- | --- |
+| **行为（Behavior）** | 约定结果、失败路径、兼容性与状态副作用正确。 |
+| **结构（Structure）** | 职责真的迁移，或约定退出的旧路径真的退役。 |
+| **交付（Delivery）** | 真实入口、selector 或产物确实选中新实现。 |
+| **用途（Usefulness）** | 最初的改动阻力已经下降；适合时，用一个小型后续改动证明。 |
+
+<details>
+<summary><strong>展开完整 Mermaid 语义图</strong>——七个 region、31 个 stable node、46 条决策边</summary>
+
+详细图保留全部 modeled relationship。实线为范围内证据或实施流程；点线为有条件的权限、
+专门工具或外部观察路径；粗回箭头表示新证据重新打开诊断或下一阶段工作。
 
 ```mermaid
 flowchart TB
@@ -326,7 +342,9 @@ flowchart TB
   N51_EXTERNAL_STATE -. 已观察完成证据 .-> N67_WHOLE_GOAL
 ```
 
-语义模型、稳定节点 ID、证据映射和双语 Mermaid 契约位于
+</details>
+
+语义模型、稳定节点 ID、证据映射、双语 SVG reader map 与完整 Mermaid 契约位于
 [docs/architecture/](docs/architecture/README.zh-CN.md)。
 
 ## 许可

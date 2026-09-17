@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 import sys
 from typing import Any
+import xml.etree.ElementTree as ET
 
 from common import ROOT
 
@@ -17,6 +18,32 @@ README_PATHS = {
     "en": ROOT / "README.md",
     "zh_cn": ROOT / "README.zh-CN.md",
 }
+OVERVIEW_PATHS = {
+    "en": ROOT / "docs" / "architecture" / "repo-truth-audit-overview.en.svg",
+    "zh_cn": ROOT / "docs" / "architecture" / "repo-truth-audit-overview.zh-CN.svg",
+}
+OVERVIEW_LANGS = {"en": "en", "zh_cn": "zh-CN"}
+REQUIRED_OVERVIEW_GROUPS = {
+    "diagram-header",
+    "common-path",
+    "node-question",
+    "node-pin",
+    "node-route",
+    "mode-audit",
+    "mode-plan",
+    "mode-operate",
+    "acceptance",
+    "acceptance-behavior",
+    "acceptance-structure",
+    "acceptance-delivery",
+    "acceptance-usefulness",
+    "outcome-branch",
+    "outcome-checkpoint",
+    "outcome-complete",
+    "checkpoint-loop",
+    "external-proof-boundary",
+}
+SVG_NAMESPACE = "http://www.w3.org/2000/svg"
 
 REQUIRED_REGIONS = {
     "R00_PIN",
@@ -190,6 +217,139 @@ def _extract_mermaid_block(path: Path, errors: list[str]) -> str:
 
 def _normalized_line(value: str) -> str:
     return " ".join(value.strip().split())
+
+
+def _local_name(value: str) -> str:
+    return value.rsplit("}", 1)[-1]
+
+
+def _validate_overview_svgs(errors: list[str]) -> None:
+    group_sets: dict[str, set[str]] = {}
+    geometry: dict[str, tuple[str, str, str]] = {}
+
+    for locale, path in OVERVIEW_PATHS.items():
+        relative = path.relative_to(ROOT).as_posix()
+        if not path.is_file():
+            errors.append(f"missing localized SVG reader map: {relative}")
+            continue
+        try:
+            source = path.read_text(encoding="utf-8")
+            root = ET.fromstring(source)
+        except (UnicodeDecodeError, ET.ParseError) as exc:
+            errors.append(f"{relative} is not valid standalone UTF-8 SVG: {exc}")
+            continue
+
+        if root.tag != f"{{{SVG_NAMESPACE}}}svg":
+            errors.append(f"{relative} root must be an SVG element")
+        if root.get("role") != "img":
+            errors.append(f"{relative} root must declare role='img'")
+        if root.get("lang") != OVERVIEW_LANGS[locale]:
+            errors.append(
+                f"{relative} lang must equal {OVERVIEW_LANGS[locale]!r}"
+            )
+
+        width = root.get("width", "")
+        height = root.get("height", "")
+        view_box = root.get("viewBox", "")
+        try:
+            if float(width) <= 0 or float(height) <= 0:
+                raise ValueError
+            view_values = [float(value) for value in view_box.split()]
+            if len(view_values) != 4 or view_values[2] <= 0 or view_values[3] <= 0:
+                raise ValueError
+        except ValueError:
+            errors.append(
+                f"{relative} must declare positive numeric width, height, and viewBox"
+            )
+        geometry[locale] = (width, height, view_box)
+
+        elements = list(root.iter())
+        identifiers = [
+            element.get("id") for element in elements if element.get("id")
+        ]
+        duplicate_ids = sorted(
+            {identifier for identifier in identifiers if identifiers.count(identifier) > 1}
+        )
+        if duplicate_ids:
+            errors.append(f"{relative} contains duplicate ids: {duplicate_ids}")
+
+        aria_ids = set(root.get("aria-labelledby", "").split())
+        if len(aria_ids) != 2 or not aria_ids.issubset(set(identifiers)):
+            errors.append(f"{relative} must bind aria-labelledby to its title and desc")
+        title_elements = [
+            element for element in elements if _local_name(element.tag) == "title"
+        ]
+        desc_elements = [
+            element for element in elements if _local_name(element.tag) == "desc"
+        ]
+        title_ids = {
+            element.get("id") for element in title_elements if element.get("id")
+        }
+        desc_ids = {element.get("id") for element in desc_elements if element.get("id")}
+        if (
+            not any((element.text or "").strip() for element in title_elements)
+            or not any((element.text or "").strip() for element in desc_elements)
+            or not aria_ids.intersection(title_ids)
+            or not aria_ids.intersection(desc_ids)
+        ):
+            errors.append(f"{relative} must expose a non-empty titled description")
+
+        group_ids = {
+            element.get("id")
+            for element in elements
+            if _local_name(element.tag) == "g" and element.get("id")
+        }
+        if group_ids != REQUIRED_OVERVIEW_GROUPS:
+            errors.append(
+                f"{relative} reader-map groups differ: "
+                f"expected={sorted(REQUIRED_OVERVIEW_GROUPS)} actual={sorted(group_ids)}"
+            )
+        group_sets[locale] = group_ids
+
+        for element in elements:
+            element_name = _local_name(element.tag)
+            if element_name in {"script", "foreignObject"}:
+                errors.append(
+                    f"{relative} contains forbidden active element: {element_name}"
+                )
+            for raw_name, value in element.attrib.items():
+                attribute = _local_name(raw_name).lower()
+                lowered = value.strip().lower()
+                if attribute.startswith("on"):
+                    errors.append(f"{relative} contains event-handler attribute: {attribute}")
+                if attribute == "href" and not value.startswith("#"):
+                    errors.append(f"{relative} contains non-local href: {value!r}")
+                if "javascript:" in lowered or "file://" in lowered:
+                    errors.append(f"{relative} contains forbidden URI in {attribute}")
+
+        if "<!doctype" in source.lower() or "<!entity" in source.lower():
+            errors.append(f"{relative} must not declare external entities")
+        for raw_url in re.findall(r"url\(([^)]+)\)", source):
+            value = raw_url.strip().strip("\"'")
+            if not value.startswith("#"):
+                errors.append(f"{relative} contains non-local CSS URL: {value!r}")
+
+        readme = README_PATHS[locale]
+        if readme.is_file():
+            readme_source = readme.read_text(encoding="utf-8")
+            embed = f"]({relative})"
+            if readme_source.count(embed) != 1:
+                errors.append(
+                    f"{readme.relative_to(ROOT)} must embed {relative} exactly once"
+                )
+            elif readme_source.find(embed) > readme_source.find("```mermaid"):
+                errors.append(
+                    f"{readme.relative_to(ROOT)} must present its SVG reader map before Mermaid detail"
+                )
+
+    if len(group_sets) == len(OVERVIEW_PATHS):
+        values = list(group_sets.values())
+        if values[0] != values[1]:
+            errors.append("localized SVG reader-map semantic group sets differ")
+    if len(geometry) == len(OVERVIEW_PATHS):
+        values = list(geometry.values())
+        if values[0] != values[1]:
+            errors.append("localized SVG reader-map dimensions differ")
 
 
 def _expected_edge_line(edge: dict[str, Any], locale: str) -> str:
@@ -503,6 +663,7 @@ def validate_model() -> list[str]:
         if not isinstance(excludes, list) or len(excludes) < 4:
             errors.append("boundary.excludes must keep adjacent reader jobs separate")
 
+    _validate_overview_svgs(errors)
     _validate_mermaid_readmes(payload, region_ids, node_ids, edge_ids, errors)
     return errors
 
@@ -514,7 +675,10 @@ def main() -> int:
         for error in errors:
             print(f"- {error}", file=sys.stderr)
         return 1
-    print("Audit / Plan / Operate architecture, README Mermaid parity, and proof boundaries: PASS")
+    print(
+        "Audit / Plan / Operate architecture, SVG reader maps, README Mermaid parity, "
+        "and proof boundaries: PASS"
+    )
     return 0
 
 

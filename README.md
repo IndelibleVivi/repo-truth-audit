@@ -219,10 +219,29 @@ The diagram answers one public-reader question:
 > evidence or external state?
 
 It depicts the **Audit / Plan / Operate runtime contract**. Packaging,
-installation, and release of this Skill remain a separate reader job.
-Solid arrows are in-scope evidence or implementation flow. Dotted arrows are
-conditional authority/external-observation paths. Thick return arrows reopen
-diagnosis or the next increment when evidence changes.
+installation, and release of this Skill remain a separate reader job. This
+reader map intentionally compresses the full topology into its three honest
+stopping points, Operate acceptance, and the external proof boundary.
+
+![Repo Truth Audit reader map](docs/architecture/repo-truth-audit-overview.en.svg)
+
+In Operate, **B/S/D/U** is not a command set. It is four plain completion
+questions:
+
+| Check | What must be true |
+| --- | --- |
+| **Behavior** | Required outcomes, failures, compatibility, and state effects are correct. |
+| **Structure** | Responsibilities really moved or the agreed old path really retired. |
+| **Delivery** | The actual entrypoint, selector, or artifact uses the intended implementation. |
+| **Usefulness** | The original change pressure is lower; where useful, a small follow-on change proves it. |
+
+<details>
+<summary><strong>Open the full semantic Mermaid map</strong> — seven regions, 31 stable nodes, and 46 decision-bearing edges</summary>
+
+The detailed map keeps every modeled relationship visible. Solid arrows are
+in-scope evidence or implementation flow. Dotted arrows are conditional
+authority or external-observation paths. Thick return arrows reopen diagnosis
+or the next increment when evidence changes.
 
 ```mermaid
 flowchart TB
@@ -372,8 +391,11 @@ flowchart TB
   N51_EXTERNAL_STATE -. observed completion evidence .-> N67_WHOLE_GOAL
 ```
 
-The renderer-neutral model, stable semantic IDs, evidence mapping, and paired
-Mermaid source contract live in [docs/architecture/](docs/architecture/README.md).
+</details>
+
+The renderer-neutral model, stable semantic IDs, evidence mapping, paired SVG
+reader maps, and complete Mermaid source contract live in
+[docs/architecture/](docs/architecture/README.md).
 
 ## Licensing
 

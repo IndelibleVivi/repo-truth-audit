@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1020" viewBox="0 0 1600 1020" role="img" aria-labelledby="overview-title overview-desc" lang="en">
+  <title id="overview-title">Repo Truth Audit operating map</title>
+  <desc id="overview-desc">A day-first editorial map. One bounded repository question passes through a pinned operational reality and a terminal boundary, then stops at Audit, Plan, or explicitly authorized Operate. Operate is accepted across Behavior, Structure, Delivery, and Usefulness. A checkpoint returns to Operate; completion exits only after the whole goal is proven. External state remains beyond a separate proof boundary.</desc>
+  <!-- Project-original documentation artwork; licensing follows LICENSING.md. -->
+  <defs>
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1L9 5L1 9Z" fill="#2B302E"/>
+    </marker>
+    <marker id="arrow-accent" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1L9 5L1 9Z" fill="#56658F"/>
+    </marker>
+    <style>
+      /* Type grayscale: primary ink, body, support, then metadata. Rules carry the quietest values. */
+      .display { font-family: Georgia, "Times New Roman", serif; font-size: 40px; font-weight: 400; letter-spacing: -0.65px; fill: #232826; }
+      .subtitle { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 22px; font-weight: 400; fill: #4F5753; }
+      .kicker { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 1.8px; fill: #56658F; }
+      .meta { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 1px; fill: #666D69; }
+      .rail-title { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 24px; font-weight: 500; fill: #232826; }
+      .rail-body { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 400; fill: #555D59; }
+      .mode-title { font-family: Georgia, "Times New Roman", serif; font-size: 40px; font-weight: 400; letter-spacing: -0.35px; }
+      .mode-caption { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 24px; font-weight: 500; fill: #343A37; }
+      .mode-lead { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 24px; font-weight: 500; fill: #343A37; }
+      .support { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 400; fill: #58605C; }
+      .status { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.8px; fill: #5E6662; }
+      .status-authorized { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.8px; fill: #8E503F; }
+      .audit-ink { fill: #3F4743; }
+      .plan-ink { fill: #56658F; }
+      .operate-ink { fill: #8E503F; }
+      .accept-head { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.6px; fill: #4E5C85; }
+      .accept-letter { font-family: Georgia, "Times New Roman", serif; font-size: 34px; font-weight: 600; fill: #56658F; }
+      .accept-title { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.3px; fill: #2B302E; }
+      .outcome { font-family: Georgia, "Times New Roman", serif; font-size: 30px; font-weight: 400; fill: #232826; }
+      .external-kicker { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 19px; font-weight: 500; letter-spacing: 1px; fill: #8E503F; }
+      .external-title { font-family: Georgia, "Times New Roman", serif; font-size: 29px; font-weight: 400; fill: #232826; }
+      .external-list { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 500; fill: #3F4642; }
+      .hairline { stroke: #D5D8D3; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+      .spine { fill: none; stroke: #AEB4B0; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+      .branch { fill: none; stroke: #C3C7C3; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+      .operate-line { fill: none; stroke: #9B5B49; stroke-width: 2; vector-effect: non-scaling-stroke; }
+      .return { fill: none; stroke: #56658F; stroke-width: 1.8; marker-end: url(#arrow-accent); vector-effect: non-scaling-stroke; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1020" fill="#FBFAF7"/>
+
+  <g id="diagram-header" data-readability-background="#FBFAF7">
+    <line x1="80" y1="42" x2="136" y2="42" stroke="#56658F" stroke-width="4"/>
+    <text x="80" y="72" class="kicker" data-readability="supporting">REPO TRUTH AUDIT · READER MAP</text>
+    <text x="80" y="142" class="display" data-readability="critical">One question, three honest stopping points.</text>
+    <line x1="900" y1="90" x2="900" y2="166" class="hairline"/>
+    <text x="940" y="116" class="subtitle">See how the repository actually runs.</text>
+    <text x="940" y="158" class="subtitle">Stop at an answer, a plan, or verified structural change.</text>
+  </g>
+
+  <g id="common-path" data-readability-background="#FBFAF7">
+    <line x1="100" y1="270" x2="100" y2="560" class="spine"/>
+    <path d="M500 560H530V270M530 270H560M530 420H560M530 560H560" class="branch"/>
+  </g>
+
+  <g id="node-question" data-readability-background="#FBFAF7">
+    <circle cx="100" cy="270" r="7" fill="#2B302E"/>
+    <text x="132" y="250" class="meta" data-readability="supporting">01 / OWNER QUESTION</text>
+    <text x="132" y="286" class="rail-title">What must we know—or finish?</text>
+    <text x="132" y="318" class="rail-body" data-readability="supporting">One finite repository decision.</text>
+  </g>
+
+  <g id="node-pin" data-readability-background="#FBFAF7">
+    <circle cx="100" cy="415" r="10" fill="#FBFAF7" stroke="#56658F" stroke-width="2"/>
+    <circle cx="100" cy="415" r="3.5" fill="#56658F"/>
+    <text x="132" y="395" class="meta" data-readability="supporting">02 / OPERATIONAL REALITY</text>
+    <text x="132" y="431" class="rail-title">Pin snapshot, path, and owner.</text>
+    <text x="132" y="463" class="rail-body" data-readability="supporting">Entrypoint · state owner · selected artifact.</text>
+  </g>
+
+  <g id="node-route" data-readability-background="#FBFAF7">
+    <circle cx="100" cy="560" r="8" fill="#FBFAF7" stroke="#9B5B49" stroke-width="2"/>
+    <line x1="92" y1="560" x2="108" y2="560" stroke="#9B5B49" stroke-width="2"/>
+    <text x="132" y="540" class="meta" data-readability="supporting">03 / TERMINAL BOUNDARY</text>
+    <text x="132" y="576" class="rail-title">The request sets the stopping point.</text>
+    <text x="132" y="608" class="rail-body" data-readability="supporting">Modes are outcomes—not commands.</text>
+  </g>
+
+  <line x1="500" y1="225" x2="500" y2="930" class="hairline"/>
+
+  <g id="mode-audit" data-readability-background="#FBFAF7">
+    <line x1="560" y1="225" x2="1520" y2="225" class="hairline"/>
+    <text x="600" y="281" class="mode-title audit-ink">Audit</text>
+    <line x1="760" y1="246" x2="760" y2="330" stroke="#B7BDB9" stroke-width="1.4"/>
+    <text x="792" y="278" class="mode-caption">Read-only decision answer</text>
+    <text x="792" y="318" class="support" data-readability="supporting">Evidence · unknowns · proof boundary</text>
+    <text x="1438" y="277" text-anchor="end" class="status" data-readability="supporting">STOPS HERE</text>
+    <line x1="1450" y1="270" x2="1464" y2="270" stroke="#8E9591" stroke-width="1.5"/>
+    <circle cx="1476" cy="270" r="5" fill="#8E9591"/>
+  </g>
+
+  <g id="mode-plan" data-readability-background="#FBFAF7">
+    <line x1="560" y1="375" x2="1520" y2="375" class="hairline"/>
+    <text x="600" y="431" class="mode-title plan-ink">Plan</text>
+    <line x1="760" y1="396" x2="760" y2="480" stroke="#8995B5" stroke-width="1.4"/>
+    <text x="792" y="428" class="mode-caption">Finite end state and sequence</text>
+    <text x="792" y="468" class="support" data-readability="supporting">Protected witnesses · recovery · acceptance</text>
+    <text x="1438" y="427" text-anchor="end" class="status plan-ink" data-readability="supporting">STOPS HERE</text>
+    <line x1="1450" y1="420" x2="1464" y2="420" stroke="#56658F" stroke-width="1.5"/>
+    <circle cx="1476" cy="420" r="5" fill="#56658F"/>
+  </g>
+
+  <g id="mode-operate" data-readability-background="#FBFAF7">
+    <line x1="560" y1="525" x2="1520" y2="525" class="operate-line"/>
+    <text x="600" y="581" class="mode-title operate-ink">Operate</text>
+    <line x1="760" y1="546" x2="760" y2="630" stroke="#B97863" stroke-width="1.4"/>
+    <text x="792" y="578" class="mode-caption">One coherent increment</text>
+    <text x="792" y="618" class="support" data-readability="supporting">Integrate the selected artifact on the real path · retire superseded code</text>
+    <text x="1438" y="567" text-anchor="end" class="status-authorized" data-readability="supporting">EXPLICIT AUTHORITY</text>
+    <line x1="1450" y1="560" x2="1464" y2="560" stroke="#8E503F" stroke-width="1.5"/>
+    <circle cx="1476" cy="560" r="5" fill="#8E503F"/>
+    <path d="M1040 653V690" stroke="#9B5B49" stroke-width="1.8" fill="none" marker-end="url(#arrow-ink)"/>
+  </g>
+
+  <g id="acceptance" data-readability-background="#F0F1F4">
+    <rect x="560" y="700" width="960" height="142" fill="#F0F1F4"/>
+    <text x="584" y="732" class="accept-head" data-readability="supporting">WHOLE-GOAL ACCEPTANCE · OPERATE ONLY</text>
+    <text x="1492" y="732" text-anchor="end" class="support" data-readability="supporting">All applicable obligations must hold.</text>
+    <line x1="584" y1="750" x2="1492" y2="750" stroke="#D5D9E2" stroke-width="1.2"/>
+  </g>
+
+  <g id="acceptance-behavior" data-readability-background="#F0F1F4">
+    <text x="584" y="801" class="accept-letter" data-readability="critical">B</text>
+    <text x="620" y="783" class="accept-title" data-readability="supporting">BEHAVIOR</text>
+    <text x="620" y="809" class="support" data-readability="supporting">outcomes + effects</text>
+  </g>
+
+  <g id="acceptance-structure" data-readability-background="#F0F1F4">
+    <line x1="800" y1="768" x2="800" y2="820" stroke="#D5D9E2" stroke-width="1.2"/>
+    <text x="824" y="801" class="accept-letter" data-readability="critical">S</text>
+    <text x="860" y="783" class="accept-title" data-readability="supporting">STRUCTURE</text>
+    <text x="860" y="809" class="support" data-readability="supporting">ownership moved</text>
+  </g>
+
+  <g id="acceptance-delivery" data-readability-background="#F0F1F4">
+    <line x1="1040" y1="768" x2="1040" y2="820" stroke="#D5D9E2" stroke-width="1.2"/>
+    <text x="1064" y="801" class="accept-letter" data-readability="critical">D</text>
+    <text x="1100" y="783" class="accept-title" data-readability="supporting">DELIVERY</text>
+    <text x="1100" y="809" class="support" data-readability="supporting">real path selects it</text>
+  </g>
+
+  <g id="acceptance-usefulness" data-readability-background="#F0F1F4">
+    <line x1="1280" y1="768" x2="1280" y2="820" stroke="#D5D9E2" stroke-width="1.2"/>
+    <text x="1304" y="801" class="accept-letter" data-readability="critical">U</text>
+    <text x="1340" y="783" class="accept-title" data-readability="supporting">USEFULNESS</text>
+    <text x="1340" y="809" class="support" data-readability="supporting">change got easier</text>
+  </g>
+
+  <g id="outcome-branch" data-readability-background="#FBFAF7">
+    <path d="M1040 842V870H760M1040 870H1260" class="branch"/>
+    <circle cx="760" cy="870" r="4.5" fill="#56658F"/>
+    <circle cx="1260" cy="870" r="4.5" fill="#2B302E"/>
+  </g>
+
+  <g id="outcome-checkpoint" data-readability-background="#FBFAF7">
+    <text x="580" y="907" class="outcome" fill="#56658F">Checkpoint ↺</text>
+    <text x="580" y="939" class="support" data-readability="supporting">Safe progress stays; obligations remain visible.</text>
+  </g>
+
+  <g id="outcome-complete" data-readability-background="#FBFAF7">
+    <text x="1080" y="907" class="outcome">Complete ✓</text>
+    <text x="1080" y="939" class="support" data-readability="supporting">All applicable obligations are proven.</text>
+  </g>
+
+  <g id="checkpoint-loop" data-readability-background="#FBFAF7">
+    <path d="M760 950C760 972 790 976 824 976H1548V590C1548 570 1532 560 1508 560" class="return"/>
+  </g>
+
+  <g id="external-proof-boundary" data-readability-background="#FBFAF7">
+    <line x1="80" y1="700" x2="460" y2="700" stroke="#B97863" stroke-width="1.8" stroke-dasharray="3 8"/>
+    <text x="80" y="734" class="external-kicker" data-readability="supporting">BEYOND REPOSITORY EVIDENCE</text>
+    <text x="80" y="778" class="external-title">Fresh authority + observation</text>
+    <text x="80" y="821" class="external-list" data-readability="supporting">install · activation · runtime</text>
+    <text x="80" y="853" class="external-list" data-readability="supporting">deployment · account · owner acceptance</text>
+    <line x1="80" y1="882" x2="460" y2="882" class="hairline"/>
+    <text x="80" y="916" class="support" data-readability="supporting">Repository evidence does not prove</text>
+    <text x="80" y="946" class="support" data-readability="supporting">these external layers.</text>
+  </g>
+</svg>

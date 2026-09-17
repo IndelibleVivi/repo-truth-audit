@@ -2,17 +2,19 @@
 
 [English](README.md)
 
-本目录拥有公开 Repo Truth Audit 架构背后的 semantic contract。两份本地化图直接以原生
-Mermaid block 存在于根 README 中，解释一场 evidence-led engagement 如何在 Audit 或 Plan
-停止，或跨过显式实施 gate，最终抵达经过验证的 Operate completion。它们不描述本 repo
-自身的 packaging 或 release pipeline。
+本目录拥有公开 Repo Truth Audit 架构背后的 semantic 与 presentation contract。两份根 README
+先嵌入对应 locale 的 reader-first SVG overview，再保留可折叠的原生 Mermaid 完整拓扑图。
+两层视图共同解释一场 evidence-led engagement 如何在 Audit 或 Plan 停止，或跨过显式实施
+gate，最终抵达经过验证的 Operate completion。它们不描述本 repo 自身的 packaging 或
+release pipeline。
 
 ## Reader question
 
 > Repo Truth Audit 如何把精确仓库快照与明确所有者意图转化为有界只读答案、可执行计划，
 > 或经过验证完成的获授权结构变更，同时不夸大证据或外部状态？
 
-图通过七个 region 回答：
+Reader overview 把答案压缩为所有者问题、被钉住的运行现实、停止边界、三种 mode outcome、
+Operate 验收、checkpoint／completion 分流与外部证明边界。完整 Mermaid 图保留七个 region：
 
 1. 钉住所有者意图、请求终点与仓库 identity；
 2. 解析当前 authority 与 reachability；
@@ -28,12 +30,15 @@ Mermaid block 存在于根 README 中，解释一场 evidence-led engagement 如
 | Surface | Authority |
 | --- | --- |
 | [`audit-runtime-model.json`](audit-runtime-model.json) | Renderer-neutral semantic authority：reader question、boundaries、stable IDs、nodes、edges、states、source mapping 与 render acceptance |
-| [`../../README.md`](../../README.md) | 独立英文 Mermaid view |
-| [`../../README.zh-CN.md`](../../README.zh-CN.md) | 独立简体中文 Mermaid view |
-| [`../../scripts/validate_architecture.py`](../../scripts/validate_architecture.py) | Model、source-anchor、topology、localization、connector-kind 与 README parity validation |
+| [`repo-truth-audit-overview.en.svg`](repo-truth-audit-overview.en.svg) 与 [`repo-truth-audit-overview.zh-CN.svg`](repo-truth-audit-overview.zh-CN.svg) | 成对的 day-first reader map：有意压缩的 presentation，不是第二份 semantic authority |
+| [`../../README.md`](../../README.md) | English overview embed、B/S/D/U 人话图例与完整 Mermaid view |
+| [`../../README.zh-CN.md`](../../README.zh-CN.md) | 简体中文 overview embed、B/S/D/U 人话图例与完整 Mermaid view |
+| [`../../scripts/validate_architecture.py`](../../scripts/validate_architecture.py) | Model、source-anchor、完整 Mermaid topology、connector-kind、SVG accessibility/safety、embed order 与 locale parity validation |
 
-JSON model 拥有 meaning；每份 README 拥有自身 locale 的精简 display copy 与 Mermaid syntax。
-两图共享 region、node 与 semantic-edge IDs，每条 modeled edge 都在两图中可见。
+JSON model 拥有 meaning。SVG pair 是受维护的 editorial projection：可以压缩常规 topology，
+但不能改变 mode、gate、proof boundary 或 completion claim。每份 README 拥有自身 locale 的
+精简 prose 与 Mermaid syntax；完整图共享 region、node 与 semantic-edge IDs，每条 modeled edge
+都在两份 Mermaid 中可见。
 
 每个内部 node 都映射到当前 repository authority：
 
@@ -49,7 +54,7 @@ JSON model 拥有 meaning；每份 README 拥有自身 locale 的精简 display 
 External-state node 保持 `unobserved_by_default`。Repository evidence 不会静默证明 runtime、
 edge、device、account 或 owner acceptance。
 
-## Connector meanings
+## 完整图的 connector meanings
 
 Mermaid view 只使用三种无需依赖颜色也可分辨的 connector：
 
@@ -62,14 +67,17 @@ Mermaid view 只使用三种无需依赖颜色也可分辨的 connector：
 
 ## Localization 与 theme contract
 
-英文与简体中文是两张独立 Mermaid 图，不在同一 canvas 混排双语。它们保持 region、node、
-semantic-edge 与 connector-kind parity，同时允许 locale-specific line break。
+英文与简体中文分别使用独立 SVG 与 Mermaid，不在同一 canvas 混排双语。SVG 共享 semantic
+group IDs，同时允许 locale-specific type metrics 与 line break；Mermaid 保持 region、node、
+semantic-edge 与 connector-kind parity。
 
-两图使用 Mermaid renderer defaults，不硬编码 theme colors，让 GitHub 自行适配 day/dark surface。
+已验收的 SVG overview 明确 day-first，并携带 warm paper background 以稳定渲染。完整图使用
+Mermaid renderer defaults，不硬编码 theme colors，让 GitHub 自行适配 day/dark surface。
 
 ## 编辑与验证
 
-先在 `audit-runtime-model.json` 改 meaning，再在同一个 change 中更新两份 README Mermaid：
+先在 `audit-runtime-model.json` 改 meaning，再在同一个 change 中更新两份 README Mermaid；
+如果该 meaning 会出现在压缩 reader map 中，也同时更新两份 SVG：
 
 ```bash
 python3 scripts/validate_architecture.py
@@ -80,7 +88,9 @@ python3 -m unittest tests.test_architecture
 Validator 要求七个 region、全部 stable nodes、全部 46 条 semantic edges、精确 connector kinds
 与 localized edge labels、model source anchors、locale parity、top-to-bottom flow，以及可见的
 只读诊断边界、显式 Operate gate、checkpoint/recovery feedback、whole-goal acceptance 与
-external proof boundary。
+external proof boundary。它还要求两份 SVG 可访问、standalone、semantic group 一致，并在两份
+README 中保持 overview 先于 detail 的嵌入顺序。
 
 Immutable `v0.1.0` release 仍作为早期 audit-only architecture 的历史证据。当前 `main`
-使用扩展后的 README Mermaid view，服务尚未发布的 0.2.0 source candidate。
+使用成对 reader overview 与扩展后的 README Mermaid view，服务尚未发布的 0.2.0 source
+candidate。

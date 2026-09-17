@@ -4,73 +4,179 @@
 
 正式名称：**Repository Operational Truth Audit**
 
-一个独立、evidence-led 的 Codex Skill：恢复长期演化仓库**今天实际上通过什么运行**，
-并在用户明确要求时，把有限结构变更一路做到实现与验证。
+**先看清一个难改的仓库实际怎样运行；得到明确授权后，把有限结构改造做到实现与验收。**
 
-当前 source candidate：`0.2.0`
-最新公开 release：`v0.1.0`
+这是面向仓库接手、迁移、整合和旧路径退役的 Codex Skill。它适合一次有明确目标的工程介入，
+完成后回到普通开发；无需每个任务、每次提交都调用。
 
-Skill invocation slug：`repository-operational-truth-audit`（保持不变）。
+当前源码候选：`0.2.0` — Audit / Plan / Operate。
+最新公开版本：`v0.1.0` — 仅 Audit。
 
-它不是 generic repo score、public-launch checklist 或通用 automatic fixer。它沿着与
-决策有关的 entrypoints、selectors、authority owners、durable state、derived artifacts、
-installed identities、evidence gates 与明确 external boundaries 穿行。Audit 默认只读；
-Plan 在编辑前停止；显式 Operate 请求可以继续完成 protected witnesses、coherent increments、
-recovery-aware checkpoints、superseded path retirement，以及请求 source/delivery layer 的验收。
+**下方稳定安装命令仍会安装 v0.1.0。** 试用尚未发布的 0.2.0 或升级已有副本，请看独立的
+[源码验证与安装说明](#从-source-checkout-验证或安装)。README 不代表新版已经发布或在本机生效。
+
+[使用指南](docs/usage.zh-CN.md) · [现有验证证据](docs/forward-0.2.0-receipt.zh-CN.md) ·
+[发布准备](docs/release-preparation.zh-CN.md) · [v0.2.0 发布说明草稿](docs/releases/v0.2.0.zh-CN.md)
 
 ## 它解决什么问题
 
-普通 code review 从一个 bounded change 开始；普通 verification 从一个 named claim
-开始。Repository Operational Truth Audit 用在这两个起点都不充分的时候：
+代码能读懂，却说不清哪个实现真正被发布、哪个模块负责写持久状态，或绿色测试有没有覆盖用户实际
+使用的路径。Repo Truth Audit 先沿这些关系查清事实，再回答决策问题或完成获授权的结构改造。
 
-- 几个月没碰这个 repo，现在真正 live 的路径是哪一条？
-- migration 或 safe archive 前，哪些 source、state、package 与 installed identity
-  仍然重要？
-- source、generated artifact、distribution package、installed copy、documentation 与
-  tests 是否描述同一条 operational path？
-- 一个 green test 或 receipt 到底证明哪一层？被声称保护的 contract 破坏后，它会不会
-  仍然 green？
-- 两套 mode 是有意选择且相互隔离，还是其中一条已经变成无人承认的 shadow path？
-- restore 或 release claim 若依赖无法观察的 remote schema、secret、dashboard
-  setting、device 或 human step，当前 decision 到底能诚实地下到哪里？
-- 当 formatting、persistence、selection 与 delivery 已经纠缠在一起，第一处值得改变的
-  结构边界是什么？
-- Refactor 是否既保住行为，又真的迁移了 ownership 与 selected artifact，还是只加了一层 facade？
-- 改完之后，下一个小功能是否真的可以不再穿过旧 owners？
+例如，抽出格式化模块只是一个检查点：发布清单可能仍选中混合职责的旧写入器。约定替换目标后，
+还要迁移调用者、切换实际入口、验证交付产物，并按要求退役旧路径。
+
+## 什么时候使用
+
+当局部差异和一条已知断言不足以判断改动影响时使用：重新接手陌生或闲置仓库、评估迁移或归档、
+核对源码与安装副本，或处理跨调用者、状态归属与交付路径的职责纠缠。
+
+运行正常的项目也可能值得改造，例如新增小功能总要修改多个无关模块。大文件、旧名字或两套受支持
+版本本身不构成改造理由；有明确用途的兼容路径可以继续保留。
+
+## 什么时候不使用
+
+单个已知 bug、普通 PR 审查、格式整理或核实一条已知结论，通常交给宿主的常规工作流。
+安全、许可和依赖审计各有专门工具。这里没有每日扫描、自动清理运动、评分体系或后台服务。
+
+## 调用方式
+
+安装并确认发现后，在**需要处理的目标仓库**中使用 Codex，直接说清目标和是否允许修改。
+Audit、Plan、Operate 是行为模式，无需记忆一套命令。
+
+| 你怎么说 | 应当得到什么 |
+| --- | --- |
+| “接手前先查清真正运行的 CLI 和产物，先别改。” | **Audit：**有证据与明确未知项的决策答案。 |
+| “给我拆分格式化和持久化的方案，停在编辑之前。” | **Plan：**有限终点、施工顺序、保护措施与验收标准。 |
+| “拆开格式化和持久化，保留命令与配置兼容，更新真实交付清单并退役旧写入器。直接本地实现并验证。” | **Operate：**完成获授权的整场改造，包括接线与验收。 |
+| “把这里全部清干净。” | 先做有界只读摸底，明确目标和修改权限后再行动。 |
+
+显式调用时，在请求前加上 `用 $repository-operational-truth-audit` 即可。
+这个 slug 没有改名，旧版也使用它；看到调用名称，并不能证明本机已经加载 0.2.0。
+
+一次本地结构改造授权可以覆盖相关源码、测试、文档和旧源码退役。真实数据迁移、生产启用、安装、
+付费调用、push 和 release 不会自动包含在内。示例、计划和历史记录都不能替用户授予权限。
+
+[使用指南](docs/usage.zh-CN.md) 另有可复制请求、完整示例、续做方式、术语解释及给编码代理的入口。
 
 ## 一个结果会长什么样
 
-**Not ready**
+**尚不能交接：**源码测试通过，但发布清单仍选中旧产物。
 
-> Source tests 虽然通过，但 `distribution.json` 仍然选中 stale artifact。
+**在仓库范围内可以继续：**稳定版与开发版有明确选择方式、独立身份，没有非预期调用者。
 
-**Ready within repository scope**
+**已验证检查点，完整目标仍未完成：**格式化已拆出且行为受保护，状态写入迁移与交付切换尚未完成。
 
-> Stable 与 development 两条路径都有明确 selector 和隔离 identity，也不存在
-> cross-boundary caller。
+**在约定的源码与产物层完成：**真实入口使用新模块、应退出的旧路径已退役，行为与产物检查通过。
 
-**Verified checkpoint，但完整目标仍未完成**
+## 输出语义
 
-> Formatting 已隔离且行为受保护，但 manifest 仍选择 legacy writer；这一步可以安全保留，
-> 不能宣称整场改造完成。
+有意义的发现要连起：声称的事实或实际路径、底层机制、矛盾或证据缺口，以及它对用户决策的影响。
+工具区分已验证矛盾、假绿色测试、影子路径、有意并存、无害残留与决策关键未知。
+“检查范围内没有问题”只覆盖本次决策和快照，不是无条件的全仓正确保证。
 
-**在约定 source + artifact 层完成**
+获授权的改造按适用的 **行为（Behavior）、结构（Structure）、交付（Delivery）、用途（Usefulness）**
+验收：结果与状态副作用正确，职责真正分离或旧路径真正退出，实际交付路径选中新实现，最初的开发阻力
+有所减少。可用一个小型后续改动验证用途；并非每次都要求部署或额外开发功能。
 
-> Shipping selector 已选择新 owners，旧 writer 不可达且已退役，behavior/state witnesses
-> 通过，declared artifact 与目标实现一致。
+完成、检查点、受阻、已中止／恢复是不同结果。检查点保留原目标和剩余义务。续做时由宿主重新调用，
+先检查当前源码和已发生的效果，再继续写入；Skill 不会自行在后台恢复运行。
+
+## 从公开 release 安装
+
+**首次安装已发布的 Audit-only v0.1.0**，使用系统安装器：
+
+```bash
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+  --repo IndelibleVivi/repo-truth-audit \
+  --path skills/repository-operational-truth-audit \
+  --ref v0.1.0
+```
+
+这是稳定发布版，不包含新候选能力。已有副本发生冲突时，使用下面的显式升级流程，不要先删除安装目录。
+
+## 从 source checkout 验证或安装
+
+以下命令使用 Bash、Git 与 Python 3.10+。请克隆到**新目录**，不要覆盖正在工作的仓库。
+`main` 是持续变化的候选源码，安装前记录并审阅确切提交。
+
+```bash
+git clone https://github.com/IndelibleVivi/repo-truth-audit.git
+cd repo-truth-audit
+git rev-parse HEAD
+git status --short --branch
+python3 scripts/validate_architecture.py
+python3 scripts/validate_repository.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 scripts/selftest.py
+python3 evals/operation-lab/run_operation_lab.py
+```
+
+上述验证不会安装 Skill。可先在一次性目录测试安装载荷：
+
+```bash
+preview_root=$(mktemp -d)
+python3 scripts/install_skill.py --dest "$preview_root"
+```
+
+这只是安装载荷测试，不代表宿主会发现这个临时目录。审阅源码并决定修改日常安装后，**择一**执行：
+
+```bash
+# 首次安装到本地安装器配置的 Skill 根目录。
+python3 scripts/install_skill.py
+```
+
+```bash
+# 明确升级已有副本；安装器保留被替换的 Skill 备份。
+python3 scripts/install_skill.py --replace
+```
+
+默认目标是 `$CODEX_HOME/skills`，未配置时为 `~/.codex/skills`。只有确认宿主会发现某个根目录时，
+才用 `--dest` 指向它。检查输出的目标、备份与回执；不要把安装副本当源码改，也不要手工覆盖新旧文件。
+按宿主要求重启或重新加载后，在新任务中确认选中的 Skill 路径与 Audit／Plan／Operate 行为。
+安装字节正确和实际加载生效需要分别检查，详见[安装与发现排障](docs/usage.zh-CN.md#安装与发现)。
+
+本地安装器、验证与摘要共用显式八文件载荷。缓存和字节码不进入安装包，未声明的源码文件会被拒绝。
+可选的引用字节检查器依赖 POSIX 安全读取能力，其他平台会明确拒绝执行。
+CI 覆盖 macOS／Ubuntu 与 Python 3.10／3.13；Bash 夹具和可比对的文件身份并不代表完整原生 Windows 支持。
+
+## 验证边界
+
+确定性测试验证包、夹具和反例，普通验证不调用目标模型或网络。操作演练应用的是评测者预写的改动。
+独立的 [forward 回执](docs/forward-0.2.0-receipt.zh-CN.md) 记录真实模型在合成仓库中的 Audit、Plan、
+Operate 观察，包括一次请求完成整体目标，以及只改格式化模块的后续扩展。
+这些有限结果不证明任意生产仓库重构、崩溃恢复或真实数据迁移能力。
+
+Skill 提供方法和可选字节检查器；执行、真实权限和沙箱来自宿主工具。
+Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运行引擎。
+与其他工具的区别见[使用指南](docs/usage.zh-CN.md#与其他工具的关系)。
+
+## Repository map
+
+| 读者要做什么 | 从这里开始 |
+| --- | --- |
+| 判断是否适用、怎样请求 | [使用指南](docs/usage.zh-CN.md) |
+| 执行已安装的 Skill | [权威 SKILL.md](skills/repository-operational-truth-audit/SKILL.md) 及其链接的 references |
+| 维护这个仓库 | [AGENTS.md](AGENTS.md) 与[产品契约](docs/product-spec.zh-CN.md) |
+| 理解证明和完成标准 | [证据模型](docs/evidence-model.zh-CN.md) |
+| 查看实测行为与当前状态 | [0.2.0 回执](docs/forward-0.2.0-receipt.zh-CN.md)、[历史回执](docs/forward-behavior-receipt.zh-CN.md)、[当前状态](docs/current-state.zh-CN.md) |
+| 准备发布 | [发布流程](docs/release-preparation.zh-CN.md)、[发布说明草稿](docs/releases/v0.2.0.zh-CN.md) |
+| 查看架构与研究来源 | [架构模型](docs/architecture/README.zh-CN.md)、[研究依据](docs/research-basis.zh-CN.md) |
+
+`evals/cases/` 和 `evals/operation-lab/` 是评测材料，不应成为目标代理的指令。
+`scripts/` 与 `tests/` 负责验证和本地安装。公开文档有对应中英文版本，已安装运行时仍只有一份
+权威 Skill，不新增文档依赖。
 
 ## 架构图究竟 serve 什么
 
-这张图只回答一个 public reader question：
+这张图回答一个读者问题：
 
 > Repo Truth Audit 如何把精确仓库快照与明确所有者意图转化为有界只读答案、可执行计划，
 > 或经过验证完成的获授权结构变更，同时不夸大证据或外部状态？
 
-因此它画的是 **Audit / Plan / Operate 运行契约**。这个 Skill 自身的 packaging、
-installation 与 release 属于另一项 reader job。
-
-实线箭头表示范围内 evidence 或 implementation flow；点线箭头表示有条件的 authority、
-specialist 或外部观察；粗回箭头表示新证据重新打开诊断或下一 increment。
+图中展示 **Audit / Plan / Operate 运行契约**。Skill 自身的打包、安装和发布另见发布流程。
+实线为范围内的证据或实施流程；点线为有条件的权限、专门工具或外部观察路径；粗回箭头表示新证据
+重新打开诊断或下一阶段工作。
 
 ```mermaid
 flowchart TB
@@ -220,212 +326,13 @@ flowchart TB
   N51_EXTERNAL_STATE -. 已观察完成证据 .-> N67_WHOLE_GOAL
 ```
 
-Renderer-neutral model、稳定 semantic IDs、evidence mapping 与两份 Mermaid source
-contract 位于 [`docs/architecture/`](docs/architecture/README.zh-CN.md)。
-
-## 什么时候使用
-
-当一个明确决策依赖对当前 repo topology 的重建时使用，尤其包括：
-
-- 长期闲置 repo 的 re-entry；
-- migration、machine move、consolidation 或 archival readiness；
-- source / generated artifact / package / installed copy 对账；
-- 当前 product docs、durable agent instructions、runbooks、status surfaces 或 receipts
-  之间的 authority drift；
-- assertion 可能没有覆盖其声称 contract 的 false-green gate；
-- stable/development、legacy/current、local/remote 或 source/deployment 路径的归属与
-  选择不明确；
-- repo claim 所依赖的决定性 external state 尚未被观察；
-- live ownership 与 delivery path 不清楚时，为有限 extraction、consolidation、replacement
-  或 retirement 制定计划；
-- 用户明确要求实施并验证结构结果，而不是在 audit handoff 处停止。
-
-## 什么时候不要使用
-
-以下任务应交给更窄的 owner：
-
-- review 一个 diff、commit、branch 或 pull request；
-- verify 一个已经明确的 claim；
-- 修复一个不涉及 repository topology 的孤立已知 bug；
-- 做 license、security、compliance 或 dependency 专项审计；
-- generic repo hygiene 或 documentation cleanup；
-- 在没有 repo-state decision 与明确授权时，检查或改变 live host、account、database、
-  browser、deployment 或 owner-controlled surface。
-
-Audit 默认只读，Plan 不编辑目标。Operate 需要显式 implementation request，且仍受真实
-authority 限制。Local source authorization 不等于公共 API 删除、durable-data mutation、
-install、deployment、push、account action 或 release。
-
-## 从公开 release 安装
-
-使用 system Skill installer，并固定 release tag：
-
-```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
-  --repo IndelibleVivi/repo-truth-audit \
-  --path skills/repository-operational-truth-audit \
-  --ref v0.1.0
-```
-
-安装得到的是 derived local copy；canonical source 仍然是本 repo。成功 install 只证明
-installed bytes，Codex 在后续 turn 的 discovery 是另一个必须单独观察的边界。
-
-`v0.1.0` tag 保持 immutable，并保留 release 时的正式全名 display metadata。当前 `main`
-承载尚未发布的 `0.2.0` Audit / Plan / Operate source candidate；安装 `v0.1.0` 不会获得这些
-候选能力。Skill slug 保持不变。
-
-## 从 source checkout 验证或安装
-
-```bash
-git clone https://github.com/IndelibleVivi/repo-truth-audit.git
-cd repo-truth-audit
-
-python3 scripts/validate_architecture.py
-python3 scripts/validate_repository.py
-python3 -m unittest discover -s tests -p 'test_*.py'
-python3 scripts/selftest.py
-python3 evals/operation-lab/run_operation_lab.py
-python3 scripts/install_skill.py
-```
-
-Tracked text files 通过 `.gitattributes` 固定为 LF，因此普通 Windows checkout 也会
-保留 repository validation 使用的精确 license hashes。可安装 Skill 是一份显式声明的
-eight-file payload；repository validation、digest、staging、installed comparison 与 receipt
-共同使用这一个定义。Digest 按规范化后的 POSIX relative path 排序，使 Windows、macOS 与
-Linux 的 source/install receipts 可互相比对。`__pycache__`、bytecode 与 `.DS_Store` 等已知
-runtime residue 不属于 payload，也不会进入 staging；其他 undeclared source entry 会让
-validation 失败，而不是从 identity 中悄悄消失。Fixture self-test 仍然需要 Bash；这并不表示
-全部 operator commands 已在 Windows 上变成 shell-native。
-
-Local installer 会拒绝覆盖内容不同的目标。只有在明确升级时才使用 `--replace`；被替换
-的 copy 会保留在可恢复 backup 中，installer 同时写入 provenance receipt。已安装树中的
-已知 post-install runtime residue 不改变 declared payload identity；undeclared source 或
-executable file 则会使 installed target 被判定为不同内容。
-
-## 调用方式
-
-Audit（只读）：
-
-```text
-在我重新进入这个 repo 前，用 $repository-operational-truth-audit 重建它当前的
-operational truth。重点看哪些 entrypoints 与 artifacts 仍然 live、现有 tests 真正证明了
-什么，以及哪些 unknowns 会改变 re-entry decision。保持只读。
-```
-
-Plan（不编辑目标）：
-
-```text
-用 $repository-operational-truth-audit 规划怎样把 formatting 与 durable writes 分开。
-追踪实际 CLI 与 distribution selector，保留当前行为，定义 structure/delivery 验收，
-并在编辑前停止。
-```
-
-Operate（显式实施授权）：
-
-```text
-用 $repository-operational-truth-audit 把 formatting 与 durable writes 分开，保留当前
-CLI/config 兼容，切换真实 distribution，退役旧 writer，并验证 behavior、structure、
-delivery 以及下一次 formatter-only extension。实施本地 source change。
-```
-
-一次完整 engagement 绑定：
-
-```text
-一个 owner decision + 一个精确 repository snapshot
-  -> 当前 authority 与 live selectors
-  -> source / configuration / durable state
-  -> generated / built / packaged / projected artifacts
-  -> installed 或 deployed identity（仅在得到新鲜观察时）
-  -> challenge、adjudication 与显式 external unknowns
-  -> Audit answer、Plan boundary 或显式 Operate authority
-  -> protected behavior + structural witnesses
-  -> coherent increments + checkpoint/recovery loop
-  -> behavior / structure / delivery / usefulness acceptance
-  -> bounded result + proof limits + end re-pin
-```
-
-Tests、receipts、status documents 与 successful commands 都只是 evidence surfaces。
-它们只证明自己实际观察到的 exact input、identity、assertion 与 proof layer。
-
-## 输出语义
-
-一个 material finding 必须闭合：
-
-```text
-claim 或 live surface
-  -> mechanism 或 state
-  -> contradiction 或 evidence gap
-  -> 具体 decision impact
-  -> fresh validation
-```
-
-裁定语义区分：
-
-- validated contradiction；
-- false-green evidence；
-- shadow path；
-- intentional multiplicity；
-- non-material residue；
-- decision-critical unknown；
-- external/environment/policy boundary；
-- explicit audit object 内的 clean result。
-
-这些是 decision meanings，不是 score，也不是强制 report template。Clean result 不等于
-“这个 repo 没有任何缺陷”，而是 pinned object 内没有留下 material contradiction 或
-decision-critical unknown。
-
-Operate 把 checkpoint 与完整目标完成分开，并核对适用 obligations：
-
-- **behavior：**outputs、failures、compatibility 与 state effects；
-- **structure：**ownership/dependency change 与真实 retirement，而不是 facade；
-- **delivery：**请求覆盖的 manifest、package、installation 或 runtime selector；
-- **usefulness：**具体 change pressure 得到缓解，并在可行时用小型 follow-on change 证明。
-
-Terminal status 为 complete、checkpoint、blocked 或 aborted/recovered。Tests 通过、worker
-completion、byte match 或 state JSON field 都不能单独把一种 status 升级成另一种。
-
-## Repository map
-
-| Path | Authority |
-| --- | --- |
-| `skills/repository-operational-truth-audit/` | Canonical Skill router、progressive Audit/Operate/Recovery references、可选 cited-byte helper 与 UI metadata |
-| `docs/product-spec.md` | 完整 accepted product 与 acceptance contract |
-| `docs/evidence-model.md` | Proof、finding、checkpoint/completion、recovery 与 stopping semantics |
-| `docs/architecture/` | Renderer-neutral model 与 README 中分开的中英文 Mermaid contract |
-| `docs/forward-behavior-receipt.md` | 历史 public-safe `v0.1.0` Audit-only forward evidence |
-| `docs/forward-0.2.0-receipt.md` | Public-safe `0.2.0` Audit、payload 对账、实际 Plan 与 Operate forward evidence |
-| `docs/research-basis.md` | Public-safe research provenance 与 source decisions |
-| `docs/current-state.md` | 易变化的 source、Git、install、CI 与 publication truth |
-| `evals/cases/` | Controlled 只读 behavior cases；expected artifacts 仅供 evaluator 使用 |
-| `evals/operation-lab/` | Deterministic known-patch rehearsal 与 anti-false-completion controls；不是 model evidence |
-| `scripts/` | Architecture/repository validation、declared Skill payload、fixture self-test 与 transactional install |
-| `tests/` | Repository、architecture、evidence-helper、operation-lab、fixture 与 installer regressions |
-
-中文文档使用 `.zh-CN.md` 后缀，与英文版保持同一文档边界，不把两种语言机械混排进
-一个文件。
-
-## 验证边界
-
-Ordinary validation 与受控 operation lab 不调用 target model，也不执行 network、browser、
-account、deployment 或 live-system mutation。Lab 只对 synthetic subject 应用 evaluator
-编写的已知 edits，不证明 autonomous model performance。CI workflow 在 macOS 与 Ubuntu 上
-分别使用 Python 3.10 和 3.13。
-
-Skill Field Lab 可以在 disposable workspaces 中评估 controlled cases，但它只是可选
-evaluation infrastructure，不是 runtime dependency，也不拥有这个 Skill。
+语义模型、稳定节点 ID、证据映射和双语 Mermaid 契约位于
+[docs/architecture/](docs/architecture/README.zh-CN.md)。
 
 ## 许可
 
-本 repo 是 **source-available，不是 OSI open source**。
-
-- Functional materials——包括 Skill、scripts、tests、CI、evals 与 functional repository
-  contracts——使用 [Sustainable Use License 1.0](LICENSE)。完整条款允许个人、
-  非商业与内部商业使用；向他人分发或提供时，必须保持免费且非商业。
-- 独立的 README、changelogs、公开 documentation 与 `docs/` 下的独立 diagrams 使用
-  [CC BY-NC-SA 4.0](LICENSE-DOCUMENTATION.zh-CN.md)。
-- [`LICENSING.zh-CN.md`](LICENSING.zh-CN.md) 给出精确 path map 与 exceptions；未来若
-  引入第三方材料，它们仍受各自条款约束。
-
-公开可见不会消除这些条件。本 repo 没有 vendored external Skill text 或 source code；
-概念性 research provenance 记录在
-[`docs/research-basis.zh-CN.md`](docs/research-basis.zh-CN.md)。
+本仓库为 **source-available，不是 OSI open source**。
+功能材料适用 [Sustainable Use License 1.0](LICENSE)，独立公开文档与图示适用
+[CC BY-NC-SA 4.0](LICENSE-DOCUMENTATION.zh-CN.md)。完整条件与路径划分以
+[LICENSING.zh-CN.md](LICENSING.zh-CN.md) 为准。
+仓库未内置外部 Skill 文本或源码；概念来源见[研究依据](docs/research-basis.zh-CN.md)。

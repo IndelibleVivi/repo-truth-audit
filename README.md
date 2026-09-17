@@ -4,68 +4,210 @@
 
 Formally: **Repository Operational Truth Audit**
 
-A standalone, evidence-led Codex Skill for recovering what a long-evolved
-repository actually operates through **today** and, when explicitly asked,
-carrying a bounded structural change through implementation and verification.
+**Understand how a difficult repository actually runs. With explicit permission,
+carry a bounded structural change through implementation and verification.**
 
-Current source candidate: `0.2.0`
-Latest public release: `v0.1.0`
+A Codex Skill for repository re-entry, migrations, consolidation and legacy-path
+retirement. Use it for a focused engineering intervention; finish the agreed job
+and return to normal development. It need not run on every task or every commit.
 
-Skill invocation slug: `repository-operational-truth-audit` (unchanged).
+Current source candidate: `0.2.0` — Audit / Plan / Operate.
+Latest public release: `v0.1.0` — Audit only.
 
-This is not a generic repository score, public-launch checklist, or universal
-automatic fixer. It follows decision-bearing entrypoints, selectors, authority
-owners, durable state, derived artifacts, installed identities, evidence gates,
-and explicit external boundaries. Audit remains read-only by default. Plan
-stops before edits. An explicit Operate request can continue through protected
-witnesses, coherent increments, recovery-aware checkpoints, retirement of
-superseded paths, and acceptance at the requested source/delivery layer.
+**The stable install below still installs v0.1.0.** To evaluate the unreleased
+0.2.0 candidate or upgrade an existing local copy, use the separate
+[source-checkout instructions](#validate-or-install-from-a-source-checkout).
+No v0.2.0 release or local activation is implied by this README.
+
+[Using the Skill](docs/usage.md) · [Current evidence](docs/forward-0.2.0-receipt.md) ·
+[Release preparation](docs/release-preparation.md) · [Draft v0.2.0 notes](docs/releases/v0.2.0.md)
 
 ## What problem it solves
 
-Ordinary code review begins with a bounded change. Ordinary verification begins
-with a named claim. Repository Operational Truth Audit is for the moments when
-neither starting point is sufficient:
+You can read the code and still be unsure which implementation ships, which
+module writes persistent state, or whether a green test covers the path users
+actually run. Repo Truth Audit follows those relationships before judging a
+repository decision or making an authorized structural change.
 
-- Which path is actually live after months away from this repository?
-- Before a migration or safe archive, which source, state, package, and
-  installed identities still matter?
-- Do source, generated artifacts, distribution packages, installed copies,
-  documentation, and tests describe the same operational path?
-- What layer does a green test or receipt actually prove—and could the claimed
-  contract be broken while that evidence stays green?
-- Are two modes intentionally selected and isolated, or is one an unowned
-  shadow path?
-- If a restore or release claim depends on an unavailable remote schema,
-  secret, dashboard setting, device, or human step, how far can the current
-  decision honestly go?
-- Which structural boundary should change first when formatting, persistence,
-  selection, and delivery have become inseparable?
-- Did a refactor preserve behavior while actually moving ownership and the
-  selected artifact, or did it only add a facade?
-- After the change, is the next small feature materially easier to add without
-  crossing the old owners?
+For example, extracting a formatter is only a checkpoint when the shipping
+manifest still selects the old mixed writer. A complete replacement must also
+move the callers, select the intended implementation, verify the artifact and
+retire the superseded path where the agreed goal requires it.
+
+## When to use it
+
+Use it when a local diff and a named assertion are insufficient: returning to
+an unfamiliar or long-idle repository; checking migration or archive readiness;
+reconciling source, package and installed identities; or separating tangled
+responsibilities across real callers, state owners and delivery paths.
+
+A functioning repository can still benefit when a concrete change repeatedly
+crosses unrelated modules. Large files or two supported versions alone do not
+justify a refactor. Keeping an intentional compatibility path can be correct.
+
+## When not to use it
+
+An isolated bug, ordinary PR review, formatting pass, or one known claim usually
+belongs to the host's normal workflow. Dedicated security, license and dependency
+reviews remain specialist work. There is no daily scan, automatic cleanup
+campaign, scoring system or background service here.
+
+## Invoke it
+
+Start Codex in the **target repository** after installing and confirming discovery.
+Describe your goal and whether edits are wanted. Audit, Plan and Operate are
+behavior modes, not commands you must memorize.
+
+| Your request | What the Skill should do |
+| --- | --- |
+| "Before I resume this repo, find which CLI and artifact are live. Do not edit." | **Audit:** answer the decision with evidence and explicit unknowns. |
+| "Plan how to separate formatting from persistence. Stop before edits." | **Plan:** give a finite end state, steps, protection and acceptance criteria. |
+| "Separate formatting from persistence, preserve CLI/config compatibility, update the real bundle and retire the old writer. Implement and verify locally." | **Operate:** perform the whole authorized change, including integration and acceptance. |
+| "Clean everything." | Bounded read-only reconnaissance; resolve the goal and write boundary before edits. |
+
+For an explicit invocation, start your request with
+`Use $repository-operational-truth-audit to ...`.
+The unchanged slug also names the old release, so invocation alone does not
+prove that the installed copy has 0.2.0 capabilities.
+
+A local restructuring request can cover related source, tests, docs and old-source
+retirement. It does not automatically authorize real-data migration, production
+activation, installation, paid calls, push or release. A plan, example or saved
+operation record cannot grant those permissions.
+
+See the [usage guide](docs/usage.md) for copyable requests, a worked example,
+resumption guidance, short definitions and instructions for coding agents.
 
 ## What a result looks like
 
-**Not ready**
+**Not ready:** source tests pass, but the shipping manifest selects a stale artifact.
 
-> Source tests pass, but `distribution.json` still selects a stale artifact.
+**Ready within repository scope:** stable and development paths have explicit
+selection, separate identities and no unintended caller.
 
-**Ready within repository scope**
+**Verified checkpoint, whole goal still open:** formatting is separated and its
+behavior protected; moving the writer and switching delivery remain to be done.
 
-> Stable and development paths have explicit selectors, isolated identities,
-> and no cross-boundary caller.
+**Complete at the agreed source + artifact layers:** the real selector uses the
+new owners, required old paths are retired, and behavior and artifact checks pass.
 
-**Verified checkpoint, whole goal still open**
+## Output semantics
 
-> Formatting is isolated and behavior is protected, but the manifest still
-> selects the legacy writer; this increment is safe to retain, not complete.
+A finding connects a claim or live path to its mechanism, contradiction or
+missing evidence, and the effect on the user's decision. The Skill separates
+validated contradictions, false-green gates, shadow paths, intentional
+multiplicity, harmless residue and decision-critical unknowns. A clean result
+is bounded to the checked decision and snapshot, not a universal defect-free claim.
 
-**Complete at the agreed source + artifact layers**
+An authorized change is accepted against applicable **Behavior, Structure,
+Delivery and Usefulness** obligations: correct outcomes and state effects;
+actual separation or retirement; the selected delivery path; and relief of the
+original development difficulty. A small follow-on change can test usefulness.
+Not every task requires deployment or an extra feature probe.
 
-> The shipping selector uses the new owners, the old writer is unreachable and
-> retired, behavior/state witnesses pass, and the declared artifact matches.
+Complete, checkpoint, blocked and aborted/recovered are distinct endings.
+A checkpoint retains the original goal and remaining obligations. On resumption,
+the host must invoke the Skill again and current source/effects must be checked
+before more writes. It does not autonomously resume in the background.
+
+## Install from the public release
+
+For a **fresh Audit-only v0.1.0 installation**, use the system installer:
+
+```bash
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+  --repo IndelibleVivi/repo-truth-audit \
+  --path skills/repository-operational-truth-audit \
+  --ref v0.1.0
+```
+
+This is the published release, not the new candidate. For an existing conflicting
+copy, use the deliberate upgrade path below rather than deleting installed files.
+
+## Validate or install from a source checkout
+
+The commands below use Bash, Git and Python 3.10+. Clone into a **new** directory;
+do not overwrite a working checkout. `main` is moving candidate source: record
+and review its exact commit before installing.
+
+```bash
+git clone https://github.com/IndelibleVivi/repo-truth-audit.git
+cd repo-truth-audit
+git rev-parse HEAD
+git status --short --branch
+python3 scripts/validate_architecture.py
+python3 scripts/validate_repository.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 scripts/selftest.py
+python3 evals/operation-lab/run_operation_lab.py
+```
+
+Validation above does not install the Skill. For a disposable installation test:
+
+```bash
+preview_root=$(mktemp -d)
+python3 scripts/install_skill.py --dest "$preview_root"
+```
+
+That directory is a payload test, not a promise of host discovery. After reviewing
+the source and choosing to change your daily installation, run **one** of:
+
+```bash
+# Fresh installation into the local installer's configured Skill root.
+python3 scripts/install_skill.py
+```
+
+```bash
+# Intentional upgrade; preserves the replaced Skill in a backup.
+python3 scripts/install_skill.py --replace
+```
+
+The default destination is `$CODEX_HOME/skills`, or `~/.codex/skills`. Use `--dest`
+only for a root your host actually discovers. Inspect the reported target,
+backup and receipt. Do not edit the installed copy as source or manually overlay
+new files onto the old directory. Restart/reload the host as needed, then use a
+fresh task to confirm the selected Skill path and Audit/Plan/Operate behavior.
+Installed bytes and observed activation are separate checks; see
+[discovery troubleshooting](docs/usage.md#installation-and-discovery).
+
+The local installer shares an explicit eight-file payload definition with
+validation and digesting. Known runtime cache/bytecode never enters staging;
+undeclared source files are rejected. The optional cited-byte checker requires
+POSIX secure reads and fails closed elsewhere. CI covers macOS/Ubuntu with
+Python 3.10/3.13. Bash fixtures and portable file identity do not establish full
+native Windows operator support.
+
+## Validation boundaries
+
+Deterministic tests check packaging, fixtures and counterexamples; ordinary
+validation makes no target-model or network call. The operation lab applies known
+evaluator edits. The separate [forward receipt](docs/forward-0.2.0-receipt.md)
+records real model Audit, Plan and Operate observations on synthetic subjects,
+including a single-request whole-goal change and a formatter-only extension.
+These are bounded results, not proof of arbitrary production refactoring,
+crash recovery or real-data migration.
+
+This Skill supplies a method and an optional byte checker. Host tools provide
+execution and actual permission/sandbox controls. Servotab, Worker Routing and
+Skill Field Lab are optional companions, never required runtime engines.
+For related-tool distinctions, see [the usage guide](docs/usage.md#related-tools).
+
+## Repository map
+
+| Reader's job | Start here |
+| --- | --- |
+| Decide whether and how to use it | [Usage guide](docs/usage.md) |
+| Execute the installed Skill | [Canonical SKILL.md](skills/repository-operational-truth-audit/SKILL.md), then its linked references |
+| Maintain this repository | [AGENTS.md](AGENTS.md) and [product spec](docs/product-spec.md) |
+| Understand proof and completion | [Evidence model](docs/evidence-model.md) |
+| Inspect tested behavior and present state | [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [historical receipt](docs/forward-behavior-receipt.md), [current state](docs/current-state.md) |
+| Prepare a release | [Release preparation](docs/release-preparation.md), [draft notes](docs/releases/v0.2.0.md) |
+| Inspect architecture and research | [Architecture model](docs/architecture/README.md), [research basis](docs/research-basis.md) |
+
+`evals/cases/` and `evals/operation-lab/` contain evaluator material, not target
+instructions. `scripts/` and `tests/` own validation and local installation.
+Public English/Chinese documents are paired; the installed runtime stays one
+canonical Skill, with no additional documentation dependency.
 
 ## Architecture: what this diagram serves
 
@@ -78,7 +220,6 @@ The diagram answers one public-reader question:
 
 It depicts the **Audit / Plan / Operate runtime contract**. Packaging,
 installation, and release of this Skill remain a separate reader job.
-
 Solid arrows are in-scope evidence or implementation flow. Dotted arrows are
 conditional authority/external-observation paths. Thick return arrows reopen
 diagnosis or the next increment when evidence changes.
@@ -232,233 +373,14 @@ flowchart TB
 ```
 
 The renderer-neutral model, stable semantic IDs, evidence mapping, and paired
-Mermaid source contract live in
-[`docs/architecture/`](docs/architecture/README.md).
-
-## When to use it
-
-Use this Skill when a concrete decision depends on reconstructing current
-repository topology, especially for:
-
-- long-idle repository re-entry;
-- migration, machine move, consolidation, or archival readiness;
-- source / generated artifact / package / installed-copy reconciliation;
-- authority drift across current product docs, durable agent instructions,
-  runbooks, status surfaces, or receipts;
-- false-green gates whose assertions may not cover their claimed contract;
-- ambiguous stable/development, legacy/current, local/remote, or
-  source/deployment paths; or
-- a repository claim whose decisive external state is currently unobserved;
-- planning a bounded extraction, consolidation, replacement, or retirement
-  where live ownership and delivery paths are unclear; or
-- implementing that structural outcome when the user explicitly requests edits
-  and verification rather than an audit handoff.
-
-## When not to use it
-
-Use a narrower owner for:
-
-- reviewing a diff, commit, branch, or pull request;
-- verifying one already-defined claim;
-- repairing an isolated known bug with no repository-topology question;
-- a dedicated license, security, compliance, or dependency audit;
-- generic repository hygiene or documentation cleanup; or
-- inspecting or changing a live host, account, database, browser, deployment,
-  or owner-controlled surface without a repository-state decision and explicit
-  authorization.
-
-An Audit request is read-only by default, and Plan does not edit the target.
-Operate requires an explicit implementation request and remains limited to its
-actual authority. Local source authorization does not imply public API removal,
-durable-data mutation, install, deployment, push, account action, or release.
-
-## Install from the public release
-
-Use the system Skill installer and pin the release tag:
-
-```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
-  --repo IndelibleVivi/repo-truth-audit \
-  --path skills/repository-operational-truth-audit \
-  --ref v0.1.0
-```
-
-Installation creates a derived local copy. The canonical source remains this
-repository. A successful install proves installed bytes only; Codex discovery
-in a later turn is a separate observable boundary.
-
-The `v0.1.0` tag is immutable and retains its release-era full display name.
-Current `main` carries the unreleased `0.2.0` Audit / Plan / Operate source
-candidate. Installing `v0.1.0` does not install those candidate capabilities.
-The Skill slug remains unchanged.
-
-## Validate or install from a source checkout
-
-```bash
-git clone https://github.com/IndelibleVivi/repo-truth-audit.git
-cd repo-truth-audit
-
-python3 scripts/validate_architecture.py
-python3 scripts/validate_repository.py
-python3 -m unittest discover -s tests -p 'test_*.py'
-python3 scripts/selftest.py
-python3 evals/operation-lab/run_operation_lab.py
-python3 scripts/install_skill.py
-```
-
-Tracked text files are pinned to LF by `.gitattributes`, so an ordinary Windows
-checkout preserves the exact license hashes used by repository validation.
-The installable Skill is one explicit eight-file payload shared by validation,
-digesting, staging, installed comparison, and receipts. Digests sort its
-normalized POSIX relative paths, which keeps source/install receipts comparable
-across Windows, macOS, and Linux. Known runtime residue such as `__pycache__`,
-bytecode, and `.DS_Store` is not payload and is never staged; any other
-undeclared source entry fails validation instead of disappearing from identity.
-The fixture self-test still requires Bash; this does not make every operator
-command shell-native on Windows.
-
-The local installer refuses to overwrite a conflicting target. Use
-`--replace` only for an intentional upgrade; the replaced copy is preserved in
-a recoverable backup and the installer writes a provenance receipt. Known
-post-install runtime residue does not change the declared payload identity, but
-an undeclared source or executable file makes the installed target different.
-
-## Invoke it
-
-Audit (read-only):
-
-```text
-Use $repository-operational-truth-audit to reconstruct this repository's
-current operational truth before I resume work. Focus on which entrypoints and
-artifacts are live, what the current tests actually prove, and which unknowns
-can change the re-entry decision. Keep it read-only.
-```
-
-Plan (no target edits):
-
-```text
-Use $repository-operational-truth-audit to plan how to separate formatting from
-durable writes. Trace the live CLI and distribution selector, preserve current
-behavior, define structural and delivery acceptance, and stop before editing.
-```
-
-Operate (explicit implementation authority):
-
-```text
-Use $repository-operational-truth-audit to separate formatting from durable
-writes, keep the current CLI/config compatible, switch the real distribution,
-retire the superseded writer, and verify behavior, structure, delivery, and the
-next formatter-only extension. Implement the local source change.
-```
-
-A complete engagement binds:
-
-```text
-one owner decision + one exact repository snapshot
-  -> current authority and live selectors
-  -> source / configuration / durable state
-  -> generated / built / packaged / projected artifacts
-  -> installed or deployed identity, only when freshly observed
-  -> challenge, adjudication, and explicit external unknowns
-  -> Audit answer, Plan boundary, or explicit Operate authority
-  -> protected behavior + structural witnesses
-  -> coherent increments + checkpoint/recovery loop
-  -> behavior / structure / delivery / usefulness acceptance
-  -> bounded result + proof limits + end re-pin
-```
-
-Tests, receipts, status documents, and successful commands are evidence
-surfaces. They prove only the exact input, identity, assertion, and proof layer
-they actually observed.
-
-## Output semantics
-
-A material finding closes this trace:
-
-```text
-claim or live surface
-  -> mechanism or state
-  -> contradiction or evidence gap
-  -> concrete decision impact
-  -> fresh validation
-```
-
-The adjudication vocabulary distinguishes:
-
-- validated contradiction;
-- false-green evidence;
-- shadow path;
-- intentional multiplicity;
-- non-material residue;
-- decision-critical unknown;
-- external/environment/policy boundary; and
-- clean within the explicit audit object.
-
-These are decision meanings, not a score or a required report template. A clean
-result does not claim that the repository has no defects; it means no material
-contradiction or decision-critical unknown remained inside the pinned object.
-
-Operate keeps a checkpoint distinct from whole-goal completion and reconciles
-the applicable obligations:
-
-- **behavior:** outputs, failures, compatibility, and state effects;
-- **structure:** ownership/dependency change and real retirement, not a facade;
-- **delivery:** requested manifests, packages, installation, or runtime selectors;
-- **usefulness:** the concrete change pressure is reduced, demonstrated with a
-  small follow-on change when practical.
-
-Its terminal status is complete, checkpoint, blocked, or aborted/recovered.
-Passing tests, worker completion, a byte match, or a state JSON field cannot by
-itself upgrade one status to another.
-
-## Repository map
-
-| Path | Authority |
-| --- | --- |
-| `skills/repository-operational-truth-audit/` | Canonical Skill router, progressive Audit/Operate/Recovery references, optional cited-byte helper, and UI metadata |
-| `docs/product-spec.md` | Complete accepted product and acceptance contract |
-| `docs/evidence-model.md` | Proof, finding, checkpoint/completion, recovery, and stopping semantics |
-| `docs/architecture/` | Renderer-neutral architecture model and the paired English/Chinese README Mermaid contract |
-| `docs/forward-behavior-receipt.md` | Historical public-safe `v0.1.0` Audit-only forward evidence |
-| `docs/forward-0.2.0-receipt.md` | Public-safe `0.2.0` Audit, payload reconciliation, actual Plan, and Operate forward evidence |
-| `docs/research-basis.md` | Public-safe research provenance and source decisions |
-| `docs/current-state.md` | Volatile source, Git, install, CI, and publication truth |
-| `evals/cases/` | Controlled read-only behavior cases with evaluator-only expected artifacts |
-| `evals/operation-lab/` | Deterministic known-patch rehearsal and anti-false-completion controls; not model evidence |
-| `scripts/` | Architecture/repository validation, declared Skill payload, fixture self-test, and transactional install |
-| `tests/` | Repository, architecture, evidence-helper, operation-lab, fixture, and installer regressions |
-
-Chinese editions use the `.zh-CN.md` suffix and preserve the same document
-boundaries rather than combining two languages in one file.
-
-## Validation boundaries
-
-Ordinary validation and the controlled operation lab perform no target-model
-invocation and no network, browser, account, deployment, or live-system
-mutation. The lab applies evaluator-authored known edits to a synthetic subject;
-it does not establish autonomous model performance. The CI workflow runs on
-macOS and Ubuntu with Python 3.10 and 3.13.
-
-Skill Field Lab may evaluate the controlled cases in disposable workspaces, but
-it is optional evaluation infrastructure—not a runtime dependency and not an
-owner of this Skill.
+Mermaid source contract live in [docs/architecture/](docs/architecture/README.md).
 
 ## Licensing
 
 This repository is **source-available, not OSI open source**.
-
-- Functional materials—including the Skill, scripts, tests, CI, evals, and
-  functional repository contracts—are licensed under the
-  [Sustainable Use License 1.0](LICENSE). It permits personal,
-  noncommercial, and internal business use; distribution or provision to
-  others must remain free of charge and noncommercial under the full terms.
-- The standalone README files, changelogs, public documentation, and independent
-  diagrams under `docs/` are licensed under
-  [CC BY-NC-SA 4.0](LICENSE-DOCUMENTATION.md).
-- The exact path map and exceptions are authoritative in
-  [`LICENSING.md`](LICENSING.md). Third-party material, if later incorporated,
-  remains under its own terms.
-
-Public visibility does not erase those conditions. No external Skill text or
-source code is vendored here; conceptual research provenance is documented in
-[`docs/research-basis.md`](docs/research-basis.md).
+Functional materials use the [Sustainable Use License 1.0](LICENSE).
+Standalone public documentation and independent diagrams use
+[CC BY-NC-SA 4.0](LICENSE-DOCUMENTATION.md). Consult
+[LICENSING.md](LICENSING.md) for the exact path map and full conditions.
+No external Skill text or source code is vendored; conceptual sources are
+recorded in [the research basis](docs/research-basis.md).

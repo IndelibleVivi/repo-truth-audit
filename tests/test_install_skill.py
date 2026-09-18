@@ -232,8 +232,15 @@ class InstallSkillTests(unittest.TestCase):
             link.unlink()
             try:
                 link.symlink_to(SKILL_DIR / "NOTICE.md")
-            except (NotImplementedError, OSError) as exc:
-                self.skipTest(f"symlink creation unavailable on this host: {exc}")
+            except NotImplementedError as exc:
+                self.skipTest(f"symlinks unsupported on this platform: {exc}")
+            except OSError as exc:
+                # Only the standard-Windows-user privilege denial (Developer
+                # Mode off) is a capability outcome; any other OSError is a
+                # real fixture regression and must fail.
+                if sys.platform == "win32" and getattr(exc, "winerror", None) == 1314:
+                    self.skipTest(f"symlink privilege unavailable on this host: {exc}")
+                raise
             with self.assertRaisesRegex(ValueError, "symlink"):
                 directory_digest(root, SKILL_PAYLOAD_FILES)
             with self.assertRaisesRegex(ValueError, "symlink"):

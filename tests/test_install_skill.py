@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 from pathlib import Path
 import sys
 import tempfile
@@ -229,7 +230,17 @@ class InstallSkillTests(unittest.TestCase):
             build_payload_tree(root)
             link = root / "NOTICE.md"
             link.unlink()
-            link.symlink_to(SKILL_DIR / "NOTICE.md")
+            try:
+                link.symlink_to(SKILL_DIR / "NOTICE.md")
+            except NotImplementedError as exc:
+                self.skipTest(f"symlinks unsupported on this platform: {exc}")
+            except OSError as exc:
+                # Only the standard-Windows-user privilege denial (Developer
+                # Mode off) is a capability outcome; any other OSError is a
+                # real fixture regression and must fail.
+                if sys.platform == "win32" and getattr(exc, "winerror", None) == 1314:
+                    self.skipTest(f"symlink privilege unavailable on this host: {exc}")
+                raise
             with self.assertRaisesRegex(ValueError, "symlink"):
                 directory_digest(root, SKILL_PAYLOAD_FILES)
             with self.assertRaisesRegex(ValueError, "symlink"):
@@ -243,8 +254,11 @@ class InstallSkillTests(unittest.TestCase):
             build_payload_tree(root)
             stray = root / "scripts" / "helper.py"
             stray.write_text("x = 1\n", encoding="utf-8")
-            stray.chmod(0o755)
-            self.assertTrue(stray.stat().st_mode & 0o111)
+            if os.name == "posix":
+                # Executable bits are a POSIX concept; the undeclared-entry
+                # rejection below is platform-neutral.
+                stray.chmod(0o755)
+                self.assertTrue(stray.stat().st_mode & 0o111)
             self.assertEqual(undeclared_payload_entries(root), ["scripts/helper.py"])
             with tempfile.TemporaryDirectory() as dest_raw:
                 with mock.patch.object(install_skill, "SKILL_DIR", root):

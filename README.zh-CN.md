@@ -12,8 +12,9 @@
 当前源码版本：`0.2.1` — 未发布的方法选择候选版。
 最新公开版本：`v0.2.0` — Audit / Plan / Operate。
 
-候选版细化辅助流程适用范围与适度验证；已准备的夹具不能证明模型行为，详见
-[当前状态](docs/current-state.zh-CN.md)。
+候选版细化辅助流程适用范围与适度验证；有限合成 forward 检查已通过，详见
+[候选回执](docs/forward-0.2.1-receipt.zh-CN.md) 与[当前状态](docs/current-state.zh-CN.md)。
+不据此声称相对旧版的效果改善。
 
 **下方稳定安装命令固定到已经核验的 v0.2.0 tag。** 装好 package 仍不等于当前宿主已经发现；
 请在 fresh task 中确认实际选中的 Skill path 与行为。

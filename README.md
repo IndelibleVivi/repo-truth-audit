@@ -15,7 +15,8 @@ Current source version: `0.2.1` — unreleased method-selection candidate.
 Latest public release: `v0.2.0` — Audit / Plan / Operate.
 
 The candidate refines auxiliary-workflow scope and proportionate verification.
-Its prepared fixtures do not establish model behavior; see [current state](docs/current-state.md).
+Bounded synthetic forward checks passed; see the [candidate receipt](docs/forward-0.2.1-receipt.md)
+and [current state](docs/current-state.md). No comparative improvement is claimed.
 
 **The stable install below is pinned to the verified v0.2.0 tag.** Installing
 the package still does not prove that a running host has discovered it; confirm

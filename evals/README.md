@@ -95,5 +95,6 @@ effects, a known valid retirement and its broken-selector counterexample, actual
 project-policy placement, dirty Git inputs and refusal to overwrite a destination.
 These six tests validate the subjects, not model behavior. Any future forward
 receipt must state exact identities, actual helper exposure, observed changes,
-review independence, failures and limitations. No 0.2.1 forward result is claimed
-by the current files; the original Audit/Plan routing controls remain required.
+review independence, failures and limitations. The separate
+[0.2.1 receipt](../docs/forward-0.2.1-receipt.md) records bounded forward results
+and their limitations; the original Audit/Plan routing controls remain required.

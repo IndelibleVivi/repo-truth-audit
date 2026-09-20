@@ -2,7 +2,7 @@
 
 [简体中文](product-spec.zh-CN.md)
 
-Status: **0.2.1 CANDIDATE — forward behavior pending**
+Status: **0.2.1 UNRELEASED — bounded synthetic forward checks passed**
 Expanded scope accepted by owner: 2026-09-17
 Method-selection refinements accepted for implementation: 2026-09-20
 Source version: 0.2.1

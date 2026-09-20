@@ -17,8 +17,9 @@
   quota, per-test approval or global-minimum-cost proof requirement.
 - Add six contrasted synthetic Git subjects, six fixture/counterexample tests and
   a controlled forward-evaluation protocol under the existing operation lab.
-  Fixture/CI success is not a model-behavior result; candidate forward runs are
-  still pending. Issue #4 is a motivating field report, not a confirmed failed
+  Fixture/CI success is not a model-behavior result. Separate bounded
+  [forward checks](docs/forward-0.2.1-receipt.md) passed, without establishing
+  superiority over 0.2.0. Issue #4 is a motivating field report, not a confirmed failed
   cleanup or causal demonstration against another Skill.
 - Keep the eight-file installable payload, mode routing and public v0.2.0 install
   pin; reconcile paired public contracts and candidate versus release status.

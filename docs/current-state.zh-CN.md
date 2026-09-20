@@ -13,12 +13,12 @@ Plan 在编辑前停止，Operate 将显式、有限的结构改造推进到适�
 Source `0.2.1` 是**未发布候选版**，在
 [PR #5](https://github.com/IndelibleVivi/repo-truth-audit/pull/5) 中基于公开基线
 `e70642fff3c09476b5a81cebde0f16c5cdb4cc16` 开发。最新公开 release 保持 `v0.2.0`，
-稳定安装仍固定到该版本。这里不声称候选版已经日常安装、合并、打 tag 或发布。
+稳定安装仍固定到该版本。PR #5 记录 source 集成状态；未进行候选日常安装、打 tag 或发布。
 
 候选版细化辅助方法的适用范围、与风险相称的 witness、获授权 dirty 实现退役、长期验证设施
 成本，以及受到质疑时基于证据重新判断。没有新增执行引擎、安装载荷文件、模式、覆盖率配额
 或逐项测试审批。`scripts/common.py::SKILL_PAYLOAD_FILES` 的八文件定义未改；runtime bytes
-已经变化，需要新 digest 和新 forward 证据。
+已经变化，其 digest 与有限 forward 证据固定在 [0.2.1 回执](forward-0.2.1-receipt.zh-CN.md)。
 
 Renderer-neutral 架构模型仍具有权威性，保持七个 region、31 个 stable nodes 与 46 条边。
 这些细化在既有 authority、witness、increment 和 acceptance 节点内部生效，没有提议变更
@@ -30,16 +30,18 @@ Renderer-neutral 架构模型仍具有权威性，保持七个 region、31 个 s
 test-first、被输出检查掩盖的真实重复写入、所选产物退役、获授权 dirty 清理和只读对照。
 准备脚本创建新的合成 Git 仓库，只暴露目标文件和请求；评审要求与已知改法留在其输入之外。
 
-初始 runtime/fixture commit `8b5d83fcf0d0c2de3023cd9de85f4ab214eed74a` 通过了
-[CI run 35497731111](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35497731111)：
-Ubuntu/macOS 与 Python 3.10/3.13 共四个 jobs 的架构、仓库、单元和 self-test 命令全部通过。
-六项新夹具测试也在独立 Linux 工作环境中通过。后续文档/版本变更仍须核对自身的当前 PR
-checks；这份固定结果不为后来的 bytes 背书。
+受审 runtime head `aa84cd0c7cf84caae9055b90623f03f74bea4d10` 通过
+[PR CI run 35498436856](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35498436856)
+的 Ubuntu/macOS 与 Python 3.10/3.13 四项 jobs。本地验收独立通过仓库／架构验证、91 项
+单元测试、六项 fixture self-tests 与 Skill validation。可选 Field Lab pack 转入一次性 v2
+manifest，未修改 source；验证及六项 expected-overlay self-tests 通过，目标模型调用为零。
+后续文档 commit 仍使用自身 PR checks；此 CI 链接只固定到受审 runtime head。
 
-**0.2.1 尚未执行目标模型 forward run。** 对象准备、夹具测试和仓库 CI 无法证明代理实际如何
-选择方法或回应质疑。[评测协议](../evals/README.md) 说明如何在基线和候选版之间控制条件，
-记录实际 helper 暴露、受保护的输入快照、真实 diff 和行为/产物检查。普通验证不调用网络或
-目标模型。
+**有限合成 forward 验收已通过：**九个独立 native 会话及两次只读续问，分别接受独立的
+diff/source/bundle/ledger 检查。[回执](forward-0.2.1-receipt.zh-CN.md) 记录身份、实际 helper
+暴露、强制 test-first 顺序、dirty before-image 保留、只读对象不变，以及完整／不完整结果
+得到不同质疑结论。两版在二乘二 helper 对照中都通过，不能证明新版更优，也未独立验证没有
+字面冲突时的方法选择。普通验证仍不调用网络或目标模型。
 
 [Issue #4](https://github.com/IndelibleVivi/repo-truth-audit/issues/4) 及维护者的澄清构成本轮
 改进动机，不能证明 RTA 或 TDD 导致清理失败。候选版没有修改报告者的项目，也不推断有用测试
@@ -53,9 +55,9 @@ checks；这份固定结果不为后来的 bytes 背书。
 peel 到 `5d25c581a7d331329d39be9f6bace11371dd4437`。已记录的 0.2.0 安装、发现与 payload
 digest 只属于那些历史 bytes，不能充当当前候选版安装证据。
 
-推进前需审查最终 diff 与精确 head 的检查结果，在声明的合成边界内完成独立 forward 对照，
-并记录候选 payload identity。安装、fresh host discovery、合并与发布仍是由所有者授权的
-独立 gate。Draft PR 不等于已发布或已通过模型行为验证的产品。
+原始 diff 已有独立 review，候选在声明的合成边界内已有 forward 证据。集成仍需最终 head
+检查，结果由 PR #5 记录。安装、fresh host discovery 与发布继续保持独立所有者授权边界；
+source 验收不等于发布。
 
 功能材料继续按 SUL-1.0 提供 source-available 许可。独立公开文档和图示依照
 [LICENSING.zh-CN.md](../LICENSING.zh-CN.md) 使用 CC BY-NC-SA 4.0。

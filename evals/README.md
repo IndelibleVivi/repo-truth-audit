@@ -47,7 +47,7 @@ refactoring, durable-data migration, installation, or production behavior.
 Ordinary validation, pack self-test, and the operation lab make no target-model
 or network call.
 
-## Method-selection contrasts — 0.2.1 candidate
+## Method-selection contrasts — 0.2.1
 
 `operation-lab/method_choice_cases.json` defines six evaluator cases.
 `operation-lab/prepare_method_choice.py` creates one fresh synthetic Git subject

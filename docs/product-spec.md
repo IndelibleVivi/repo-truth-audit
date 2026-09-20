@@ -2,11 +2,11 @@
 
 [简体中文](product-spec.zh-CN.md)
 
-Status: **0.2.1 UNRELEASED — bounded synthetic forward checks passed**
+Status: **0.2.1 PUBLISHED — bounded synthetic forward checks passed**
 Expanded scope accepted by owner: 2026-09-17
 Method-selection refinements accepted for implementation: 2026-09-20
 Source version: 0.2.1
-Latest public release: v0.2.0
+Latest public release: v0.2.1
 Product form: standalone repository + standalone Codex Skill
 Skill name: repository-operational-truth-audit
 
@@ -296,7 +296,7 @@ Source-complete acceptance for 0.2.0 requires:
 Synthetic operation-lab success is necessary evaluator evidence, not a
 substitute for model forward evidence.
 
-The 0.2.1 candidate adds contrasted method-selection subjects and fixture tests
+Version 0.2.1 adds contrasted method-selection subjects and fixture tests
 under the existing operation lab. Before claiming improved model behavior,
 compare pinned baseline and candidate Skills under the same host/model/settings
 on fresh subjects, including optional and project-required test-first methods,
@@ -304,15 +304,14 @@ state effects hidden by green output checks, authorized dirty retirement and
 read-only control. Record actual helper exposure and inspect real edits and
 observations; do not grade policy-word repetition as behavior. The preparation
 script and unit tests make no target-model calls. Historical forward receipts
-remain evidence for their named bytes, not automatic proof of this candidate.
+remain evidence for their named bytes, not automatic proof of this release.
 
 ## 8. Version, installation, and publication
 
 VERSION identifies the current source version and follows stable semantic
-version syntax. Source `0.2.1` is an unreleased candidate; the latest public tag
-remains `v0.2.0`. README and current-state report source, validation, installation
-and publication separately. The documented install reference targets v0.2.1
-and becomes usable when that tag is published.
+version syntax. Source `0.2.1` is published as the latest public tag `v0.2.1`.
+README and current-state report source, validation, installation and publication
+separately. The documented install reference is pinned to the verified public tag.
 
 Local installation validates source, requires explicit replacement of different
 bytes, preserves a recoverable backup, and records source Git identity, dirty

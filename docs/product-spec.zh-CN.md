@@ -2,11 +2,11 @@
 
 [English](product-spec.md)
 
-状态：**0.2.1 未发布 — 有限合成 forward 检查已通过**
+状态：**0.2.1 已发布 — 有限合成 forward 检查已通过**
 扩展范围经所有者确认：2026-09-17
 方法选择细化获准实施：2026-09-20
 source 版本：0.2.1
-最新公开 release：v0.2.0
+最新公开 release：v0.2.1
 产品形态：独立 repository + 独立 Codex Skill
 Skill 名称：repository-operational-truth-audit
 
@@ -247,17 +247,17 @@ patch 泄露进 Skill context。
 
 Synthetic operation-lab 成功是必要的 evaluator evidence，不能代替 model forward evidence。
 
-0.2.1 候选版在既有 operation lab 中加入方法选择对照对象及夹具测试。声称模型行为改善前，
+0.2.1 在既有 operation lab 中加入方法选择对照对象及夹具测试。声称模型行为改善前，
 须在相同宿主、模型和设置下，使用新对象比较固定的基线与候选 Skill；覆盖可选及项目强制的
 test-first、被输出检查掩盖的状态副作用、获授权 dirty 退役及只读对照。记录实际 helper 暴露，
 检查真实修改与观察，不能按复述规则的用语评分。准备脚本与单元测试不调用目标模型；历史
-forward 回执仍只支持其具名 bytes，不会自动证明当前候选版。
+forward 回执仍只支持其具名 bytes，不会自动证明当前版本。
 
 ## 8. Version、installation 与 publication
 
-VERSION 表示当前 source version，并遵循稳定 SemVer 语法。Source `0.2.1` 是未发布候选版，
-最新公开 tag 保持 `v0.2.0`。README 与 current-state 分别报告源码、验证、安装和发布状态；
-文档安装引用指向 v0.2.1，须在 tag 发布后才可用。
+VERSION 表示当前 source version，并遵循稳定 SemVer 语法。Source `0.2.1` 已发布为最新
+公开 tag `v0.2.1`。README 与 current-state 分别报告源码、验证、安装和发布状态；
+文档安装引用固定到已经核验的公开 tag。
 
 本地 installation 会先验证 source；内容不同的目标必须显式 replace；被替换的版本进入可恢复
 backup；receipt 记录 source Git identity、dirty state、version 与 source/installed digests。

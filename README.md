@@ -11,14 +11,14 @@ A Codex Skill for repository re-entry, migrations, consolidation and legacy-path
 retirement. Use it for a focused engineering intervention; finish the agreed job
 and return to normal development. It need not run on every task or every commit.
 
-Current source version: `0.2.1` — release target awaiting publication.
-Latest public release: `v0.2.0` — Audit / Plan / Operate.
+Current source version: `0.2.1` — published 2026-09-20.
+Latest public release: `v0.2.1` — Audit / Plan / Operate.
 
-The candidate refines auxiliary-workflow scope and proportionate verification.
-Bounded synthetic forward checks passed; see the [candidate receipt](docs/forward-0.2.1-receipt.md)
+This release refines auxiliary-workflow scope and proportionate verification.
+Bounded synthetic forward checks passed; see the [0.2.1 receipt](docs/forward-0.2.1-receipt.md)
 and [current state](docs/current-state.md). No comparative improvement is claimed.
 
-**The install below targets v0.2.1 and becomes usable after publication.** Installing
+**The stable install below is pinned to the verified v0.2.1 tag.** Installing
 the package still does not prove that a running host has discovered it; confirm
 the selected Skill path and behavior in a fresh task.
 
@@ -108,7 +108,7 @@ actual separation or retirement; the selected delivery path; and relief of the
 original development difficulty. A small follow-on change can test usefulness.
 Not every task requires deployment or an extra feature probe.
 
-The 0.2.1 candidate accounts for lasting tests/configuration as well as retired
+Version 0.2.1 accounts for lasting tests/configuration as well as retired
 responsibilities. It permits necessary new tests and authorized dirty-code
 retirement, without net-line targets or per-test approval. Auxiliary methods
 remain subject to actual host, user and project requirements.
@@ -120,7 +120,7 @@ before more writes. It does not autonomously resume in the background.
 
 ## Install from the public release
 
-After publication, for a fresh Audit / Plan / Operate `v0.2.1` installation, use the system installer:
+For a fresh Audit / Plan / Operate `v0.2.1` installation, use the system installer:
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
@@ -129,7 +129,7 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
   --ref v0.2.1
 ```
 
-This command targets the upcoming release. For an existing conflicting copy, use the
+This is the verified public release. For an existing conflicting copy, use the
 deliberate upgrade path below rather than deleting installed files.
 
 ## Validate or install from a source checkout
@@ -209,7 +209,7 @@ For related-tool distinctions, see [the usage guide](docs/usage.md#related-tools
 | Maintain this repository | [AGENTS.md](AGENTS.md) and [product spec](docs/product-spec.md) |
 | Understand proof and completion | [Evidence model](docs/evidence-model.md) |
 | Inspect tested behavior and present state | [0.2.1 receipt](docs/forward-0.2.1-receipt.md), [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [current state](docs/current-state.md) |
-| Inspect the v0.2.1 release target | [Release notes](docs/releases/v0.2.1.md), [release procedure and v0.2.0 history](docs/release-preparation.md) |
+| Inspect the v0.2.1 release | [Release notes](docs/releases/v0.2.1.md), [release procedure and v0.2.0 history](docs/release-preparation.md) |
 | Inspect architecture and research | [Architecture model](docs/architecture/README.md), [research basis](docs/research-basis.md) |
 
 `evals/cases/` and `evals/operation-lab/` contain evaluator material, not target

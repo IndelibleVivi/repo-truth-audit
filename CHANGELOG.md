@@ -2,7 +2,7 @@
 
 [简体中文](CHANGELOG.zh-CN.md)
 
-## 0.2.1 — Unreleased
+## 0.2.1 — 2026-09-20
 
 - Bound auxiliary-method adoption to the actual task gap, prerequisites and
   completion obligations; preserve applicable host/user/project rules without
@@ -21,8 +21,9 @@
   [forward checks](docs/forward-0.2.1-receipt.md) passed, without establishing
   superiority over 0.2.0. Issue #4 is a motivating field report, not a confirmed failed
   cleanup or causal demonstration against another Skill.
-- Keep the eight-file installable payload and mode routing; prepare the v0.2.1
-  install pin and paired release documentation without changing runtime bytes.
+- Keep the eight-file installable payload and mode routing; publish the v0.2.1
+  install pin and paired release documentation. Release preparation adds no further
+  runtime changes beyond the accepted behavior refinements.
 - Include the Windows test portability fixes merged since v0.2.0; this does not
   expand the claimed native Windows operator support.
 

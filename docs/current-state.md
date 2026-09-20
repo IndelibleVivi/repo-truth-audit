@@ -11,19 +11,18 @@ The invocation slug and canonical path `skills/repository-operational-truth-audi
 are unchanged. Audit stays read-only; Plan stops before edits; Operate carries an
 explicit finite structural-change outcome through its applicable evidence boundary.
 
-Source `0.2.1` is an **unreleased candidate**, developed in
+Source `0.2.1` is **published as v0.2.1**, the latest public release as of
+2026-09-20. The refinements were developed in merged
 [PR #5](https://github.com/IndelibleVivi/repo-truth-audit/pull/5) from public baseline
-`e70642fff3c09476b5a81cebde0f16c5cdb4cc16`. Latest public release remains `v0.2.0`;
-PR #5 is merged. The documented install reference is prepared for the v0.2.1
-release target and becomes usable after publication. See the
-[release notes](releases/v0.2.1.md); no daily installation or publication has occurred.
+`e70642fff3c09476b5a81cebde0f16c5cdb4cc16`. The documented install reference is
+pinned to the verified public tag. See the [release notes](releases/v0.2.1.md).
 
-The candidate refines auxiliary-method applicability, proportionate witnesses,
+This release refines auxiliary-method applicability, proportionate witnesses,
 authorized dirty-work retirement, lasting verification costs and evidence-based
 reassessment of a challenged result. It adds no execution engine, installed
 runtime file, mode, coverage quota or per-test approval gate. The eight-file
 payload definition in `scripts/common.py::SKILL_PAYLOAD_FILES` is unchanged;
-the candidate payload and bounded forward evidence are pinned in the
+the released payload and bounded forward evidence are pinned in the
 [0.2.1 receipt](forward-0.2.1-receipt.md).
 
 The renderer-neutral architecture model remains authoritative, with its existing
@@ -32,7 +31,7 @@ existing authority, witness, increment and acceptance nodes; no topology or SVG
 layout change is proposed. The optional byte checker still proves named bytes
 only, not semantic correctness, authorization, isolation or activation.
 
-## Candidate evidence
+## Behavior evidence
 
 Six contrasted synthetic subjects and six fixture/counterexample tests are added
 under the existing operation lab. They cover optional versus project-required
@@ -61,23 +60,29 @@ still makes no network or target-model calls.
 
 [Issue #4](https://github.com/IndelibleVivi/repo-truth-audit/issues/4) and its
 maintainer clarification motivate this work. They do not establish that RTA or
-TDD caused a failed cleanup. The candidate does not change the reporter's project
+TDD caused a failed cleanup. This release does not change the reporter's project
 or infer that useful tests should be removed.
 
-## Stable release and remaining gates
+## Publication and installation state
 
 The published [v0.2.0 release](releases/v0.2.0.md),
 [release record](release-preparation.md) and
 [0.2.0 forward receipt](forward-0.2.0-receipt.md) retain their exact historical
 claims. Its annotated tag peels to `5d25c581a7d331329d39be9f6bace11371dd4437`.
 The recorded 0.2.0 installation/discovery and payload digest belong to those
-historical bytes; they are not current candidate installation evidence.
+historical bytes; they are not 0.2.1 installation evidence.
 
-The original diff has independent review, forward evidence and merged-main CI.
-Owner authorization now covers v0.2.1 publication and an issue #4 follow-up. The
-release still needs exact-commit CI, annotated-tag/Release read-back and a public-tag
-disposable install. Daily installation and fresh host discovery remain separate;
-no change to the daily Skill copy is included in this release operation.
+The published [v0.2.1 Release](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.2.1)
+was read back as latest, non-draft and non-prerelease. Its annotated tag peels to
+`6485296b39b7fc8526713cda5e8df01c679a4ec6`; all four release-commit
+[CI jobs passed](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35503842279).
+Public README/license paths were readable, and installation from that tag into a
+disposable root reproduced exactly eight files and the accepted payload digest.
+A separate disposable replacement retained the v0.2.0 backup and unrelated files.
+
+This publication did not upgrade the daily Skill copy or test fresh host discovery.
+Those remain separate installation and runtime observations. Post-publication
+status edits on main do not retarget the release tag or change the Skill payload.
 
 Functional materials remain source-available under SUL-1.0. Standalone public
 documentation and diagrams use CC BY-NC-SA 4.0 according to [LICENSING.md](../LICENSING.md).

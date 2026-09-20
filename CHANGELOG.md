@@ -2,7 +2,27 @@
 
 [简体中文](CHANGELOG.zh-CN.md)
 
-## Unreleased
+## 0.2.1 — Unreleased
+
+- Bound auxiliary-method adoption to the actual task gap, prerequisites and
+  completion obligations; preserve applicable host/user/project rules without
+  importing an optional workflow's coverage, RED or commit gates automatically.
+- Distinguish green behavior baselines, defect witnesses, directly inspectable
+  retirement and executable-gate counterexamples. Allow justified permanent
+  regressions and retirement of obsolete tests while retaining supported coverage.
+- Clarify that authorized dirty-work cleanup may change or retire implementations
+  while preserving unrelated work and recoverable before-images.
+- Include retained test/configuration/seam costs in Usefulness and recheck a
+  challenged result against the agreed phase and actual evidence. Add no net-line
+  quota, per-test approval or global-minimum-cost proof requirement.
+- Add six contrasted synthetic Git subjects, six fixture/counterexample tests and
+  a controlled forward-evaluation protocol under the existing operation lab.
+  Fixture/CI success is not a model-behavior result. Separate bounded
+  [forward checks](docs/forward-0.2.1-receipt.md) passed, without establishing
+  superiority over 0.2.0. Issue #4 is a motivating field report, not a confirmed failed
+  cleanup or causal demonstration against another Skill.
+- Keep the eight-file installable payload, mode routing and public v0.2.0 install
+  pin; reconcile paired public contracts and candidate versus release status.
 
 ## 0.2.0 — 2026-09-17
 

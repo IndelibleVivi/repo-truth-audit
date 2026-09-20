@@ -105,6 +105,10 @@ and Skill Field Lab may contribute execution, workers or evaluation. This
 repository retains the operation protocol and acceptance obligations. Do not
 copy their engines, require them, or end an authorized operation with a referral
 when host tools can complete it. Default to one writer per shared state boundary.
+Select auxiliary methods for an identified gap under operation.md; loading a
+second Skill does not by itself adopt its entire workflow or completion gates.
+Respect applicable host, user and project requirements; this Skill does not
+outrank them or enforce isolation between instruction sources.
 
 ## Close at the proven layer
 
@@ -118,6 +122,10 @@ Call the work complete only when all agreed obligations have current evidence
 at their required surfaces. Code may be verified while deployment remains
 outside scope. When deployment was part of the agreed goal, missing deployment
 proof leaves that goal incomplete. Do not silently shrink the promised scope.
+A user-authorized phase has its own finite acceptance boundary; do not enlarge
+it after the fact to every improvement proposed during reconnaissance. When a
+result is challenged, recheck the request, actual diff and observations before
+changing the verdict. Neither reassurance nor an apology supplies evidence.
 
 Keep raw evidence and temporary run records private and outside tracked target
 content by default. Update durable target docs, ownership guidance and tests

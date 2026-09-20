@@ -26,7 +26,12 @@ Consider a direct local refactor, extraction behind an existing seam, gradual
 replacement with routing, consolidation, or deliberate retention. Use temporary
 adapters only when their risk reduction earns their cost. Do not force a facade,
 strangler migration, plugin system, service split or rewrite onto every target.
-Explain the most credible objection to the chosen strategy.
+Explain the most credible objection to the chosen strategy. Include lasting
+verification infrastructure in this choice: tests, fixtures, configuration,
+startup branches and injection seams also need a present purpose. Prefer an
+adequate existing seam over building a new subsystem merely for this operation;
+keep new infrastructure when the actual risk or continuing contract warrants it.
+A brief concrete rationale is enough, not a proof of globally minimal cost.
 
 ## Resolve authority once, escalate on changed effects
 
@@ -52,8 +57,11 @@ the lead and cannot independently widen the write or delivery boundary.
 
 Resolve staged, unstaged, untracked, ignored configuration and generated inputs
 that affect the selected path. A HEAD checkout omits dirty work; do not test it
-and present that as testing the user's actual candidate. Preserve dirty changes
-without silently stashing, resetting, force-checking-out or committing them.
+and present that as testing the user's actual candidate. Preserve unrelated and
+concurrent dirty work; keep recoverable before-images for task-owned changes.
+When the owner authorizes cleanup of selected uncommitted work, evaluate its
+keep/change/retire choices rather than treating every dirty implementation as
+permanent. Do not silently stash, reset, force-checkout or commit owner work.
 
 Use an isolated worktree/export when beneficial, or an explicitly understood
 in-place workspace. A worktree is a workspace organization tool, not a security
@@ -78,17 +86,26 @@ error ordering as appropriate. Use immutable fixture data or a copied disposable
 state for replay. Never dual-run live mutating handlers on the same real data to
 compare behavior; isolate each state or capture side effects without publishing.
 
-Keep a baseline check separate from evidence of the desired structural change.
-A baseline suite may correctly pass both before and after. The completion check
-must fail while a forbidden old owner, import edge, selected artifact or shared
-state writer remains. In a synthetic or otherwise safe disposable copy, introduce
-a representative counterexample and confirm the relevant check turns red.
+Choose sufficient evidence for the affected risk: existing checks, direct
+inspection, a disposable probe or a durable regression test. A behavior-preserving
+refactor may start and end with green baseline tests. A defect repair needs a
+witness that exposes the defect; a compile/setup failure alone is not that witness.
+
+Keep baseline behavior separate from structural completion. Completion evidence
+must reject a forbidden old owner, import edge, selected artifact or shared state
+writer. For a directly inspectable retirement, trace selectors, callers and
+packaging; do not build a permanent test harness just to restate that trace. When
+an executable gate carries a consequential claim, challenge it with a representative
+counterexample in a safe disposable copy where feasible. If that observation is
+unavailable, state the resulting proof limit rather than treating green as enough.
 
 Existing failures are classified before edits. Do not claim a regression is
 pre-existing without baseline evidence. Do not delete assertions, skip failures,
 regenerate expected outputs or broaden tolerances merely to get a green result.
 A user-agreed behavior change may revise a witness; record why and validate the
-revised contract separately from the refactor itself.
+revised contract separately from the refactor itself. Tests may also be consolidated
+or retired with obsolete contracts: preserve distinct failure coverage for supported
+behavior and update the real test entrypoints. Test count is not the objective.
 
 ## Plan increments that converge
 
@@ -129,7 +146,10 @@ push, merge and release follow the owner's actual Git policy. A verified patch
 and private checkpoint can be enough. Never stage unrelated files.
 
 If tests expose a new material dependency, re-plan rather than retrying the same
-failing edits indefinitely. On budget exhaustion, leave a verified checkpoint or
+failing edits indefinitely. Reassess when verification setup starts dominating the
+operation: compare the narrower credible route and expose a material scope/cost
+change before continuing. Do not restart a whole workflow for each helper. On
+budget exhaustion, leave a verified checkpoint or
 state exactly which partial edits remain. Do not restart a fresh large audit
 merely because a context window ended. See recovery.md.
 
@@ -143,13 +163,20 @@ Reconcile four obligations, scoped to the agreed goal:
   occurred; a facade still delegating to the old owner is a transition only.
 - **Delivery:** manifests/build/package/install/activation routes select the
   intended implementation at every surface included in the request.
-- **Usefulness:** the concrete change pressure has eased. Where practical, perform
-  a small disposable follow-on change, such as adding one formatter without
-  touching the durable writer. Do not use fewer lines as a proxy for this result.
+- **Usefulness:** the concrete change pressure has eased, with new maintenance
+  obligations accounted for. Name retired responsibilities or reduced change
+  coupling and the purpose of retained tests, configuration and bridges. Where
+  useful, try a small disposable follow-on change without touching unrelated
+  owners. Do not use fewer lines, more tests or future reuse alone as proof.
 
 Not every operation needs runtime deployment evidence or a follow-on probe. Name
 which obligations apply and justify exclusions against the goal. A coherent large
 module may remain. Intentional stable and development paths retain their owners.
+Judge the agreed phase; do not demand whole-project maintenance measurements or
+separate approval for every test. If the user questions a result, reconcile the
+original scope, categorized diff and actual checks before revising the conclusion.
+Disclose a confirmed shortfall and retain supported gains; do not manufacture
+failure from a line-count increase or dismiss a concern because tests passed.
 
 Update current source docs, operator instructions, accepted architecture and
 checks affected by the actual result. Retire temporary bridges when the contract
@@ -167,5 +194,16 @@ selectors and callers even when old cited implementation bytes still match.
 
 A specialist review tool can supply a bounded defect observation. A worker
 router can supply isolated work. This product owns their reconciliation into the
-operation's goal and acceptance. No external engine or multi-agent panel is a
+operation's goal and acceptance. Before choosing an auxiliary Skill or workflow,
+identify the current gap it addresses and assess its prerequisites, persistent
+machinery and completion gates, even if its wording does not directly conflict
+with the task. Read access or an agent's method choice alone does not adopt every
+coverage target, commit cadence, RED phase or delivery obligation it describes.
+
+Follow requirements genuinely applicable through the host, user or project. Do
+not claim this Skill overrides them. If a selected helper requires an indivisible
+workflow that does not fit, choose another method; do not silently claim compliance
+with a workflow whose required steps were skipped. Resolve a real conflict or
+material scope/cost change with the owner, while making ordinary in-scope method
+choices without repeated approval. No external engine or multi-agent panel is a
 mandatory runtime dependency.

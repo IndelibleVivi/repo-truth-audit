@@ -9,6 +9,11 @@ file read, command, adapter, worker return, or history query must support a name
 Audit decision, determine the next live edge, or test an agreed Plan/Operate
 obligation.
 
+An auxiliary workflow is a method candidate, not evidence that all its gates
+apply. Resolve applicability from the host, user and project requirements and
+the gap being addressed. Reading it does not establish authority, necessity,
+full execution or successful composition with other methods.
+
 ## Proof layers
 
 Keep these layers separate:
@@ -83,6 +88,15 @@ Operate workflow, tests may legitimately change, but removing assertions,
 adding skips, broadening tolerances, or regenerating expectations does not prove
 the candidate. Accepted behavior changes require their own explicit witness.
 
+Evidence may come from existing tests, inspection, disposable probes or lasting
+regressions according to the actual risk. A green baseline before and after a
+refactor is legitimate. A defect witness must expose the defect, not just fail
+to compile. Structural retirement must be supported through selectors, callers
+and delivery; a permanent harness is not automatically necessary for that trace.
+Consequential executable gates still need a safe counterexample challenge where
+feasible, with material unobserved proof limits made explicit. Consolidating or
+retiring obsolete tests is valid when distinct supported failure coverage remains.
+
 A cited-byte match proves only the named bytes. A JSON schema pass proves only
 shape. Neither proves semantics, authority, completion, or safe execution.
 
@@ -100,11 +114,15 @@ Completion requires current evidence for every applicable obligation:
   merely a new facade or file.
 - **Delivery:** every requested manifest, package, installed, activation, or
   runtime surface selects the intended implementation.
-- **Usefulness:** where material and practical, a follow-on change demonstrates
-  that the original change pressure is reduced.
+- **Usefulness:** the original change pressure is reduced, accounting for the
+  purpose of lasting tests, configuration, seams and bridges. A follow-on change
+  may demonstrate this when material and practical.
 
 Exclusions are justified against the agreed goal. Passing a broad suite does
-not erase an applicable structural or delivery obligation.
+not erase an applicable structural or delivery obligation. An owner-selected
+phase is judged at its agreed boundary, without post-hoc whole-project metrics,
+per-test approvals or a globally minimal-cost proof. Neither line-count reduction
+nor test growth alone establishes improvement.
 
 ## Challenge and independence
 
@@ -116,6 +134,12 @@ Record whether the challenge was independent or a same-agent self-check. An
 independent reviewer adds evidence but is not a mandatory panel for every small
 change. Reviewer confidence, worker completion, and green CI remain claims until
 reconciled with the actual diff and required proof surfaces.
+
+A complaint reopens the relevant claim, not permission to invent a failure or
+to erase useful work. Recheck the original scope, categorized changes and actual
+observations, correct confirmed shortfalls and retain supported gains. An apology
+or reassurance does not alter the evidentiary record. A model's retrospective
+attribution to another Skill is a hypothesis unless independently supported.
 
 ## Recovery evidence
 

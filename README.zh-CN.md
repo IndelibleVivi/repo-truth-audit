@@ -9,13 +9,16 @@
 这是面向仓库接手、迁移、整合和旧路径退役的 Codex Skill。它适合一次有明确目标的工程介入，
 完成后回到普通开发；无需每个任务、每次提交都调用。
 
-当前源码版本：`0.2.0` — Audit / Plan / Operate。
+当前源码版本：`0.2.1` — 未发布的方法选择候选版。
 最新公开版本：`v0.2.0` — Audit / Plan / Operate。
+
+候选版细化辅助流程适用范围与适度验证；已准备的夹具不能证明模型行为，详见
+[当前状态](docs/current-state.zh-CN.md)。
 
 **下方稳定安装命令固定到已经核验的 v0.2.0 tag。** 装好 package 仍不等于当前宿主已经发现；
 请在 fresh task 中确认实际选中的 Skill path 与行为。
 
-[使用指南](docs/usage.zh-CN.md) · [现有验证证据](docs/forward-0.2.0-receipt.zh-CN.md) ·
+[使用指南](docs/usage.zh-CN.md) · [稳定版 forward 证据](docs/forward-0.2.0-receipt.zh-CN.md) ·
 [发布记录](docs/release-preparation.zh-CN.md) · [v0.2.0 发布说明](docs/releases/v0.2.0.zh-CN.md)
 
 ## 它解决什么问题
@@ -78,6 +81,9 @@ Audit、Plan、Operate 是行为模式，无需记忆一套命令。
 获授权的改造按适用的 **行为（Behavior）、结构（Structure）、交付（Delivery）、用途（Usefulness）**
 验收：结果与状态副作用正确，职责真正分离或旧路径真正退出，实际交付路径选中新实现，最初的开发阻力
 有所减少。可用一个小型后续改动验证用途；并非每次都要求部署或额外开发功能。
+
+0.2.1 候选版同时考虑退役的责任与长期保留的测试、配置。必要的新测试及获授权 dirty 代码退役
+均被允许，不采用净减行目标或逐项测试审批。辅助方法仍受宿主、用户和项目的实际适用要求约束。
 
 完成、检查点、受阻、已中止／恢复是不同结果。检查点保留原目标和剩余义务。续做时由宿主重新调用，
 先检查当前源码和已发生的效果，再继续写入；Skill 不会自行在后台恢复运行。
@@ -145,7 +151,7 @@ CI 覆盖 macOS／Ubuntu 与 Python 3.10／3.13；Bash 夹具和可比对的文�
 确定性测试验证包、夹具和反例，普通验证不调用目标模型或网络。操作演练应用的是评测者预写的改动。
 独立的 [forward 回执](docs/forward-0.2.0-receipt.zh-CN.md) 记录真实模型在合成仓库中的 Audit、Plan、
 Operate 观察，包括一次请求完成整体目标，以及只改格式化模块的后续扩展。
-这些有限结果不证明任意生产仓库重构、崩溃恢复或真实数据迁移能力。
+这些是有限的 0.2.0 结果，不证明 0.2.1 方法选择、任意生产仓库重构、崩溃恢复或真实数据迁移能力。
 
 Skill 提供方法和可选字节检查器；执行、真实权限和沙箱来自宿主工具。
 Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运行引擎。
@@ -179,7 +185,7 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 
 ![Repo Truth Audit 中文阅读地图](docs/architecture/repo-truth-audit-overview.zh-CN.svg)
 
-在 Operate 中，**B/S/D/U** 不是四条命令，而是四个普通的完成问题：
+在 Operate 中，**B/S/D/U** 是四个普通的完成问题：
 
 | 检查 | 必须成立的事实 |
 | --- | --- |

@@ -8,6 +8,9 @@ Repo Truth Audit 不会因为某个观察容易获得就收集它。每次文件
 worker return 或 history query，都必须支持一个已命名的 Audit 决策、决定下一条 live edge，
 或检验一个已接受的 Plan/Operate obligation。
 
+辅助流程首先是候选方法，不能由此证明其中所有门槛均适用。依据宿主、用户和项目要求及当前
+缺口判断适用范围；读取本身不证明权限、必要性、完整执行，也不证明多种方法成功组合。
+
 ## Proof layer
 
 严格区分：
@@ -70,6 +73,12 @@ Mutation proof 只适用于受安全控制的一次性对象。Operate workflow 
 但删除断言、增加 skip、放宽 tolerance 或重新生成 expectation 都不能证明 candidate。
 有意 behavior change 需要单独的显式 witness。
 
+证据可以来自现有测试、直接检查、一次性 probe 或长期回归测试，取决于实际风险。保持行为的
+重构可以前后均绿；缺陷 witness 应暴露缺陷，仅编译失败不够。结构退役须沿 selector、caller
+和 delivery 得到支持，不能自动把永久测试设施当作这种 trace 的前提。承担关键结论的可执行
+gate 仍应在可行时接受安全反例挑战，并明确实质未观察边界。过时测试可以整合或退役，同时须
+保留受支持行为的独立失败覆盖。
+
 Cited-byte match 只证明命名 bytes；JSON schema 通过只证明 shape。两者都不证明 semantics、
 authority、completion 或 safe execution。
 
@@ -85,10 +94,12 @@ retirement 或 delivery obligation 时，它不是完成。
 - **Structure：**目标 ownership/dependency change 或 retirement，而不只是新 facade 或文件。
 - **Delivery：**每个请求覆盖的 manifest、package、installed、activation 或 runtime surface
   都选择预期实现。
-- **Usefulness：**在实质相关且可行时，用 follow-on change 证明原始 change pressure 降低。
+- **Usefulness：**原始 change pressure 得到缓解，同时考虑长期测试、配置、接缝和 bridge
+  的用途；实质相关且可行时，可以用 follow-on change 展示。
 
 任何排除都要依据 accepted goal 说明。宽泛 suite 通过不能抹去适用的 structure 或 delivery
-obligation。
+obligation。所有者选定的阶段按其约定边界判断，不事后追加全项目测量、逐项测试审批或全局
+最低成本证明。单独的行数下降或测试增长都不能证明改善。
 
 ## Challenge 与独立性
 
@@ -98,6 +109,10 @@ obligation。
 记录 challenge 是独立 review 还是同一 agent 的 self-check。Independent reviewer 可以增加
 证据，但不是每个小改动都必须召开 panel。Reviewer confidence、worker completion 与 green CI
 都只是 claim，必须与实际 diff 和所需 proof surfaces 核对。
+
+质疑会重新打开相关 claim，但不能据此编造失败或清除有用工作。重新核对原范围、分类变化及
+实际观察，纠正确认的缺口并保留成立的收益。道歉和安抚都不会改变证据记录。模型事后将原因
+归给另一 Skill 的解释，在取得独立支持前仍属于假设。
 
 ## Recovery evidence
 

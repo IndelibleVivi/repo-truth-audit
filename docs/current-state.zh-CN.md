@@ -2,98 +2,61 @@
 
 [English](current-state.md)
 
-最后核对：2026-09-17
+最后核对：2026-09-20
 
-## Product
+## 产品与源码
 
-- Product form：standalone public repository 与 standalone Codex Skill。
-- Naming：human-facing display name 为 **Repo Truth Audit**；formal name 为
-  **Repository Operational Truth Audit**；public repository slug 为
-  `repo-truth-audit`；Skill invocation slug
-  `repository-operational-truth-audit` 保持不变。
-- Version split：source version `0.2.0` 已通过 annotated tag 与 GitHub Release
-  `v0.2.0` 发布；历史 `v0.1.0` 保持 immutable 与 Audit-only。
-- Scope：一条渐进式 Audit / Plan / Operate engagement。Audit 默认 read-only；Plan
-  在 mutation 前终止；Operate 只有在收到 explicit、finite implementation request 且
-  effect authority 匹配时才能写入。
-- Canonical Skill：`skills/repository-operational-truth-audit/`；`SKILL.md` 是 compact
-  router，`references/` 下分别承载渐进式 Audit、Operation 与 Recovery 方法。
-- Architecture：`docs/architecture/audit-runtime-model.json` 仍是 semantic authority。
-  成对的 day-first SVG reader map 现在以 owner-approved compressed view 进入两份 localized
-  README；默认可见的 Mermaid maps 保留全部七个 region、31 个 stable nodes 与 46 条 semantic
-  edges。原 Audit topology 被完整保留，并接入可见的 Plan exit 与 guarded Operate loop。
-- Deterministic operation evidence：`evals/operation-lab/` 不调用 target model，只检验
-  新增 operation invariants；其结果是 synthetic process evidence，不是 forward model
-  evidence。
-- Optional evidence helper：
-  `skills/repository-operational-truth-audit/scripts/check_evidence.py` 只检查 cited-byte
-  continuity，不证明 semantics、Git snapshot identity、atomicity、authorization 或
-  completion。
-- Installable payload：`scripts/common.py::SKILL_PAYLOAD_FILES` 声明 validation、digest、
-  staging、installed comparison 与 receipt 共用的八个 runtime files。已知 cache/bytecode
-  residue 不属于 payload；其他 undeclared source entry 会 fail closed。Clean payload digest
-  为 `80863c9796a2364d99f43cd81d6f53c8d6059f0c303061d18362ba683411a29f`。
+Repo Truth Audit 保持一个独立 Skill，具有 Audit / Plan / Operate 三种模式。调用 slug
+与 canonical path `skills/repository-operational-truth-audit/` 均未改变。Audit 保持只读，
+Plan 在编辑前停止，Operate 将显式、有限的结构改造推进到适用的证据边界。
 
-## Gates
+Source `0.2.1` 是**未发布候选版**，在
+[PR #5](https://github.com/IndelibleVivi/repo-truth-audit/pull/5) 中基于公开基线
+`e70642fff3c09476b5a81cebde0f16c5cdb4cc16` 开发。最新公开 release 保持 `v0.2.0`，
+稳定安装仍固定到该版本。这里不声称候选版已经日常安装、合并、打 tag 或发布。
 
-- Source integration：原始 `0.2.0` core integration 已公开于
-  `8b66e8d6608fdbb2ba2ab7908644a5c32061133a`。后续对 `f84b22c...` public `main` 的
-  pre-release review 发现 all-files hashing/copying 会吸收 ignored `.pyc`。Declared-payload
-  correction 与 clean-payload forward follow-up 已公开于
-  `2259892e8a9af918b131d7ec7a9a5d70949684f3`；对应四项
-  [CI run `35214605650`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35214605650)
-  已在 Ubuntu／macOS 与 Python 3.10／3.13 通过。双语 usage 与 release-preparation
-  documentation 已通过 PR #2 merge commit
-  `22b8007908b0feb8681794bdb449667a1d35d9ff` 集成，且未改变 declared Skill payload。
-  成对 reader map 与 B/S/D/U 人话图例在 `19a679b...` 落地；Linux font overflow 在
-  `c23dce842624e1e2ffc128db828174b88b2c09b1` 修正，完整 Mermaid map 则在
-  `57ed5c830d7624372e967d72402ae83feafb29e3` 改为默认可见。这些 reader-facing 改动均未
-  改变 declared Skill payload。
-- Deterministic validation：2026-09-17 maintainer-local PASS，覆盖 repository 与
-  publication contracts、Audit / Plan / Operate architecture 与 localized Mermaid
-  parity、全部 85 个 unit tests（其中六项覆盖 documentation navigation 与 release
-  preparation）、六个 Audit fixtures、two-increment operation lab、system Skill validation
-  与 Git whitespace validation。Operation lab 自身报告 target-model invocations 为 0，
-  并与独立 forward receipt 保持分层。
-- Forward behavior：成对的
-  [`forward-behavior-receipt`](forward-behavior-receipt.zh-CN.md) 只属于历史
-  `v0.1.0` Audit-only evidence。独立的
-  [`0.2.0` receipt](forward-0.2.0-receipt.zh-CN.md) 保留 focused target-model routing、
-  fresh Audit regression 与 same-session two-increment Operate run；现在也把旧 directory
-  digest 对账到一个被复制的 `.pyc`，并新增 clean eight-file payload 上的实际 mutation-free
-  Plan 与 one-request whole-goal Operate evidence。主线程只在 receipt 所述 synthetic source
-  与 declared-artifact scope 内接受 B/S/D/U。
-- Checkpoint 与 completion：一个 coherent verified increment 可以在 whole goal 尚未完成
-  时安全保留。Whole-goal completion 必须通过约定的 Behavior、Structure、Delivery、
-  Usefulness witnesses；green source test 或 helper 文件存在都不够。
-- Recovery：private continuity 与 cited evidence 只是 recovery aids，不是 authority。
-  Resume 必须重新 pin exact repository state、检查被保留的 owner work、重跑受影响
-  witnesses，并把 Recovered 与 Complete 分开。
-- Git 与 CI：annotated tag `v0.2.0` peel 到 release commit
-  `5d25c581a7d331329d39be9f6bace11371dd4437`。GitHub Actions run
-  [`35240303414`](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35240303414)
-  已为该 exact commit 通过 Ubuntu／macOS 与 Python 3.10／3.13 全部四个 jobs。公开仓库仍为
-  public、默认分支仍为 `main`；GitHub About 已更新并回读为 “Evidence-led repository
-  diagnosis and verified structural change for Codex.”
-- Local install：日常副本已从 `v0.1.0` transactionally upgrade，并保留 backup。Receipt
-  记录 version `0.2.0`、clean source commit
-  `c23dce842624e1e2ffc128db828174b88b2c09b1`，source／installed digest 均为
-  `80863c9796a2364d99f43cd81d6f53c8d6059f0c303061d18362ba683411a29f`，且安装目录没有
-  undeclared file。后续 commits 只改变 reader documentation。
-- Next-turn Codex discovery：三个 fresh task 都从默认 user Skill root 加载 installed Skill。
-  Audit 保持只读并闭合 selected-artifact contradiction；Plan 在零 mutation 下产出可施工计划；
-  one-request Operate 自行完成有限 synthetic refactor、退役 legacy owner，并通过五项 behavior／
-  structure／delivery／usefulness checks。主线程另行通过 selected-entry 与 exactly-once state checks。
-- Release publication：[GitHub Release `v0.2.0`](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.2.0)
-  已于 2026-09-17 发布，并回读为 latest、non-draft、non-prerelease release。Annotated tag
-  object 为 `8c739ea505066662c60e7afa994ee2948b2fea64`，peel 到上面的 release commit。
-  公开 tag 下的 README、license、Skill router 与 operation reference 均返回 HTTP 200；从
-  public tag 用 system installer 安装到 disposable root 后，只有声明的八个文件、没有
-  undeclared entry，digest 为
-  `80863c9796a2364d99f43cd81d6f53c8d6059f0c303061d18362ba683411a29f`。
-- Licensing：functional materials 按 SUL-1.0 source-available；standalone
-  documentation、renderer-neutral architecture model、成对 SVG reader map，以及嵌入
-  README 的 Mermaid diagrams 按 `LICENSING.zh-CN.md` 使用 CC BY-NC-SA 4.0。权威是
-  path map，而不是 single-license badge。
+候选版细化辅助方法的适用范围、与风险相称的 witness、获授权 dirty 实现退役、长期验证设施
+成本，以及受到质疑时基于证据重新判断。没有新增执行引擎、安装载荷文件、模式、覆盖率配额
+或逐项测试审批。`scripts/common.py::SKILL_PAYLOAD_FILES` 的八文件定义未改；runtime bytes
+已经变化，需要新 digest 和新 forward 证据。
 
-在这里替换 superseded status，不要追加 development diary。
+Renderer-neutral 架构模型仍具有权威性，保持七个 region、31 个 stable nodes 与 46 条边。
+这些细化在既有 authority、witness、increment 和 acceptance 节点内部生效，没有提议变更
+拓扑或 SVG 布局。可选 byte checker 仍只证明命名 bytes，不证明语义正确、授权、隔离或启用。
+
+## 候选版证据
+
+在既有 operation lab 下加入六个合成对照对象及六项夹具/反例测试，覆盖可选及项目强制的
+test-first、被输出检查掩盖的真实重复写入、所选产物退役、获授权 dirty 清理和只读对照。
+准备脚本创建新的合成 Git 仓库，只暴露目标文件和请求；评审要求与已知改法留在其输入之外。
+
+初始 runtime/fixture commit `8b5d83fcf0d0c2de3023cd9de85f4ab214eed74a` 通过了
+[CI run 35497731111](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35497731111)：
+Ubuntu/macOS 与 Python 3.10/3.13 共四个 jobs 的架构、仓库、单元和 self-test 命令全部通过。
+六项新夹具测试也在独立 Linux 工作环境中通过。后续文档/版本变更仍须核对自身的当前 PR
+checks；这份固定结果不为后来的 bytes 背书。
+
+**0.2.1 尚未执行目标模型 forward run。** 对象准备、夹具测试和仓库 CI 无法证明代理实际如何
+选择方法或回应质疑。[评测协议](../evals/README.md) 说明如何在基线和候选版之间控制条件，
+记录实际 helper 暴露、受保护的输入快照、真实 diff 和行为/产物检查。普通验证不调用网络或
+目标模型。
+
+[Issue #4](https://github.com/IndelibleVivi/repo-truth-audit/issues/4) 及维护者的澄清构成本轮
+改进动机，不能证明 RTA 或 TDD 导致清理失败。候选版没有修改报告者的项目，也不推断有用测试
+应当删除。
+
+## 稳定版与后续 gates
+
+已发布的 [v0.2.0 release](releases/v0.2.0.zh-CN.md)、
+[发布记录](release-preparation.zh-CN.md) 和
+[0.2.0 forward 回执](forward-0.2.0-receipt.zh-CN.md) 保持原有精确历史声明。该 annotated tag
+peel 到 `5d25c581a7d331329d39be9f6bace11371dd4437`。已记录的 0.2.0 安装、发现与 payload
+digest 只属于那些历史 bytes，不能充当当前候选版安装证据。
+
+推进前需审查最终 diff 与精确 head 的检查结果，在声明的合成边界内完成独立 forward 对照，
+并记录候选 payload identity。安装、fresh host discovery、合并与发布仍是由所有者授权的
+独立 gate。Draft PR 不等于已发布或已通过模型行为验证的产品。
+
+功能材料继续按 SUL-1.0 提供 source-available 许可。独立公开文档和图示依照
+[LICENSING.zh-CN.md](../LICENSING.zh-CN.md) 使用 CC BY-NC-SA 4.0。
+没有内置外部 Skill 文本或代码；新对象中的可选 test-first policy 是原创合成评测材料。

@@ -2,9 +2,10 @@
 
 [简体中文](product-spec.zh-CN.md)
 
-Status: **IMPLEMENTED AND RELEASED — v0.2.0**
+Status: **0.2.1 CANDIDATE — forward behavior pending**
 Expanded scope accepted by owner: 2026-09-17
-Source version: 0.2.0
+Method-selection refinements accepted for implementation: 2026-09-20
+Source version: 0.2.1
 Latest public release: v0.2.0
 Product form: standalone repository + standalone Codex Skill
 Skill name: repository-operational-truth-audit
@@ -119,6 +120,12 @@ automatically a repository defect.
 Security, licensing, dependency, history, worker, or live-system tools may
 supply bounded observations or implementation work. This product owns their
 reconciliation and never inherits an external verdict or greater permission.
+Before selecting an auxiliary workflow, assess the gap it addresses and the
+applicability of its prerequisites, lasting machinery and completion gates.
+Availability or agent selection alone does not adopt a whole workflow. Respect
+applicable host, user and project rules; choose another method when an optional
+indivisible workflow does not fit, and do not claim partial execution as full
+compliance. Ordinary in-scope choices need no repeated owner approval.
 
 ### ROT-10 — Audit fixed point
 
@@ -139,7 +146,9 @@ Separate observed behavior from desired behavior and record deliberate changes.
 Account for staged, unstaged, untracked, ignored, generated, and configured
 inputs that affect the selected path. A worktree or temporary copy organizes
 work; it is not network, credential, process, resource, or external-state
-isolation.
+isolation. Preserve unrelated/concurrent work and recoverable before-images;
+explicitly authorized cleanup may change or retire selected dirty implementations.
+Do not replace the actual dirty baseline with a convenient clean HEAD.
 
 ### ROT-13 — Protected witnesses
 
@@ -147,6 +156,15 @@ Establish relevant valid, failure, compatibility, and state-effect witnesses
 against the actual shipping selector. Keep baseline behavior witnesses distinct
 from structural-completion checks. Do not weaken assertions, add skips, broaden
 tolerances, or regenerate expectations merely to make a candidate pass.
+
+Choose sufficient evidence for the risk: existing checks, direct inspection,
+disposable probes or durable regressions. A refactor may keep baseline tests
+green; a defect witness must expose the defect rather than a setup failure.
+Trace directly inspectable retirement without requiring permanent test machinery.
+Challenge consequential executable gates with safe counterexamples where feasible;
+report a material proof limit when that observation is unavailable. Retire or
+consolidate obsolete tests while preserving distinct supported failure coverage
+and the actual test entrypoints.
 
 ### ROT-14 — Convergent increments
 
@@ -168,6 +186,9 @@ checkpoint. Implement one coherent increment, inspect the real diff and test
 edits, run current behavioral and structural checks, challenge consequential
 claims from current source, re-pin, and continue through ready in-scope
 obligations. Re-plan on new evidence rather than stacking speculative fixes.
+When verification setup dominates, compare a narrower credible method and
+surface a material scope/cost change before continuing; do not restart the
+whole workflow for every helper.
 
 ### ROT-17 — Four acceptance obligations
 
@@ -180,11 +201,15 @@ Apply the obligations material to the agreed goal:
    transition, not completion.
 3. **Delivery:** requested manifests, packages, installed copies, activation, or
    runtime surfaces select the intended implementation at every included layer.
-4. **Usefulness:** the concrete change friction is reduced; when practical, a
-   small disposable follow-on change demonstrates the new boundary.
+4. **Usefulness:** the concrete change friction is reduced, accounting for the
+   purpose of retained tests, configuration, seams and bridges. Where useful,
+   a small disposable follow-on change demonstrates the new boundary.
 
 Not every operation includes all delivery layers or a usefulness probe. Name
-which obligations apply and justify exclusions against the agreed goal.
+which obligations apply and justify exclusions against the agreed goal. A brief
+concrete cost/benefit rationale suffices; do not require whole-project maintenance
+measurements, a proof of globally minimal cost or per-test approval. Line counts,
+test counts and prospective reuse alone do not prove usefulness.
 
 ### ROT-18 — Challenge without theatre
 
@@ -212,6 +237,10 @@ backup/compensation, intervening-write, idempotency, and safe-rollback analysis.
 Report one of: complete agreed scope; verified checkpoint with work remaining;
 blocked with the exact missing observation/capability/authority/dependency; or
 aborted/recovered with observed residual effects. Do not silently shrink scope.
+A phase explicitly selected by the owner has its own acceptance boundary; do not
+enlarge it afterward to all proposed future work. When challenged, recheck the
+request, diff and observations. Correct confirmed shortfalls and retain supported
+gains; neither reassurance nor an apology establishes the engineering verdict.
 
 ## 5. Evidence and deterministic helpers
 
@@ -267,12 +296,22 @@ Source-complete acceptance for 0.2.0 requires:
 Synthetic operation-lab success is necessary evaluator evidence, not a
 substitute for model forward evidence.
 
+The 0.2.1 candidate adds contrasted method-selection subjects and fixture tests
+under the existing operation lab. Before claiming improved model behavior,
+compare pinned baseline and candidate Skills under the same host/model/settings
+on fresh subjects, including optional and project-required test-first methods,
+state effects hidden by green output checks, authorized dirty retirement and
+read-only control. Record actual helper exposure and inspect real edits and
+observations; do not grade policy-word repetition as behavior. The preparation
+script and unit tests make no target-model calls. Historical forward receipts
+remain evidence for their named bytes, not automatic proof of this candidate.
+
 ## 8. Version, installation, and publication
 
 VERSION identifies the current source version and follows stable semantic
-version syntax. It may diverge from a later public release tag during future
-development. For this release snapshot, source version and latest public tag
-both identify 0.2.0; README and current-state still report their gates separately.
+version syntax. Source `0.2.1` is an unreleased candidate; the latest public tag
+remains `v0.2.0`. README and current-state report source, validation, installation
+and publication separately. Stable installation remains pinned to the released tag.
 
 Local installation validates source, requires explicit replacement of different
 bytes, preserves a recoverable backup, and records source Git identity, dirty

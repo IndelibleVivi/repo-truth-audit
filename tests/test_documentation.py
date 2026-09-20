@@ -16,6 +16,8 @@ PAIRS = (
     ("docs/usage.md", "docs/usage.zh-CN.md"),
     ("docs/release-preparation.md", "docs/release-preparation.zh-CN.md"),
     ("docs/releases/v0.2.0.md", "docs/releases/v0.2.0.zh-CN.md"),
+    ("docs/releases/v0.2.1.md", "docs/releases/v0.2.1.zh-CN.md"),
+    ("docs/forward-0.2.1-receipt.md", "docs/forward-0.2.1-receipt.zh-CN.md"),
 )
 
 
@@ -74,6 +76,8 @@ class DocumentationTests(unittest.TestCase):
             self.assertEqual(refs, [f"v{PUBLIC_RELEASE_VERSION}"], relative)
 
     def test_publication_status_is_recorded_after_readback(self) -> None:
+        for relative in PAIRS[4]:
+            self.assertIn("DRAFT — NOT PUBLISHED", (ROOT / relative).read_text(encoding="utf-8"))
         for relative in PAIRS[3]:
             self.assertIn("PUBLISHED — 2026-09-17", (ROOT / relative).read_text(encoding="utf-8"))
         for relative in PAIRS[2]:

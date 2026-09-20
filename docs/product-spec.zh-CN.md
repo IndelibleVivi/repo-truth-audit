@@ -257,7 +257,7 @@ forward 回执仍只支持其具名 bytes，不会自动证明当前候选版。
 
 VERSION 表示当前 source version，并遵循稳定 SemVer 语法。Source `0.2.1` 是未发布候选版，
 最新公开 tag 保持 `v0.2.0`。README 与 current-state 分别报告源码、验证、安装和发布状态；
-稳定安装仍固定到已发布 tag。
+文档安装引用指向 v0.2.1，须在 tag 发布后才可用。
 
 本地 installation 会先验证 source；内容不同的目标必须显式 replace；被替换的版本进入可恢复
 backup；receipt 记录 source Git identity、dirty state、version 与 source/installed digests。

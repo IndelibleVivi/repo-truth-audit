@@ -311,7 +311,8 @@ remain evidence for their named bytes, not automatic proof of this candidate.
 VERSION identifies the current source version and follows stable semantic
 version syntax. Source `0.2.1` is an unreleased candidate; the latest public tag
 remains `v0.2.0`. README and current-state report source, validation, installation
-and publication separately. Stable installation remains pinned to the released tag.
+and publication separately. The documented install reference targets v0.2.1
+and becomes usable when that tag is published.
 
 Local installation validates source, requires explicit replacement of different
 bytes, preserves a recoverable backup, and records source Git identity, dirty

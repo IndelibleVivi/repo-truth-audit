@@ -13,7 +13,8 @@ Plan 在编辑前停止，Operate 将显式、有限的结构改造推进到适�
 Source `0.2.1` 是**未发布候选版**，在
 [PR #5](https://github.com/IndelibleVivi/repo-truth-audit/pull/5) 中基于公开基线
 `e70642fff3c09476b5a81cebde0f16c5cdb4cc16` 开发。最新公开 release 保持 `v0.2.0`，
-稳定安装仍固定到该版本。PR #5 记录 source 集成状态；未进行候选日常安装、打 tag 或发布。
+PR #5 已合并；文档安装引用已准备为 v0.2.1 发布目标，发布后才可用。详见
+[发布说明](releases/v0.2.1.zh-CN.md)；尚未进行日常安装或发布。
 
 候选版细化辅助方法的适用范围、与风险相称的 witness、获授权 dirty 实现退役、长期验证设施
 成本，以及受到质疑时基于证据重新判断。没有新增执行引擎、安装载荷文件、模式、覆盖率配额
@@ -55,9 +56,9 @@ diff/source/bundle/ledger 检查。[回执](forward-0.2.1-receipt.zh-CN.md) 记�
 peel 到 `5d25c581a7d331329d39be9f6bace11371dd4437`。已记录的 0.2.0 安装、发现与 payload
 digest 只属于那些历史 bytes，不能充当当前候选版安装证据。
 
-原始 diff 已有独立 review，候选在声明的合成边界内已有 forward 证据。集成仍需最终 head
-检查，结果由 PR #5 记录。安装、fresh host discovery 与发布继续保持独立所有者授权边界；
-source 验收不等于发布。
+原始 diff 已有独立 review、有限 forward 证据及 merged-main CI。所有者现已授权发布
+v0.2.1 并跟进 issue #4；仍须通过 exact-commit CI、annotated tag／Release read-back
+和公开 tag 的临时安装。日用安装与 fresh host discovery 保持独立，本次发布不修改日用 Skill。
 
 功能材料继续按 SUL-1.0 提供 source-available 许可。独立公开文档和图示依照
 [LICENSING.zh-CN.md](../LICENSING.zh-CN.md) 使用 CC BY-NC-SA 4.0。

@@ -21,8 +21,10 @@
   [forward checks](docs/forward-0.2.1-receipt.md) passed, without establishing
   superiority over 0.2.0. Issue #4 is a motivating field report, not a confirmed failed
   cleanup or causal demonstration against another Skill.
-- Keep the eight-file installable payload, mode routing and public v0.2.0 install
-  pin; reconcile paired public contracts and candidate versus release status.
+- Keep the eight-file installable payload and mode routing; prepare the v0.2.1
+  install pin and paired release documentation without changing runtime bytes.
+- Include the Windows test portability fixes merged since v0.2.0; this does not
+  expand the claimed native Windows operator support.
 
 ## 0.2.0 — 2026-09-17
 

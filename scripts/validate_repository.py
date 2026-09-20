@@ -22,7 +22,7 @@ from common import (
 )
 
 SUL_SHA256 = "c6d0dde0f0463c800e542d7d64237ffef37f43b17004975a558604f17b5d1af1"
-PUBLIC_RELEASE_VERSION = "0.2.0"
+PUBLIC_RELEASE_VERSION = "0.2.1"
 SEMVER = re.compile(r"[0-9]+\.[0-9]+\.[0-9]+\Z")
 
 PUBLIC_DOC_PAIRS = {
@@ -34,6 +34,8 @@ PUBLIC_DOC_PAIRS = {
     "docs/evidence-model.md": "docs/evidence-model.zh-CN.md",
     "docs/forward-behavior-receipt.md": "docs/forward-behavior-receipt.zh-CN.md",
     "docs/forward-0.2.0-receipt.md": "docs/forward-0.2.0-receipt.zh-CN.md",
+    "docs/forward-0.2.1-receipt.md": "docs/forward-0.2.1-receipt.zh-CN.md",
+    "docs/releases/v0.2.1.md": "docs/releases/v0.2.1.zh-CN.md",
     "docs/research-basis.md": "docs/research-basis.zh-CN.md",
     "docs/current-state.md": "docs/current-state.zh-CN.md",
     "docs/architecture/README.md": "docs/architecture/README.zh-CN.md",

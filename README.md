@@ -11,19 +11,19 @@ A Codex Skill for repository re-entry, migrations, consolidation and legacy-path
 retirement. Use it for a focused engineering intervention; finish the agreed job
 and return to normal development. It need not run on every task or every commit.
 
-Current source version: `0.2.1` — unreleased method-selection candidate.
+Current source version: `0.2.1` — release target awaiting publication.
 Latest public release: `v0.2.0` — Audit / Plan / Operate.
 
 The candidate refines auxiliary-workflow scope and proportionate verification.
 Bounded synthetic forward checks passed; see the [candidate receipt](docs/forward-0.2.1-receipt.md)
 and [current state](docs/current-state.md). No comparative improvement is claimed.
 
-**The stable install below is pinned to the verified v0.2.0 tag.** Installing
+**The install below targets v0.2.1 and becomes usable after publication.** Installing
 the package still does not prove that a running host has discovered it; confirm
 the selected Skill path and behavior in a fresh task.
 
-[Using the Skill](docs/usage.md) · [Stable forward evidence](docs/forward-0.2.0-receipt.md) ·
-[Release record](docs/release-preparation.md) · [v0.2.0 notes](docs/releases/v0.2.0.md)
+[Using the Skill](docs/usage.md) · [0.2.1 forward evidence](docs/forward-0.2.1-receipt.md) ·
+[Release procedure and v0.2.0 history](docs/release-preparation.md) · [v0.2.1 notes](docs/releases/v0.2.1.md)
 
 ## What problem it solves
 
@@ -120,16 +120,16 @@ before more writes. It does not autonomously resume in the background.
 
 ## Install from the public release
 
-For a fresh Audit / Plan / Operate `v0.2.0` installation, use the system installer:
+After publication, for a fresh Audit / Plan / Operate `v0.2.1` installation, use the system installer:
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo IndelibleVivi/repo-truth-audit \
   --path skills/repository-operational-truth-audit \
-  --ref v0.2.0
+  --ref v0.2.1
 ```
 
-This is the verified public release. For an existing conflicting copy, use the
+This command targets the upcoming release. For an existing conflicting copy, use the
 deliberate upgrade path below rather than deleting installed files.
 
 ## Validate or install from a source checkout
@@ -208,8 +208,8 @@ For related-tool distinctions, see [the usage guide](docs/usage.md#related-tools
 | Execute the installed Skill | [Canonical SKILL.md](skills/repository-operational-truth-audit/SKILL.md), then its linked references |
 | Maintain this repository | [AGENTS.md](AGENTS.md) and [product spec](docs/product-spec.md) |
 | Understand proof and completion | [Evidence model](docs/evidence-model.md) |
-| Inspect tested behavior and present state | [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [historical receipt](docs/forward-behavior-receipt.md), [current state](docs/current-state.md) |
-| Inspect the v0.2.0 release | [Release record](docs/release-preparation.md), [release notes](docs/releases/v0.2.0.md) |
+| Inspect tested behavior and present state | [0.2.1 receipt](docs/forward-0.2.1-receipt.md), [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [current state](docs/current-state.md) |
+| Inspect the v0.2.1 release target | [Release notes](docs/releases/v0.2.1.md), [release procedure and v0.2.0 history](docs/release-preparation.md) |
 | Inspect architecture and research | [Architecture model](docs/architecture/README.md), [research basis](docs/research-basis.md) |
 
 `evals/cases/` and `evals/operation-lab/` contain evaluator material, not target

@@ -14,8 +14,9 @@ explicit finite structural-change outcome through its applicable evidence bounda
 Source `0.2.1` is an **unreleased candidate**, developed in
 [PR #5](https://github.com/IndelibleVivi/repo-truth-audit/pull/5) from public baseline
 `e70642fff3c09476b5a81cebde0f16c5cdb4cc16`. Latest public release remains `v0.2.0`;
-stable installation stays pinned to that release. PR #5 records the source
-integration state; no candidate daily installation, tag or release was performed.
+PR #5 is merged. The documented install reference is prepared for the v0.2.1
+release target and becomes usable after publication. See the
+[release notes](releases/v0.2.1.md); no daily installation or publication has occurred.
 
 The candidate refines auxiliary-method applicability, proportionate witnesses,
 authorized dirty-work retirement, lasting verification costs and evidence-based
@@ -72,10 +73,11 @@ claims. Its annotated tag peels to `5d25c581a7d331329d39be9f6bace11371dd4437`.
 The recorded 0.2.0 installation/discovery and payload digest belong to those
 historical bytes; they are not current candidate installation evidence.
 
-The original diff has independent review and the candidate has forward evidence
-at the declared synthetic boundary. Integration still requires final-head checks;
-PR #5 records that outcome. Installation, fresh host discovery and publication
-remain separate owner-authorized gates. Source acceptance is not a release.
+The original diff has independent review, forward evidence and merged-main CI.
+Owner authorization now covers v0.2.1 publication and an issue #4 follow-up. The
+release still needs exact-commit CI, annotated-tag/Release read-back and a public-tag
+disposable install. Daily installation and fresh host discovery remain separate;
+no change to the daily Skill copy is included in this release operation.
 
 Functional materials remain source-available under SUL-1.0. Standalone public
 documentation and diagrams use CC BY-NC-SA 4.0 according to [LICENSING.md](../LICENSING.md).

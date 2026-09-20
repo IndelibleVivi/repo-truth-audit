@@ -9,18 +9,18 @@
 这是面向仓库接手、迁移、整合和旧路径退役的 Codex Skill。它适合一次有明确目标的工程介入，
 完成后回到普通开发；无需每个任务、每次提交都调用。
 
-当前源码版本：`0.2.1` — 未发布的方法选择候选版。
+当前源码版本：`0.2.1` — 待发布的 release target。
 最新公开版本：`v0.2.0` — Audit / Plan / Operate。
 
 候选版细化辅助流程适用范围与适度验证；有限合成 forward 检查已通过，详见
 [候选回执](docs/forward-0.2.1-receipt.zh-CN.md) 与[当前状态](docs/current-state.zh-CN.md)。
 不据此声称相对旧版的效果改善。
 
-**下方稳定安装命令固定到已经核验的 v0.2.0 tag。** 装好 package 仍不等于当前宿主已经发现；
+**下方安装命令指向 v0.2.1，正式发布后才可用。** 装好 package 仍不等于当前宿主已经发现；
 请在 fresh task 中确认实际选中的 Skill path 与行为。
 
-[使用指南](docs/usage.zh-CN.md) · [稳定版 forward 证据](docs/forward-0.2.0-receipt.zh-CN.md) ·
-[发布记录](docs/release-preparation.zh-CN.md) · [v0.2.0 发布说明](docs/releases/v0.2.0.zh-CN.md)
+[使用指南](docs/usage.zh-CN.md) · [0.2.1 forward 证据](docs/forward-0.2.1-receipt.zh-CN.md) ·
+[发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) · [v0.2.1 发布说明](docs/releases/v0.2.1.zh-CN.md)
 
 ## 它解决什么问题
 
@@ -91,16 +91,16 @@ Audit、Plan、Operate 是行为模式，无需记忆一套命令。
 
 ## 从公开 release 安装
 
-首次安装 Audit / Plan / Operate `v0.2.0`，使用系统安装器：
+发布后首次安装 Audit / Plan / Operate `v0.2.1`，使用系统安装器：
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo IndelibleVivi/repo-truth-audit \
   --path skills/repository-operational-truth-audit \
-  --ref v0.2.0
+  --ref v0.2.1
 ```
 
-这是已经核验的公开 release。已有副本发生冲突时，使用下面的显式升级流程，不要先删除安装目录。
+此命令指向待发布版本。已有副本发生冲突时，使用下面的显式升级流程，不要先删除安装目录。
 
 ## 从 source checkout 验证或安装
 
@@ -166,8 +166,8 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 | 执行已安装的 Skill | [权威 SKILL.md](skills/repository-operational-truth-audit/SKILL.md) 及其链接的 references |
 | 维护这个仓库 | [AGENTS.md](AGENTS.md) 与[产品契约](docs/product-spec.zh-CN.md) |
 | 理解证明和完成标准 | [证据模型](docs/evidence-model.zh-CN.md) |
-| 查看实测行为与当前状态 | [0.2.0 回执](docs/forward-0.2.0-receipt.zh-CN.md)、[历史回执](docs/forward-behavior-receipt.zh-CN.md)、[当前状态](docs/current-state.zh-CN.md) |
-| 查看 v0.2.0 发布 | [发布记录](docs/release-preparation.zh-CN.md)、[发布说明](docs/releases/v0.2.0.zh-CN.md) |
+| 查看实测行为与当前状态 | [0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md)、[0.2.0 回执](docs/forward-0.2.0-receipt.zh-CN.md)、[当前状态](docs/current-state.zh-CN.md) |
+| 查看 v0.2.1 发布目标 | [发布说明](docs/releases/v0.2.1.zh-CN.md)、[发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) |
 | 查看架构与研究来源 | [架构模型](docs/architecture/README.zh-CN.md)、[研究依据](docs/research-basis.zh-CN.md) |
 
 `evals/cases/` 和 `evals/operation-lab/` 是评测材料，不应成为目标代理的指令。

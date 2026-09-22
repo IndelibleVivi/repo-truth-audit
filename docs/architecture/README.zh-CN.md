@@ -8,10 +8,15 @@
 gate，最终抵达经过验证的 Operate completion。它们不描述本 repo 自身的 packaging 或
 release pipeline。
 
+0.3.0 扩展既有 authority 与 candidate-trace 职责：从限定范围的规格、决策和指定对话
+还原已接受产品意图，再与实际所选行为双向对照。不增加 mode 或执行引擎，保留 31 个
+节点与 46 条边；权威、追踪、裁定和验收语义现在包括产品差距及合理演进。单纯 operational
+任务不强制进行意图考古。
+
 ## Reader question
 
 > Repo Truth Audit 如何把精确仓库快照与明确所有者意图转化为有界只读答案、可执行计划，
-> 或经过验证完成的获授权结构变更，同时不夸大证据或外部状态？
+> 或经过验证完成的获授权结构变更或产品意图收敛，同时不夸大证据或外部状态？
 
 Reader overview 把答案压缩为所有者问题、被钉住的运行现实、停止边界、三种 mode outcome、
 Operate 验收、checkpoint／completion 分流与外部证明边界。完整 Mermaid 图保留七个 region：

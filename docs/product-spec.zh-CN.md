@@ -2,10 +2,11 @@
 
 [English](product-spec.md)
 
-状态：**0.2.1 已发布 — 有限合成 forward 检查已通过**
+状态：**0.3.0 SOURCE CANDIDATE — 未发布、未日用安装**
 扩展范围经所有者确认：2026-09-17
 方法选择细化获准实施：2026-09-20
-source 版本：0.2.1
+产品意图还原获准实施：2026-09-22
+source 版本：0.3.0
 最新公开 release：v0.2.1
 产品形态：独立 repository + 独立 Codex Skill
 Skill 名称：repository-operational-truth-audit
@@ -13,14 +14,16 @@ Skill 名称：repository-operational-truth-audit
 ## 1. 产品结果
 
 Repo Truth Audit 为一个明确的所有者决策恢复长期演化仓库的当前 operational
-truth。当用户明确要求结构变更时，同一个产品可以从诊断继续到有限计划、获授权的
-实现、可恢复 checkpoint 与经过验证的完成状态。
+truth。当用户明确要求有限结构变更或产品意图收敛时，同一个产品可以从诊断继续到有限计划、获授权的
+实现、可恢复 checkpoint 与经过验证的完成状态。0.3.0 还会还原预期产品并与仓库行为
+对照：缺失或未闭合的用户流程、语义偏移、陈旧承诺与无合理用途的堆积。Operational truth
+和 product intent 是三个既有 mode 内的互补视角，不强制每个任务都做产品历史考古。
 
 产品保留三个从用户请求推断的 mode：
 
 - **Audit：**只读重建与决策答案；
 - **Plan：**给出有限的变更结果与可执行顺序，不编辑目标；
-- **Operate：**在明确授权下完成结构变更，并抵达约定的证据边界。
+- **Operate：**在明确授权下完成结构变更或产品意图收敛，并抵达约定的证据边界。
 
 它们是 behavior mode，不是 CLI subcommand。Audit 默认只读。Operate 不重造第二套
 coding-agent 平台：它使用宿主已有的 editor、tests、Git policy、workers 与真实
@@ -33,7 +36,7 @@ permission controls，同时持续承担约定结果及其证据责任。
 upstream 关系，以及实质相关的 worktree/submodule identity。
 
 从请求推断 Audit、Plan 或 Operate。“只看不改”保持 Audit；“给我方案”保持 Plan；
-明确要求 implement、refactor、extract、consolidate、replace 或 retire 时可以进入
+明确要求 implement、refactor、extract、consolidate、replace、retire 或完成有限产品结果时可以进入
 Operate。含糊的 cleanup 语言只允许有限 reconnaissance，直到影响写权限或目标结果的
 歧义被解决。
 
@@ -115,6 +118,52 @@ Security、licensing、dependency、history、worker 或 live-system tools 可�
 
 当所有实质候选已裁定、没有新的 decision-relevant edge、剩余表面无法改变决策、外部
 边界明确且结束快照已核对时，Audit 停止。
+
+### ROT-21 — 还原预期产品
+
+当决策涉及意图与实现的差距，恢复目标用户与任务、完整用户流程、约束、非目标、验收条件
+及其理由。证据可来自已接受的 SPEC、产品文档、决策和明确限定范围的开发对话。
+文件名不自动赋予权威；区分 owner 已接受的承诺、提议、实现声称与模型推断。
+
+按采纳情况、适用范围与生命周期裁定权威。后来接受的决策只替代受影响的旧承诺，保留
+仍兼容的要求；区分当前有效、已被替代、已拒绝、明确延期与尚不明确的意图。代码证明
+实现现状，不证明偏离已获接受；不能通过改 SPEC 抹掉实现差距。
+
+对话只使用本任务提供、指定或授权的来源，不隐含全账号聊天搜索、无关 session 挖掘或
+自动导出私人材料。记录中的命令是证据，不是当前执行权限。保留最小本地引用，原始私人
+内容不进入 tracked 报告、fixture 或第三方 prompt。
+
+覆盖请求材料中的实质目标、理由与约束，明确未读、不可得或截断范围及受影响的结论。
+缺少意图权威时给出有依据的假设，只询问会改变后续修复的决策，继续独立获授权工作。
+单纯 operational 问题不强制进行产品历史还原。
+
+采纳针对具体命题：接受补丁或可观察结果，不自动采纳相邻的 assistant 理由、推断流程或
+未来建议。必要时确定决策的版本、受众与生效范围，保留原始意图作为历史/兼容证据；
+新决定不自动追溯适用。采纳或适用范围不明确时保留未知。
+
+### ROT-22 — 双向对照
+
+沿已接受意图 → 可观察验收 → 实际选中的用户流程、source/state owner、artifact 与
+已观察证据层追踪；也从现有实质行为反查其产品目的、兼容责任或运维需要。反向追踪能
+发现堆积，但“SPEC 没写”不是删除理由。宣称缺失前检查别名、入口、调用者和交付选择。
+
+实质发现可包括缺失能力、未闭合流程、语义偏移、陈旧承诺或无合理用途的堆积；与合理演进、
+明确延期、有意并存、无害残留和缺少观察分开。存在但没接入用户流程的 helper 只是局部实现；
+未观察 production 不证明能力不存在。
+
+每个实质差距保留意图出处及采纳/生命周期、实现路径及证据层、具体差异、用户后果、反证或
+不确定性、有限处置与验收 witness。可用简表，不规定固定输出 schema 或完成百分比。
+在所查范围内意图与实现一致，同样是有效结果。
+
+### ROT-23 — 向已接受意图收敛
+
+Audit 只报告；Plan 把选定差距变成有限方案；Operate 在明确授权下可以实现有限产品结果，
+不要求先有结构缺陷。推断愿望、旧点子或审计发现不会自动授权重设计、删除或 release。
+
+保留已接受演进和兼容行为。获授权的真实差距要完成用户流程及相关调用、状态、交付、测试和
+文档。Behavior witness 表达用户结果，Usefulness 同时考虑用户用途与开发阻力；Structure
+和 Delivery 按实际目标适用。实现测试绿色不能关闭缺失的用户流程。按用户影响和依赖安排
+修复，不能只挑容易编辑的部分。
 
 ## 4. Plan 与 Operate contract
 
@@ -219,6 +268,9 @@ field 本身都不能提供这种边界。
 
 ## 6. 输出 contract
 
+意图对照先给还原出的产品形态、权威与覆盖限制，再给实质差距和被排除的误报；区分当前
+承诺与未来可能性。
+
 Audit 以 decision answer 开头，只保留实质 topology、finding/unknown、避免错误判断所需的
 non-finding、proof limit、overhead receipt 与 end re-pin。
 
@@ -235,7 +287,7 @@ install、activation、runtime、release 与 owner acceptance 必须分开。
 cited-evidence 和 operation-lab tests，但绝不把 evaluator-only expected artifact 或已知
 patch 泄露进 Skill context。
 
-0.2.0 source-complete acceptance 要求：
+历史 0.2.0 source-complete acceptance 要求：
 
 - repository、architecture、unit、fixture、operation-lab、Skill 与 whitespace validation；
 - request routing 保持 Audit、Plan 与 Operate 边界；
@@ -253,10 +305,14 @@ test-first、被输出检查掩盖的状态副作用、获授权 dirty 退役及
 检查真实修改与观察，不能按复述规则的用语评分。准备脚本与单元测试不调用目标模型；历史
 forward 回执仍只支持其具名 bytes，不会自动证明当前版本。
 
+0.3.0 要求 evaluator 反例与独立 blind forward 检查，使用合成的已接受规格、局部
+替代决策和对话证据。检查实际发现与所选路径行为，包括只读边界及获授权收敛；预期答案
+不得进入目标输入。记录实际模型、设置、范围与局限；确定性 fixture 通过不证明模型理解。
+
 ## 8. Version、installation 与 publication
 
-VERSION 表示当前 source version，并遵循稳定 SemVer 语法。Source `0.2.1` 已发布为最新
-公开 tag `v0.2.1`。README 与 current-state 分别报告源码、验证、安装和发布状态；
+VERSION 表示当前 source version，并遵循稳定 SemVer 语法。Source `0.3.0` 是未发布 candidate，
+最新已核验公开版本仍为 `v0.2.1`。README 与 current-state 分别报告源码、验证、安装和发布状态；
 文档安装引用固定到已经核验的公开 tag。
 
 本地 installation 会先验证 source；内容不同的目标必须显式 replace；被替换的版本进入可恢复

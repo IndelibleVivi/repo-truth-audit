@@ -26,6 +26,14 @@ build inputs, artifact identities and any relevant external observations with th
 last checkpoint. Re-read affected edges, including uncited paths. Reuse unaffected
 evidence only at the proof layer and snapshot it actually supports.
 
+When the agreed outcome rests on accepted product intent, re-check that intent on
+resume rather than trusting a recorded summary: the adopted specification or
+decision may have been superseded, a previously unread source may now be readable,
+or an inferred wish may have hardened into (or out of) an owner decision. A
+recorded intent is evidence of what was adopted at that time, not standing
+authority for the resumed write. If the intent authority moved, re-derive the end
+state before another write, and keep independent, still-adopted work moving.
+
 For an in-flight increment, determine whether its effects are absent, complete,
 partially present, concurrently changed, or unobservable. Inspect before retrying.
 A lost acknowledgement cannot justify repeating a data write, remote action or

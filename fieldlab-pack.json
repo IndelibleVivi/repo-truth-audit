@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "pack_id": "repository-operational-truth-audit",
-  "description": "Controlled Audit cases for Repo Truth Audit; operation-lab evaluation remains a separate deterministic harness.",
+  "description": "Controlled Audit cases for Repo Truth Audit; operation-lab and intent-lab evaluation remain separate deterministic harnesses.",
   "cases_root": "evals/cases",
   "subjects": {
     "current-skill": {
@@ -25,6 +25,13 @@
   },
   "metadata": {
     "activation_seed_file": "evals/activation-prompts.csv",
-    "mode_seed_file": "evals/mode-prompts.csv"
+    "mode_seed_file": "evals/mode-prompts.csv",
+    "intent_lab": {
+      "catalog": "evals/intent-lab/intent_cases.json",
+      "prepare": "evals/intent-lab/prepare_intent_subject.py",
+      "check": "evals/intent-lab/check_intent_subject.py",
+      "evidence_status": "prepared_subjects_not_model_results",
+      "notes": "Prepared intent subjects are generated into a disposable workspace; evaluator notes and expected observations are never supplied to the target."
+    }
   }
 }

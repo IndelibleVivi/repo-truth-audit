@@ -13,3 +13,8 @@ security-scan,do-not-activate,en,"Run a security and dependency vulnerability au
 generic-doc-cleanup,do-not-activate,en,"Clean up stale wording and broken links across the docs."
 live-host-only,do-not-activate,en,"SSH to production and inspect the currently running service."
 code-hygiene,do-not-activate,zh,"帮我列一份这个 repo 的通用 code hygiene checklist。"
+intent-product-drift,activate,en,"This product has grown for years. Work out whether what it does now still matches what it was accepted to do, and where the biggest intent gaps are."
+intent-vs-behavior,activate,en,"Reconstruct the intended product from our accepted spec and decisions, then tell me where current behavior has drifted or a core journey is missing."
+intent-zh,activate,zh,"先根据已接受的产品规格和决策重建产品意图，再对比今天的行为，看看哪些核心旅程缺失或语义漂移了。只读。"
+wishlist-no-intent,do-not-activate,en,"I want to add a bunch of nice-to-have features to this product; brainstorm what to build next."
+single-intent-claim,do-not-activate,en,"Just confirm whether the README still says the product supports export."

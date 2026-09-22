@@ -29,6 +29,9 @@ browser actions, or publication.
 Identify which surfaces own current truth:
 
 - repository instructions and accepted product/programme authority;
+- accepted product intent, its scope, and its lifecycle (see
+  [intent](intent.md) when the decision turns on intended product versus current
+  behavior);
 - executable entrypoints and selectors;
 - source, configuration, and durable state owners;
 - generated, built, packaged, or projected artifacts;

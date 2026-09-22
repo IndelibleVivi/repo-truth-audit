@@ -28,10 +28,13 @@ as source.
 
 The Skill reconstructs repository-observable operational truth for one concrete
 owner decision and, when the user explicitly asks for implementation, can carry
-a bounded structural change through current-source diagnosis, planning,
+a bounded structural or product-convergence change through current-source diagnosis, planning,
 implementation, recovery-aware checkpoints, and verified completion. Audit,
 Plan, and Operate are request-derived behavior modes, not CLI subcommands or a
-parallel orchestration engine.
+parallel orchestration engine. Product-intent comparison is a complementary view
+inside those modes: reconstruct accepted outcomes from scoped specifications,
+decisions or development conversations, then trace both intention to behavior and
+behavior to current purpose. It does not require a structural defect.
 
 It is not a generic quality score, compliance scan, public-launch checklist,
 ordinary code review, one-claim verifier, universal automatic fixer,
@@ -50,6 +53,7 @@ publication, and other materially new effects still require matching authority.
 | Surface | Authority |
 | --- | --- |
 | `skills/repository-operational-truth-audit/SKILL.md` | Runtime behavior and invocation boundary |
+| `skills/repository-operational-truth-audit/references/intent.md` | Progressive product-intent reconstruction, lifecycle, comparison and convergence method |
 | `docs/product-spec.md` | Complete accepted product contract and acceptance requirements |
 | `docs/evidence-model.md` | Finding, checkpoint/completion, proof-layer, acceptance, and stopping semantics |
 | `docs/architecture/audit-runtime-model.json` | Renderer-neutral Audit/Plan/Operate architecture semantics, stable IDs, locale copy, boundaries, and source mapping |
@@ -59,7 +63,7 @@ publication, and other materially new effects still require matching authority.
 | `docs/research-basis.md` | Public-safe research provenance and external-source decisions |
 | `docs/forward-behavior-receipt.md` | Public-safe independent forward-test evidence, observed proof layers, and explicit trace limits |
 | `docs/current-state.md` | Volatile source, Git, validation, installation, and publication state |
-| `evals/cases/` and `evals/operation-lab/` | Controlled behavior subjects and deterministic operation rehearsal; expected artifacts and known patches are evaluator evidence, not runtime instructions |
+| `evals/cases/`, `evals/operation-lab/` and `evals/intent-lab/` | Controlled behavior subjects and deterministic operation rehearsal; expected artifacts and known patches are evaluator evidence, not runtime instructions |
 | `scripts/common.py::SKILL_PAYLOAD_FILES` | Exact installable Skill payload shared by source validation, digesting, staging, installed comparison, and receipts |
 | `scripts/` and `tests/` | Deterministic validation and local installation behavior |
 | installed Skill directory and install receipt | Installed bytes only; not source authority or proof of next-turn discovery |
@@ -94,6 +98,13 @@ research packets and raw target-repository evidence outside this Git tree.
 - A finding must close the path from claim/live surface through mechanism or
   state to contradiction/gap and decision impact.
 - Missing runtime observation is not automatically a repository defect.
+- Resolve product intent by owner adoption, scope and supersession; code and old
+  proposals cannot redefine the accepted product. Preserve constraints, non-goals
+  and material coverage limits. Do not rewrite SPEC to hide implementation drift.
+- Scope conversation evidence to selected/authorized sources. Raw private chats
+  stay outside tracked reports and evaluator inputs; use synthetic fixtures.
+- Missing specification coverage is not deletion evidence; legitimate evolution,
+  explicit deferral and compatibility must not become false-positive repairs.
 - Intentional multiple modes remain clean when selection, ownership, state, and
   version boundaries are explicit and isolated.
 - Do not turn Audit or Plan into implicit repair. Do not add default multi-agent
@@ -147,6 +158,7 @@ python3 scripts/validate_repository.py
 python3 scripts/validate_architecture.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/selftest.py
+python3 evals/intent-lab/check_intent_subject.py
 python3 "/path/to/skill-creator/scripts/quick_validate.py" \
   skills/repository-operational-truth-audit
 git diff --check

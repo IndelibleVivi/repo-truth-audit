@@ -1,6 +1,6 @@
 ---
 name: repository-operational-truth-audit
-description: "Reconstruct a long-evolved repository's current operational truth and, when explicitly asked, carry a bounded structural change through implementation and verification. Use for re-entry, consolidation, migration, retirement, unclear live ownership, or cross-surface restructuring whose safety cannot be resolved by a bounded diff. Audit by default; execute an authorized structural-change outcome without stopping at a handoff. Do not use for code review, one-claim verification, isolated known-bug repair, generic repo hygiene, or a standalone license/security/compliance scan."
+description: "Reconstruct a long-evolved repository's current operational truth and, when the product shape itself is in question, the accepted product intent behind it; and when explicitly asked, carry a bounded structural change or product-convergence outcome through implementation and verification. Use for re-entry, consolidation, migration, retirement, unclear live ownership, cross-surface restructuring, or intent/behavior drift whose safety cannot be resolved by a bounded diff. Audit by default; execute an authorized outcome without stopping at a handoff. Do not use for code review, one-claim verification, isolated known-bug repair, generic repo hygiene, generic wishlisting, or a standalone license/security/compliance scan."
 ---
 
 # Repo Truth Audit — evidence-led repository change
@@ -13,13 +13,22 @@ scope; a Skill, report, or stored run record cannot grant that scope.
 
 - **Audit:** determine what is currently true for a decision. Read
   [audit](references/audit.md); give a bounded finding or clean result and stop.
-- **Plan:** establish a structural-change target and feasible sequence. Read the
+- **Plan:** establish a finite structural or product-convergence target and feasible
+  sequence. Read the
   [audit](references/audit.md) method and [operation](references/operation.md),
   but do not edit the target.
 - **Operate:** an explicit request to implement, refactor, extract, consolidate,
-  replace, or retire a repository subsystem. Read the audit method and
-  [operation](references/operation.md), then perform the authorized work through
-  acceptance. The audit phase is part of this workflow, not its final output.
+  replace, retire, or converge a repository subsystem onto its accepted product
+  intent. Read the audit method and [operation](references/operation.md), then
+  perform the authorized work through acceptance. The audit phase is part of
+  this workflow, not its final output.
+
+When the decision is whether what the repository does still matches what it was
+accepted to do — product intent, a missing or broken journey, or documentation
+that claims intent the behavior no longer satisfies — also read
+[intent](references/intent.md). Intent reconstruction extends the read-only audit
+topology; it is not a fourth mode, and an ordinary operational re-entry does not
+require product archaeology.
 
 These are behavior modes, not installed CLI subcommands. Do not make the user
 learn mode names. “Inspect only / 先别改” stays audit; “plan / 给方案” stays plan;
@@ -29,13 +38,21 @@ write authority or the intended outcome. Operate requires explicit action
 intent, an identifiable repository/subsystem, and a finite outcome. “Audit,”
 “plan,” “tell me how,” or an unbounded “clean everything” request cannot cross
 the implementation gate. A structural defect is not required: concrete change
-friction can justify a refactor in a functioning repository.
+friction can justify a refactor in a functioning repository, and a finite,
+owner-accepted product gap (a missing or broken journey the product was accepted
+to complete) is itself sufficient to enter Plan or Operate.
 
 Edit verbs alone do not activate this Skill. An isolated known-bug repair,
 ordinary code review, one-claim verification, or generic hygiene task with no
-repository-topology question or cross-surface structural change belongs to the
-normal bounded engineering workflow, even when the user explicitly asks for a
-fix. Do not route such a request through Operate.
+repository-topology question, no cross-surface structural change, and no accepted
+product-convergence gap belongs to the normal bounded engineering workflow, even
+when the user explicitly asks for a fix. Do not route such a request through
+Operate.
+
+Reconstructing intended product versus current behavior is an explicit route even
+when the repository has no topology defect: an accepted-intent question can be
+the whole decision. Isolated known-bug repair, ordinary review, and generic
+wishlisting still stay ordinary work.
 
 A request to expand this product's capabilities does not authorize rewriting
 other repositories, installing it, or publishing it. A user may authorize a

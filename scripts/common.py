@@ -28,6 +28,7 @@ SKILL_PAYLOAD_FILES: tuple[str, ...] = (
     "SKILL.md",
     "agents/openai.yaml",
     "references/audit.md",
+    "references/intent.md",
     "references/operation.md",
     "references/recovery.md",
     "scripts/check_evidence.py",

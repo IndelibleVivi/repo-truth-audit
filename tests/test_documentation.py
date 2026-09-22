@@ -18,6 +18,7 @@ PAIRS = (
     ("docs/releases/v0.2.0.md", "docs/releases/v0.2.0.zh-CN.md"),
     ("docs/releases/v0.2.1.md", "docs/releases/v0.2.1.zh-CN.md"),
     ("docs/forward-0.2.1-receipt.md", "docs/forward-0.2.1-receipt.zh-CN.md"),
+    ("docs/forward-0.3.0-receipt.md", "docs/forward-0.3.0-receipt.zh-CN.md"),
 )
 
 

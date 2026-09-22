@@ -4,25 +4,26 @@
 
 Formally: **Repository Operational Truth Audit**
 
-**Understand how a difficult repository actually runs. With explicit permission,
-carry a bounded structural change through implementation and verification.**
+**Recover what the product was meant to be, compare it with what the repository
+actually does, and carry an authorized change through implementation and verification.**
 
-A Codex Skill for repository re-entry, migrations, consolidation and legacy-path
-retirement. Use it for a focused engineering intervention; finish the agreed job
+A Codex Skill for product-intent reconstruction, repository re-entry, migrations,
+consolidation and legacy-path retirement. Use it for a focused engineering intervention; finish the agreed job
 and return to normal development. It need not run on every task or every commit.
 
-Current source version: `0.2.1` — published 2026-09-20.
+Current source version: `0.3.0` — unreleased candidate.
 Latest public release: `v0.2.1` — Audit / Plan / Operate.
 
-This release refines auxiliary-workflow scope and proportionate verification.
-Bounded synthetic forward checks passed; see the [0.2.1 receipt](docs/forward-0.2.1-receipt.md)
-and [current state](docs/current-state.md). No comparative improvement is claimed.
+The 0.3.0 candidate adds intention-to-reality comparison from accepted specs,
+decisions and scoped development conversations. See [current state](docs/current-state.md)
+for its evidence and limits. The [0.2.1 receipt](docs/forward-0.2.1-receipt.md)
+is historical evidence for the stable release, not validation of this candidate.
 
 **The stable install below is pinned to the verified v0.2.1 tag.** Installing
 the package still does not prove that a running host has discovered it; confirm
 the selected Skill path and behavior in a fresh task.
 
-[Using the Skill](docs/usage.md) · [0.2.1 forward evidence](docs/forward-0.2.1-receipt.md) ·
+[Using the Skill](docs/usage.md) · [0.3.0 candidate evidence](docs/forward-0.3.0-receipt.md) ·
 [Release procedure and v0.2.0 history](docs/release-preparation.md) · [v0.2.1 notes](docs/releases/v0.2.1.md)
 
 ## What problem it solves
@@ -37,9 +38,33 @@ manifest still selects the old mixed writer. A complete replacement must also
 move the callers, select the intended implementation, verify the artifact and
 retire the superseded path where the agreed goal requires it.
 
+## Product intent versus repository reality
+
+A product can have tidy modules and green tests while its intended user journey
+still fails. An export helper may exist without a reachable export command; a
+README may promise offline use while the selected flow requires a remote service.
+The candidate reconstructs the accepted product before judging those differences.
+
+It reads SPEC and key decisions, or development conversations you specifically
+provide or authorize. It preserves user goals, complete journeys, constraints,
+non-goals and rationale. Later accepted decisions can revise older commitments;
+brainstorming and assistant suggestions are not automatically requirements.
+
+The comparison runs both ways: intended outcome to selected implementation and
+evidence, then existing responsibilities back to a current purpose. It separates
+missing capability, partial journeys, semantic drift, stale promises and unjustified
+accumulation from deliberate evolution, explicit deferral and necessary compatibility.
+No spec mention is not a deletion reason. Missing evidence is not missing behavior.
+
+Audit gives the comparison; Plan proposes a bounded response; an explicitly
+authorized Operate request closes the selected gaps and verifies user outcomes.
+There is no fourth mode, product-completeness score, automatic chat scrape or
+unrequested redesign. Operational-only audits still take the direct path.
+
 ## When to use it
 
-Use it when a local diff and a named assertion are insufficient: returning to
+Use it when the question is whether the implemented product still matches its
+accepted intent, or when a local diff and a named assertion are insufficient: returning to
 an unfamiliar or long-idle repository; checking migration or archive readiness;
 reconciling source, package and installed identities; or separating tangled
 responsibilities across real callers, state owners and delivery paths.
@@ -63,6 +88,8 @@ behavior modes, not commands you must memorize.
 
 | Your request | What the Skill should do |
 | --- | --- |
+| "Compare SPEC, accepted decisions and these supplied development notes with the working product. Explain missing, changed and obsolete behavior; do not edit." | **Audit:** reconstruct intent, trace gaps and distinguish valid evolution. |
+| "Complete the local export/import journey required by the accepted spec, preserve the later CSV decision, and verify through the selected CLI." | **Operate:** close that finite product gap, including integration and evidence. |
 | "Before I resume this repo, find which CLI and artifact are live. Do not edit." | **Audit:** answer the decision with evidence and explicit unknowns. |
 | "Plan how to separate formatting from persistence. Stop before edits." | **Plan:** give a finite end state, steps, protection and acceptance criteria. |
 | "Separate formatting from persistence, preserve CLI/config compatibility, update the real bundle and retire the old writer. Implement and verify locally." | **Operate:** perform the whole authorized change, including integration and acceptance. |
@@ -71,7 +98,7 @@ behavior modes, not commands you must memorize.
 For an explicit invocation, start your request with
 `Use $repository-operational-truth-audit to ...`.
 The unchanged slug also names the old release, so invocation alone does not
-prove that the installed copy has 0.2.0 capabilities.
+prove that the installed copy has the 0.3.0 intent-comparison capability.
 
 A local restructuring request can cover related source, tests, docs and old-source
 retirement. It does not automatically authorize real-data migration, production
@@ -104,11 +131,11 @@ is bounded to the checked decision and snapshot, not a universal defect-free cla
 
 An authorized change is accepted against applicable **Behavior, Structure,
 Delivery and Usefulness** obligations: correct outcomes and state effects;
-actual separation or retirement; the selected delivery path; and relief of the
+actual separation or retirement; the selected delivery path; and achievement of the intended user outcome or relief of the
 original development difficulty. A small follow-on change can test usefulness.
 Not every task requires deployment or an extra feature probe.
 
-Version 0.2.1 accounts for lasting tests/configuration as well as retired
+The stable 0.2.1 release accounts for lasting tests/configuration as well as retired
 responsibilities. It permits necessary new tests and authorized dirty-code
 retirement, without net-line targets or per-test approval. Auxiliary methods
 remain subject to actual host, user and project requirements.
@@ -148,6 +175,7 @@ python3 scripts/validate_repository.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/selftest.py
 python3 evals/operation-lab/run_operation_lab.py
+python3 evals/intent-lab/check_intent_subject.py
 ```
 
 Validation above does not install the Skill. For a disposable installation test:
@@ -178,7 +206,7 @@ fresh task to confirm the selected Skill path and Audit/Plan/Operate behavior.
 Installed bytes and observed activation are separate checks; see
 [discovery troubleshooting](docs/usage.md#installation-and-discovery).
 
-The local installer shares an explicit eight-file payload definition with
+The local installer shares an explicit nine-file payload definition with
 validation and digesting. Known runtime cache/bytecode never enters staging;
 undeclared source files are rejected. The optional cited-byte checker requires
 POSIX secure reads and fails closed elsewhere. CI covers macOS/Ubuntu with
@@ -208,7 +236,7 @@ For related-tool distinctions, see [the usage guide](docs/usage.md#related-tools
 | Execute the installed Skill | [Canonical SKILL.md](skills/repository-operational-truth-audit/SKILL.md), then its linked references |
 | Maintain this repository | [AGENTS.md](AGENTS.md) and [product spec](docs/product-spec.md) |
 | Understand proof and completion | [Evidence model](docs/evidence-model.md) |
-| Inspect tested behavior and present state | [0.2.1 receipt](docs/forward-0.2.1-receipt.md), [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [current state](docs/current-state.md) |
+| Inspect tested behavior and present state | [0.3.0 receipt](docs/forward-0.3.0-receipt.md), [0.2.1 receipt](docs/forward-0.2.1-receipt.md), [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [current state](docs/current-state.md) |
 | Inspect the v0.2.1 release | [Release notes](docs/releases/v0.2.1.md), [release procedure and v0.2.0 history](docs/release-preparation.md) |
 | Inspect architecture and research | [Architecture model](docs/architecture/README.md), [research basis](docs/research-basis.md) |
 
@@ -223,7 +251,7 @@ The diagram answers one public-reader question:
 
 > How does Repo Truth Audit turn an exact repository snapshot and a concrete
 > owner intent into a bounded read-only answer, a decision-ready plan, or an
-> authorized structural change with verified completion without overclaiming
+> authorized structural change or product convergence with verified completion without overclaiming
 > evidence or external state?
 
 It depicts the **Audit / Plan / Operate runtime contract**. Packaging,
@@ -262,7 +290,7 @@ flowchart TB
   end
 
   subgraph R10_RESOLVE["02 · Resolve authority + reachability"]
-    N10_AUTHORITY["Current authority owners<br/>source · config · durable state · runbooks · history"]
+    N10_AUTHORITY["Current authority + accepted intent<br/>source owners · adopted specs · scoped decisions / conversations"]
     N11_LIVE_SELECTORS["Live entrypoints + selectors<br/>registrations · callers · pipelines · services · operator routes"]
     N12_OWNERSHIP_STATE["Ownership + state isolation<br/>selector · owner · callers · state · version · retirement intent"]
   end
@@ -275,7 +303,7 @@ flowchart TB
   end
 
   subgraph R30_CHALLENGE["04 · Challenge + adjudicate"]
-    N30_TRACE["Decision-bearing candidate trace<br/>claim → mechanism/state → gap → impact → fresh validation"]
+    N30_TRACE["Intent / operational gap trace<br/>intent ↔ selected behavior → gap → user impact → proof"]
     N31_FALSE_GREEN["False-green challenge<br/>did the exact path run, observe the assertion, and fail when broken?"]
     N32_MULTIPLICITY["Multiplicity or shadow path?<br/>selection · ownership · isolation · callers · retirement intent"]
     N33_EXTERNAL_UNKNOWN["Decision-critical external unknown<br/>missing observation → prevented claim → affected decision → needed proof"]
@@ -283,7 +311,7 @@ flowchart TB
   end
 
   subgraph R40_DECIDE["05 · Audit / Plan exits"]
-    N40_OUTCOMES["Adjudication register<br/>contradiction · false green · shadow path · intentional multiplicity<br/>residue · unknown · external boundary · clean within scope"]
+    N40_OUTCOMES["Adjudication register<br/>missing / partial · drift · false green · accepted evolution<br/>deferral · residue · unknown · clean within scope"]
     N41_STOPPING{"Decision fixed-point test<br/>every candidate adjudicated · no new material evidence edge"}
     N42_DECISION_OUTPUT["Audit answer + proof boundary<br/>pin · live topology · traces · non-findings · verification · overhead"]
     N44_PLAN_CONTRACT["Plan contract · no mutation<br/>finite end state · sequence · witnesses · recovery · acceptance"]

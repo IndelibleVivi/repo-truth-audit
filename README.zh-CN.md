@@ -4,22 +4,22 @@
 
 正式名称：**Repository Operational Truth Audit**
 
-**先看清一个难改的仓库实际怎样运行；得到明确授权后，把有限结构改造做到实现与验收。**
+**还原产品原本要成为什么，对照仓库现在真正做到了什么；得到授权后，把约定变更做到实现与验收。**
 
-这是面向仓库接手、迁移、整合和旧路径退役的 Codex Skill。它适合一次有明确目标的工程介入，
+这是面向产品意图还原、仓库接手、迁移、整合和旧路径退役的 Codex Skill。它适合一次有明确目标的工程介入，
 完成后回到普通开发；无需每个任务、每次提交都调用。
 
-当前源码版本：`0.2.1` — 已于 2026-09-20 发布。
+当前源码版本：`0.3.0` — 未发布 candidate。
 最新公开版本：`v0.2.1` — Audit / Plan / Operate。
 
-本版细化辅助流程适用范围与适度验证；有限合成 forward 检查已通过，详见
-[0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md) 与[当前状态](docs/current-state.zh-CN.md)。
-不据此声称相对旧版的效果改善。
+0.3.0 candidate 新增基于已接受规格、决策与限定范围开发对话的意图—现实对照。
+证据与限制见[当前状态](docs/current-state.zh-CN.md)。
+[0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md) 是稳定版历史证据，不证明本候选版本。
 
 **下方稳定安装命令固定到已经核验的 v0.2.1 tag。** 装好 package 仍不等于当前宿主已经发现；
 请在 fresh task 中确认实际选中的 Skill path 与行为。
 
-[使用指南](docs/usage.zh-CN.md) · [0.2.1 forward 证据](docs/forward-0.2.1-receipt.zh-CN.md) ·
+[使用指南](docs/usage.zh-CN.md) · [0.3.0 candidate 证据](docs/forward-0.3.0-receipt.zh-CN.md) ·
 [发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) · [v0.2.1 发布说明](docs/releases/v0.2.1.zh-CN.md)
 
 ## 它解决什么问题
@@ -30,9 +30,27 @@
 例如，抽出格式化模块只是一个检查点：发布清单可能仍选中混合职责的旧写入器。约定替换目标后，
 还要迁移调用者、切换实际入口、验证交付产物，并按要求退役旧路径。
 
+## 产品意图与仓库现实
+
+模块整齐、测试绿色，用户原本要走的流程仍可能不成立：导出 helper 写好了却没有可达命令，
+README 承诺离线使用，实际所选流程却依赖远端服务。候选版本会先还原已接受的产品形态，
+再裁定这些差异。
+
+证据可以来自 SPEC、关键决策，或你明确提供/授权的开发对话。保留用户目标、完整流程、约束、
+非目标与理由；后来接受的决策可以修订旧承诺，但 brainstorming 和 assistant 提议不会自动
+变成需求。
+
+双向对照：从预期结果找到所选实现及证据，再从现有责任反查当前用途。区分缺失能力、未闭合
+流程、语义偏移、陈旧承诺和无合理用途的堆积，也识别合理演进、明确延期与必要兼容。SPEC
+没写不构成删除理由，缺少证据也不等于缺少行为。
+
+Audit 给出对照，Plan 提出有限处置，明确授权的 Operate 补齐选定差距并验证用户结果。
+不增加第四个 mode、产品完成度评分、自动聊天抓取或未经请求的重设计；单纯 operational
+审计仍可直接进行。
+
 ## 什么时候使用
 
-当局部差异和一条已知断言不足以判断改动影响时使用：重新接手陌生或闲置仓库、评估迁移或归档、
+当你想知道已实现产品是否仍符合已接受意图，或局部差异和一条已知断言不足以判断改动影响时使用：重新接手陌生或闲置仓库、评估迁移或归档、
 核对源码与安装副本，或处理跨调用者、状态归属与交付路径的职责纠缠。
 
 运行正常的项目也可能值得改造，例如新增小功能总要修改多个无关模块。大文件、旧名字或两套受支持
@@ -50,13 +68,15 @@ Audit、Plan、Operate 是行为模式，无需记忆一套命令。
 
 | 你怎么说 | 应当得到什么 |
 | --- | --- |
+| “把 SPEC、已接受决策和这份开发记录与现有产品对照，指出缺失、偏移和陈旧之处，先别改。” | **Audit：**还原意图、追踪差距，并排除合理演进。 |
+| “补齐已接受规格里的本地导出/导入流程，保留后来确定的 CSV 方案，从真正选中的 CLI 验证。” | **Operate：**完成这一有限产品差距，包括接线与验收。 |
 | “接手前先查清真正运行的 CLI 和产物，先别改。” | **Audit：**有证据与明确未知项的决策答案。 |
 | “给我拆分格式化和持久化的方案，停在编辑之前。” | **Plan：**有限终点、施工顺序、保护措施与验收标准。 |
 | “拆开格式化和持久化，保留命令与配置兼容，更新真实交付清单并退役旧写入器。直接本地实现并验证。” | **Operate：**完成获授权的整场改造，包括接线与验收。 |
 | “把这里全部清干净。” | 先做有界只读摸底，明确目标和修改权限后再行动。 |
 
 显式调用时，在请求前加上 `用 $repository-operational-truth-audit` 即可。
-这个 slug 没有改名，旧版也使用它；看到调用名称，并不能证明本机已经加载 0.2.0。
+这个 slug 没有改名，旧版也使用它；看到调用名称，并不能证明本机已经加载 0.3.0 的意图对照能力。
 
 一次本地结构改造授权可以覆盖相关源码、测试、文档和旧源码退役。真实数据迁移、生产启用、安装、
 付费调用、push 和 release 不会自动包含在内。示例、计划和历史记录都不能替用户授予权限。
@@ -80,10 +100,10 @@ Audit、Plan、Operate 是行为模式，无需记忆一套命令。
 “检查范围内没有问题”只覆盖本次决策和快照，不是无条件的全仓正确保证。
 
 获授权的改造按适用的 **行为（Behavior）、结构（Structure）、交付（Delivery）、用途（Usefulness）**
-验收：结果与状态副作用正确，职责真正分离或旧路径真正退出，实际交付路径选中新实现，最初的开发阻力
+验收：结果与状态副作用正确，职责真正分离或旧路径真正退出，实际交付路径选中新实现，预期用户结果得到满足或最初的开发阻力
 有所减少。可用一个小型后续改动验证用途；并非每次都要求部署或额外开发功能。
 
-0.2.1 同时考虑退役的责任与长期保留的测试、配置。必要的新测试及获授权 dirty 代码退役
+稳定版 0.2.1 同时考虑退役的责任与长期保留的测试、配置。必要的新测试及获授权 dirty 代码退役
 均被允许，不采用净减行目标或逐项测试审批。辅助方法仍受宿主、用户和项目的实际适用要求约束。
 
 完成、检查点、受阻、已中止／恢复是不同结果。检查点保留原目标和剩余义务。续做时由宿主重新调用，
@@ -117,6 +137,7 @@ python3 scripts/validate_repository.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/selftest.py
 python3 evals/operation-lab/run_operation_lab.py
+python3 evals/intent-lab/check_intent_subject.py
 ```
 
 上述验证不会安装 Skill。可先在一次性目录测试安装载荷：
@@ -143,7 +164,7 @@ python3 scripts/install_skill.py --replace
 按宿主要求重启或重新加载后，在新任务中确认选中的 Skill 路径与 Audit／Plan／Operate 行为。
 安装字节正确和实际加载生效需要分别检查，详见[安装与发现排障](docs/usage.zh-CN.md#安装与发现)。
 
-本地安装器、验证与摘要共用显式八文件载荷。缓存和字节码不进入安装包，未声明的源码文件会被拒绝。
+本地安装器、验证与摘要共用显式九文件载荷。缓存和字节码不进入安装包，未声明的源码文件会被拒绝。
 可选的引用字节检查器依赖 POSIX 安全读取能力，其他平台会明确拒绝执行。
 CI 覆盖 macOS／Ubuntu 与 Python 3.10／3.13；Bash 夹具和可比对的文件身份并不代表完整原生 Windows 支持。
 
@@ -166,7 +187,7 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 | 执行已安装的 Skill | [权威 SKILL.md](skills/repository-operational-truth-audit/SKILL.md) 及其链接的 references |
 | 维护这个仓库 | [AGENTS.md](AGENTS.md) 与[产品契约](docs/product-spec.zh-CN.md) |
 | 理解证明和完成标准 | [证据模型](docs/evidence-model.zh-CN.md) |
-| 查看实测行为与当前状态 | [0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md)、[0.2.0 回执](docs/forward-0.2.0-receipt.zh-CN.md)、[当前状态](docs/current-state.zh-CN.md) |
+| 查看实测行为与当前状态 | [0.3.0 回执](docs/forward-0.3.0-receipt.zh-CN.md)、[0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md)、[0.2.0 回执](docs/forward-0.2.0-receipt.zh-CN.md)、[当前状态](docs/current-state.zh-CN.md) |
 | 查看 v0.2.1 发布 | [发布说明](docs/releases/v0.2.1.zh-CN.md)、[发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) |
 | 查看架构与研究来源 | [架构模型](docs/architecture/README.zh-CN.md)、[研究依据](docs/research-basis.zh-CN.md) |
 
@@ -179,7 +200,7 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 这张图回答一个读者问题：
 
 > Repo Truth Audit 如何把精确仓库快照与明确所有者意图转化为有界只读答案、可执行计划，
-> 或经过验证完成的获授权结构变更，同时不夸大证据或外部状态？
+> 或经过验证完成的获授权结构变更或产品意图收敛，同时不夸大证据或外部状态？
 
 图中展示 **Audit / Plan / Operate 运行契约**。Skill 自身的打包、安装和发布另见发布流程。
 这张 reader map 有意压缩完整拓扑，只保留三种诚实停止点、Operate 验收与外部证明边界。
@@ -193,7 +214,7 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 | **行为（Behavior）** | 约定结果、失败路径、兼容性与状态副作用正确。 |
 | **结构（Structure）** | 职责真的迁移，或约定退出的旧路径真的退役。 |
 | **交付（Delivery）** | 真实入口、selector 或产物确实选中新实现。 |
-| **用途（Usefulness）** | 最初的改动阻力已经下降；适合时，用一个小型后续改动证明。 |
+| **用途（Usefulness）** | 预期用户结果得到满足或最初的改动阻力下降；适合时，用一个小型后续改动证明。 |
 
 ### 完整 Mermaid 语义图
 
@@ -211,7 +232,7 @@ flowchart TB
   end
 
   subgraph R10_RESOLVE["02 · 解析权威与可达路径"]
-    N10_AUTHORITY["当前权威所有者<br/>source · config · durable state · runbooks · history"]
+    N10_AUTHORITY["当前权威与已接受意图<br/>source owner · 已接受规格 · 限定决策 / 对话"]
     N11_LIVE_SELECTORS["实际入口与 selectors<br/>registrations · callers · pipelines · services · operator routes"]
     N12_OWNERSHIP_STATE["所有权与状态隔离<br/>selector · owner · callers · state · version · retirement intent"]
   end
@@ -224,7 +245,7 @@ flowchart TB
   end
 
   subgraph R30_CHALLENGE["04 · 挑战与裁定"]
-    N30_TRACE["承载决策的候选 trace<br/>claim → mechanism/state → gap → impact → fresh validation"]
+    N30_TRACE["意图与运行差距 trace<br/>意图 ↔ 所选行为 → 差距 → 用户影响 → 证据"]
     N31_FALSE_GREEN["False-green challenge<br/>exact path 是否运行、assertion 是否可见、破坏后是否失败？"]
     N32_MULTIPLICITY["Intentional multiplicity 还是 shadow path？<br/>选择 · 所有权 · 隔离 · callers · retirement intent"]
     N33_EXTERNAL_UNKNOWN["决策关键的外部未知<br/>缺失观察 → 被阻断 claim → 受影响 decision → 所需证明"]

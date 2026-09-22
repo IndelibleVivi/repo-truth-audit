@@ -35,6 +35,7 @@ PUBLIC_DOC_PAIRS = {
     "docs/forward-behavior-receipt.md": "docs/forward-behavior-receipt.zh-CN.md",
     "docs/forward-0.2.0-receipt.md": "docs/forward-0.2.0-receipt.zh-CN.md",
     "docs/forward-0.2.1-receipt.md": "docs/forward-0.2.1-receipt.zh-CN.md",
+    "docs/forward-0.3.0-receipt.md": "docs/forward-0.3.0-receipt.zh-CN.md",
     "docs/releases/v0.2.1.md": "docs/releases/v0.2.1.zh-CN.md",
     "docs/research-basis.md": "docs/research-basis.zh-CN.md",
     "docs/current-state.md": "docs/current-state.zh-CN.md",
@@ -89,6 +90,9 @@ REQUIRED_FILES = {
     "evals/README.md",
     "evals/activation-prompts.csv",
     "evals/mode-prompts.csv",
+    "evals/intent-lab/intent_cases.json",
+    "evals/intent-lab/prepare_intent_subject.py",
+    "evals/intent-lab/check_intent_subject.py",
     "evals/operation-lab/run_operation_lab.py",
     "fieldlab-pack.json",
     "scripts/common.py",
@@ -101,12 +105,14 @@ REQUIRED_FILES = {
     "skills/repository-operational-truth-audit/NOTICE.md",
     "skills/repository-operational-truth-audit/agents/openai.yaml",
     "skills/repository-operational-truth-audit/references/audit.md",
+    "skills/repository-operational-truth-audit/references/intent.md",
     "skills/repository-operational-truth-audit/references/operation.md",
     "skills/repository-operational-truth-audit/references/recovery.md",
     "skills/repository-operational-truth-audit/scripts/check_evidence.py",
     "tests/test_cited_evidence.py",
     "tests/test_documentation.py",
     "tests/test_fixtures.py",
+    "tests/test_intent_lab.py",
     "tests/test_architecture.py",
     "tests/test_install_skill.py",
     "tests/test_operation_lab.py",
@@ -321,6 +327,7 @@ def validate() -> list[str]:
                 "re-entry",
                 "migration",
                 "current operational truth",
+                "accepted product intent",
                 "Do not use for code review",
                 "generic repo hygiene",
                 "structural change",
@@ -333,7 +340,7 @@ def validate() -> list[str]:
     if len(skill.split()) > 3600:
         errors.append("SKILL.md exceeds the 3600-word context budget")
 
-    for reference in ("audit.md", "operation.md", "recovery.md"):
+    for reference in ("audit.md", "intent.md", "operation.md", "recovery.md"):
         if f"references/{reference}" not in skill:
             errors.append(f"SKILL.md does not route to references/{reference}")
     for mode in ("**Audit:**", "**Plan:**", "**Operate:**"):
@@ -345,7 +352,7 @@ def validate() -> list[str]:
         'display_name: "Repo Truth Audit"',
         f"${SKILL_NAME}",
         "allow_implicit_invocation: true",
-        "audit, plan, or carry the structural change",
+        "audit, plan, or carry the structural or product-convergence change",
     ):
         if phrase not in agent_yaml:
             errors.append(f"agents/openai.yaml lost required value: {phrase!r}")
@@ -408,6 +415,33 @@ def validate() -> list[str]:
                             "intentional-multiplicity retains ambiguous ready substring assertion"
                         )
 
+    intent_cases_path = ROOT / "evals" / "intent-lab" / "intent_cases.json"
+    if intent_cases_path.is_file():
+        try:
+            intent_payload = json.loads(intent_cases_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+            errors.append(f"intent-lab catalog is invalid: {exc}")
+        else:
+            if intent_payload.get("schema") != "rta-intent-lab-cases/1":
+                errors.append("intent-lab catalog has an unexpected schema")
+            if intent_payload.get("evidence_status") != "prepared_subjects_not_model_results":
+                errors.append("intent-lab catalog must state it holds prepared subjects")
+            cases = intent_payload.get("cases")
+            if not isinstance(cases, list) or len(cases) < 6:
+                errors.append("intent-lab needs at least six prepared subjects")
+            else:
+                ids = [case.get("id") for case in cases if isinstance(case, dict)]
+                if len(ids) != len(set(ids)):
+                    errors.append("intent-lab case ids must be unique")
+                for case in cases:
+                    if not isinstance(case, dict):
+                        errors.append("intent-lab case entries must be objects")
+                        continue
+                    for field in ("id", "request", "review"):
+                        if not case.get(field):
+                            errors.append(
+                                f"intent-lab case {case.get('id')!r} is missing {field}"
+                            )
     activation_path = ROOT / "evals" / "activation-prompts.csv"
     if activation_path.is_file():
         with activation_path.open(encoding="utf-8", newline="") as handle:

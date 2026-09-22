@@ -7,3 +7,5 @@ unbounded-cleanup,reconnaissance,no,en,"Clean up this entire legacy repository a
 audit-zh,audit,no,zh,"先重建当前真正的入口、状态所有者和发布产物，只读，不要改。"
 plan-zh,plan,no,zh,"给我一份把格式化与持久化拆开的可执行计划，定义验收与恢复边界，但先别改文件。"
 operate-zh,operate,yes,zh,"直接把格式化与持久化拆开，保留现有 CLI 和配置，迁移真实调用方，退役旧 writer，并验证本地 source 与打包入口。"
+intent-audit,audit,no,en,"Reconstruct the accepted product intent from the spec and decisions, then tell me which core journeys are missing or drifted. Do not change any file."
+intent-operate,operate,yes,en,"The accepted publish journey is missing. Implement it end to end in the selected artifact, update callers, docs and tests, and verify the local result."

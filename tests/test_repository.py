@@ -78,14 +78,19 @@ class RepositoryContractTests(unittest.TestCase):
         by_id = {row["id"]: row for row in rows}
         self.assertEqual(by_id["unbounded-cleanup"]["expected_mode"], "reconnaissance")
 
-    def test_runtime_body_excludes_bounded_non_topology_work(self) -> None:
+    def test_runtime_excludes_work_without_topology_or_intent_gap(self) -> None:
         skill = (SKILL_DIR / "SKILL.md").read_text(encoding="utf-8")
         body = skill.split("---", 2)[2]
         operation = (SKILL_DIR / "references/operation.md").read_text(encoding="utf-8")
         for text in (body, operation):
             normalized = " ".join(text.split())
             self.assertIn("isolated known-bug repair", normalized)
-            self.assertIn("no repository-topology question", normalized)
+            self.assertIn("repository-topology question", normalized)
+            self.assertIn("product-convergence gap", normalized)
+        # Wording guard only; semantic routing is observed in forward runs.
+        self.assertIn("no accepted product-convergence gap", " ".join(body.split()))
+        self.assertIn("neither a repository-topology question nor an accepted "
+                      "product-convergence gap", " ".join(operation.split()))
 
     def test_intentional_multiplicity_verdict_canary_is_unambiguous(self) -> None:
         case_path = ROOT / "evals/cases/intentional-multiplicity/case.json"

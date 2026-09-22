@@ -10,11 +10,18 @@ engagement stops at Audit or Plan, or crosses an explicit implementation gate
 and reaches verified Operate completion. They do not depict this repository's
 packaging or release pipeline.
 
+Version 0.3.0 extends the existing authority and candidate-trace responsibilities:
+accepted product intent is reconstructed from scoped specs, decisions and supplied
+conversations, then compared with selected behavior in both directions. It adds
+no mode or execution engine. The same 31 nodes and 46 edges remain; authority,
+trace, adjudication and acceptance semantics now include product gaps and valid
+evolution. Operational-only engagements do not require intent archaeology.
+
 ## Reader question
 
 > How does Repo Truth Audit turn an exact repository snapshot and a concrete
 > owner intent into a bounded read-only answer, a decision-ready plan, or an
-> authorized structural change with verified completion without overclaiming
+> authorized structural change or product convergence with verified completion without overclaiming
 > evidence or external state?
 
 The reader overview compresses the answer into the owner question, pinned

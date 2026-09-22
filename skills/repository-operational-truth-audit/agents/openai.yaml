@@ -1,6 +1,6 @@
 interface:
   display_name: "Repo Truth Audit"
-  short_description: "Recover repo truth and carry safe structural change"
-  default_prompt: "Use $repository-operational-truth-audit to recover this repository's current operational truth, then audit, plan, or carry the structural change through verification according to my requested scope."
+  short_description: "Recover repo truth, intent, and safe structural change"
+  default_prompt: "Use $repository-operational-truth-audit to recover this repository's current operational truth and, when the product shape is in question, its accepted intent, then audit, plan, or carry the structural or product-convergence change through verification according to my requested scope."
 policy:
   allow_implicit_invocation: true

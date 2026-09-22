@@ -2,6 +2,20 @@
 
 [简体中文](CHANGELOG.zh-CN.md)
 
+## 0.3.0 — Unreleased
+
+- Reconstruct accepted product intent from scoped specifications, decisions and
+  development conversations, preserving users/jobs, complete journeys, constraints,
+  non-goals, rationale, supersession and explicit deferral.
+- Compare intent to selected behavior and current responsibilities to their purpose;
+  distinguish missing/partial journeys, drift, stale claims and unjustified
+  accumulation from valid evolution, compatibility and evidence gaps.
+- Integrate product convergence into Audit / Plan / Operate and B/S/D/U acceptance,
+  with bounded conversation access and unchanged authority gates.
+- Add progressive intent guidance, controlled synthetic subjects, focused evaluator
+  checks and aligned bilingual product/usage/architecture documentation.
+- Source candidate only; stable installation remains pinned to v0.2.1.
+
 ## 0.2.1 — 2026-09-20
 
 - Bound auxiliary-method adoption to the actual task gap, prerequisites and

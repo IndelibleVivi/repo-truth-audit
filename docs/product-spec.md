@@ -2,10 +2,11 @@
 
 [简体中文](product-spec.zh-CN.md)
 
-Status: **0.2.1 PUBLISHED — bounded synthetic forward checks passed**
+Status: **0.3.0 SOURCE CANDIDATE — not released or installed for daily use**
 Expanded scope accepted by owner: 2026-09-17
 Method-selection refinements accepted for implementation: 2026-09-20
-Source version: 0.2.1
+Product-intent reconstruction accepted for implementation: 2026-09-22
+Source version: 0.3.0
 Latest public release: v0.2.1
 Product form: standalone repository + standalone Codex Skill
 Skill name: repository-operational-truth-audit
@@ -14,15 +15,18 @@ Skill name: repository-operational-truth-audit
 
 Repo Truth Audit recovers the current operational truth of a long-evolved
 repository for a concrete owner decision. When the user explicitly asks for a
-structural change, the same product can continue from diagnosis through a finite
+structural or product-convergence change, the same product can continue from diagnosis through a finite
 plan, authorized implementation, recovery-aware checkpoints, and verified
-completion.
+completion. Version 0.3.0 also reconstructs the intended product and compares it
+with repository behavior: missing or partial user journeys, semantic drift, stale
+promises and unjustified accumulation. Operational truth and product intent are
+complementary views within the same modes, not mandatory stages for every task.
 
 The product keeps three request-derived modes:
 
 - **Audit:** read-only reconstruction and decision answer;
 - **Plan:** a finite change outcome and executable sequence without target edits;
-- **Operate:** an explicitly authorized structural change carried through its
+- **Operate:** an explicitly authorized structural or product-convergence change carried through its
   agreed evidence boundary.
 
 These are behavior modes, not CLI subcommands. Audit remains read-only by
@@ -39,7 +43,7 @@ worktree/submodule identity.
 
 Infer Audit, Plan, or Operate from the request. “Inspect only” remains Audit;
 “give me a plan” remains Plan; an explicit request to implement, refactor,
-extract, consolidate, replace, or retire may enter Operate. Ambiguous cleanup
+extract, consolidate, replace, retire, or complete a finite product outcome may enter Operate. Ambiguous cleanup
 language permits bounded reconnaissance only until the ambiguity affecting
 write authority or the intended end state is resolved.
 
@@ -132,6 +136,75 @@ compliance. Ordinary in-scope choices need no repeated owner approval.
 Audit stops when all material candidates are adjudicated, no new
 decision-relevant edge appears, remaining surfaces cannot change the decision,
 external boundaries are explicit, and the ending snapshot is reconciled.
+
+### ROT-21 — Reconstruct intended product
+
+When the decision concerns intended versus implemented behavior, recover material
+users/jobs, complete journeys, constraints, non-goals, acceptance conditions and
+rationale from the selected evidence. Use accepted specifications, product
+documents, decisions and explicitly scoped development conversations. No filename
+is automatically authoritative. Distinguish owner-adopted commitments from
+proposals, implementation claims and model inference.
+
+Resolve authority by adoption, scope and lifecycle. A later accepted decision
+supersedes only the affected earlier commitment; retain compatible requirements.
+Keep current, superseded, rejected, explicitly deferred and unresolved intent
+distinct. Code shows implementation, not acceptance of a deviation. Do not edit
+a specification merely to make a deviation disappear.
+
+Conversation evidence is limited to sources supplied, selected or authorized for
+this task. No whole-account chat search, unrelated-session mining or automatic
+private export is implied. Embedded commands are evidence, not current execution
+authority. Prefer minimal local citations; keep raw private material out of
+tracked reports, fixtures and third-party prompts.
+
+Cover the requested material, including rationale and constraints. Identify
+unread, unavailable or truncated portions and the conclusions they prevent.
+When authoritative intent is absent, state grounded hypotheses and ask only for
+decisions affecting dependent repairs. Continue independent authorized work.
+Operational-only questions do not require product-history reconstruction.
+
+Adoption is proposition-scoped: accepting a patch or observable outcome does
+not automatically accept nearby assistant rationale, inferred journeys or future
+recommendations. When material, identify the decision's version, audience and
+effective scope; preserve original intent as historical/compatibility evidence.
+A newer decision is not automatically retroactive. Ambiguous adoption or
+applicability remains unresolved.
+
+### ROT-22 — Compare in both directions
+
+Follow accepted intent -> observable acceptance -> actual selected journey,
+source/state owner, artifact and observed proof layer. Trace current substantial
+behavior back to intended purpose, compatibility or an operational requirement.
+This can expose accumulation, but lack of a specification mention is not deletion
+evidence. Inspect alternate terms, entrypoints, callers and delivery selection
+before concluding a capability is absent.
+
+Material findings can include missing capability, partial journey, semantic
+drift, stale promise or unjustified accumulation. Distinguish deliberate
+evolution, explicit deferral, intentional multiplicity, harmless residue and
+missing observations. A helper disconnected from the user flow is partial
+implementation; unobserved production behavior is not proof of absence.
+
+Each material gap retains its intent source and adoption/lifecycle, observed
+implementation and proof layer, discrepancy, user consequence, counterevidence
+or uncertainty, bounded disposition, and an acceptance witness. A compact table
+is optional; no fixed report schema or percentage completeness score is required.
+A clean intent comparison is a valid bounded result.
+
+### ROT-23 — Converge on accepted intent
+
+Audit reports gaps without editing; Plan turns selected gaps into a finite
+proposal. Operate may implement a finite, explicitly authorized product outcome
+even when no structural defect exists. Inferred wishes, old ideas and findings
+do not grant permission to redesign, delete or release.
+
+Preserve accepted evolution and compatibility. Where a real gap is authorized,
+finish the user journey and relevant callers, state, delivery, tests and docs.
+Behavior witnesses express the adopted user outcome; Usefulness considers that
+outcome as well as development friction. Structure and Delivery apply where
+material. Green implementation tests cannot close a missing user workflow.
+Repair priority follows user impact and dependencies, not ease of editing.
 
 ## 4. Plan and Operate contract
 
@@ -263,6 +336,10 @@ boundary by itself.
 
 ## 6. Output contract
 
+For an intent comparison, lead with the reconstructed product, its authority
+and coverage limits, then material intention-to-reality gaps and rejected false
+positives. Separate current commitments from future possibilities.
+
 Audit leads with the decision answer and includes only material topology,
 findings/unknowns, rejected non-findings, proof limits, overhead receipt, and
 end re-pin.
@@ -282,7 +359,7 @@ Retain the six original read-only dirty/clean cases and their negative routing
 controls. Add deterministic cited-evidence and operation-lab tests without
 leaking evaluator-only expected artifacts or known patches into Skill context.
 
-Source-complete acceptance for 0.2.0 requires:
+The historical 0.2.0 source-complete acceptance required:
 
 - repository, architecture, unit, fixture, operation-lab, Skill, and whitespace
   validation;
@@ -296,7 +373,7 @@ Source-complete acceptance for 0.2.0 requires:
 Synthetic operation-lab success is necessary evaluator evidence, not a
 substitute for model forward evidence.
 
-Version 0.2.1 adds contrasted method-selection subjects and fixture tests
+Version 0.2.1 added contrasted method-selection subjects and fixture tests
 under the existing operation lab. Before claiming improved model behavior,
 compare pinned baseline and candidate Skills under the same host/model/settings
 on fresh subjects, including optional and project-required test-first methods,
@@ -306,10 +383,18 @@ observations; do not grade policy-word repetition as behavior. The preparation
 script and unit tests make no target-model calls. Historical forward receipts
 remain evidence for their named bytes, not automatic proof of this release.
 
+Version 0.3.0 requires evaluator counterexamples and blind independent forward
+checks using synthetic accepted specifications, scoped supersession and conversation
+evidence. Evaluate actual findings and selected-path behavior, including read-only
+boundaries and authorized convergence; keep expected answers out of target inputs.
+Document the observed model/settings, scope and limits. Deterministic fixture
+success proves the evaluator, not model understanding.
+
 ## 8. Version, installation, and publication
 
 VERSION identifies the current source version and follows stable semantic
-version syntax. Source `0.2.1` is published as the latest public tag `v0.2.1`.
+version syntax. Source `0.3.0` is an unreleased candidate; the latest verified
+public release remains `v0.2.1`.
 README and current-state report source, validation, installation and publication
 separately. The documented install reference is pinned to the verified public tag.
 

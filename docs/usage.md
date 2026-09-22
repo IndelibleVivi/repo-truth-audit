@@ -2,7 +2,8 @@
 
 [简体中文](usage.zh-CN.md) · [README](../README.md)
 
-This guide explains the published v0.2.0 Audit / Plan / Operate workflow.
+This guide covers Audit / Plan / Operate, including 0.3.0 candidate intent comparison.
+The stable v0.2.1 release does not include that new capability.
 Use the README's tagged-release instructions for stable installation, or its
 source-checkout path when you deliberately want a reviewed `main` revision.
 
@@ -64,6 +65,40 @@ covered edits do not need repeated per-file permission. A coherent first step
 can be retained as a checkpoint, with the whole goal and remaining work explicit.
 Materially new effects require matching authority.
 
+### Reconstruct and compare product intent (0.3.0 candidate)
+
+```text
+Use $repository-operational-truth-audit to compare the accepted product in SPEC.md,
+docs/decisions/ and the supplied development excerpts with what this repository
+actually delivers. Cover user journeys, constraints and non-goals. Distinguish
+missing/partial behavior, drift and stale responsibilities from accepted evolution
+and explicit deferral. State unread sources and unresolved intent. Do not edit.
+```
+
+Provide exact conversation sources when documents leave important gaps. The
+Skill does not search all your chats or treat a quoted instruction as permission.
+If no reliable intent source exists, it reports hypotheses and the decisions
+needed; it does not invent an authoritative specification.
+
+For example, an accepted offline planner requires export and restore. A later
+owner decision replaces JSON with CSV and defers cloud synchronization. The
+selected CLI exports CSV but cannot restore; a restore helper only exists in an
+unused module. The material gap is the disconnected restore journey. CSV is
+accepted evolution, cloud sync is deferred, and an old JSON proposal is not a
+repair target. A supported compatibility reader may remain despite not appearing
+in the original spec. Trace it before proposing removal.
+
+```text
+Implement the accepted local export/restore journey. Preserve the later CSV
+decision and current compatibility reader, connect the real CLI and delivery
+path, update relevant docs and verify round-trip user data. Keep cloud sync
+deferred. No real-data migration, installation, deployment or release.
+```
+
+That finite scope permits necessary local work through acceptance. A newly
+inferred feature or unresolved contradictory requirement does not silently join
+it. A missing journey can justify this engagement without a structural defect.
+
 ### Resume a paused operation
 
 ```text
@@ -103,7 +138,7 @@ The applicable acceptance questions are:
 | Behavior | Are preserved and explicitly changed outcomes correct, including failures and state effects? |
 | Structure | Did ownership or dependency actually change, and did the required old path leave? |
 | Delivery | Does each delivery surface in scope select the intended implementation? |
-| Usefulness | Did the original development difficulty ease, such as adding a format without editing persistence? |
+| Usefulness | Was the accepted user outcome achieved, or did the original development difficulty ease, such as adding a format without editing persistence? |
 
 A new facade delegating everything to the old owner is a transition. Green tests
 of an unused implementation do not establish delivery. Equal output does not
@@ -124,15 +159,15 @@ necessarily a location your current host discovers.
 
 After installation, inspect the receipt and actual target. Start a fresh task,
 restarting or reloading Codex when needed, and confirm which `SKILL.md` it selects.
-The name alone cannot distinguish the old release from v0.2.0.
+The name alone cannot distinguish the old release from the 0.3.0 candidate.
 [OpenAI's Skill catalog](https://github.com/openai/skills#installing-a-skill)
 also documents restarting after installation; the observed behavior of your
 specific host remains the acceptance check.
 
 When the old Audit-only behavior remains, check the installed file and receipt,
 then competing copies in host-configured Skill roots or the target repository.
-Do not delete copies speculatively. Installing the published v0.2.0 tag gives
-the declared v0.2.0 package; updating this Git repository does not update a
+Do not delete copies speculatively. Installing the published v0.2.1 tag gives
+the declared v0.2.1 package; updating this Git repository does not update a
 separate installed directory. Do not feed evaluator answer files to the agent
 to make a smoke test pass.
 

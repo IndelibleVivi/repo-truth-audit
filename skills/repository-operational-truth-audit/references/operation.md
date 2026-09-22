@@ -14,6 +14,10 @@ Identify actual change pressure: additional behavior repeatedly crosses unrelate
 owners; a selected legacy path shadows a replacement; shared state prevents
 separation; a distribution runs different code from the tested implementation.
 File length, old names and the existence of two versions do not prove a defect.
+When the pressure is product convergence — an accepted intention missing from the
+live product, a broken journey, or semantic drift — read [intent](intent.md) and
+keep the end state finite: converge the agreed intention rather than redesign the
+whole product.
 
 Make the end state testable. “Separate formatting from durable writes while
 preserving every supported CLI entry, then retire the old writer from current
@@ -36,10 +40,19 @@ A brief concrete rationale is enough, not a proof of globally minimal cost.
 ## Resolve authority once, escalate on changed effects
 
 Operate applies only after the router has established a repository-level or
-cross-surface structural-change problem. An isolated known-bug repair, ordinary
-code review, one-claim verification, or generic hygiene request with no
-repository-topology question stays in the host's normal bounded engineering
+cross-surface problem **or** a finite, owner-accepted product-convergence gap: a
+missing or broken journey the product was accepted to complete. Either an
+entangled structural boundary or an accepted intent the live selected path does
+not satisfy is a legitimate operate object; a structural defect is not required.
+An isolated known-bug repair, ordinary code review, one-claim verification, or
+generic hygiene request with neither a repository-topology question nor an
+accepted product-convergence gap stays in the host's normal bounded engineering
 workflow; explicit edit intent does not override that product boundary.
+
+For a product-convergence object, read [intent](intent.md) first: the end state is
+delimited by the accepted intentions the owner authorized, not by every proposal
+or inferred wish found during reconstruction. Inferred or unadopted wishes are
+reported for an owner decision; they are never implicit edits.
 
 An explicit implementation request supports ordinary local edits needed for that
 outcome, including relevant tests/docs and retirement of superseded source.

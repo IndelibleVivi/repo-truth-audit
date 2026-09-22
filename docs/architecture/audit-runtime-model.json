@@ -6,16 +6,16 @@
     "zh_cn": "面向公开 README 的 Audit / Plan / Operate 运行契约架构图"
   },
   "audience": {
-    "en": "A repository owner or technical collaborator deciding whether this Skill fits a concrete re-entry, migration, consolidation, retirement, handoff, or evidence-led structural-change outcome.",
-    "zh_cn": "正在为具体的重新进入、迁移、整合、退役、交接或证据驱动结构变更选择方法的仓库所有者与技术协作者。"
+    "en": "A repository owner or technical collaborator deciding whether this Skill fits a concrete re-entry, migration, consolidation, retirement, handoff, or evidence-led structural-change outcome. Also owners comparing accepted product intent with selected behavior.",
+    "zh_cn": "正在为具体的重新进入、迁移、整合、退役、交接或证据驱动结构变更选择方法的仓库所有者与技术协作者。也包括对照已接受产品意图与所选行为的所有者。"
   },
   "primary_question": {
-    "en": "How does Repo Truth Audit turn an exact repository snapshot and a concrete owner intent into a bounded read-only answer, a decision-ready plan, or an authorized structural change with verified completion without overclaiming evidence or external state?",
-    "zh_cn": "Repo Truth Audit 如何把精确仓库快照与明确所有者意图转化为有界只读答案、可执行计划，或经过验证完成的获授权结构变更，同时不夸大证据或外部状态？"
+    "en": "How does Repo Truth Audit turn an exact repository snapshot and a concrete owner intent into a bounded read-only answer, a decision-ready plan, or an authorized structural change or product convergence with verified completion without overclaiming evidence or external state?",
+    "zh_cn": "Repo Truth Audit 如何把精确仓库快照与明确所有者意图转化为有界只读答案、可执行计划，或经过验证完成的获授权结构变更或产品意图收敛，同时不夸大证据或外部状态？"
   },
   "answer_contract": {
-    "en": "Pin the engagement, reconstruct current truth, stop at the requested Audit or Plan boundary, or cross an explicit implementation gate and iterate through protected witnesses, checkpoints, recovery, and whole-goal acceptance.",
-    "zh_cn": "钉住工作对象，重建当前事实，在请求的 Audit 或 Plan 边界停止，或跨过显式实施 gate，并经由受保护 witnesses、checkpoints、recovery 与完整目标验收完成工作。"
+    "en": "Pin the engagement; reconstruct current operational truth and, when relevant, accepted product intent. Compare intent to behavior and behavior to purpose. Preserve the requested mode and verify the whole authorized outcome.",
+    "zh_cn": "钉住工作对象，重建运行事实及相关的已接受产品意图，双向追踪意图到行为、行为到用途，保留请求模式并验证完整获授权目标。"
   },
   "boundary": {
     "includes": [
@@ -23,10 +23,11 @@
       "One exact start and end repository snapshot",
       "Repository-observable authority, selectors, callers, state, artifacts, and evidence gates",
       "Decision-relevant challenge and adjudication",
-      "A read-only Plan result or explicitly authorized repository-local structural change",
+      "A read-only Plan result or explicitly authorized repository-local structural change or product convergence",
       "Verified checkpoints, recovery reconciliation, and whole-goal acceptance",
       "Explicitly authorized fresh external observation when it can change the decision",
-      "A bounded result and exact proof boundary"
+      "A bounded result and exact proof boundary",
+      "Scoped product-intent reconstruction, lifecycle resolution and bidirectional intent/behavior comparison"
     ],
     "excludes": [
       "Mutation from Audit, Plan, or ambiguous cleanup language",
@@ -234,12 +235,12 @@
       "visual_role": "process",
       "evidence_status": "verified_repository_contract",
       "label": {
-        "en": "Current authority owners",
-        "zh_cn": "当前权威所有者"
+        "en": "Current authority + accepted intent",
+        "zh_cn": "当前权威与已接受意图"
       },
       "responsibility": {
-        "en": "Separate canonical source, config, durable state, runbooks, generated copies, status, receipts, and history.",
-        "zh_cn": "区分 canonical source、config、durable state、runbooks、generated copies、status、receipts 与 history。"
+        "en": "Resolve source/state ownership and adopted product intent from scoped specs, decisions or supplied conversations; retain constraints and supersession.",
+        "zh_cn": "解析 source/state 归属，从限定的规格、决策或指定对话还原已接受产品意图，保留约束与替代关系。"
       },
       "limit": {
         "en": "Historical evidence and polished docs do not silently become current authority.",
@@ -247,7 +248,8 @@
       },
       "sources": [
         "docs/product-spec.md#rot-02--authority-resolution",
-        "skills/repository-operational-truth-audit/references/audit.md#establish-authority-before-claims"
+        "skills/repository-operational-truth-audit/references/audit.md#establish-authority-before-claims",
+        "docs/product-spec.md#rot-21--reconstruct-intended-product"
       ]
     },
     {
@@ -388,12 +390,12 @@
       "visual_role": "process",
       "evidence_status": "verified_repository_contract",
       "label": {
-        "en": "Decision-bearing candidate trace",
-        "zh_cn": "承载决策的候选 trace"
+        "en": "Intent / operational gap trace",
+        "zh_cn": "意图与运行差距 trace"
       },
       "responsibility": {
-        "en": "Close: claim/live surface → mechanism/state → contradiction or gap → decision impact → fresh validation.",
-        "zh_cn": "闭合：claim/live surface → mechanism/state → contradiction 或 gap → decision impact → fresh validation。"
+        "en": "Trace accepted intent to selected behavior and evidence; trace existing responsibilities to purpose. Close gap, user consequence, counterevidence and acceptance.",
+        "zh_cn": "从已接受意图追踪所选行为及证据，也从现有责任反查用途；闭合差距、用户影响、反证与验收。"
       },
       "limit": {
         "en": "A stale file, duplicate path, or missing observation alone is not a finding.",
@@ -401,7 +403,8 @@
       },
       "sources": [
         "docs/product-spec.md#rot-04--material-finding-trace",
-        "docs/evidence-model.md#audit-finding-trace"
+        "docs/evidence-model.md#audit-finding-trace",
+        "docs/product-spec.md#rot-22--compare-in-both-directions"
       ]
     },
     {
@@ -502,8 +505,8 @@
         "zh_cn": "裁定结果簿"
       },
       "responsibility": {
-        "en": "Record validated contradiction, false-green evidence, shadow path, intentional multiplicity, non-material residue, decision-critical unknown, external boundary, or clean within scope.",
-        "zh_cn": "记录 validated contradiction、false-green evidence、shadow path、intentional multiplicity、non-material residue、decision-critical unknown、external boundary 或 clean within scope。"
+        "en": "Record validated contradiction, false-green evidence, shadow path, intentional multiplicity, non-material residue, decision-critical unknown, external boundary, or clean within scope. For intent comparison, distinguish missing/partial journeys, drift, stale promises and accumulation from accepted evolution and explicit deferral.",
+        "zh_cn": "记录 validated contradiction、false-green evidence、shadow path、intentional multiplicity、non-material residue、decision-critical unknown、external boundary 或 clean within scope。 意图对照还区分缺失/局部流程、偏移、陈旧承诺与堆积，以及合理演进和明确延期。"
       },
       "limit": {
         "en": "Do not collapse distinct outcomes into a score, maturity grade, or generic issue list.",
@@ -511,7 +514,8 @@
       },
       "sources": [
         "docs/evidence-model.md#adjudication-vocabulary",
-        "docs/evidence-model.md#clean-audit-and-terminal-operation-states"
+        "docs/evidence-model.md#clean-audit-and-terminal-operation-states",
+        "docs/evidence-model.md#product-intent-evidence"
       ]
     },
     {
@@ -656,8 +660,8 @@
         "zh_cn": "受保护的 behavior + structure witnesses"
       },
       "responsibility": {
-        "en": "Observe the selected entry, failures, compatibility and state effects; add a separate falsifiable structural-completion check.",
-        "zh_cn": "观察 selected entry、failures、compatibility 与 state effects，并增加独立、可判错的 structural-completion check。"
+        "en": "Observe the selected entry, failures, compatibility and state effects; add a separate falsifiable structural-completion check. When closing a product gap, acceptance follows the adopted user journey at the selected entry.",
+        "zh_cn": "观察 selected entry、failures、compatibility 与 state effects，并增加独立、可判错的 structural-completion check。 补齐产品差距时，从实际所选入口验收已接受的用户流程。"
       },
       "limit": {
         "en": "The candidate cannot erase, skip, relearn, or weaken its own decisive witness merely to pass.",
@@ -665,7 +669,8 @@
       },
       "sources": [
         "docs/product-spec.md#rot-13--protected-witnesses",
-        "skills/repository-operational-truth-audit/references/operation.md#operate-only--establish-behavior-and-structural-witnesses"
+        "skills/repository-operational-truth-audit/references/operation.md#operate-only--establish-behavior-and-structural-witnesses",
+        "docs/product-spec.md#rot-23--converge-on-accepted-intent"
       ]
     },
     {
@@ -766,8 +771,8 @@
         "zh_cn": "完整目标 B/S/D/U 验收"
       },
       "responsibility": {
-        "en": "Require current evidence for every applicable Behavior, Structure, Delivery, and Usefulness obligation at the requested proof layer.",
-        "zh_cn": "在请求 proof layer 为每个适用的 Behavior、Structure、Delivery 与 Usefulness obligation 要求当前证据。"
+        "en": "Require current evidence for every applicable Behavior, Structure, Delivery, and Usefulness obligation at the requested proof layer. When closing a product gap, acceptance follows the adopted user journey at the selected entry.",
+        "zh_cn": "在请求 proof layer 为每个适用的 Behavior、Structure、Delivery 与 Usefulness obligation 要求当前证据。 补齐产品差距时，从实际所选入口验收已接受的用户流程。"
       },
       "limit": {
         "en": "Missing delivery evidence blocks only an included delivery goal; source completion never masquerades as deployment or owner acceptance.",
@@ -775,7 +780,8 @@
       },
       "sources": [
         "docs/product-spec.md#rot-17--four-acceptance-obligations",
-        "skills/repository-operational-truth-audit/references/operation.md#operate-only--verify-the-actual-end-state"
+        "skills/repository-operational-truth-audit/references/operation.md#operate-only--verify-the-actual-end-state",
+        "docs/product-spec.md#rot-23--converge-on-accepted-intent"
       ]
     },
     {

@@ -11,15 +11,15 @@ A Codex Skill for product-intent reconstruction, repository re-entry, migrations
 consolidation and legacy-path retirement. Use it for a focused engineering intervention; finish the agreed job
 and return to normal development. It need not run on every task or every commit.
 
-Current source version: `0.3.0` — release target, publication pending.
-Latest public release: `v0.2.1` — Audit / Plan / Operate.
+Current source version: `0.3.0` — published 2026-09-22.
+Latest public release: [`v0.3.0`](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.3.0) — product-intent comparison within Audit / Plan / Operate.
 
 Version 0.3.0 adds intention-to-reality comparison from accepted specs,
 decisions and scoped development conversations. See [current state](docs/current-state.md)
 for its evidence and limits. The [0.2.1 receipt](docs/forward-0.2.1-receipt.md)
 preserves historical evidence for that earlier release.
 
-**The install below targets v0.3.0 and becomes usable after publication.** Installing
+**The stable install below is pinned to the verified v0.3.0 tag.** Installing
 the package still does not prove that a running host has discovered it; confirm
 the selected Skill path and behavior in a fresh task.
 
@@ -152,7 +152,7 @@ before more writes. It does not autonomously resume in the background.
 ## Install from the public release
 
 For a fresh `v0.3.0` installation with intent comparison and Audit / Plan / Operate,
-use the system installer after the release is published:
+use the system installer:
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
@@ -161,7 +161,7 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
   --ref v0.3.0
 ```
 
-This is the pending release target. For an existing conflicting copy, use the
+This is the verified public release. For an existing conflicting copy, use the
 deliberate upgrade path below rather than deleting installed files.
 
 ## Validate or install from a source checkout

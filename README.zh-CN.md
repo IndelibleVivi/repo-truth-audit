@@ -9,14 +9,14 @@
 这是面向产品意图还原、仓库接手、迁移、整合和旧路径退役的 Codex Skill。它适合一次有明确目标的工程介入，
 完成后回到普通开发；无需每个任务、每次提交都调用。
 
-当前源码版本：`0.3.0` — release target，等待发布。
-最新公开版本：`v0.2.1` — Audit / Plan / Operate。
+当前源码版本：`0.3.0` — 已于 2026-09-22 发布。
+最新公开版本：[`v0.3.0`](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.3.0) — Audit / Plan / Operate 内的产品意图对照。
 
 0.3.0 新增基于已接受规格、决策与限定范围开发对话的意图—现实对照。
 证据与限制见[当前状态](docs/current-state.zh-CN.md)。
 [0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md) 保留该旧版本的历史证据。
 
-**下方安装命令指向 v0.3.0，发布完成后可用。** 装好 package 仍不等于当前宿主已经发现；
+**下方稳定安装命令固定到已经核验的 v0.3.0 tag。** 装好 package 仍不等于当前宿主已经发现；
 请在 fresh task 中确认实际选中的 Skill path 与行为。
 
 [使用指南](docs/usage.zh-CN.md) · [0.3.0 行为证据](docs/forward-0.3.0-followup.zh-CN.md) ·
@@ -114,7 +114,7 @@ Audit、Plan、Operate 是行为模式，无需记忆一套命令。
 
 ## 从公开 release 安装
 
-发布后首次安装包含意图对照和 Audit / Plan / Operate 的 `v0.3.0`，使用系统安装器：
+首次安装包含意图对照和 Audit / Plan / Operate 的 `v0.3.0`，使用系统安装器：
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
@@ -123,7 +123,7 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
   --ref v0.3.0
 ```
 
-这是等待发布的 release target。已有副本发生冲突时，使用下面的显式升级流程，不要先删除安装目录。
+这是已经核验的公开 release。已有副本发生冲突时，使用下面的显式升级流程，不要先删除安装目录。
 
 ## 从 source checkout 验证或安装
 

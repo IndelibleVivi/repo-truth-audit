@@ -2,7 +2,7 @@
 
 [简体中文](CHANGELOG.zh-CN.md)
 
-## 0.3.0 — Release target (not yet published)
+## 0.3.0 — 2026-09-22
 
 - Reconstruct accepted product intent from scoped specifications, decisions and
   development conversations, preserving users/jobs, complete journeys, constraints,
@@ -19,7 +19,8 @@
   workflows that add unsupported routine user work, including an authorized contrast.
 - Advertise operational-truth and product-intent entry routes independently,
   including new small repositories; retain ordinary bugfix/review exclusions.
-- Release target: v0.3.0; publication pending. The accepted nine-file Skill payload is unchanged during release preparation.
+- Publish v0.3.0 with bilingual release notes and stable installation pinned to the
+  verified public tag. The public-tag install matches the accepted nine-file payload.
 
 ## 0.2.1 — 2026-09-20
 

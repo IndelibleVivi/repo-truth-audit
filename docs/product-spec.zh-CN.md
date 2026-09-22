@@ -2,12 +2,12 @@
 
 [English](product-spec.md)
 
-状态：**0.3.0 RELEASE TARGET — 等待发布；日用副本不变**
+状态：**0.3.0 PUBLISHED — 2026-09-22；日用副本不变**
 扩展范围经所有者确认：2026-09-17
 方法选择细化获准实施：2026-09-20
 产品意图还原获准实施：2026-09-22
 source 版本：0.3.0
-最新公开 release：v0.2.1
+最新公开 release：v0.3.0
 产品形态：独立 repository + 独立 Codex Skill
 Skill 名称：repository-operational-truth-audit
 
@@ -324,9 +324,9 @@ candidate catalog 做的方法选择检查，不等于宿主自动发现验收�
 
 ## 8. Version、installation 与 publication
 
-VERSION 表示当前 source version，并遵循稳定 SemVer 语法。Source `0.3.0` 是等待发布的 release target，
-最新已核验公开版本仍为 `v0.2.1`。README 与 current-state 分别报告源码、验证、安装和发布状态；
-文档安装引用指向 `v0.3.0`，发布后可用；发布说明区分目标版本与已观察的公开 tag。
+VERSION 表示当前 source version，并遵循稳定 SemVer 语法。Source `0.3.0` 与最新已核验公开版本
+`v0.3.0` 共享已验收的九文件 Skill payload。README 与 current-state 分别报告源码、验证、安装
+和发布状态；文档安装引用固定到已核验的公开 `v0.3.0` tag，其临时安装与已验收载荷一致。
 
 本地 installation 会先验证 source；内容不同的目标必须显式 replace；被替换的版本进入可恢复
 backup；receipt 记录 source Git identity、dirty state、version 与 source/installed digests。

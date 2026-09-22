@@ -2,7 +2,7 @@
 
 [English](usage.md) · [README](../README.zh-CN.md)
 
-本指南覆盖 v0.3.0 release target：Audit / Plan / Operate 内的意图对照。当前等待发布；
+本指南覆盖已发布的 v0.3.0：Audit / Plan / Operate 内的意图对照。
 旧版 v0.2.1 不包含意图对照。
 稳定安装请使用 README 中
 固定 tag 的命令；只有明确需要经过审阅的 `main` revision 时，才走 source-checkout 路径。
@@ -129,7 +129,7 @@ SPEC，也可能必须保留，应先追踪用途。
 也说明了安装后重启；最终仍要观察具体宿主是否加载成功。
 
 仍然表现为 Audit-only 时，先检查安装文件与回执，再检查宿主配置的其他 Skill 根目录和目标仓库中
-是否有重名副本。不要猜测后直接删除。发布后安装 v0.3.0 tag 会得到声明的九文件 v0.3.0 package；
+是否有重名副本。不要猜测后直接删除。安装已发布的 v0.3.0 tag 会得到声明的九文件 v0.3.0 package；
 更新 Git 仓库不会顺带更新独立安装目录。也不要把评测答案文件提供给代理，让它“通过”试用。
 
 本 Skill 不要求额外 provider key、worker 服务或调度器。宿主仍须具备正常的模型访问、仓库工具和

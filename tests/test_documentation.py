@@ -80,7 +80,7 @@ class DocumentationTests(unittest.TestCase):
 
     def test_publication_status_is_recorded_after_readback(self) -> None:
         for relative in ("docs/releases/v0.3.0.md", "docs/releases/v0.3.0.zh-CN.md"):
-            self.assertIn("DRAFT — NOT PUBLISHED", (ROOT / relative).read_text(encoding="utf-8"))
+            self.assertIn("PUBLISHED — 2026-09-22", (ROOT / relative).read_text(encoding="utf-8"))
         for relative in PAIRS[4]:
             self.assertIn("PUBLISHED — 2026-09-20", (ROOT / relative).read_text(encoding="utf-8"))
         for relative in PAIRS[3]:

@@ -2,8 +2,8 @@
 
 [简体中文](usage.zh-CN.md) · [README](../README.md)
 
-This guide covers the v0.3.0 release target: intent comparison within Audit / Plan /
-Operate. Publication is pending; the prior v0.2.1 release lacks intent comparison.
+This guide covers published v0.3.0: intent comparison within Audit / Plan /
+Operate. The prior v0.2.1 release lacks intent comparison.
 Use the README's tagged-release instructions for stable installation, or its
 source-checkout path when you deliberately want a reviewed `main` revision.
 
@@ -174,7 +174,7 @@ specific host remains the acceptance check.
 
 When the old Audit-only behavior remains, check the installed file and receipt,
 then competing copies in host-configured Skill roots or the target repository.
-Do not delete copies speculatively. After publication, installing the v0.3.0 tag gives
+Do not delete copies speculatively. Installing the published v0.3.0 tag gives
 the declared nine-file v0.3.0 package; updating this Git repository does not update a
 separate installed directory. Do not feed evaluator answer files to the agent
 to make a smoke test pass.

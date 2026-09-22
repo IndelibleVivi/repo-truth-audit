@@ -6,7 +6,7 @@ Last reconciled: 2026-09-22
 
 ## Product and source
 
-Source `0.3.0` is the **release target, pending publication**. It adds reconstruction of accepted
+Source `0.3.0` is **published as v0.3.0**. It adds reconstruction of accepted
 product intent and bidirectional comparison with selected repository behavior.
 The same Audit / Plan / Operate modes apply; no new engine, mandatory product-history
 scan or implicit repair permission is added. The invocation slug remains
@@ -51,21 +51,34 @@ locale SVGs did not change in this follow-up; prior visual acceptance remains in
 the original receipt, not a new observation. Source delivery, daily installation,
 release and host discovery are separate.
 
-## Release target, stable release and installation
+## Public release and installation
 
-The owner authorized formal v0.3.0 publication. Paired release notes, install pins
-and matching validation are prepared. Publication remains pending until the final
-release commit passes CI, the annotated tag and Release are read back, and a public-tag
-disposable install matches the frozen payload. The daily 0.2.1 copy will not be upgraded.
+The latest verified public release is [v0.3.0](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.3.0),
+published 2026-09-22 14:35:42 UTC and read back as Latest, non-draft and non-prerelease.
+The repository remains public with default branch `main`.
+
+- Release commit: `6de6dae92f17efbef3cf8ad4e9e98eb6bdd5a61b`.
+- Annotated tag object: `a0c5ec764d28d8fa221a0a5717f0f30c0409edc3`; it peels to the release commit.
+- [Release-commit CI](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35741057255):
+  all four Ubuntu/macOS × Python 3.10/3.13 jobs passed. Fresh local release checks
+  also passed 117 tests, both validators, fixture/operation/intent checks and Skill validation.
+- A disposable system-installer download from the public tag contained exactly
+  the nine declared files, no undeclared entries and the frozen digest above.
+  Public README, license and package paths returned HTTP 200 with matching tag bytes.
+- README stable installation is pinned to `v0.3.0`. The daily 0.2.1 copy was not
+  upgraded; its eight-file digest remains
+  `e578adf48a39a00cf68c10e254e04f3336f8f104fb7282f43d78c45c82493f0b`.
+
+The tag retains the pre-publication documentation snapshot; main records the
+verified published status without moving the tag or changing payload bytes.
 See [v0.3.0 release notes](releases/v0.3.0.md).
 
-The latest verified public release remains [v0.2.1](releases/v0.2.1.md), published
+The earlier [v0.2.1](releases/v0.2.1.md) release was published
 2026-09-20. Its annotated tag peels to
 `6485296b39b7fc8526713cda5e8df01c679a4ec6`; its release record reported four passing
 [CI jobs](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35503842279)
 and a disposable tagged install matching the eight-file released payload.
-These are historical observations, not candidate CI or activation evidence.
-README install commands now target v0.3.0 and become usable after publication.
+These are historical observations, not v0.3.0 CI or activation evidence.
 
 The [0.2.1 forward receipt](forward-0.2.1-receipt.md),
 [0.2.0 forward receipt](forward-0.2.0-receipt.md) and

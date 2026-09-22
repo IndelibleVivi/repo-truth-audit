@@ -29,7 +29,8 @@ class RepositoryContractTests(unittest.TestCase):
 
     def test_release_target_install_ref_is_pinned_and_old_ref_is_absent(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("--ref v0.2.1", readme)
+        self.assertIn("--ref v0.3.0", readme)
+        self.assertNotIn("--ref v0.2.1", readme)
         self.assertNotIn("--ref v0.2.0", readme)
         self.assertNotIn("--ref v0.1.0", readme)
 

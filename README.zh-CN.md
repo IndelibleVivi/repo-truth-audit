@@ -4,23 +4,23 @@
 
 正式名称：**Repository Operational Truth Audit**
 
-**还原产品原本要成为什么，对照仓库现在真正做到了什么；得到授权后，把约定变更做到实现与验收。**
+**还原仍然有效的产品约定，对照仓库现在真正做到了什么；得到授权后，把约定变更做到实现与验收。**
 
 这是面向产品意图还原、仓库接手、迁移、整合和旧路径退役的 Codex Skill。它适合一次有明确目标的工程介入，
 完成后回到普通开发；无需每个任务、每次提交都调用。
 
-当前源码版本：`0.3.0` — 未发布 candidate。
+当前源码版本：`0.3.0` — release target，等待发布。
 最新公开版本：`v0.2.1` — Audit / Plan / Operate。
 
-0.3.0 candidate 新增基于已接受规格、决策与限定范围开发对话的意图—现实对照。
+0.3.0 新增基于已接受规格、决策与限定范围开发对话的意图—现实对照。
 证据与限制见[当前状态](docs/current-state.zh-CN.md)。
-[0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md) 是稳定版历史证据，不证明本候选版本。
+[0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md) 保留该旧版本的历史证据。
 
-**下方稳定安装命令固定到已经核验的 v0.2.1 tag。** 装好 package 仍不等于当前宿主已经发现；
+**下方安装命令指向 v0.3.0，发布完成后可用。** 装好 package 仍不等于当前宿主已经发现；
 请在 fresh task 中确认实际选中的 Skill path 与行为。
 
-[使用指南](docs/usage.zh-CN.md) · [0.3.0 candidate 返修证据](docs/forward-0.3.0-followup.zh-CN.md) ·
-[发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) · [v0.2.1 发布说明](docs/releases/v0.2.1.zh-CN.md)
+[使用指南](docs/usage.zh-CN.md) · [0.3.0 行为证据](docs/forward-0.3.0-followup.zh-CN.md) ·
+[发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) · [v0.3.0 发布说明](docs/releases/v0.3.0.zh-CN.md)
 
 ## 它解决什么问题
 
@@ -106,7 +106,7 @@ Audit、Plan、Operate 是行为模式，无需记忆一套命令。
 验收：结果与状态副作用正确，职责真正分离或旧路径真正退出，实际交付路径选中新实现，预期用户结果得到满足或最初的开发阻力
 有所减少。可用一个小型后续改动验证用途；并非每次都要求部署或额外开发功能。
 
-稳定版 0.2.1 同时考虑退役的责任与长期保留的测试、配置。必要的新测试及获授权 dirty 代码退役
+自 0.2.1 起，Skill 同时考虑退役的责任与长期保留的测试、配置。必要的新测试及获授权 dirty 代码退役
 均被允许，不采用净减行目标或逐项测试审批。辅助方法仍受宿主、用户和项目的实际适用要求约束。
 
 完成、检查点、受阻、已中止／恢复是不同结果。检查点保留原目标和剩余义务。续做时由宿主重新调用，
@@ -114,16 +114,16 @@ Audit、Plan、Operate 是行为模式，无需记忆一套命令。
 
 ## 从公开 release 安装
 
-首次安装 Audit / Plan / Operate `v0.2.1`，使用系统安装器：
+发布后首次安装包含意图对照和 Audit / Plan / Operate 的 `v0.3.0`，使用系统安装器：
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo IndelibleVivi/repo-truth-audit \
   --path skills/repository-operational-truth-audit \
-  --ref v0.2.1
+  --ref v0.3.0
 ```
 
-这是已经核验的公开 release。已有副本发生冲突时，使用下面的显式升级流程，不要先删除安装目录。
+这是等待发布的 release target。已有副本发生冲突时，使用下面的显式升级流程，不要先删除安装目录。
 
 ## 从 source checkout 验证或安装
 
@@ -191,7 +191,7 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 | 维护这个仓库 | [AGENTS.md](AGENTS.md) 与[产品契约](docs/product-spec.zh-CN.md) |
 | 理解证明和完成标准 | [证据模型](docs/evidence-model.zh-CN.md) |
 | 查看实测行为与当前状态 | [0.3.0 返修回执](docs/forward-0.3.0-followup.zh-CN.md)、[原 0.3.0 回执](docs/forward-0.3.0-receipt.zh-CN.md)、[0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md)、[0.2.0 回执](docs/forward-0.2.0-receipt.zh-CN.md)、[当前状态](docs/current-state.zh-CN.md) |
-| 查看 v0.2.1 发布 | [发布说明](docs/releases/v0.2.1.zh-CN.md)、[发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) |
+| 查看 v0.3.0 发布 | [发布说明](docs/releases/v0.3.0.zh-CN.md)、[发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) |
 | 查看架构与研究来源 | [架构模型](docs/architecture/README.zh-CN.md)、[研究依据](docs/research-basis.zh-CN.md) |
 
 `evals/cases/` 和 `evals/operation-lab/` 是评测材料，不应成为目标代理的指令。

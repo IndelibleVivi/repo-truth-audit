@@ -2,7 +2,8 @@
 
 [English](usage.md) · [README](../README.zh-CN.md)
 
-本指南覆盖 Audit / Plan / Operate，以及 0.3.0 candidate 的意图对照；稳定版 v0.2.1 尚不包含这项新能力。
+本指南覆盖 v0.3.0 release target：Audit / Plan / Operate 内的意图对照。当前等待发布；
+旧版 v0.2.1 不包含意图对照。
 稳定安装请使用 README 中
 固定 tag 的命令；只有明确需要经过审阅的 `main` revision 时，才走 source-checkout 路径。
 
@@ -51,7 +52,7 @@
 预期得到：一直做到约定本地终点的实现。已覆盖的必要修改不用逐文件反复批准。
 完整的一步可以保留为检查点，但原目标和剩余工作仍需明确；新的实质性效果要有对应授权。
 
-### 还原并对照产品意图（0.3.0 candidate）
+### 还原并对照产品意图（v0.3.0）
 
 ```text
 用 $repository-operational-truth-audit，把 SPEC.md、docs/decisions/ 与这份指定的
@@ -124,11 +125,11 @@ SPEC，也可能必须保留，应先追踪用途。
 `--dest` 建出的目录不一定是当前宿主会发现的位置。
 
 安装后检查回执和实际目标，按需要重启或重新加载 Codex，再开新任务确认选中了哪个 `SKILL.md`。
-只看名称无法区分旧发布版与 0.3.0 candidate。[OpenAI 的 Skill 目录](https://github.com/openai/skills#installing-a-skill)
+只看名称无法区分旧 package 与 v0.3.0。[OpenAI 的 Skill 目录](https://github.com/openai/skills#installing-a-skill)
 也说明了安装后重启；最终仍要观察具体宿主是否加载成功。
 
 仍然表现为 Audit-only 时，先检查安装文件与回执，再检查宿主配置的其他 Skill 根目录和目标仓库中
-是否有重名副本。不要猜测后直接删除。安装已发布的 v0.2.1 tag 会得到声明的 v0.2.1 package；
+是否有重名副本。不要猜测后直接删除。发布后安装 v0.3.0 tag 会得到声明的九文件 v0.3.0 package；
 更新 Git 仓库不会顺带更新独立安装目录。也不要把评测答案文件提供给代理，让它“通过”试用。
 
 本 Skill 不要求额外 provider key、worker 服务或调度器。宿主仍须具备正常的模型访问、仓库工具和

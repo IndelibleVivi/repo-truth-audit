@@ -2,7 +2,7 @@
 
 [简体中文](product-spec.zh-CN.md)
 
-Status: **0.3.0 SOURCE CANDIDATE — not released or installed for daily use**
+Status: **0.3.0 RELEASE TARGET — publication pending; daily copy unchanged**
 Expanded scope accepted by owner: 2026-09-17
 Method-selection refinements accepted for implementation: 2026-09-20
 Product-intent reconstruction accepted for implementation: 2026-09-22
@@ -412,10 +412,11 @@ Selection checks using a supplied candidate catalog are not host discovery tests
 ## 8. Version, installation, and publication
 
 VERSION identifies the current source version and follows stable semantic
-version syntax. Source `0.3.0` is an unreleased candidate; the latest verified
-public release remains `v0.2.1`.
+version syntax. Source `0.3.0` is the release target; publication is pending and
+the latest verified public release remains `v0.2.1`.
 README and current-state report source, validation, installation and publication
-separately. The documented install reference is pinned to the verified public tag.
+separately. The documented install reference targets `v0.3.0` and becomes usable
+after publication; release notes distinguish a target from an observed public tag.
 
 Local installation validates source, requires explicit replacement of different
 bytes, preserves a recoverable backup, and records source Git identity, dirty

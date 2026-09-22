@@ -4,27 +4,27 @@
 
 Formally: **Repository Operational Truth Audit**
 
-**Recover what the product was meant to be, compare it with what the repository
+**Recover the product agreement that still applies, compare it with what the repository
 actually does, and carry an authorized change through implementation and verification.**
 
 A Codex Skill for product-intent reconstruction, repository re-entry, migrations,
 consolidation and legacy-path retirement. Use it for a focused engineering intervention; finish the agreed job
 and return to normal development. It need not run on every task or every commit.
 
-Current source version: `0.3.0` — unreleased candidate.
+Current source version: `0.3.0` — release target, publication pending.
 Latest public release: `v0.2.1` — Audit / Plan / Operate.
 
-The 0.3.0 candidate adds intention-to-reality comparison from accepted specs,
+Version 0.3.0 adds intention-to-reality comparison from accepted specs,
 decisions and scoped development conversations. See [current state](docs/current-state.md)
 for its evidence and limits. The [0.2.1 receipt](docs/forward-0.2.1-receipt.md)
-is historical evidence for the stable release, not validation of this candidate.
+preserves historical evidence for that earlier release.
 
-**The stable install below is pinned to the verified v0.2.1 tag.** Installing
+**The install below targets v0.3.0 and becomes usable after publication.** Installing
 the package still does not prove that a running host has discovered it; confirm
 the selected Skill path and behavior in a fresh task.
 
-[Using the Skill](docs/usage.md) · [0.3.0 candidate follow-up](docs/forward-0.3.0-followup.md) ·
-[Release procedure and v0.2.0 history](docs/release-preparation.md) · [v0.2.1 notes](docs/releases/v0.2.1.md)
+[Using the Skill](docs/usage.md) · [0.3.0 behavior evidence](docs/forward-0.3.0-followup.md) ·
+[Release procedure and v0.2.0 history](docs/release-preparation.md) · [v0.3.0 notes](docs/releases/v0.3.0.md)
 
 ## What problem it solves
 
@@ -43,7 +43,7 @@ retire the superseded path where the agreed goal requires it.
 A product can have tidy modules and green tests while its intended user journey
 still fails. An export helper may exist without a reachable export command; a
 README may promise offline use while the selected flow requires a remote service.
-The candidate reconstructs the accepted product before judging those differences.
+The Skill reconstructs the accepted product before judging those differences.
 
 It reads SPEC and key decisions, or development conversations you specifically
 provide or authorize. It preserves user goals, complete journeys, constraints,
@@ -139,7 +139,7 @@ actual separation or retirement; the selected delivery path; and achievement of 
 original development difficulty. A small follow-on change can test usefulness.
 Not every task requires deployment or an extra feature probe.
 
-The stable 0.2.1 release accounts for lasting tests/configuration as well as retired
+Since 0.2.1, the Skill accounts for lasting tests/configuration as well as retired
 responsibilities. It permits necessary new tests and authorized dirty-code
 retirement, without net-line targets or per-test approval. Auxiliary methods
 remain subject to actual host, user and project requirements.
@@ -151,16 +151,17 @@ before more writes. It does not autonomously resume in the background.
 
 ## Install from the public release
 
-For a fresh Audit / Plan / Operate `v0.2.1` installation, use the system installer:
+For a fresh `v0.3.0` installation with intent comparison and Audit / Plan / Operate,
+use the system installer after the release is published:
 
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo IndelibleVivi/repo-truth-audit \
   --path skills/repository-operational-truth-audit \
-  --ref v0.2.1
+  --ref v0.3.0
 ```
 
-This is the verified public release. For an existing conflicting copy, use the
+This is the pending release target. For an existing conflicting copy, use the
 deliberate upgrade path below rather than deleting installed files.
 
 ## Validate or install from a source checkout
@@ -241,7 +242,7 @@ For related-tool distinctions, see [the usage guide](docs/usage.md#related-tools
 | Maintain this repository | [AGENTS.md](AGENTS.md) and [product spec](docs/product-spec.md) |
 | Understand proof and completion | [Evidence model](docs/evidence-model.md) |
 | Inspect tested behavior and present state | [0.3.0 follow-up](docs/forward-0.3.0-followup.md), [original 0.3.0 receipt](docs/forward-0.3.0-receipt.md), [0.2.1 receipt](docs/forward-0.2.1-receipt.md), [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [current state](docs/current-state.md) |
-| Inspect the v0.2.1 release | [Release notes](docs/releases/v0.2.1.md), [release procedure and v0.2.0 history](docs/release-preparation.md) |
+| Inspect the v0.3.0 release | [Release notes](docs/releases/v0.3.0.md), [release procedure and v0.2.0 history](docs/release-preparation.md) |
 | Inspect architecture and research | [Architecture model](docs/architecture/README.md), [research basis](docs/research-basis.md) |
 
 `evals/cases/` and `evals/operation-lab/` contain evaluator material, not target

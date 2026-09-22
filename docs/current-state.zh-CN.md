@@ -6,16 +6,16 @@
 
 ## 产品与源码
 
-Source `0.3.0` 是**未发布 candidate**。它加入已接受产品意图还原，以及与仓库所选行为的
+Source `0.3.0` 是**等待发布的 release target**。它加入已接受产品意图还原，以及与仓库所选行为的
 双向对照。仍使用 Audit / Plan / Operate，不增加引擎、强制产品历史扫描或隐含修复权限；
 调用 slug 保持 `repository-operational-truth-audit`。
 
 新增 intent reference 纳入明确的九文件 Skill payload；source validation、staging、
 installed comparison 和 receipt 共享这份定义。架构保留七区域、31 节点、46 条边；authority、
 candidate trace 和 acceptance 现在包括意图生命周期、产品差距与合理演进。双语图与说明
-同步反映候选范围。
+同步反映 0.3.0 范围。
 
-## Candidate 证据
+## 已冻结的发布载荷与证据
 
 Source 已完成本轮返修：完整记录 search witness 拒绝 query echo；自然局部采纳、内部委托
 与例行人工步骤纳入方法；frontmatter 并列运行事实和产品意图入口，覆盖新建小仓库。
@@ -40,21 +40,25 @@ fixture self-tests、operation lab、十一项意图 ground-truth 与十一项�
 安装 receipt 如实记录 dirty source。架构拓扑与双语 SVG 本轮未改变；此前视觉验收属于
 原回执，不作为本轮新验收。Source 交付、日用安装、release 与 host discovery 分开记录。
 
-## 稳定版与安装
+## 发布目标、稳定版与安装
+
+Owner 已授权正式发布 v0.3.0。双语发布说明、安装 pin 与相关校验已准备；
+在最终发布 commit CI、annotated tag、正式 Release 和公开 tag 临时安装回读完成前，
+不将其记录为已发布。九文件 payload 保持上述已验收身份。日用 0.2.1 副本不升级。
+详见 [v0.3.0 发布说明](releases/v0.3.0.zh-CN.md)。
 
 最新已核验公开版仍为 [v0.2.1](releases/v0.2.1.zh-CN.md)，2026-09-20 发布。Annotated tag
 peel 到 `6485296b39b7fc8526713cda5e8df01c679a4ec6`；当时 release record 记录四项
 [CI jobs 通过](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35503842279)，
 公开 tag 临时安装与八文件 released payload 一致。这些是历史观察，不是 candidate CI
-或 activation 证据。README 稳定安装命令继续固定到该版本。
+或 activation 证据。README 安装命令现指向 v0.3.0 release target，发布完成后可用。
 
 [0.2.1 forward 回执](forward-0.2.1-receipt.zh-CN.md)、
 [0.2.0 forward 回执](forward-0.2.0-receipt.zh-CN.md) 及
 [0.2.0 发布记录](release-preparation.zh-CN.md) 保留原有证据与限制，不据此声称 0.3.0
 相较旧版效果更好。
 
-本候选工作不升级日用 Skill、不创建 release tag、不发布 GitHub Release，也不证明 fresh
-host discovery。Source、Git 交付、安装和 runtime selection 仍是不同观察层。
+本次发布不升级日用 Skill，也不证明 fresh host discovery。Source、Git 交付、安装和 runtime selection 仍是不同观察层。
 
 许可不变：功能材料为 SUL-1.0 source-available；独立公开文档与图使用 CC BY-NC-SA 4.0，
 路径边界见 [LICENSING.md](../LICENSING.md)。

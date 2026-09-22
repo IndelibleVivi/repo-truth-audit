@@ -6,7 +6,7 @@ Last reconciled: 2026-09-22
 
 ## Product and source
 
-Source `0.3.0` is an **unreleased candidate**. It adds reconstruction of accepted
+Source `0.3.0` is the **release target, pending publication**. It adds reconstruction of accepted
 product intent and bidirectional comparison with selected repository behavior.
 The same Audit / Plan / Operate modes apply; no new engine, mandatory product-history
 scan or implicit repair permission is added. The invocation slug remains
@@ -16,9 +16,9 @@ The new intent reference joins the explicit nine-file Skill payload. Source
 validation, staging, installed comparison and receipts share that definition.
 The architecture keeps seven regions, 31 nodes and 46 edges; authority, candidate
 trace and acceptance now include intent lifecycle, product gaps and valid evolution.
-Both locale diagrams and reader guides reflect the candidate scope.
+Both locale diagrams and reader guides reflect the 0.3.0 scope.
 
-## Candidate evidence
+## Frozen release payload and evidence
 
 Source follow-up is complete: full-record search witnesses reject query echo;
 method guidance covers natural local assent, delegated internals and routine
@@ -51,7 +51,13 @@ locale SVGs did not change in this follow-up; prior visual acceptance remains in
 the original receipt, not a new observation. Source delivery, daily installation,
 release and host discovery are separate.
 
-## Stable release and installation
+## Release target, stable release and installation
+
+The owner authorized formal v0.3.0 publication. Paired release notes, install pins
+and matching validation are prepared. Publication remains pending until the final
+release commit passes CI, the annotated tag and Release are read back, and a public-tag
+disposable install matches the frozen payload. The daily 0.2.1 copy will not be upgraded.
+See [v0.3.0 release notes](releases/v0.3.0.md).
 
 The latest verified public release remains [v0.2.1](releases/v0.2.1.md), published
 2026-09-20. Its annotated tag peels to
@@ -59,15 +65,14 @@ The latest verified public release remains [v0.2.1](releases/v0.2.1.md), publish
 [CI jobs](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/35503842279)
 and a disposable tagged install matching the eight-file released payload.
 These are historical observations, not candidate CI or activation evidence.
-README stable install commands remain pinned to that release.
+README install commands now target v0.3.0 and become usable after publication.
 
 The [0.2.1 forward receipt](forward-0.2.1-receipt.md),
 [0.2.0 forward receipt](forward-0.2.0-receipt.md) and
 [0.2.0 release record](release-preparation.md) preserve their original evidence
 and limitations. No comparative improvement claim is made for 0.3.0.
 
-This candidate work does not upgrade the daily Skill copy, create a release tag,
-publish a GitHub Release, or establish fresh host discovery. Source, Git delivery,
+This release work does not upgrade the daily Skill copy or establish fresh host discovery. Source, Git delivery,
 installation and runtime selection remain separate observations.
 
 Licensing is unchanged: functional materials are source-available under SUL-1.0;

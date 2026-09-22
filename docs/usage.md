@@ -2,8 +2,8 @@
 
 [简体中文](usage.zh-CN.md) · [README](../README.md)
 
-This guide covers Audit / Plan / Operate, including 0.3.0 candidate intent comparison.
-The stable v0.2.1 release does not include that new capability.
+This guide covers the v0.3.0 release target: intent comparison within Audit / Plan /
+Operate. Publication is pending; the prior v0.2.1 release lacks intent comparison.
 Use the README's tagged-release instructions for stable installation, or its
 source-checkout path when you deliberately want a reviewed `main` revision.
 
@@ -65,7 +65,7 @@ covered edits do not need repeated per-file permission. A coherent first step
 can be retained as a checkpoint, with the whole goal and remaining work explicit.
 Materially new effects require matching authority.
 
-### Reconstruct and compare product intent (0.3.0 candidate)
+### Reconstruct and compare product intent (v0.3.0)
 
 ```text
 Use $repository-operational-truth-audit to compare the accepted product in SPEC.md,
@@ -167,15 +167,15 @@ necessarily a location your current host discovers.
 
 After installation, inspect the receipt and actual target. Start a fresh task,
 restarting or reloading Codex when needed, and confirm which `SKILL.md` it selects.
-The name alone cannot distinguish the old release from the 0.3.0 candidate.
+The name alone cannot distinguish the older packages from v0.3.0.
 [OpenAI's Skill catalog](https://github.com/openai/skills#installing-a-skill)
 also documents restarting after installation; the observed behavior of your
 specific host remains the acceptance check.
 
 When the old Audit-only behavior remains, check the installed file and receipt,
 then competing copies in host-configured Skill roots or the target repository.
-Do not delete copies speculatively. Installing the published v0.2.1 tag gives
-the declared v0.2.1 package; updating this Git repository does not update a
+Do not delete copies speculatively. After publication, installing the v0.3.0 tag gives
+the declared nine-file v0.3.0 package; updating this Git repository does not update a
 separate installed directory. Do not feed evaluator answer files to the agent
 to make a smoke test pass.
 

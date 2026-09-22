@@ -2,13 +2,8 @@
 
 [简体中文](CHANGELOG.zh-CN.md)
 
-## 0.3.0 — Unreleased
+## 0.3.0 — Release target (not yet published)
 
-- Harden search acceptance against query echo with complete-record witnesses;
-  exercise natural partial assent, delegated internals and feature-complete
-  workflows that add unsupported routine user work, including an authorized contrast.
-- Advertise operational-truth and product-intent entry routes independently,
-  including new small repositories; retain ordinary bugfix/review exclusions.
 - Reconstruct accepted product intent from scoped specifications, decisions and
   development conversations, preserving users/jobs, complete journeys, constraints,
   non-goals, rationale, supersession and explicit deferral.
@@ -19,7 +14,12 @@
   with bounded conversation access and unchanged authority gates.
 - Add progressive intent guidance, controlled synthetic subjects, focused evaluator
   checks and aligned bilingual product/usage/architecture documentation.
-- Source candidate only; stable installation remains pinned to v0.2.1.
+- Harden search acceptance against query echo with complete-record witnesses;
+  exercise natural partial assent, delegated internals and feature-complete
+  workflows that add unsupported routine user work, including an authorized contrast.
+- Advertise operational-truth and product-intent entry routes independently,
+  including new small repositories; retain ordinary bugfix/review exclusions.
+- Release target: v0.3.0; publication pending. The accepted nine-file Skill payload is unchanged during release preparation.
 
 ## 0.2.1 — 2026-09-20
 

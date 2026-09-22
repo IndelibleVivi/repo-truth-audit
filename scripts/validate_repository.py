@@ -36,6 +36,7 @@ PUBLIC_DOC_PAIRS = {
     "docs/forward-0.2.0-receipt.md": "docs/forward-0.2.0-receipt.zh-CN.md",
     "docs/forward-0.2.1-receipt.md": "docs/forward-0.2.1-receipt.zh-CN.md",
     "docs/forward-0.3.0-receipt.md": "docs/forward-0.3.0-receipt.zh-CN.md",
+    "docs/forward-0.3.0-followup.md": "docs/forward-0.3.0-followup.zh-CN.md",
     "docs/releases/v0.2.1.md": "docs/releases/v0.2.1.zh-CN.md",
     "docs/research-basis.md": "docs/research-basis.zh-CN.md",
     "docs/current-state.md": "docs/current-state.zh-CN.md",

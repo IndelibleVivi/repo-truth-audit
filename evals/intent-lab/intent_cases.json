@@ -75,7 +75,7 @@
     {
       "id": "conversation-only-accepted-intent",
       "request": "There is no spec for Atlas Inbox; the only record of what we agreed is the decision thread I pasted into docs/intake/decision-thread.md. Decide whether what the product does now still matches what we accepted, and name anything that has drifted or is missing. Write your result to `INTENT-AUDIT.md` and lead with `Intent answer:`. Read-only: do not change source or documents. The only permitted target write is the new INTENT-AUDIT.md report; use disposable copies outside this repository for probes that write data.",
-      "operate_request": "Atlas Inbox is missing the search journey we accepted. Expose search as `./lumen search --query TEXT`. Implement the search journey end to end through the real launch path and declared delivery members, keep everything the thread says is adopted, preserve the adopted digest-format change, and verify the local result. Update the callers, docs and tests the change actually touches. Do not publish or commit. This repair is limited to search; retain the separately observed account-partition finding without claiming overall product conformance. Do not migrate durable data or decide ownership of previously unpartitioned messages.",
+      "operate_request": "Atlas Inbox is missing the search journey we accepted. Expose search as `./lumen search --query TEXT`. Search generated digests and print a JSON array of complete matching records in digest order, using literal substring matching; print [] when none match. Search must not write the store or digests. Implement the search journey end to end through the real launch path and declared delivery members, keep everything the thread says is adopted, preserve the adopted digest-format change, and verify the local result. Update the callers, docs and tests the change actually touches. Do not publish or commit. This repair is limited to search; retain the separately observed account-partition finding without claiming overall product conformance. Do not migrate durable data or decide ownership of previously unpartitioned messages.",
       "review": [
         "The only authority is the supplied owner thread; there is no SPEC and none is required.",
         "Adopted: sync -> digest -> search, keep every message (no auto-delete), digest output is one JSON file per account (superseded format).",
@@ -84,6 +84,33 @@
         "Valid evolution: the per-account JSON digest format must be preserved, not reverted.",
         "For the paired Operate request: implement search through the selected entry and delivery, preserve no-auto-delete and the JSON digest format, and do not force a rewrite of rejected proposals.",
         "Independent forward observation: filenames follow the adopted per-account JSON format, but sync ignores account and digest content mixes accounts. Report that separate semantic gap; a bounded search repair does not close it or authorize migration."
+      ]
+    },
+    {
+      "id": "natural-partial-assent",
+      "request": "这是刚搭好的小工具，目录也没多复杂。你看看现在做出来的，还是不是我们聊天里说好的那个东西？开发聊天就在 docs/development-chat.md。把结论写到新的 INTENT-AUDIT.md；只做检查，别改源码和已有文档。要跑会写数据的命令，放到仓库外的临时副本里。",
+      "review": [
+        "Recover direct dispatch and automatic results/state from natural local assent; dashboard/refresh approval does not adopt the adjacent manual workflow proposal.",
+        "Treat delegated state-module wiring as supported implementation discretion, not missing owner approval.",
+        "The normal path meets current intent. Team approval/cloud remain outside current scope; do not infer a product gap from their absence."
+      ]
+    },
+    {
+      "id": "optional-panel-workflow-drift",
+      "request": "这是刚搭好的小工具，目录也没多复杂。你看看现在做出来的，还是不是我们聊天里说好的那个东西？开发聊天就在 docs/development-chat.md。把结论写到新的 INTENT-AUDIT.md；只做检查，别改源码和已有文档。要跑会写数据的命令，放到仓库外的临时副本里。",
+      "review": [
+        "Features and smoke tests all work, but ordinary dispatch is gated on operator receipt, ready state and confirmation for each job.",
+        "Trace who must perform each action, when it recurs and what blocks; optional observation approval does not authorize this normal-use burden.",
+        "Report changed workflow despite feature completeness; do not let the assistant late interpretation overwrite the owner decision."
+      ]
+    },
+    {
+      "id": "later-manual-workflow-accepted",
+      "request": "这是刚搭好的小工具，目录也没多复杂。你看看现在做出来的，还是不是我们聊天里说好的那个东西？开发聊天就在 docs/development-chat.md。把结论写到新的 INTENT-AUDIT.md；只做检查，别改源码和已有文档。要跑会写数据的命令，放到仓库外的临时副本里。",
+      "review": [
+        "Application bytes match the gated-drift subject exactly; only later supplied owner dialogue differs.",
+        "The owner now uses the local prototype to teach manual preparation and explicitly accepts those routine steps for all current local dispatch.",
+        "Treat that scoped current behavior as deliberate evolution; do not impose a permanent preference for less friction or extend approval to cloud/team scope."
       ]
     }
   ]

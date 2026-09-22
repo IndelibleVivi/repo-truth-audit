@@ -101,7 +101,7 @@ and their limitations; the original Audit/Plan routing controls remain required.
 
 ## Intent-lab subjects — 0.3
 
-`intent-lab/intent_cases.json` defines eight evaluator intent subjects.
+`intent-lab/intent_cases.json` defines eleven evaluator intent subjects.
 Lumen Notes has an accepted product specification,
 scoped owner decision records, optional read-only supplied conversation evidence,
 and an application with a selected entry and a declared delivery artifact. They
@@ -117,6 +117,15 @@ the evaluator now records that baseline defect. The paired finite Operate reques
 using `./lumen search --query TEXT` repairs search only and leaves account ownership
 and migration outside its authority. A passing search repair is not whole-product
 conformance.
+
+Harbor Dispatch adds three small, conversation-only subjects without explicit
+adoption labels: natural local assent with delegated internals and a direct
+normal path; all features working but normal dispatch requiring manual receipt,
+task-state and confirmation steps; and exactly the same gated implementation
+with a later owner decision accepting that routine for the current local scope.
+Its feature smoke tests pass in all three. The evaluator separately probes the
+normal path, each blocking step and recurrence on another job. The accepted-change
+contrast differs only in supplied conversation evidence, not application code.
 
 ```bash
 scratch=$(mktemp -d)
@@ -152,7 +161,7 @@ truncated-export visibility, and the read-only permission subject. These tests
 validate the subjects, not model behavior. Ordinary validation, self-test and
 both labs make no target-model or network call.
 
-The checker also exercises eight corrupted fixtures with `--self-challenge`.
+The checker also exercises eleven corrupted fixtures with `--self-challenge`.
 For an independently produced Atlas Inbox repair, run:
 
 ```bash
@@ -166,6 +175,21 @@ and a reconstruction using declared delivery members in separate disposable
 copies, seeds existing messages, and verifies the sync-to-digest-to-search journey,
 read-only search, retention and the adopted JSON digest format. It rejects an
 unused source helper, a missing delivery member, a search that bypasses generated
-digests, and changed owner evidence. An explanatory new specification is allowed; the
+digests, and changed owner evidence. The current paired Operate request defines
+stdout as a JSON array of complete matching digest records, in digest order;
+this is a current task contract, not an invented historical chat decision. Exact
+full-record checks cover multiple matches, singleton and no-match results so
+plain query echo and JSON query echo cannot stand in for search. Each search must
+preserve the pre-search store and digest bytes independently: an undigested message
+is intentionally present only in the store. An explanatory new specification is allowed; the
 supplied authority must remain intact. This harness is for these trusted synthetic
 subjects, not a containment mechanism for arbitrary repository programs.
+
+`tests/test_workflow_intent.py` protects the Harbor subjects and the same-code,
+different-decision contrast. Fixture checks and corrupted-fixture rejection do
+not prove that a model inferred the right intent. The separate
+[0.3 candidate follow-up receipt](../docs/forward-0.3.0-followup.md) records actual
+model observations and their limits. Its no-Skill-name requests use an explicitly
+supplied optional candidate catalog; this is controlled method selection, not
+proof of host implicit discovery. Ordinary bugfix and patch review remain negative
+controls in `activation-prompts.csv`.

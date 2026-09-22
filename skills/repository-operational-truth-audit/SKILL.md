@@ -1,6 +1,6 @@
 ---
 name: repository-operational-truth-audit
-description: "Reconstruct a long-evolved repository's current operational truth and, when the product shape itself is in question, the accepted product intent behind it; and when explicitly asked, carry a bounded structural change or product-convergence outcome through implementation and verification. Use for re-entry, consolidation, migration, retirement, unclear live ownership, cross-surface restructuring, or intent/behavior drift whose safety cannot be resolved by a bounded diff. Audit by default; execute an authorized outcome without stopping at a handoff. Do not use for code review, one-claim verification, isolated known-bug repair, generic repo hygiene, generic wishlisting, or a standalone license/security/compliance scan."
+description: "Reconstruct current operational truth for repository re-entry, migration, consolidation, retirement, unclear ownership or cross-surface structural change; or compare accepted product intent with current behavior, even in a new, small or structurally clean repository. Use when the question is whether the product still does what was agreed, including changed user effort or required workflow steps despite working features. Audit by default; carry a finite structural or product-convergence change through implementation and verification only when requested. Do not use for code review, one-claim verification, isolated known-bug repair, generic repo hygiene, wishlisting, or a standalone license/security/compliance scan."
 ---
 
 # Repo Truth Audit — evidence-led repository change
@@ -49,9 +49,9 @@ product-convergence gap belongs to the normal bounded engineering workflow, even
 when the user explicitly asks for a fix. Do not route such a request through
 Operate.
 
-Reconstructing intended product versus current behavior is an explicit route even
-when the repository has no topology defect: an accepted-intent question can be
-the whole decision. Isolated known-bug repair, ordinary review, and generic
+Reconstructing intended product versus current behavior is an independent route,
+including new, small and structurally clean repositories: an accepted-intent
+question can be the whole decision. Isolated known-bug repair, ordinary review, and generic
 wishlisting still stay ordinary work.
 
 A request to expand this product's capabilities does not authorize rewriting

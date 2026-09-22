@@ -20,23 +20,36 @@ Both locale diagrams and reader guides reflect the candidate scope.
 
 ## Candidate evidence
 
-Source implementation and bounded acceptance are complete. 110 repository tests,
-repository/architecture/Skill validation, six original fixture self-tests, the
-operation lab, eight intent ground-truth checks and eight corrupted-fixture
-counterexamples passed. Optional Field Lab offline validation and six self-tests
-also passed with zero target-model invocations.
+Source follow-up is complete: full-record search witnesses reject query echo;
+method guidance covers natural local assent, delegated internals and routine
+manual work; parallel frontmatter routes include new small repositories.
+Audit / Plan / Operate and the existing adoption/reverse-trace rules remain.
 
-Two independent target sessions using the pinned candidate completed five intent
-audits and a staged Plan / Operate search repair. The coordinator verified
-read-only boundaries, protected evidence and the repaired source/declared artifact.
-The [0.3.0 forward receipt](forward-0.3.0-receipt.md) records the exact identity,
-evaluator corrections and limits: one trial per condition, no old-version contrast,
-and an independently found account-content gap deliberately left outside the
-bounded search repair. This does not prove arbitrary-repository effectiveness.
+117 repository tests passed, together with repository/architecture/Skill
+validation, six original fixture self-tests, the operation lab, eleven intent
+ground-truth checks and eleven corrupted-fixture rejections. Optional Field Lab
+offline validation and six self-tests passed without a target-model invocation.
 
-A disposable install matched the exact nine-file payload used in the forward
-checks. Both locale SVGs were rendered and inspected. The candidate is ready as
-source; installation for daily use, release and implicit discovery remain separate.
+The supplied script reproduced query-echo acceptance against `3c27d78` and rejected
+the fake repair after correction. The previous actual search repair passed the
+stronger source/reconstructed-artifact witness; original Atlas conversation evidence
+is unchanged. The [original receipt](forward-0.3.0-receipt.md) keeps its historical
+observations with a limitation banner. The [follow-up receipt](forward-0.3.0-followup.md)
+records the new identity, natural-dialogue observations, defects discovered in the
+synthetic subjects and their correction, ordinary-work controls and evidence limits.
+
+Five fresh native sessions used an optional candidate catalog for three product
+comparisons and two ordinary-work controls. The three product sessions each had
+one continuation on corrected subjects. These are not eight independent trials
+or host implicit-discovery tests. Original reports remain; target test-coverage
+limits must not be confused with currently missing behavior.
+
+Source, forward snapshot and disposable installation matched this exact nine-file
+payload: `02126bada7a880693ea55e73b9bd9404829c2f9b99ca2357b462506e900f492a`.
+The install receipt correctly recorded dirty source. Architecture topology and
+locale SVGs did not change in this follow-up; prior visual acceptance remains in
+the original receipt, not a new observation. Source delivery, daily installation,
+release and host discovery are separate.
 
 ## Stable release and installation
 

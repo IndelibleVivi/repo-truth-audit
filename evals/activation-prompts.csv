@@ -18,3 +18,8 @@ intent-vs-behavior,activate,en,"Reconstruct the intended product from our accept
 intent-zh,activate,zh,"先根据已接受的产品规格和决策重建产品意图，再对比今天的行为，看看哪些核心旅程缺失或语义漂移了。只读。"
 wishlist-no-intent,do-not-activate,en,"I want to add a bunch of nice-to-have features to this product; brainstorm what to build next."
 single-intent-claim,do-not-activate,en,"Just confirm whether the README still says the product supports export."
+new-small-product,activate,zh,"这个小工具刚做出来，目录也挺干净。你看看现在做出来的，还是不是我们当时说好的那个东西？先别改。"
+workflow-burden,activate,zh,"派工和看结果都能用，但怎么每次都要我填记录、改状态？按当时的开发对话看看，正常使用是不是偏了。先只分析。"
+delegated-internals,activate,en,"Compare this new tool with our short planning thread. I approved the optional panel and delegated its internal wiring; does the result still meet our agreement?"
+ordinary-parser-bug,do-not-activate,en,"Fix the known parser bug: an empty --query should return exit code 2. The reproduction and desired behavior are already agreed."
+ordinary-patch-review,do-not-activate,zh,"只 review 这个两行 parser 补丁的正确性和回归风险。"

@@ -19,7 +19,7 @@
 **下方稳定安装命令固定到已经核验的 v0.2.1 tag。** 装好 package 仍不等于当前宿主已经发现；
 请在 fresh task 中确认实际选中的 Skill path 与行为。
 
-[使用指南](docs/usage.zh-CN.md) · [0.3.0 candidate 证据](docs/forward-0.3.0-receipt.zh-CN.md) ·
+[使用指南](docs/usage.zh-CN.md) · [0.3.0 candidate 返修证据](docs/forward-0.3.0-followup.zh-CN.md) ·
 [发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) · [v0.2.1 发布说明](docs/releases/v0.2.1.zh-CN.md)
 
 ## 它解决什么问题
@@ -52,6 +52,9 @@ Audit 给出对照，Plan 提出有限处置，明确授权的 Operate 补齐选
 
 当你想知道已实现产品是否仍符合已接受意图，或局部差异和一条已知断言不足以判断改动影响时使用：重新接手陌生或闲置仓库、评估迁移或归档、
 核对源码与安装副本，或处理跨调用者、状态归属与交付路径的职责纠缠。
+
+意图对照也适用于新建、小型、整洁的仓库。功能都能用，正常使用仍可能增加未经接受的
+人工步骤；应对照真实决定，包括内部实现委托与后来的变更。
 
 运行正常的项目也可能值得改造，例如新增小功能总要修改多个无关模块。大文件、旧名字或两套受支持
 版本本身不构成改造理由；有明确用途的兼容路径可以继续保留。
@@ -187,7 +190,7 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 | 执行已安装的 Skill | [权威 SKILL.md](skills/repository-operational-truth-audit/SKILL.md) 及其链接的 references |
 | 维护这个仓库 | [AGENTS.md](AGENTS.md) 与[产品契约](docs/product-spec.zh-CN.md) |
 | 理解证明和完成标准 | [证据模型](docs/evidence-model.zh-CN.md) |
-| 查看实测行为与当前状态 | [0.3.0 回执](docs/forward-0.3.0-receipt.zh-CN.md)、[0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md)、[0.2.0 回执](docs/forward-0.2.0-receipt.zh-CN.md)、[当前状态](docs/current-state.zh-CN.md) |
+| 查看实测行为与当前状态 | [0.3.0 返修回执](docs/forward-0.3.0-followup.zh-CN.md)、[原 0.3.0 回执](docs/forward-0.3.0-receipt.zh-CN.md)、[0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md)、[0.2.0 回执](docs/forward-0.2.0-receipt.zh-CN.md)、[当前状态](docs/current-state.zh-CN.md) |
 | 查看 v0.2.1 发布 | [发布说明](docs/releases/v0.2.1.zh-CN.md)、[发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) |
 | 查看架构与研究来源 | [架构模型](docs/architecture/README.zh-CN.md)、[研究依据](docs/research-basis.zh-CN.md) |
 

@@ -2,6 +2,10 @@
 
 [English](forward-0.3.0-receipt.md)
 
+2026-09-22 后续说明：review 在本回执所用 search evaluator 中复现了 query-echo 漏检。
+这限制了 evaluator 的反例识别证明，不能据此认定实际修复错误。本回执保留原 payload
+与观察；修正后的 witness 和后续 candidate 证据见[本轮返修证据](forward-0.3.0-followup.zh-CN.md)。
+
 观察日期：2026-09-22。**五个有界合成意图 Audit，以及一组分阶段 Plan / Operate search
 修复通过验收。** 这是 candidate 证据，不是 release、日用安装、自动发现或普遍产品符合性证明。
 

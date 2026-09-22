@@ -18,6 +18,10 @@ import sys
 
 CASES_PATH = Path(__file__).with_name("intent_cases.json")
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import workflow_subjects  # noqa: E402
+
+
 PRODUCT_SPEC = """# Lumen Notes — accepted product specification
 
 Status: accepted by owner on 2026-06-02. This file is the authority for what the
@@ -387,6 +391,8 @@ BASE = {
 }
 
 def selected_files(case: dict) -> dict[str, str]:
+    if case.get("family") == "harbor":
+        return workflow_subjects.files(case["variant"])
     if case.get("family") == "atlas":
         return dict(ATLAS_BASE)
     files = dict(BASE)
@@ -437,6 +443,8 @@ def variants() -> dict[str, dict]:
     # The catalog stores requests; the variant/optional-evidence matrix is
     # evaluator wiring kept here so the subject never reveals it.
     return {
+        **{name: {"family": "harbor", "variant": variant}
+           for name, variant in workflow_subjects.CASES.items()},
         "missing-core-journey": {"variant": "capture-only"},
         "scoped-supersession-evolution": {"variant": "superseded-retention"},
         "deferred-not-missing": {"variant": "capture-only"},

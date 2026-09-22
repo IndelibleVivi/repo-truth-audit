@@ -2,6 +2,12 @@
 
 [简体中文](forward-0.3.0-receipt.zh-CN.md)
 
+Follow-up, 2026-09-22: later review reproduced query-echo acceptance in the
+search evaluator used here. That narrows the evaluator's rejection evidence;
+it does not establish that the observed repair was incorrect. This receipt keeps
+its original payload and observations. See [follow-up evidence](forward-0.3.0-followup.md) for
+the corrected witness and subsequent candidate evidence.
+
 Observed: 2026-09-22. **PASS for five bounded synthetic intent audits and one
 staged Plan / Operate search repair.** This is candidate evidence, not release,
 daily installation, automatic discovery or general product-conformance proof.

@@ -23,7 +23,7 @@ is historical evidence for the stable release, not validation of this candidate.
 the package still does not prove that a running host has discovered it; confirm
 the selected Skill path and behavior in a fresh task.
 
-[Using the Skill](docs/usage.md) · [0.3.0 candidate evidence](docs/forward-0.3.0-receipt.md) ·
+[Using the Skill](docs/usage.md) · [0.3.0 candidate follow-up](docs/forward-0.3.0-followup.md) ·
 [Release procedure and v0.2.0 history](docs/release-preparation.md) · [v0.2.1 notes](docs/releases/v0.2.1.md)
 
 ## What problem it solves
@@ -68,6 +68,10 @@ accepted intent, or when a local diff and a named assertion are insufficient: re
 an unfamiliar or long-idle repository; checking migration or archive readiness;
 reconciling source, package and installed identities; or separating tangled
 responsibilities across real callers, state owners and delivery paths.
+
+The intent route also applies to a new, small, tidy repository. Working features
+may still impose unagreed manual steps on ordinary use. Compare that workflow
+with the actual decisions, including delegated internal choices and later changes.
 
 A functioning repository can still benefit when a concrete change repeatedly
 crosses unrelated modules. Large files or two supported versions alone do not
@@ -236,7 +240,7 @@ For related-tool distinctions, see [the usage guide](docs/usage.md#related-tools
 | Execute the installed Skill | [Canonical SKILL.md](skills/repository-operational-truth-audit/SKILL.md), then its linked references |
 | Maintain this repository | [AGENTS.md](AGENTS.md) and [product spec](docs/product-spec.md) |
 | Understand proof and completion | [Evidence model](docs/evidence-model.md) |
-| Inspect tested behavior and present state | [0.3.0 receipt](docs/forward-0.3.0-receipt.md), [0.2.1 receipt](docs/forward-0.2.1-receipt.md), [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [current state](docs/current-state.md) |
+| Inspect tested behavior and present state | [0.3.0 follow-up](docs/forward-0.3.0-followup.md), [original 0.3.0 receipt](docs/forward-0.3.0-receipt.md), [0.2.1 receipt](docs/forward-0.2.1-receipt.md), [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [current state](docs/current-state.md) |
 | Inspect the v0.2.1 release | [Release notes](docs/releases/v0.2.1.md), [release procedure and v0.2.0 history](docs/release-preparation.md) |
 | Inspect architecture and research | [Architecture model](docs/architecture/README.md), [research basis](docs/research-basis.md) |
 

@@ -151,6 +151,9 @@ class IntentLabSubjectTests(unittest.TestCase):
         self.assertEqual(checker.run_counterexamples(), [])
 
     def repair_search(self, root: Path) -> None:
+        # The paired current Operate request fixes the accepted search output as a
+        # JSON array of the full matching digest records, in digest order. The
+        # legitimate repair reads generated digests and emits exactly that array.
         app = (root / "app.py").read_text()
         app = app.replace('choices=["sync", "digest"]',
                           'choices=["sync", "digest", "search"]')
@@ -160,10 +163,9 @@ class IntentLabSubjectTests(unittest.TestCase):
         app = app.replace('    out = Path("digests")',
                           '    if args.command == "search":\n'
                           '        from search import search\n'
-                          '        digest_messages = [message for path in Path("digests").glob("*.json")\n'
+                          '        digest_messages = [message for path in sorted(Path("digests").glob("*.json"))\n'
                           '                           for message in json.loads(path.read_text())]\n'
-                          '        for message in search(digest_messages, args.query):\n'
-                          '            print(message)\n'
+                          '        print(json.dumps(search(digest_messages, args.query), ensure_ascii=False))\n'
                           '        return 0\n'
                           '    out = Path("digests")')
         (root / "app.py").write_text(app)
@@ -172,11 +174,10 @@ class IntentLabSubjectTests(unittest.TestCase):
     def test_operate_witness_accepts_repair_without_mutating_candidate(self) -> None:
         root = self.seed("conversation-only-accepted-intent")
         self.repair_search(root)
-        (root / "mail.json").write_text('["owner before-image"]')
+        (root / "mail.json").write_text(json.dumps(["owner before-image"]))
         # An authorized explanatory document is not itself an intent rewrite.
         (root / "docs/product-spec.md").write_text("Derived guide; supplied thread remains authority.")
         before = {p.relative_to(root): p.read_bytes() for p in root.rglob("*") if p.is_file()}
-        checker.assert_operate_repair(root)
         checker.assert_operate_repair(root)
         after = {p.relative_to(root): p.read_bytes() for p in root.rglob("*") if p.is_file()}
         self.assertEqual(before, after)
@@ -197,7 +198,9 @@ class IntentLabSubjectTests(unittest.TestCase):
         app = root / "app.py"
         app.write_text(app.read_text().replace("search(digest_messages, args.query)",
                                                "search(messages, args.query)"))
-        with self.assertRaisesRegex(AssertionError, "bypass digests"):
+        # The store-bypass search surfaces the undigested message that shares the
+        # query token, so the exact-record expectation rejects it.
+        with self.assertRaisesRegex(AssertionError, "exact matching digest records"):
             checker.assert_operate_repair(root)
 
     def test_operate_witness_rejects_rewritten_adoption_evidence(self) -> None:
@@ -207,8 +210,51 @@ class IntentLabSubjectTests(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "preserved"):
             checker.assert_operate_repair(root)
 
+    def test_operate_witness_rejects_search_that_mutates_on_first_query(self) -> None:
+        root = self.seed("conversation-only-accepted-intent")
+        self.repair_search(root)
+        app = root / "app.py"
+        app.write_text(app.read_text().replace(
+            '        print(json.dumps(search(digest_messages, args.query), ensure_ascii=False))',
+            '        store.write_text("[]")\n'
+            '        print(json.dumps(search(digest_messages, args.query), ensure_ascii=False))'))
+        with self.assertRaisesRegex(AssertionError, "preserve store and digest bytes"):
+            checker.assert_operate_repair(root)
+
+    def fake_search(self, root: Path, body: str) -> None:
+        app = (root / "app.py").read_text()
+        app = app.replace('choices=["sync", "digest"]',
+                          'choices=["sync", "digest", "search"]')
+        app = app.replace('    args = parser.parse_args()',
+                          '    parser.add_argument("--query", default="")\n'
+                          '    args = parser.parse_args()')
+        app = app.replace('    out = Path("digests")',
+                          '    if args.command == "search":\n'
+                          f'{body}'
+                          '        return 0\n'
+                          '    out = Path("digests")')
+        (root / "app.py").write_text(app)
+
+    def test_operate_witness_rejects_plain_query_echo(self) -> None:
+        # REGRESSION: a fake search that only prints its query and returns 0 must
+        # not satisfy the witness. Earlier substring/stdout checks accepted a
+        # `print(args.query); return 0` search against unmodified mail/digest, so
+        # the witness now requires the exact full matching digest records.
+        root = self.seed("conversation-only-accepted-intent")
+        self.fake_search(root, '        print(args.query)\n')
+        with self.assertRaisesRegex(AssertionError, "echoed query"):
+            checker.assert_operate_repair(root)
+
+    def test_operate_witness_rejects_json_array_query_echo(self) -> None:
+        # A syntactically-valid JSON echo, `print(json.dumps([args.query]))`, is
+        # still not the exact full record array and must be rejected.
+        root = self.seed("conversation-only-accepted-intent")
+        self.fake_search(root, '        print(json.dumps([args.query]))\n')
+        with self.assertRaisesRegex(AssertionError, "exact matching digest records"):
+            checker.assert_operate_repair(root)
+
     def test_check_cli_reports_success_without_model_calls(self) -> None:
-        # This CLI runs all eight subjects, each with several bounded probes.
+        # This CLI runs all catalog subjects, each with several bounded probes.
         result = run([sys.executable, str(LAB / "check_intent_subject.py"), "--json"],
                      LAB, timeout=120)
         self.assertEqual(result.returncode, 0, result.stderr)

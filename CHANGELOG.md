@@ -4,6 +4,11 @@
 
 ## 0.3.0 — Unreleased
 
+- Harden search acceptance against query echo with complete-record witnesses;
+  exercise natural partial assent, delegated internals and feature-complete
+  workflows that add unsupported routine user work, including an authorized contrast.
+- Advertise operational-truth and product-intent entry routes independently,
+  including new small repositories; retain ordinary bugfix/review exclusions.
 - Reconstruct accepted product intent from scoped specifications, decisions and
   development conversations, preserving users/jobs, complete journeys, constraints,
   non-goals, rationale, supersession and explicit deferral.

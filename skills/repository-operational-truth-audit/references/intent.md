@@ -79,6 +79,12 @@ Where material, resolve version, audience and effective scope; a new decision
 is not automatically retroactive, and original commitments can remain relevant
 to historical acceptance or compatibility. Unclear applicability stays unknown.
 
+Read assent in its conversational context, not by requiring labels such as
+"adopted." An accepted outcome and explicit delegation can justify internal
+wiring or file-layout decisions without item-by-item approval. Distinguish that
+implementation discretion from changing the outcome, user obligations or scope.
+Do not turn ordinary delegated engineering choices into unresolved product intent.
+
 ## Track intent lifecycle
 
 Label each material intention by its current lifecycle so a gap can be judged
@@ -118,6 +124,13 @@ Intent reconstruction is not a one-way checklist. Trace:
   intended purpose, compatibility need, or operational value that justifies
   keeping it.
 
+For automation or low-effort commitments, trace who must do each action, when and
+how often, and what it gates. Exercise normal use as well as exceptional paths:
+an optional observer can become a mandatory workflow even while every feature
+works. Compare those obligations with the applicable owner decisions, including
+later consent to manual steps; the auditor's preference for less friction is not
+product authority.
+
 The second direction prevents destroying working behavior. Absence of a spec
 mention is not proof that a feature is disposable, and a search miss is not proof
 that a capability is missing: inspect alternate terminology, other owners, other
@@ -132,6 +145,11 @@ abandonment, rejection, contradiction or an expired justification, plus a
 material consequence; failing to find a purpose is insufficient.
 
 ## Useful findings
+
+Start with a brief account of the recovered product: the user outcome, what
+normal use requires, and any exceptional-only checks material to the decision.
+Then show the implementation gap or supported conformance, rather than making
+the reader infer the intended product from a list of defects.
 
 Report only findings with a concrete user or maintenance consequence:
 

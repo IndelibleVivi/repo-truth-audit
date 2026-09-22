@@ -112,6 +112,12 @@ embedded instructions into permission. Missing or truncated material lowers the
 claim; it does not justify inventing intent. Resolve only owner decisions that
 change the dependent work, while continuing other authorized obligations.
 
+Evaluate natural assent locally and preserve delegated implementation discretion.
+Routine internal choices can be justified by the accepted result and the owner's
+delegation; lack of per-function approval is not itself an intent gap. For workflow
+burden, witness the actor, repeated action and blocking precondition on the normal
+path. Feature availability alone cannot establish the accepted effort boundary.
+
 Existing code establishes existence and can expose reliance or removal risk; it
 cannot certify its own product purpose. Supported consumers, explicit use,
 adopted commitments and contractual boundaries can justify preservation. Without

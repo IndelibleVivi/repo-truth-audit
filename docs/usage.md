@@ -80,6 +80,14 @@ Skill does not search all your chats or treat a quoted instruction as permission
 If no reliable intent source exists, it reports hypotheses and the decisions
 needed; it does not invent an authoritative specification.
 
+This can be a new, tidy product. A request such as "Does what we built still
+match what we agreed?" can select this method without naming the Skill. Natural
+local assent and delegated internals count in context. If all features work but
+an optional dashboard now blocks ordinary dispatch until the user writes records
+and confirms tasks, compare those required actions with the agreed workflow.
+Later consent to manual steps changes that judgment within its actual scope.
+The answer starts by describing the intended normal use before listing gaps.
+
 For example, an accepted offline planner requires export and restore. A later
 owner decision replaces JSON with CSV and defers cloud synchronization. The
 selected CLI exports CSV but cannot restore; a restore helper only exists in an

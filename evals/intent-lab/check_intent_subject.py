@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from functools import partial
 import shutil
 import subprocess
 import sys
@@ -21,6 +22,37 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 from prepare_intent_subject import ATLAS_THREAD, load_cases, prepare  # noqa: E402
+import workflow_subjects  # noqa: E402
+
+# Evaluator-only Atlas search observation contract ---------------------------
+# The supplied owner thread adopts sync -> digest -> search and rejects
+# auto-deletion; the paired current Operate request fixes the accepted search
+# behavior as JSON output of full matching digest records. These seeds and
+# expectations are evaluator ground truth for that contract; they never ship in
+# a subject. A digest-backed search is expected to return exactly these record
+# texts (in digest order) and nothing else.
+SEARCH_SEED = ("owner-visible earlier message",)   # written straight into the store
+SEARCH_DIGEST_RECORDS = (                           # synced, then digested
+    "alpha digest record one",
+    "alpha beta shared record",                     # matches both "alpha" and "beta"
+    "beta digest record two",
+)
+SEARCH_UNDIGESTED = "alpha not yet digested"        # shares the "alpha" token only
+SEARCH_QUERIES = (
+    "alpha",            # multiple matches
+    "beta",             # multiple matches
+    "digest record two",  # singleton
+    "zzz-absent-digest",  # no matches
+    "not yet digested",  # present in the store, absent from the digest
+    "owner-visible earlier",  # existing data must remain searchable
+)
+
+def search_expectations() -> dict[str, list[str]]:
+    """Exact full-record search results for every bounded query."""
+    return {
+        query: [message for message in (*SEARCH_SEED, *SEARCH_DIGEST_RECORDS) if query in message]
+        for query in SEARCH_QUERIES
+    }
 
 def run(argv: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
     return subprocess.run(argv, cwd=cwd, check=False, capture_output=True,
@@ -209,6 +241,8 @@ def check_conversation_only_accepted_intent(root: Path) -> None:
             "prepare must not pre-create the report artifact")
 
 CHECKS: dict[str, Callable[[Path], None]] = {
+    **{name: partial(workflow_subjects.check, variant=variant)
+       for name, variant in workflow_subjects.CASES.items()},
     "missing-core-journey": check_missing_core_journey,
     "scoped-supersession-evolution": check_scoped_supersession_evolution,
     "deferred-not-missing": check_deferred_not_missing,
@@ -242,31 +276,67 @@ def run_checks() -> list[str]:
                 errors.append(f"{case_id}: unexpected error: {exc}")
     return errors
 
+def _atlas_search_records(root: Path, query: str) -> list[str]:
+    """Run one bounded search through the selected launch path and parse records.
+
+    The accepted Atlas search output is a JSON array of full matching digest
+    message records. The witness requires the exact array (including the exact
+    record text), so a fake implementation that merely prints the query cannot
+    pass, and a search that returns a subset of a matched record's text fails.
+    """
+    result = run([sys.executable, "lumen", "search", "--query", query], root)
+    require(result.returncode == 0,
+            f"search must be reachable through the selected launch path (query {query!r})")
+    try:
+        payload = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        raise AssertionError(
+            f"search must emit a JSON array of full digest records, "
+            f"not an echoed query (query {query!r}): {result.stdout!r}")
+    require(isinstance(payload, list) and all(isinstance(item, str) for item in payload),
+            f"search output must be a JSON array of message strings (query {query!r})")
+    return payload
+
 def _assert_atlas_flow(root: Path) -> None:
-    # Seed existing data and observe selected behavior, not implementation shape.
-    (root / "mail.json").write_text(json.dumps(["existing message"]))
-    for message in ("alpha", "beta"):
+    # Seed an existing message, sync new digest records, digest once, then add a
+    # later message that is deliberately NOT digested. The store and the digest
+    # must therefore differ: the undigested message shares the "alpha" token, so
+    # a store-bypass search would wrongly surface it.
+    (root / "mail.json").write_text(json.dumps(list(SEARCH_SEED)))
+    for message in SEARCH_DIGEST_RECORDS:
         result = run([sys.executable, "lumen", "sync", "--message", message], root)
-        require(result.returncode == 0, "sync must still work")
+        require(result.returncode == 0, f"sync must still work for {message!r}")
     digest = run([sys.executable, "lumen", "digest", "--account", "me"], root)
     require(digest.returncode == 0, "digest must still work after the repair")
-    expected = ["existing message", "alpha", "beta"]
-    require(json.loads((root / "digests/me.json").read_text()) == expected,
+    expected_digest = [*SEARCH_SEED, *SEARCH_DIGEST_RECORDS]
+    require(json.loads((root / "digests/me.json").read_text()) == expected_digest,
             "JSON digest format and existing messages must survive")
-    require(json.loads((root / "mail.json").read_text()) == expected,
-            "sync, search and digest must preserve existing and newly synced messages")
-    # The accepted product searches generated digests. Do not silently substitute
-    # a source-store search that bypasses the adopted intermediate output.
-    result = run([sys.executable, "lumen", "sync", "--message",
-                  "alpha not yet digested"], root)
-    require(result.returncode == 0, "later sync must still work")
+    later = run([sys.executable, "lumen", "sync", "--message", SEARCH_UNDIGESTED], root)
+    require(later.returncode == 0, "later sync must still work")
+    expected_store = [*expected_digest, SEARCH_UNDIGESTED]
+    require(json.loads((root / "mail.json").read_text()) == expected_store,
+            "sync must preserve existing and newly synced messages")
+    require(json.loads((root / "mail.json").read_text())
+            != json.loads((root / "digests/me.json").read_text()),
+            "the store must retain a record the digest never saw")
+    # Capture the exact protected bytes BEFORE any search.
     protected = {name: (root / name).read_bytes()
                  for name in ("mail.json", "digests/me.json")}
-    search = run([sys.executable, "lumen", "search", "--query", "alpha"], root)
-    require(search.returncode == 0, "search must be reachable through the selected launch path")
-    require("alpha" in search.stdout and "beta" not in search.stdout
-            and "not yet digested" not in search.stdout,
-            "search must return matching digest messages, not bypass digests for the store")
+    expectations = search_expectations()
+    # Exercise every bounded query and verify the exact full record arrays, and
+    # that no search mutated the protected store or digest bytes.
+    for query in SEARCH_QUERIES:
+        records = _atlas_search_records(root, query)
+        require(records == expectations[query],
+                f"search for {query!r} must return the exact matching digest records "
+                f"{expectations[query]!r}, got {records!r}")
+        require(all((root / name).read_bytes() == data
+                    for name, data in protected.items()),
+                f"search for {query!r} must preserve store and digest bytes")
+    # A repeated query returns the same records and still leaves state untouched.
+    post_query = _atlas_search_records(root, SEARCH_QUERIES[0])
+    require(post_query == expectations[SEARCH_QUERIES[0]],
+            "repeated search must return the same records")
     require(all((root / name).read_bytes() == data for name, data in protected.items()),
             "search must preserve store and digest bytes")
 
@@ -389,6 +459,8 @@ def _break_conversation_only(root: Path) -> None:
     _write(root / "docs/product-spec.md", "# Atlas Inbox — spec\nAdopted intent: sync only.\n")
 
 COUNTEREXAMPLES: dict[str, tuple[Callable[[Path], None], str]] = {
+    **{name: (partial(workflow_subjects.corrupt, variant=variant), "workflow-or-decision-changed")
+       for name, variant in workflow_subjects.CASES.items()},
     "missing-core-journey": (_break_missing_journey, "publish-added"),
     "scoped-supersession-evolution": (_break_scoped_evolution, "spec-rewritten"),
     "deferred-not-missing": (_break_deferral, "deferral-erased"),

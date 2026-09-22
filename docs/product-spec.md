@@ -13,8 +13,10 @@ Skill name: repository-operational-truth-audit
 
 ## 1. Product outcome
 
-Repo Truth Audit recovers the current operational truth of a long-evolved
-repository for a concrete owner decision. When the user explicitly asks for a
+Repo Truth Audit recovers a repository's current operational truth or compares
+accepted product intent with actual behavior for a concrete owner decision.
+Intent comparison also applies to new, small and structurally clean repositories.
+When the user explicitly asks for a
 structural or product-convergence change, the same product can continue from diagnosis through a finite
 plan, authorized implementation, recovery-aware checkpoints, and verified
 completion. Version 0.3.0 also reconstructs the intended product and compares it
@@ -171,6 +173,12 @@ effective scope; preserve original intent as historical/compatibility evidence.
 A newer decision is not automatically retroactive. Ambiguous adoption or
 applicability remains unresolved.
 
+Natural assent need not use formal adoption labels. Interpret its local context,
+including partial approval, trial scope and delegated implementation choices.
+An accepted outcome and discretion over internals can support wiring/file-layout
+decisions without separate approval of every detail; neither permits changing
+the outcome or adding user obligations.
+
 ### ROT-22 — Compare in both directions
 
 Follow accepted intent -> observable acceptance -> actual selected journey,
@@ -191,6 +199,11 @@ implementation and proof layer, discrepancy, user consequence, counterevidence
 or uncertainty, bounded disposition, and an acceptance witness. A compact table
 is optional; no fixed report schema or percentage completeness score is required.
 A clean intent comparison is a valid bounded result.
+
+For workflow constraints, compare actors, required actions, timing/frequency and
+the gates they must pass. Complete features can still impose unauthorized routine
+work when an optional observer becomes mandatory. A later owner decision can
+legitimately change those obligations within its scope.
 
 ### ROT-23 — Converge on accepted intent
 
@@ -336,8 +349,9 @@ boundary by itself.
 
 ## 6. Output contract
 
-For an intent comparison, lead with the reconstructed product, its authority
-and coverage limits, then material intention-to-reality gaps and rejected false
+For an intent comparison, lead with the reconstructed product, what normal use
+requires and which checks are exceptional, its authority and coverage limits,
+then material intention-to-reality gaps and rejected false
 positives. Separate current commitments from future possibilities.
 
 Audit leads with the decision answer and includes only material topology,
@@ -389,6 +403,11 @@ evidence. Evaluate actual findings and selected-path behavior, including read-on
 boundaries and authorized convergence; keep expected answers out of target inputs.
 Document the observed model/settings, scope and limits. Deterministic fixture
 success proves the evaluator, not model understanding.
+
+Candidate follow-up covers natural partial assent and delegated internals,
+feature-complete workflow burden and a later-authorized contrast. Search repair
+witnesses must verify complete matching records, not merely an echoed query.
+Selection checks using a supplied candidate catalog are not host discovery tests.
 
 ## 8. Version, installation, and publication
 

@@ -68,15 +68,15 @@ def spec(root: Path) -> str:
 def adr(root: Path) -> str:
     return (root / "docs/decisions/ADR-007-retire-published-drafts.md").read_text(encoding="utf-8")
 
-def observe_journey(root: Path) -> dict[str, Any]:
+def observe_journey(root: Path, bodies: tuple[str, str] = ("alpha", "beta")) -> dict[str, Any]:
     """Drive the documented launch path through capture -> resume -> publish.
 
     The launch path selects the actual shipped entry via launch.json, so the
     observation reflects the selected artifact rather than a convenient source
     module.
     """
-    add = run([sys.executable, "lumen", "add", "--title", "A", "--body", "alpha"], root)
-    add_two = run([sys.executable, "lumen", "add", "--title", "B", "--body", "beta"], root)
+    add = run([sys.executable, "lumen", "add", "--title", "A", "--body", bodies[0]], root)
+    add_two = run([sys.executable, "lumen", "add", "--title", "B", "--body", bodies[1]], root)
     resume = run([sys.executable, "lumen", "list"], root)
     read = run([sys.executable, "lumen", "read", "--id", "n1"], root)
     publish = run([sys.executable, "lumen", "publish", "--id", "n1"], root)
@@ -86,7 +86,7 @@ def observe_journey(root: Path) -> dict[str, Any]:
         "add_ok": add.returncode == 0 and "added n1" in add.stdout,
         "add_two_ok": add_two.returncode == 0 and "added n2" in add_two.stdout,
         "resume_ok": resume.returncode == 0 and "n1" in resume.stdout,
-        "read_ok": read.returncode == 0 and read.stdout.strip() == "n1\tA\talpha",
+        "read_ok": read.returncode == 0 and read.stdout.strip() == f"n1\tA\t{bodies[0]}",
         "publish_ok": publish.returncode == 0 and "published n1" in publish.stdout,
         "brief_written": brief,
         "open_after_publish": open_after.stdout.strip(),
@@ -112,11 +112,22 @@ def check_scoped_supersession_evolution(root: Path) -> None:
     require("supersedes only" in adr(root), "ADR lost its scoped supersession language")
     require("Every note is kept (no automatic deletion)." in spec(root),
             "spec historical retention text should remain, not be rewritten")
-    observed = observe_journey(root)
+    bodies = ("Sample Q4 moved to cabinet W9.", "Sample M2 moved to cabinet V8.")
+    observed = observe_journey(root, bodies)
     require(observed["publish_ok"] and observed["brief_written"], "superseding subject must publish")
     require(observed["read_ok"], "resume read-by-id must work in the clean subject")
     require(observed["open_after_publish"] == "n2\tB",
             f"retirement behavior drifted: {observed['open_after_publish']!r}")
+    # Check the surviving draft before publishing it; each brief must carry its
+    # own observation, while allowing Markdown framing and whitespace changes.
+    publish_second = run([sys.executable, "lumen", "publish", "--id", "n2"], root)
+    require(publish_second.returncode == 0, "second draft must publish")
+    for note_id, expected, other in (("n1", bodies[0], bodies[1]), ("n2", bodies[1], bodies[0])):
+        path = root / "briefs" / f"{note_id}.md"
+        require(path.is_file(), f"missing brief for {note_id}")
+        content = " ".join(path.read_text(encoding="utf-8").split())
+        require(expected in content and other not in content,
+                f"published brief {note_id} must carry its own captured observation")
     require("public anonymous boards" in spec(root).lower(), "rejected idea should stay recorded")
 
 def check_deferred_not_missing(root: Path) -> None:

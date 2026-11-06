@@ -98,6 +98,28 @@ class IntentLabSubjectTests(unittest.TestCase):
         # Only the superseded scope changed: a draft survives publishing.
         self.assertEqual(observed["open_after_publish"], "n2\tB")
 
+    def test_published_content_tracks_the_selected_note(self) -> None:
+        source_write = 'write_text(note["body"], encoding="utf-8")'
+        for label, expression, valid in (
+            ("empty", '""', False),
+            ("constant", '"Sample Q4 moved to cabinet W9."', False),
+            ("both", '"Sample Q4 moved to cabinet W9. Sample M2 moved to cabinet V8."', False),
+            ("formatted", '"# Brief\\n\\n" + note["body"] + "\\n"', True),
+        ):
+            with self.subTest(label=label):
+                root = self.base / label
+                subject.prepare("scoped-supersession-evolution", root)
+                entry = root / checker.selected_entry(root)
+                code = entry.read_text(encoding="utf-8")
+                self.assertEqual(code.count(source_write), 1)
+                entry.write_text(code.replace(source_write, f'write_text({expression}, encoding="utf-8")'),
+                                 encoding="utf-8")
+                if valid:
+                    checker.check_scoped_supersession_evolution(root)
+                else:
+                    with self.assertRaisesRegex(AssertionError, "own captured observation"):
+                        checker.check_scoped_supersession_evolution(root)
+
     def test_retention_supersession_does_not_change_draft_retention(self) -> None:
         # Counterexample: if the subject had retired every note, this would fail.
         root = self.seed("scoped-supersession-evolution")

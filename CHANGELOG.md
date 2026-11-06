@@ -2,6 +2,12 @@
 
 [简体中文](CHANGELOG.zh-CN.md)
 
+## Unreleased
+
+- Check the content of both selected Lumen publication artifacts, rejecting empty,
+  constant or mixed-note output while accepting valid Markdown framing. Preserve
+  the unpublished-draft witness. This strengthens the evaluator, not model evidence.
+
 ## 0.3.0 — 2026-09-22
 
 - Reconstruct accepted product intent from scoped specifications, decisions and

@@ -2,10 +2,11 @@
 
 [简体中文](product-spec.zh-CN.md)
 
-Status: **0.3.0 PUBLISHED — 2026-09-22; daily copy unchanged**
+Status: **0.3.0 source with unreleased task-effectiveness follow-up — 2026-11-07; public tag remains v0.3.0**
 Expanded scope accepted by owner: 2026-09-17
 Method-selection refinements accepted for implementation: 2026-09-20
 Product-intent reconstruction accepted for implementation: 2026-09-22
+Task-effectiveness follow-up accepted for implementation: 2026-11-07
 Source version: 0.3.0
 Latest public release: v0.3.0
 Product form: standalone repository + standalone Codex Skill
@@ -15,7 +16,10 @@ Skill name: repository-operational-truth-audit
 
 Repo Truth Audit recovers a repository's current operational truth or compares
 accepted product intent with actual behavior for a concrete owner decision.
-Intent comparison also applies to new, small and structurally clean repositories.
+Intent comparison and a concrete product-task effectiveness question also apply
+to new, small and structurally clean repositories. An observed task limitation
+can be established without a recorded historical quality threshold; keep the
+current result, adopted commitments and proposed improvement separate.
 When the user explicitly asks for a
 structural or product-convergence change, the same product can continue from diagnosis through a finite
 plan, authorized implementation, recovery-aware checkpoints, and verified
@@ -166,6 +170,14 @@ When authoritative intent is absent, state grounded hypotheses and ask only for
 decisions affecting dependent repairs. Continue independent authorized work.
 Operational-only questions do not require product-history reconstruction.
 
+Specifications, tests and documentation can inherit one untested interpretation.
+At a consequential choice, seek task evidence not derived from it, while retaining
+legitimate later evolution. Inspect the next consumer's actual artifact and
+separate professional judgment or chosen review from reconstruction of missing
+system information. A required distinction may have been lost at a handoff or
+never represented. Replay or vary a boundary only within existing authorization
+and adequate host controls; otherwise state the missing observation.
+
 Adoption is proposition-scoped: accepting a patch or observable outcome does
 not automatically accept nearby assistant rationale, inferred journeys or future
 recommendations. When material, identify the decision's version, audience and
@@ -194,9 +206,12 @@ evolution, explicit deferral, intentional multiplicity, harmless residue and
 missing observations. A helper disconnected from the user flow is partial
 implementation; unobserved production behavior is not proof of absence.
 
-Each material gap retains its intent source and adoption/lifecycle, observed
-implementation and proof layer, discrepancy, user consequence, counterevidence
-or uncertainty, bounded disposition, and an acceptance witness. A compact table
+Each commitment-based gap retains its intent source and adoption/lifecycle.
+For a current task limitation, retain the concrete task, conditions and observed
+result; support a historical breach separately or leave it unknown. Both retain
+the selected implementation/proof layer, user consequence, counterevidence,
+bounded disposition and acceptance witness. Judge repair depth separately from
+affected scope; the correction must suffice for the complete agreed outcome. A compact table
 is optional; no fixed report schema or percentage completeness score is required.
 A clean intent comparison is a valid bounded result.
 
@@ -218,6 +233,10 @@ Behavior witnesses express the adopted user outcome; Usefulness considers that
 outcome as well as development friction. Structure and Delivery apply where
 material. Green implementation tests cannot close a missing user workflow.
 Repair priority follows user impact and dependencies, not ease of editing.
+A current accepted finite task can define convergence without inventing a past
+promise. Resolve inspectable uncertainty first; where an answer changes a
+consequential choice, show its task-level consequences and ask the smallest
+deciding question. Use existing delegation for internal implementation choices.
 
 ## 4. Plan and Operate contract
 
@@ -354,6 +373,10 @@ requires and which checks are exceptional, its authority and coverage limits,
 then material intention-to-reality gaps and rejected false
 positives. Separate current commitments from future possibilities.
 
+For a concrete task observation, lead with the selected user/task, conditions,
+actual result and mechanism; support any historical breach separately. A clean
+result names the task or intents checked and the observation boundary.
+
 Audit leads with the decision answer and includes only material topology,
 findings/unknowns, rejected non-findings, proof limits, overhead receipt, and
 end re-pin.
@@ -412,8 +435,9 @@ Selection checks using a supplied candidate catalog are not host discovery tests
 ## 8. Version, installation, and publication
 
 VERSION identifies the current source version and follows stable semantic
-version syntax. Source `0.3.0` and the latest verified public release `v0.3.0`
-share the accepted nine-file Skill payload.
+version syntax. The published `v0.3.0` tag preserves its frozen nine-file payload. Main retains
+source version `0.3.0` with an unreleased task-effectiveness follow-up; its changed
+payload must not be described as identical to the public tag.
 README and current-state report source, validation, installation and publication
 separately. The documented install reference is pinned to the verified public
 `v0.3.0` tag; its disposable install matches the accepted payload.

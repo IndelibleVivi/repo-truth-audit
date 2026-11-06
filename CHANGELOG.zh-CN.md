@@ -4,6 +4,11 @@
 
 ## 未发布
 
+- 调查具体任务为何做不成，不虚构历史承诺；分别判断观察局限、已采纳意图与提案，保留
+  合理用途、专业判断及显式实施权限。
+- 新增 Cedar 匹配用途样本和 packet-only 修复见证。受控 baseline/candidate 均成功，
+  不宣称新增模型优势，见[后续回执](docs/task-effectiveness-followup.zh-CN.md)。
+
 - 检查两份经所选入口发布的 Lumen 成品正文，拒绝空白、固定内容与混入另一条笔记的输出，
   接受合法 Markdown 包装，并保留未发布草稿见证。这是 evaluator 加固，不是模型表现证据。
 

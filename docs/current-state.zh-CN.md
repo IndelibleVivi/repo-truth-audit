@@ -2,9 +2,25 @@
 
 [English](current-state.md)
 
-最近核对：2026-09-22
+最近核对：2026-11-07
 
-## 产品与源码
+## 未发布的 main 改进
+
+Main 保留 source 版本 `0.3.0` 和九文件载荷，新增尚未发布的具体任务有效性审查：分别判断
+当前任务局限、历史承诺与改进提案，保留合理用途和必要专业判断，沿用 Audit / Plan / Operate
+边界。Lumen 发布判据现检查正文绑定；Cedar 新增修订/摘要两用途对照及源码/重建产物修复验收。
+
+稳定安装仍固定到冻结的公开 `v0.3.0` tag，不包含这次 main 改进。本轮不更新日用安装、tag
+或 Release。当前检查和 fresh 模型观察与下方带日期的发布基线分开记录。
+
+Fresh 本地检查：128 个 repository tests、repository/architecture/Skill validation、
+六项 fixture self-tests、十三项 intent truth 和十三项破坏检查。四个 fresh native 审查与
+两次配对实施续做均支持所选任务，两份修复均通过独立 source/artifact 检查。不宣称新增优势
+或自然发现，见[任务有效性回执](task-effectiveness-followup.zh-CN.md)。可选 Field Lab v2
+无法运行 legacy-v1 pack，未进行迁移。
+
+## 已发布 v0.3.0 基线（2026-09-22）
+
 
 Source `0.3.0` **已作为 v0.3.0 发布**。它加入已接受产品意图还原，以及与仓库所选行为的
 双向对照。仍使用 Audit / Plan / Operate，不增加引擎、强制产品历史扫描或隐含修复权限；
@@ -15,7 +31,7 @@ installed comparison 和 receipt 共享这份定义。架构保留七区域、31
 candidate trace 和 acceptance 现在包括意图生命周期、产品差距与合理演进。双语图与说明
 同步反映 0.3.0 范围。
 
-## 已冻结的发布载荷与证据
+## 已冻结的发布载荷与证据（2026-09-22）
 
 Source 已完成本轮返修：完整记录 search witness 拒绝 query echo；自然局部采纳、内部委托
 与例行人工步骤纳入方法；frontmatter 并列运行事实和产品意图入口，覆盖新建小仓库。
@@ -40,10 +56,10 @@ fixture self-tests、operation lab、十一项意图 ground-truth 与十一项�
 安装 receipt 如实记录 dirty source。架构拓扑与双语 SVG 本轮未改变；此前视觉验收属于
 原回执，不作为本轮新验收。Source 交付、日用安装、release 与 host discovery 分开记录。
 
-## 公开发布与安装
+## 公开发布与安装（最后核验于 2026-09-22）
 
 最新已核验公开版为 [v0.3.0](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.3.0)，
-于 2026-09-22 14:35:42 UTC 发布，回读为 Latest、非 draft、非 prerelease。仓库保持 public，
+于 2026-09-22 14:35:42 UTC 发布，回读为 Latest、非 draft、非 prerelease。当时仓库为 public，
 默认分支为 `main`。
 
 - 发布 commit：`6de6dae92f17efbef3cf8ad4e9e98eb6bdd5a61b`。
@@ -56,7 +72,8 @@ fixture self-tests、operation lab、十一项意图 ground-truth 与十一项�
 - README 稳定安装固定到 `v0.3.0`。日用 0.2.1 未升级，八文件 digest 保持
   `e578adf48a39a00cf68c10e254e04f3336f8f104fb7282f43d78c45c82493f0b`。
 
-Tag 保留发布前文档快照；main 回写已核验的发布状态，不移动 tag、不改变 payload。
+Tag 保留发布前文档快照；发布后续只回写核验状态，没有移动 tag 或改变 tag 载荷。
+上方未发布的 main 改进改变了当前 source 字节。
 详见 [v0.3.0 发布说明](releases/v0.3.0.zh-CN.md)。
 
 旧版 [v0.2.1](releases/v0.2.1.zh-CN.md) 于 2026-09-20 发布。Annotated tag

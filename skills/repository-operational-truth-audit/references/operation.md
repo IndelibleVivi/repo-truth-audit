@@ -15,9 +15,10 @@ owners; a selected legacy path shadows a replacement; shared state prevents
 separation; a distribution runs different code from the tested implementation.
 File length, old names and the existence of two versions do not prove a defect.
 When the pressure is product convergence — an accepted intention missing from the
-live product, a broken journey, or semantic drift — read [intent](intent.md) and
-keep the end state finite: converge the agreed intention rather than redesign the
-whole product.
+live product, a broken journey, or a concrete user task the product cannot support
+— read [intent](intent.md). A current accepted finite outcome can define the
+change without establishing a historical breach. Keep the end state finite and
+preserve valid existing uses.
 
 Make the end state testable. “Separate formatting from durable writes while
 preserving every supported CLI entry, then retire the old writer from current

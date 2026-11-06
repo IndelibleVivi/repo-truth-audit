@@ -23,6 +23,7 @@ sys.path.insert(0, str(HERE))
 
 from prepare_intent_subject import ATLAS_THREAD, load_cases, prepare  # noqa: E402
 import workflow_subjects  # noqa: E402
+import task_subjects  # noqa: E402
 
 # Evaluator-only Atlas search observation contract ---------------------------
 # The supplied owner thread adopts sync -> digest -> search and rejects
@@ -252,6 +253,8 @@ def check_conversation_only_accepted_intent(root: Path) -> None:
             "prepare must not pre-create the report artifact")
 
 CHECKS: dict[str, Callable[[Path], None]] = {
+    **{name: partial(task_subjects.check, variant=variant)
+       for name, variant in task_subjects.CASES.items()},
     **{name: partial(workflow_subjects.check, variant=variant)
        for name, variant in workflow_subjects.CASES.items()},
     "missing-core-journey": check_missing_core_journey,
@@ -378,6 +381,7 @@ def assert_operate_repair(root: Path) -> None:
         _assert_atlas_flow(artifact)
 
 OPERATE_ASSERTIONS: dict[str, Callable[[Path], None]] = {
+    "task-export-handoff": task_subjects.assert_repair,
     "conversation-only-accepted-intent": assert_operate_repair,
 }
 
@@ -470,6 +474,8 @@ def _break_conversation_only(root: Path) -> None:
     _write(root / "docs/product-spec.md", "# Atlas Inbox — spec\nAdopted intent: sync only.\n")
 
 COUNTEREXAMPLES: dict[str, tuple[Callable[[Path], None], str]] = {
+    **{name: (partial(task_subjects.corrupt, variant=variant), "current-use-changed")
+       for name, variant in task_subjects.CASES.items()},
     **{name: (partial(workflow_subjects.corrupt, variant=variant), "workflow-or-decision-changed")
        for name, variant in workflow_subjects.CASES.items()},
     "missing-core-journey": (_break_missing_journey, "publish-added"),

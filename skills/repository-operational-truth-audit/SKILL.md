@@ -1,6 +1,6 @@
 ---
 name: repository-operational-truth-audit
-description: "Reconstruct current operational truth for repository re-entry, migration, consolidation, retirement, unclear ownership or cross-surface structural change; or compare accepted product intent with current behavior, even in a new, small or structurally clean repository. Use when the question is whether the product still does what was agreed, including changed user effort or required workflow steps despite working features. Audit by default; carry a finite structural or product-convergence change through implementation and verification only when requested. Do not use for code review, one-claim verification, isolated known-bug repair, generic repo hygiene, wishlisting, or a standalone license/security/compliance scan."
+description: "Reconstruct current operational truth for repository re-entry, migration, consolidation, retirement, unclear ownership or cross-surface structural change; or compare accepted product intent with current behavior, even in a new, small or structurally clean repository. Use when the question is whether the product serves a concrete user task or still does what was agreed, including ineffective or burdensome workflows despite working features. Audit by default; carry a finite structural or product-convergence change through implementation and verification only when requested. Do not use for code review, one-claim verification, isolated known-bug repair, generic repo hygiene, wishlisting, or a standalone license/security/compliance scan."
 ---
 
 # Repo Truth Audit — evidence-led repository change
@@ -23,9 +23,9 @@ scope; a Skill, report, or stored run record cannot grant that scope.
   perform the authorized work through acceptance. The audit phase is part of
   this workflow, not its final output.
 
-When the decision is whether what the repository does still matches what it was
-accepted to do — product intent, a missing or broken journey, or documentation
-that claims intent the behavior no longer satisfies — also read
+When a concrete user task remains ineffective despite working features, or the
+decision concerns accepted product intent, a missing journey or a stale claim,
+also read
 [intent](references/intent.md). Intent reconstruction extends the read-only audit
 topology; it is not a fourth mode, and an ordinary operational re-entry does not
 require product archaeology.
@@ -44,15 +44,16 @@ to complete) is itself sufficient to enter Plan or Operate.
 
 Edit verbs alone do not activate this Skill. An isolated known-bug repair,
 ordinary code review, one-claim verification, or generic hygiene task with no
-repository-topology question, no cross-surface structural change, and no accepted
-product-convergence gap belongs to the normal bounded engineering workflow, even
+repository-topology question, cross-surface change, accepted product gap or
+unresolved product-task effectiveness question belongs to ordinary work, even
 when the user explicitly asks for a fix. Do not route such a request through
 Operate.
 
-Reconstructing intended product versus current behavior is an independent route,
-including new, small and structurally clean repositories: an accepted-intent
-question can be the whole decision. Isolated known-bug repair, ordinary review, and generic
-wishlisting still stay ordinary work.
+A concrete product-task effectiveness or accepted-intent question can be the
+whole Audit decision, including in new, small and structurally clean repositories.
+It need not prove a historical breach and does not authorize repair. A current
+accepted finite outcome can define convergence without inventing a past promise.
+Isolated known-bug repair, ordinary review and wishlisting stay ordinary work.
 
 A request to expand this product's capabilities does not authorize rewriting
 other repositories, installing it, or publishing it. A user may authorize a

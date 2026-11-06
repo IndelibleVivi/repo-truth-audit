@@ -1,15 +1,16 @@
 # Product-intent reconstruction method
 
-Use this method when the decision is not only "what is true here?" but "does
-what the repository does still match what it was accepted to do?" It extends the
+Use this method to investigate a concrete ineffective user task or compare
+current behavior with accepted product intent. It extends the
 read-only [audit](audit.md) topology; it does not add a fourth mode, a second
 engine, or a mandatory product archaeology pass. An operational re-entry,
 migration, consolidation, retirement, handoff, or release-readiness request needs
-no intent reconstruction unless the accepted intent itself is in question.
+no intent reconstruction unless a product-use task or accepted intent is in
+question.
 
-Intent reconstruction answers one decision: **which current behavior is
-intended, which intended behavior is missing or broken, and how confident can
-the owner be?** Treat a product intent as a first-class truth surface alongside
+The investigation asks **what the user can accomplish, what was accepted,
+and what the evidence permits the owner to conclude.** Treat a product intent
+as a first-class truth surface alongside
 selectors, state owners, artifacts, and gates. Reconstruct the strongest intent
 model supported by available adopted evidence; do not claim access to unrecorded
 intent or rationale.
@@ -72,6 +73,10 @@ or the last conversational turn:
 - acceptance criteria; and
 - the rationale that makes changed or ambiguous behavior decidable.
 
+Specifications, tests and documentation may inherit one untested interpretation.
+At a consequential choice, seek task evidence not derived from it; allow
+legitimate evolution to change the goal.
+
 Adoption attaches to the accepted proposition or observable change. Approval of
 an artifact or patch does not automatically adopt adjacent assistant rationale,
 inferred journeys or future recommendations. Keep ambiguous assent narrow.
@@ -96,10 +101,12 @@ without guessing:
 - **rejected:** considered and declined;
 - **inferred/uncertain:** plausible but not owner-adopted.
 
-Only accepted/current intentions create missing-capability findings. A deferral
-is not a defect; a rejection is not a defect; an inferred intention cannot be
-treated as an obligation. Keep **material omissions and unread or truncated
-evidence visible**: say which sources you did not read, which excerpt was
+Only accepted/current intentions establish unmet commitments. Separately, an
+observed task can fail without a recorded historical quality threshold. Report
+who tried what, under which conditions, and the result; do not invent a past
+promise. Deferral, rejection and inferred wishes do not become obligations.
+Keep **material omissions and unread or truncated evidence visible**: say which
+sources you did not read, which excerpt was
 truncated, and which intent therefore stays uncertain. Do not turn this into a
 mandatory full-history scrape or a target-repository audit backlog.
 
@@ -131,6 +138,13 @@ works. Compare those obligations with the applicable owner decisions, including
 later consent to manual steps; the auditor's preference for less friction is not
 product authority.
 
+For a quality complaint, inspect the selected path and its next consumer's
+artifact. Separate professional judgment and chosen review from manual
+reconstruction of missing system information. Check whether the required
+distinction was lost at a handoff or never represented. Replay or vary a boundary
+only within current authorization and adequate host controls; otherwise state
+the missing observation. Preserve a valid use as a control.
+
 The second direction prevents destroying working behavior. Absence of a spec
 mention is not proof that a feature is disposable, and a search miss is not proof
 that a capability is missing: inspect alternate terminology, other owners, other
@@ -146,12 +160,13 @@ material consequence; failing to find a purpose is insufficient.
 
 ## Useful findings
 
-Start with a brief account of the recovered product: the user outcome, what
-normal use requires, and any exceptional-only checks material to the decision.
-Then show the implementation gap or supported conformance, rather than making
-the reader infer the intended product from a list of defects.
+Start with the product or selected task: the user outcome, normal-use conditions
+and material exceptional checks. Show the observed result and its mechanism.
+A task limitation can be reported without claiming a historical breach; the
+commitment-based categories below retain their adoption requirements.
 
-Report only findings with a concrete user or maintenance consequence:
+Every finding needs a concrete user or maintenance consequence. For
+commitment-based gaps:
 
 - **missing capability:** accepted/current intent has no reachable implementation;
 - **partial or broken journey:** the journey exists but a selected step fails,
@@ -175,27 +190,33 @@ state which one you have.
 
 Close every material gap with:
 
-1. **adopted intent evidence and lifecycle** — the owner-adopted source, its
-   scope, and whether it is current, superseded, deferred, rejected, or inferred;
+1. **basis and lifecycle** — the adopted intent source and scope for an unmet
+   commitment, or the concrete task and conditions for a failure observation;
+   keep historical commitment supported separately or explicitly unknown;
 2. **observed implementation path and proof layer** — the selected selector/owner
    and the layer (source, artifact, installation, runtime) actually reached;
 3. **discrepancy and user consequence** — the exact mismatch and who is affected;
 4. **counterevidence and uncertainty** — the strongest evidence you could not
    rule out, plus any unread or truncated source;
-5. **bounded disposition and acceptance witness** — the smallest next decision or
-   change and the observation that would show the intent is satisfied.
+5. **bounded disposition and acceptance witness** — a correction sufficient for
+   the agreed outcome and the observation that would show it works. Judge repair
+   depth separately from affected scope.
 
 No numeric completeness or maturity score, no universal product redesign, and no
-score-shopping across surfaces. A clean result names the intents checked, the
-sources and layers reached, the explicit non-observations, and why remaining
-intent surfaces cannot change the decision.
+score-shopping across surfaces. A clean result names the tasks or intents
+checked, their conditions, sources and layers reached, explicit non-observations,
+and why remaining surfaces cannot change this decision.
 
-A missing journey step must follow from an adopted observable outcome on the
-selected path. Other plausible UX steps remain design options, not defects.
+A claimed breach must follow from an adopted observable outcome on the selected
+path. A current task failure and a proposed improvement remain separate claims;
+other plausible UX choices remain design options.
 Approval of a finite direct request or plan covers the stated behavioral change,
 not hidden assumptions or adjacent redesign; no mandatory plan form is required.
 If the reason for an accepted behavior was never recorded, leave it unknown:
 identical retention behavior can serve incompatible reasons and exception rules.
+Resolve inspectable uncertainty first. When an answer changes a consequential
+choice, show its task-level consequences and ask the smallest deciding question;
+use existing delegation for internal implementation choices.
 
 ## Intent reconciliation inside an authorized operation
 

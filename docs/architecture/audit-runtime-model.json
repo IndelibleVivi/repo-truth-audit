@@ -6,16 +6,16 @@
     "zh_cn": "面向公开 README 的 Audit / Plan / Operate 运行契约架构图"
   },
   "audience": {
-    "en": "A repository owner or technical collaborator deciding whether this Skill fits a concrete re-entry, migration, consolidation, retirement, handoff, or evidence-led structural-change outcome. Also owners comparing accepted product intent with selected behavior.",
-    "zh_cn": "正在为具体的重新进入、迁移、整合、退役、交接或证据驱动结构变更选择方法的仓库所有者与技术协作者。也包括对照已接受产品意图与所选行为的所有者。"
+    "en": "A repository owner or technical collaborator deciding whether this Skill fits a concrete re-entry, migration, consolidation, retirement, handoff, or evidence-led structural-change outcome. Also owners comparing accepted product intent with selected behavior. A concrete ineffective product task can also be the decision.",
+    "zh_cn": "正在为具体的重新进入、迁移、整合、退役、交接或证据驱动结构变更选择方法的仓库所有者与技术协作者。也包括对照已接受产品意图与所选行为的所有者。 具体产品任务做不成，也可以独立成为决策对象。"
   },
   "primary_question": {
     "en": "How does Repo Truth Audit turn an exact repository snapshot and a concrete owner intent into a bounded read-only answer, a decision-ready plan, or an authorized structural change or product convergence with verified completion without overclaiming evidence or external state?",
     "zh_cn": "Repo Truth Audit 如何把精确仓库快照与明确所有者意图转化为有界只读答案、可执行计划，或经过验证完成的获授权结构变更或产品意图收敛，同时不夸大证据或外部状态？"
   },
   "answer_contract": {
-    "en": "Pin the engagement; reconstruct current operational truth and, when relevant, accepted product intent. Compare intent to behavior and behavior to purpose. Preserve the requested mode and verify the whole authorized outcome.",
-    "zh_cn": "钉住工作对象，重建运行事实及相关的已接受产品意图，双向追踪意图到行为、行为到用途，保留请求模式并验证完整获授权目标。"
+    "en": "Pin the engagement; reconstruct operational truth and, when relevant, accepted intent or a concrete task limitation. Separate current outcomes, historical commitments and proposed improvements. Preserve the requested mode and verify the whole authorized outcome.",
+    "zh_cn": "钉住工作对象，重建运行事实及相关的已接受意图或具体任务局限；分别判断当前结果、历史承诺与改进提案，保留请求模式并验证完整获授权目标。"
   },
   "boundary": {
     "includes": [
@@ -390,12 +390,12 @@
       "visual_role": "process",
       "evidence_status": "verified_repository_contract",
       "label": {
-        "en": "Intent / operational gap trace",
-        "zh_cn": "意图与运行差距 trace"
+        "en": "Task / intent / operational gap trace",
+        "zh_cn": "任务、意图与运行差距 trace"
       },
       "responsibility": {
-        "en": "Trace accepted intent to selected behavior and evidence; trace existing responsibilities to purpose. Close gap, user consequence, counterevidence and acceptance.",
-        "zh_cn": "从已接受意图追踪所选行为及证据，也从现有责任反查用途；闭合差距、用户影响、反证与验收。"
+        "en": "Trace a concrete task or accepted intent to selected behavior and evidence; trace responsibilities to purpose. Separate observed limitations from historical breaches and proposals; close user consequence, counterevidence and acceptance.",
+        "zh_cn": "从具体任务或已接受意图追踪所选行为及证据，也从现有责任反查用途；分别判断观察局限、历史违约与提案，闭合用户影响、反证与验收。"
       },
       "limit": {
         "en": "A stale file, duplicate path, or missing observation alone is not a finding.",

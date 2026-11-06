@@ -21,6 +21,7 @@ PAIRS = (
     ("docs/forward-0.3.0-receipt.md", "docs/forward-0.3.0-receipt.zh-CN.md"),
     ("docs/forward-0.3.0-followup.md", "docs/forward-0.3.0-followup.zh-CN.md"),
     ("docs/releases/v0.3.0.md", "docs/releases/v0.3.0.zh-CN.md"),
+    ("docs/task-effectiveness-followup.md", "docs/task-effectiveness-followup.zh-CN.md"),
 )
 
 

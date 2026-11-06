@@ -4,6 +4,13 @@
 
 ## Unreleased
 
+- Investigate concrete ineffective tasks without inventing historical commitments;
+  separate observed limitations, adopted intent and proposals. Preserve valid
+  uses, professional judgment and explicit implementation authority.
+- Add matched Cedar task subjects and packet-only repair witnesses. The controlled
+  baseline/candidate trials both succeeded; no incremental model advantage is
+  claimed. See the [follow-up](docs/task-effectiveness-followup.md).
+
 - Check the content of both selected Lumen publication artifacts, rejecting empty,
   constant or mixed-note output while accepting valid Markdown framing. Preserve
   the unpublished-draft witness. This strengthens the evaluator, not model evidence.

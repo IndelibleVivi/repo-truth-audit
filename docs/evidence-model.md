@@ -87,7 +87,7 @@ For each material gap, retain enough evidence to reconstruct this comparison:
 
 | Question | Evidence needed |
 | --- | --- |
-| What user outcome was intended? | Source locator, adoption, applicable scope, lifecycle and rationale |
+| What task or commitment is being checked? | For an unmet commitment: source locator, adoption, scope, lifecycle and rationale. For a current task limitation: user, concrete task, conditions and observed result; historical commitment separately supported or unknown. |
 | What is observable now? | Selected user flow, owning mechanism/state, delivery selection and observed proof layer |
 | Where do they differ? | Missing/partial outcome, changed semantics, stale claim or unjustified responsibility; concrete user consequence |
 | Could the difference be legitimate? | Supersession, deferral, compatibility, operational purpose, alternate path or unresolved authority |
@@ -125,10 +125,19 @@ that evidence, report unresolved purpose and preserve behavior by default. Call
 it unjustified accumulation only with affirmative abandonment, rejection,
 contradiction or an expired justification, plus a material consequence.
 
-A journey step is an accepted gap only if an adopted outcome requires it on the
-selected path. Other plausible UX choices remain design options. A direct finite
+A claimed breach requires an adopted outcome on the selected path. A current
+task limitation can be observed independently of a historical promise or quality
+threshold; an improvement proposal remains a separate claim. Other plausible UX
+choices remain design options. A direct finite
 request or accepted plan can authorize its stated observable change without a
 mandatory plan form; it does not ratify hidden assumptions or adjacent redesign.
+
+Agreement among a specification, implementation and tests may rest on one
+interpretation. Seek independent task evidence where that interpretation changes
+the decision. Inspect the next consumer's artifact before user compensation;
+distinguish required professional review from manual reconstruction of missing
+information. Do not infer either usefulness or waste from a final successful
+artifact alone.
 
 The reconstruction claim is bounded by available evidence. Identical accepted
 30-day retention behavior can serve recovery convenience or mandatory retention.

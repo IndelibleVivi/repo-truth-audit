@@ -101,7 +101,7 @@ and their limitations; the original Audit/Plan routing controls remain required.
 
 ## Intent-lab subjects — 0.3
 
-`intent-lab/intent_cases.json` defines eleven evaluator intent subjects.
+`intent-lab/intent_cases.json` defines thirteen evaluator intent/task subjects.
 Lumen Notes has an accepted product specification,
 scoped owner decision records, optional read-only supplied conversation evidence,
 and an application with a selected entry and a declared delivery artifact. They
@@ -133,6 +133,28 @@ python3 evals/intent-lab/prepare_intent_subject.py missing-core-journey "$scratc
 python3 evals/intent-lab/check_intent_subject.py --json
 ```
 
+Cedar adds `task-export-handoff` and `task-summary-use` with identical product
+bytes except current-use evidence. Its original summary checks pass; normal
+export does not carry existing citations. The revision task needs an extra
+user-held worksheet, while the summary-only use is valid. No historical revision
+promise is supplied. The coordinator can prepare either case with the same CLI.
+For a separately authorized repair:
+
+```bash
+python3 evals/intent-lab/prepare_intent_subject.py task-export-handoff /path/to/new-subject --operate
+python3 evals/intent-lab/check_intent_subject.py \
+  --verify-operate task-export-handoff --candidate /path/to/repaired-subject
+```
+
+The Cedar repair witness uses unseen crossed citations, exact complete records,
+source/revision matching, multiple/no matches, order, state preservation and
+source/declared-artifact copies. It removes the input store after export, so the
+consumer must use the packet alone. It accepts different valid packet layouts.
+`tests/test_task_intent.py` challenges invalid outputs and preserves the normal-use
+contrast. These are product/evaluator checks, not model-output grading. Actual
+baseline/candidate observations and limits are in the
+[task-effectiveness follow-up](../docs/task-effectiveness-followup.md).
+
 `prepare_intent_subject.py` creates one fresh synthetic Git subject and prints
 only its user request; the destination must not already exist. It does not invoke
 a model, grade a result, or pre-create the report artifact. `check_intent_subject.py`
@@ -161,7 +183,7 @@ truncated-export visibility, and the read-only permission subject. These tests
 validate the subjects, not model behavior. Ordinary validation, self-test and
 both labs make no target-model or network call.
 
-The checker also exercises eleven corrupted fixtures with `--self-challenge`.
+The checker also exercises thirteen corrupted fixtures with `--self-challenge`.
 For an independently produced Atlas Inbox repair, run:
 
 ```bash

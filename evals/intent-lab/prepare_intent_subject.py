@@ -20,6 +20,7 @@ CASES_PATH = Path(__file__).with_name("intent_cases.json")
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import workflow_subjects  # noqa: E402
+import task_subjects  # noqa: E402
 
 
 PRODUCT_SPEC = """# Lumen Notes — accepted product specification
@@ -391,6 +392,8 @@ BASE = {
 }
 
 def selected_files(case: dict) -> dict[str, str]:
+    if case.get("family") == "cedar":
+        return task_subjects.files(case["variant"])
     if case.get("family") == "harbor":
         return workflow_subjects.files(case["variant"])
     if case.get("family") == "atlas":
@@ -427,7 +430,7 @@ def write_subject(destination: Path, files: dict[str, str]) -> None:
         path = destination / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(content.encode("utf-8"))
-        if name == "lumen":
+        if name in {"lumen", "cedar"}:
             path.chmod(0o755)
     env = dict(os.environ, GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull)
     for args in (["init", "--quiet", "--template="], ["add", "--", *files],
@@ -443,6 +446,8 @@ def variants() -> dict[str, dict]:
     # The catalog stores requests; the variant/optional-evidence matrix is
     # evaluator wiring kept here so the subject never reveals it.
     return {
+        **{name: {"family": "cedar", "variant": variant}
+           for name, variant in task_subjects.CASES.items()},
         **{name: {"family": "harbor", "variant": variant}
            for name, variant in workflow_subjects.CASES.items()},
         "missing-core-journey": {"variant": "capture-only"},

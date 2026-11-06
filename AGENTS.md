@@ -34,7 +34,10 @@ Plan, and Operate are request-derived behavior modes, not CLI subcommands or a
 parallel orchestration engine. Product-intent comparison is a complementary view
 inside those modes: reconstruct accepted outcomes from scoped specifications,
 decisions or development conversations, then trace both intention to behavior and
-behavior to current purpose. It does not require a structural defect.
+behavior to current purpose. A concrete ineffective product-use task can also
+be the whole Audit decision without proving a historical breach. Distinguish
+observed task limitations, adopted commitments and proposed improvements. It
+does not require a structural defect; Audit findings do not authorize repair.
 
 It is not a generic quality score, compliance scan, public-launch checklist,
 ordinary code review, one-claim verifier, universal automatic fixer,
@@ -165,7 +168,9 @@ git diff --check
 ```
 
 When Skill Field Lab is already available, also validate and self-test the
-subject pack. That companion remains optional and must not become a runtime
+subject pack. If an installed companion rejects the legacy pack schema, record
+that compatibility limit without claiming its checks passed or silently migrating
+it. That companion remains optional and must not become a runtime
 dependency or start a target-model invocation during ordinary validation.
 
 ## Installation and publication

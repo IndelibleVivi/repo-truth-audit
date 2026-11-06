@@ -3,7 +3,8 @@
 [简体中文](usage.zh-CN.md) · [README](../README.md)
 
 This guide covers published v0.3.0: intent comparison within Audit / Plan /
-Operate. The prior v0.2.1 release lacks intent comparison.
+Operate, plus the explicitly marked unreleased main follow-up for concrete task
+effectiveness. The prior v0.2.1 release lacks intent comparison.
 Use the README's tagged-release instructions for stable installation, or its
 source-checkout path when you deliberately want a reviewed `main` revision.
 
@@ -106,6 +107,24 @@ deferred. No real-data migration, installation, deployment or release.
 That finite scope permits necessary local work through acceptance. A newly
 inferred feature or unresolved contradictory requirement does not silently join
 it. A missing journey can justify this engagement without a structural defect.
+
+### Investigate an ineffective task (unreleased main)
+
+```text
+The export works, but when a source is corrected I still rebuild the list of
+arguments to review in a separate worksheet. Follow that task through the real
+entry and delivered packet, explain the first missing distinction, and recommend
+a correction that completes it. Preserve the morning-summary use. Inspect only;
+do not change product files or real data.
+```
+
+The result states the user, task, conditions and observed limitation. It need not
+invent an old promise or numerical threshold. Compare system output before manual
+compensation; distinguish necessary professional judgment. If the relation exists
+upstream but disappears in export, fix that boundary. If it was never captured,
+new records may need a fuller model; old relationships require independent evidence.
+Show actual consequences when one user answer would change the action. Existing
+internal delegation still applies. A report does not authorize implementation.
 
 ### Resume a paused operation
 

@@ -2,9 +2,32 @@
 
 [简体中文](current-state.zh-CN.md)
 
-Last reconciled: 2026-09-22
+Last reconciled: 2026-11-07
 
-## Product and source
+## Unreleased main follow-up
+
+Main keeps source version `0.3.0` and the nine-file payload, with an unreleased
+concrete-task effectiveness refinement. It separates current task limitations,
+historical commitments and improvement proposals, preserves valid uses and manual
+professional judgment, and retains Audit / Plan / Operate boundaries. The Lumen
+publication evaluator now checks content binding; Cedar adds paired revision and
+summary-use subjects and a source/reconstructed-artifact repair witness.
+
+The stable install remains pinned to the frozen public `v0.3.0` tag; it does not
+contain this main follow-up. No daily installation, tag or Release update is part
+of this work. Current checks and fresh model observations are recorded separately
+from the dated release baseline below.
+
+Fresh local checks: 128 repository tests; repository/architecture/Skill
+validation; six fixture self-tests; thirteen intent truth and thirteen corrupted
+fixture checks. Four fresh native audits and two paired implementation
+continuations both supported the selected tasks; both repairs passed independent
+source/artifact checks. No incremental advantage or natural discovery is claimed.
+See the [task-effectiveness receipt](task-effectiveness-followup.md). Optional
+Field Lab v2 checks could not run the legacy-v1 pack; no migration was performed.
+
+## Published v0.3.0 baseline (2026-09-22)
+
 
 Source `0.3.0` is **published as v0.3.0**. It adds reconstruction of accepted
 product intent and bidirectional comparison with selected repository behavior.
@@ -18,7 +41,7 @@ The architecture keeps seven regions, 31 nodes and 46 edges; authority, candidat
 trace and acceptance now include intent lifecycle, product gaps and valid evolution.
 Both locale diagrams and reader guides reflect the 0.3.0 scope.
 
-## Frozen release payload and evidence
+## Frozen release payload and evidence (2026-09-22)
 
 Source follow-up is complete: full-record search witnesses reject query echo;
 method guidance covers natural local assent, delegated internals and routine
@@ -51,11 +74,11 @@ locale SVGs did not change in this follow-up; prior visual acceptance remains in
 the original receipt, not a new observation. Source delivery, daily installation,
 release and host discovery are separate.
 
-## Public release and installation
+## Public release and installation (last verified 2026-09-22)
 
 The latest verified public release is [v0.3.0](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.3.0),
 published 2026-09-22 14:35:42 UTC and read back as Latest, non-draft and non-prerelease.
-The repository remains public with default branch `main`.
+At that verification the repository was public with default branch `main`.
 
 - Release commit: `6de6dae92f17efbef3cf8ad4e9e98eb6bdd5a61b`.
 - Annotated tag object: `a0c5ec764d28d8fa221a0a5717f0f30c0409edc3`; it peels to the release commit.
@@ -69,8 +92,9 @@ The repository remains public with default branch `main`.
   upgraded; its eight-file digest remains
   `e578adf48a39a00cf68c10e254e04f3336f8f104fb7282f43d78c45c82493f0b`.
 
-The tag retains the pre-publication documentation snapshot; main records the
-verified published status without moving the tag or changing payload bytes.
+The tag retains the pre-publication documentation snapshot. The publication
+follow-up recorded verified status without moving the tag or changing its bytes;
+the unreleased main refinement above changes current source bytes.
 See [v0.3.0 release notes](releases/v0.3.0.md).
 
 The earlier [v0.2.1](releases/v0.2.1.md) release was published

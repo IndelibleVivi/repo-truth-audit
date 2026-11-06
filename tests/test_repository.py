@@ -87,11 +87,10 @@ class RepositoryContractTests(unittest.TestCase):
             normalized = " ".join(text.split())
             self.assertIn("isolated known-bug repair", normalized)
             self.assertIn("repository-topology question", normalized)
-            self.assertIn("product-convergence gap", normalized)
-        # Wording guard only; semantic routing is observed in forward runs.
-        self.assertIn("no accepted product-convergence gap", " ".join(body.split()))
-        self.assertIn("neither a repository-topology question nor an accepted "
-                      "product-convergence gap", " ".join(operation.split()))
+            self.assertIn("ordinary code review", normalized)
+        # Wording smoke only; this does not establish semantic routing.
+        # A concrete task can be investigated without a historical promise.
+        self.assertIn("does not authorize repair", " ".join(body.split()))
 
     def test_intentional_multiplicity_verdict_canary_is_unambiguous(self) -> None:
         case_path = ROOT / "evals/cases/intentional-multiplicity/case.json"

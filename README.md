@@ -11,7 +11,8 @@ A Codex Skill for product-intent reconstruction, repository re-entry, migrations
 consolidation and legacy-path retirement. Use it for a focused engineering intervention; finish the agreed job
 and return to normal development. It need not run on every task or every commit.
 
-Current source version: `0.3.0` — published 2026-09-22.
+Current source version: `0.3.0` with an unreleased task-effectiveness follow-up.
+The frozen v0.3.0 release was published 2026-09-22; its bytes are unchanged.
 Latest public release: [`v0.3.0`](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.3.0) — product-intent comparison within Audit / Plan / Operate.
 
 Version 0.3.0 adds intention-to-reality comparison from accepted specs,
@@ -23,6 +24,7 @@ preserves historical evidence for that earlier release.
 the package still does not prove that a running host has discovered it; confirm
 the selected Skill path and behavior in a fresh task.
 
+[Task-effectiveness follow-up (unreleased)](docs/task-effectiveness-followup.md) ·
 [Using the Skill](docs/usage.md) · [0.3.0 behavior evidence](docs/forward-0.3.0-followup.md) ·
 [Release procedure and v0.2.0 history](docs/release-preparation.md) · [v0.3.0 notes](docs/releases/v0.3.0.md)
 
@@ -45,6 +47,14 @@ still fails. An export helper may exist without a reachable export command; a
 README may promise offline use while the selected flow requires a remote service.
 The Skill reconstructs the accepted product before judging those differences.
 
+Unreleased main also investigates a concrete task that remains ineffective even
+without a recorded historical quality threshold. It separates today's observed
+limitation, a historical breach and a proposed improvement. Specifications, code
+and tests can share one untested interpretation: inspect what the next consumer
+actually receives and what the user must reconstruct by hand. Preserve chosen
+professional review and valid simpler uses. Repair depth and affected scope are
+separate decisions; a local rewrite or one shared handoff fix may each be right.
+
 It reads SPEC and key decisions, or development conversations you specifically
 provide or authorize. It preserves user goals, complete journeys, constraints,
 non-goals and rationale. Later accepted decisions can revise older commitments;
@@ -63,8 +73,9 @@ unrequested redesign. Operational-only audits still take the direct path.
 
 ## When to use it
 
-Use it when the question is whether the implemented product still matches its
-accepted intent, or when a local diff and a named assertion are insufficient: returning to
+Use it when a concrete product task remains ineffective, when the implemented
+product may no longer match accepted intent, or when a local diff and a named
+assertion are insufficient: returning to
 an unfamiliar or long-idle repository; checking migration or archive readiness;
 reconciling source, package and installed identities; or separating tangled
 responsibilities across real callers, state owners and delivery paths.
@@ -92,6 +103,7 @@ behavior modes, not commands you must memorize.
 
 | Your request | What the Skill should do |
 | --- | --- |
+| "The export works, but after a source correction I still reconstruct the review list by hand. Find where the task fails and what would fix it; do not edit." | **Audit (unreleased main):** trace the concrete task, preserve valid uses, and separate observed limitation from historical commitment. |
 | "Compare SPEC, accepted decisions and these supplied development notes with the working product. Explain missing, changed and obsolete behavior; do not edit." | **Audit:** reconstruct intent, trace gaps and distinguish valid evolution. |
 | "Complete the local export/import journey required by the accepted spec, preserve the later CSV decision, and verify through the selected CLI." | **Operate:** close that finite product gap, including integration and evidence. |
 | "Before I resume this repo, find which CLI and artifact are live. Do not edit." | **Audit:** answer the decision with evidence and explicit unknowns. |
@@ -308,7 +320,7 @@ flowchart TB
   end
 
   subgraph R30_CHALLENGE["04 · Challenge + adjudicate"]
-    N30_TRACE["Intent / operational gap trace<br/>intent ↔ selected behavior → gap → user impact → proof"]
+    N30_TRACE["Task / intent / operational gap trace<br/>intent ↔ selected behavior → gap → user impact → proof"]
     N31_FALSE_GREEN["False-green challenge<br/>did the exact path run, observe the assertion, and fail when broken?"]
     N32_MULTIPLICITY["Multiplicity or shadow path?<br/>selection · ownership · isolation · callers · retirement intent"]
     N33_EXTERNAL_UNKNOWN["Decision-critical external unknown<br/>missing observation → prevented claim → affected decision → needed proof"]

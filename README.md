@@ -11,7 +11,7 @@ A Codex Skill for product-intent reconstruction, repository re-entry, migrations
 consolidation and legacy-path retirement. Use it for a focused engineering intervention; finish the agreed job
 and return to normal development. It need not run on every task or every commit.
 
-Current source version: `0.3.0` with an unreleased task-effectiveness follow-up.
+Current source version: `0.3.0` with unreleased task-effectiveness and consumer-verification work.
 The frozen v0.3.0 release was published 2026-09-22; its bytes are unchanged.
 Latest public release: [`v0.3.0`](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.3.0) — product-intent comparison within Audit / Plan / Operate.
 
@@ -24,7 +24,10 @@ preserves historical evidence for that earlier release.
 the package still does not prove that a running host has discovered it; confirm
 the selected Skill path and behavior in a fresh task.
 
-[Task-effectiveness follow-up (unreleased)](docs/task-effectiveness-followup.md) ·
+[User-outcomes research (unreleased)](docs/user-outcomes-study.md) ·
+[Host compatibility](docs/host-compatibility.md) ·
+[Consumer-first study](evals/experiments/2026-11-consumer-first/README.md) ·
+[Task-effectiveness follow-up](docs/task-effectiveness-followup.md) ·
 [Using the Skill](docs/usage.md) · [0.3.0 behavior evidence](docs/forward-0.3.0-followup.md) ·
 [Release procedure and v0.2.0 history](docs/release-preparation.md) · [v0.3.0 notes](docs/releases/v0.3.0.md)
 
@@ -54,6 +57,13 @@ and tests can share one untested interpretation: inspect what the next consumer
 actually receives and what the user must reconstruct by hand. Preserve chosen
 professional review and valid simpler uses. Repair depth and affected scope are
 separate decisions; a local rewrite or one shared handoff fix may each be right.
+
+The latest research checks the recipient with only its contracted inputs, actual
+package declarations with a real compiler, and valid neighboring behavior beside
+the failing task. Eight cache-dependent fake repairs accepted by the previous
+Cedar gate are now rejected. Four natural Agent task pairs are independently
+graded; they do not establish a productivity gain. Research probes and the offline
+trial comparator remain outside the installed Skill.
 
 It reads SPEC and key decisions, or development conversations you specifically
 provide or authorize. It preserves user goals, complete journeys, constraints,
@@ -166,6 +176,12 @@ before more writes. It does not autonomously resume in the background.
 For a fresh `v0.3.0` installation with intent comparison and Audit / Plan / Operate,
 use the system installer:
 
+The command below preserves the release pin and the installer location verified
+for the original release. Inspect your current host's bundled installer location
+and discovery root first; current Codex documentation uses `.agents/skills` roots.
+The [host guide](docs/host-compatibility.md) records this compatibility boundary
+and the explicit-destination route. The command is not a fresh activation claim.
+
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo IndelibleVivi/repo-truth-audit \
@@ -215,7 +231,9 @@ python3 scripts/install_skill.py
 python3 scripts/install_skill.py --replace
 ```
 
-The default destination is `$CODEX_HOME/skills`, or `~/.codex/skills`. Use `--dest`
+The retained default destination is `$CODEX_HOME/skills`, or `~/.codex/skills`. Current
+Codex documentation lists repository/user `.agents/skills` roots; this installer
+does not change an existing user's destination automatically. Use `--dest`
 only for a root your host actually discovers. Inspect the reported target,
 backup and receipt. Do not edit the installed copy as source or manually overlay
 new files onto the old directory. Restart/reload the host as needed, then use a
@@ -253,6 +271,7 @@ For related-tool distinctions, see [the usage guide](docs/usage.md#related-tools
 | Execute the installed Skill | [Canonical SKILL.md](skills/repository-operational-truth-audit/SKILL.md), then its linked references |
 | Maintain this repository | [AGENTS.md](AGENTS.md) and [product spec](docs/product-spec.md) |
 | Understand proof and completion | [Evidence model](docs/evidence-model.md) |
+| Inspect real cases, paired trials and continue development | [Research and implementation](docs/user-outcomes-study.md), [Codex handoff](docs/codex-handoff.md), [host compatibility](docs/host-compatibility.md) |
 | Inspect tested behavior and present state | [0.3.0 follow-up](docs/forward-0.3.0-followup.md), [original 0.3.0 receipt](docs/forward-0.3.0-receipt.md), [0.2.1 receipt](docs/forward-0.2.1-receipt.md), [0.2.0 receipt](docs/forward-0.2.0-receipt.md), [current state](docs/current-state.md) |
 | Inspect the v0.3.0 release | [Release notes](docs/releases/v0.3.0.md), [release procedure and v0.2.0 history](docs/release-preparation.md) |
 | Inspect architecture and research | [Architecture model](docs/architecture/README.md), [research basis](docs/research-basis.md) |

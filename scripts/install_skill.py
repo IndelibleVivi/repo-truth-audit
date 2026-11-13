@@ -126,7 +126,8 @@ def main() -> int:
         "--dest",
         type=Path,
         default=default_destination(),
-        help="Skill root; defaults to $CODEX_HOME/skills or ~/.codex/skills",
+        help="Skill root; retained default is $CODEX_HOME/skills or ~/.codex/skills. "
+             "Use --dest for the discovery root verified for your current host",
     )
     parser.add_argument(
         "--replace",
@@ -150,7 +151,7 @@ def main() -> int:
         print(f"Backup: {receipt['backup']}")
     if receipt["status"] == "installed":
         print(f"Receipt: {Path(args.dest).expanduser().resolve() / RECEIPT_NAME}")
-    print("Next-turn Codex discovery is a separate acceptance boundary.")
+    print("Host discovery and selected Skill path are separate acceptance boundaries.")
     return 0
 
 

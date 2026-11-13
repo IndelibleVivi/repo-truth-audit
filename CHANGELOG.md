@@ -4,6 +4,41 @@
 
 ## Unreleased
 
+- Close the finite 24-session instruction comparison with separated invalidated
+  cohorts, one completed ordinary-repair pair and two incomplete migration
+  checkpoints. Retain unknown human costs and make no productivity claim.
+
+- Repair evaluator import context, exact protected-byte checks and supplied
+  fixture self-tests after independent counterexamples. Preserve the aborted
+  cohort as unjudged and preregister a separate corrected cohort.
+- Verify discovery and all three behavior modes in native Codex 0.159.1 using
+  disposable project installs. Retain the compatible installer default and
+  separate trace-backed reads, target nonmutation and manifest-only acceptance
+  from implicit discovery or productivity claims.
+- Add an optional offline regular-wheel/editable-install probe with a later
+  owner edit, selected import-origin evidence and a legitimate frozen-wheel
+  control. Preserve setup failures separately from consumer failures.
+- Reject loaded `without-skill` controls in either comparison direction, while
+  retaining explicit comparisons between two loaded instruction treatments.
+- Verify handoffs from the actual recipient's available inputs, including type
+  admission and host selection. Preserve legitimate neighboring modes and
+  professional judgment; keep the same nine-file runtime payload.
+- Replace Cedar's shared-context repair check with independent source/artifact
+  recipients and crossed histories. Challenge producer, platform and packet
+  caches; retain legitimate packet encodings and explicit non-sandbox limits.
+- Finish synthetic Git preparation without detached auto-maintenance, closing a
+  macOS CI byte-snapshot race while preserving complete read-only assertions.
+- Add optional pinned Python/TypeScript/Go consumer probes and four paired
+  natural engineering tasks. Both arms succeeded in all four; extra tool costs
+  are proxies and human effort remains unknown. No productivity uplift is claimed.
+- Add an offline comparison instrument that retains failed/unjudged runs and
+  rejects mismatched outcome methods. Distinguish actual delivered ZIPs from
+  evaluator rebuilds, and current task structure from a stricter reused oracle.
+- Document native-host proof limits and explicit Field Lab v1-to-v2 offline
+  migration. Clarify the retained installer default versus current Codex roots;
+  no user installation, stable-tag change or release is included. See the
+  [study](docs/user-outcomes-study.md) and [continuation commission](docs/codex-handoff.md).
+
 - Investigate concrete ineffective tasks without inventing historical commitments;
   separate observed limitations, adopted intent and proposals. Preserve valid
   uses, professional judgment and explicit implementation authority.

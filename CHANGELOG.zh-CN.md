@@ -4,6 +4,30 @@
 
 ## 未发布
 
+- 关闭 24 会话有限指令比较：分开失效批次、一组完成的普通修复配对和两个未完成 migration
+  检查点。人工成本保持未知，不作生产率宣称。
+
+- 依据独立反例修正 evaluator import context、受保护输入逐字节检查和所附 fixture 测试。
+  中止批次以 unjudged 保留，修正批另行预注册，不混池。
+- 在 Codex 0.159.1 原生宿主中，用临时 project 安装验证 discovery 与三种行为模式。
+  保留兼容的 installer 默认值；分开真实 trace 读取、目标不变与 manifest-only 验收，
+  不推导隐式发现或生产率。
+- 增加可选离线 regular wheel/editable install probe，观察 owner 后续编辑、实际 import
+  来源及合法冻结 wheel；分开 setup failure 与 consumer failure。
+- 两种比较方向均拒绝已加载 Skill 的 `without-skill` 对照，仍保留两种已加载指令的显式比较。
+- 从实际接收方可得输入检查交接，纳入类型准入与宿主选择，保留合法相邻模式及专业判断；
+  运行载荷仍为九文件。
+- Cedar 修复判据改为独立源码/产物接收方及交错历史，挑战生产、平台与 packet 缓存；
+  保留合理编码和明确的非沙箱边界。
+- 合成 Git 对象准备不再启动后台自动维护，修复 macOS CI 字节快照竞态，并保留完整只读断言。
+- 新增可选固定 Python/TypeScript/Go 消费者 probe 和四组自然工程任务。四组两边均成功，
+  工具成本为 proxy，人工成本仍未知，不宣称生产力增益。
+- 新增离线比较器，保留失败/未判定运行并拒绝不同判定口径；区分实际交付 ZIP 与评价器重建，
+  区分当前任务结构与复用的更严格 oracle。
+- 记录原生宿主证据范围及 Field Lab v1→v2 显式离线迁移；说明保留的安装默认值与当前 Codex
+  根目录差异。本轮不安装用户环境、不移动稳定 tag、不发布。见
+  [研究报告](docs/user-outcomes-study.zh-CN.md)与[接续委托](docs/codex-handoff.zh-CN.md)。
+
 - 调查具体任务为何做不成，不虚构历史承诺；分别判断观察局限、已采纳意图与提案，保留
   合理用途、专业判断及显式实施权限。
 - 新增 Cedar 匹配用途样本和 packet-only 修复见证。受控 baseline/candidate 均成功，

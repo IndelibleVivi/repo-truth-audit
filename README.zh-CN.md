@@ -9,7 +9,7 @@
 这是面向产品意图还原、仓库接手、迁移、整合和旧路径退役的 Codex Skill。它适合一次有明确目标的工程介入，
 完成后回到普通开发；无需每个任务、每次提交都调用。
 
-当前源码版本：`0.3.0`，含未发布的任务有效性改进。
+当前源码版本：`0.3.0`，含未发布的任务有效性与消费者验证改进。
 冻结的 v0.3.0 于 2026-09-22 发布，原 tag 字节不变。
 最新公开版本：[`v0.3.0`](https://github.com/IndelibleVivi/repo-truth-audit/releases/tag/v0.3.0) — Audit / Plan / Operate 内的产品意图对照。
 
@@ -20,7 +20,10 @@
 **下方稳定安装命令固定到已经核验的 v0.3.0 tag。** 装好 package 仍不等于当前宿主已经发现；
 请在 fresh task 中确认实际选中的 Skill path 与行为。
 
-[任务有效性后续（未发布）](docs/task-effectiveness-followup.zh-CN.md) ·
+[用户结果研究（未发布）](docs/user-outcomes-study.zh-CN.md) ·
+[宿主兼容](docs/host-compatibility.zh-CN.md) ·
+[Consumer-first 实验](evals/experiments/2026-11-consumer-first/README.zh-CN.md) ·
+[任务有效性后续](docs/task-effectiveness-followup.zh-CN.md) ·
 [使用指南](docs/usage.zh-CN.md) · [0.3.0 行为证据](docs/forward-0.3.0-followup.zh-CN.md) ·
 [发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) · [v0.3.0 发布说明](docs/releases/v0.3.0.zh-CN.md)
 
@@ -42,6 +45,10 @@ README 承诺离线使用，实际所选流程却依赖远端服务。Skill 会�
 局限、历史违约与改进提案分开判断。规格、代码和测试可能共享同一次未经检验的解释；
 检查下一消费者真正收到什么、用户在系统外补了什么，同时保留主动选择的专业审阅及合理的
 简单用途。修复深度与影响范围分别判断：局部重写或修一处共享交接，都可能是合适选择。
+
+本轮研究让接收者只使用约定可得输入，以真实编译器检查实际 package 声明，并在失败任务旁
+保留合法相邻行为。旧 Cedar 判据放过的八种缓存依赖假修复现均被拒绝。四组自然 Agent
+任务已独立判定，尚不足以证明生产力提高。研究 probe 和离线比较器留在安装 Skill 之外。
 
 证据可以来自 SPEC、关键决策，或你明确提供/授权的开发对话。保留用户目标、完整流程、约束、
 非目标与理由；后来接受的决策可以修订旧承诺，但 brainstorming 和 assistant 提议不会自动
@@ -124,6 +131,10 @@ Audit、Plan、Operate 是行为模式，无需记忆一套命令。
 
 首次安装包含意图对照和 Audit / Plan / Operate 的 `v0.3.0`，使用系统安装器：
 
+下方保留发布 pin 与原发布时验证过的安装器位置。先核对当前宿主自带安装器和发现根目录；
+当前 Codex 文档使用 `.agents/skills`。具体差异与显式目标路径见
+[宿主指南](docs/host-compatibility.zh-CN.md)。该命令不代表本轮已观察激活。
+
 ```bash
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo IndelibleVivi/repo-truth-audit \
@@ -170,7 +181,8 @@ python3 scripts/install_skill.py
 python3 scripts/install_skill.py --replace
 ```
 
-默认目标是 `$CODEX_HOME/skills`，未配置时为 `~/.codex/skills`。只有确认宿主会发现某个根目录时，
+保留的默认目标是 `$CODEX_HOME/skills`，未配置时为 `~/.codex/skills`。当前 Codex 文档列出
+仓库/用户 `.agents/skills` 根目录；安装器不会自动搬迁已有用户的目标。只有确认宿主会发现某个根目录时，
 才用 `--dest` 指向它。检查输出的目标、备份与回执；不要把安装副本当源码改，也不要手工覆盖新旧文件。
 按宿主要求重启或重新加载后，在新任务中确认选中的 Skill 路径与 Audit／Plan／Operate 行为。
 安装字节正确和实际加载生效需要分别检查，详见[安装与发现排障](docs/usage.zh-CN.md#安装与发现)。
@@ -198,6 +210,7 @@ Servotab、Worker Routing、Skill Field Lab 是可选协作者，不是必需运
 | 执行已安装的 Skill | [权威 SKILL.md](skills/repository-operational-truth-audit/SKILL.md) 及其链接的 references |
 | 维护这个仓库 | [AGENTS.md](AGENTS.md) 与[产品契约](docs/product-spec.zh-CN.md) |
 | 理解证明和完成标准 | [证据模型](docs/evidence-model.zh-CN.md) |
+| 查看实战、配对实验并继续开发 | [研究与实现](docs/user-outcomes-study.zh-CN.md)、[Codex 委托](docs/codex-handoff.zh-CN.md)、[宿主兼容](docs/host-compatibility.zh-CN.md) |
 | 查看实测行为与当前状态 | [0.3.0 返修回执](docs/forward-0.3.0-followup.zh-CN.md)、[原 0.3.0 回执](docs/forward-0.3.0-receipt.zh-CN.md)、[0.2.1 回执](docs/forward-0.2.1-receipt.zh-CN.md)、[0.2.0 回执](docs/forward-0.2.0-receipt.zh-CN.md)、[当前状态](docs/current-state.zh-CN.md) |
 | 查看 v0.3.0 发布 | [发布说明](docs/releases/v0.3.0.zh-CN.md)、[发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) |
 | 查看架构与研究来源 | [架构模型](docs/architecture/README.zh-CN.md)、[研究依据](docs/research-basis.zh-CN.md) |

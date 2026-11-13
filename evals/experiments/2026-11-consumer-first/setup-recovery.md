@@ -40,3 +40,22 @@ this recovery registration. The independent reviewer had no campaign access.
 The recovery is a setup repair with different initial objects; cohorts must not
 be pooled. Human review remains voluntary and untimed; no productivity gain is
 inferred from repaired instruments or green tests.
+
+## Harness-scope correction
+
+The recovery harness accidentally appended a preserve-all-product-bytes clause
+intended for the clean task to implementation prompts as well. Two returned
+reports explicitly cited that contradictory authority and produced audits.
+This is a harness failure, not evidence that the models failed to repair.
+The coordinator stopped the recovery after eight launches and confirmed no
+native writers remained; four slots were never started. Raw statuses and
+outputs are retained. Cancellation left two stale running labels, so process
+read-back, not those labels, establishes shutdown.
+
+The [final four registration](final-four-preregistration.json) spends only the
+four remaining sessions within the 24-session ceiling. Explicit implementation
+permission replaces the contradictory common clause. It covers a full-RTA vs
+short migration pair and a no-RTA vs short local-repair pair, with the same
+180-second cap and no retries. This is a reduced, scope-corrected engineering
+probe, not the original balanced four-task/three-arm experiment. Prior setup
+knowledge is disclosed; no blind or causal claim is made.

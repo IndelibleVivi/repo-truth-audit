@@ -3,10 +3,12 @@
 [English](README.md)
 
 这些可选探针在一次性副本中执行固定版本的公共项目，不调用目标模型，也不进入普通仓库 CI。
-输入须显式准备；探针不会安装、克隆、联系上游维护者或修改被观察仓库。
+输入须显式准备；探针不会克隆、联系上游维护者或修改被观察仓库和全局环境。
+sampleproject probe 只在一次性 virtual environment 内，用显式准备的离线输入构建和安装。
 它们属于评价材料，必须留在目标 Agent 的工作区之外。
 输出回执须位于被观察 source/package 目录外；probe 会拒绝覆盖输入的目标。
-Python helper 使用仓库要求的 Python 3.10+ 语法；本轮实际执行于 3.12.14。
+Python helper 使用仓库要求的 Python 3.10+ 语法；原始一轮实际执行于 3.12.14。
+后续带日期的观察分别记录自己的 interpreter 版本。
 
 ## Python：真实子进程继承的配置
 
@@ -98,3 +100,52 @@ test/fixture-acp-agent.mjs，使用同一依赖树，执行相同 held-final 命
 
 这些机制经过有意挑选。上游修复和构造变体属于评价证据，不能用来估计自然模型输出或普遍失败频率。
 临时目录为已检查的代码模拟交付边界，并不提供对抗恶意代码的隔离。
+
+## Python：实际选中的安装包（预先声明的构造实验）
+
+执行之前选定公共 `pypa/sampleproject` 的
+`621e4974ca25ce531773def586ba3ed8e736b3fc`。已检查 backend 为
+`setuptools.build_meta`，build requirement 为 setuptools。这是构造的交付实验，
+不是上游 bug 报告，也不是 Skill 收益的盲测。具体消费者从所选 venv 导入
+`sample.simple.add_one(10)`。预期读取：初始 wheel 11；有意只改 source 为 +2 后，
+source 为 12、wheel 消费者仍为 11；重建并重装后 wheel 为 12；原生 pip editable
+安装为 12；之后 owner 将 source 改为 +3，editable 为 13，regular wheel 合法保留
+12，直到显式重建交付 13。不得仅凭 source 变化将冻结 wheel 判为缺陷。
+实际 module origin 与 PEP 610 direct_url metadata 必须建立选择关系；PYTHONPATH
+checkout shim 不能充当 editable 安装证据。
+
+wrapper 只在一次性副本使用精确 Git pin 字节，显式联网准备 seed 后才执行离线
+wheel/editable 操作，记录实际 Python/build-tool 版本。在写入前拒绝 output/source/seed
+重叠（含 symlink）。setup failure 与语义不匹配分开。此可选外部执行不进入普通 CI，
+不调用模型，不预设 canonical Skill 需要改变。
+
+通过显式准备的开发 seed 复现（只有以下准备命令联网；使用被观察 checkout 外的一次性路径）：
+
+```sh
+git clone https://github.com/pypa/sampleproject.git /path/to/sampleproject
+git -C /path/to/sampleproject checkout 621e4974ca25ce531773def586ba3ed8e736b3fc
+uv venv --python python3 /path/to/seed
+uv pip install --python /path/to/seed/bin/python pip==26.3 setuptools==84.2.1 wheel==0.48.0 packaging==26.3 peppercorn==0.6
+/path/to/seed/bin/python -m pip download --dest /path/to/seed/wheelhouse pip==26.3 setuptools==84.2.1 wheel==0.48.0 packaging==26.3 peppercorn==0.6
+python3 evals/field/probe_sampleproject.py --source /path/to/sampleproject \
+  --seed /path/to/seed --output /path/to/observation.json
+python3 -m unittest discover -s tests -p test_sampleproject_probe.py
+```
+
+probe 创建不带 pip 的 stdlib venv，通过 seed 的原生 pip --python 安装缓存的 build tools
+和真实 runtime dependency peppercorn。使用已检查的 backend 构建真实 wheel，并执行
+原生 pip editable 安装。project 的安装/构建命令禁用依赖获取与 build isolation；target
+venv 的依赖准备只从 seed 本地 wheelhouse 选取。移除 PYTHONPATH。source-only control
+显式插入一次性源码路径；editable readings 使用 isolated Python，没有此插入。
+这些 pip 限制不提供 OS 网络隔离，已检查的 backend 仍执行受信任公共代码。
+成功回执替换临时路径；失败诊断可能含本机路径，因此 raw receipt 保持私有。
+source/seed snapshot 比较文件名、大小、mtime 与 symlink target，属于写入检测证据，
+不声称建立 cryptographic identity。
+
+2026-11-14 实测 Python 3.13.5、pip 26.3、setuptools 84.2.1、wheel 0.48.0、
+packaging 26.3、peppercorn 0.6：八次读取全部符合预声明序列
+**11 / 12 / 11 / 12 / 12 / 13 / 12 / 13**，22 个 subprocess 全部成功，source/seed 文件名、大小、mtime 与 link target 均未改变。两种安装模式通过 module origin 与 direct_url metadata
+建立选择证据。九个离线测试覆盖值/origin/metadata 拒绝、合法冻结 wheel 邻例、
+symlink/重叠保护、输入写入检测，以及已就绪 consumer 非零退出/非法 JSON 判为 mismatch、保留 portable setup-command 证据与不同失败状态（observed 0、expectation-mismatch 1、
+setup-blocked 2）。仅检验所选函数和交付序列；console script、其他 Python/tool 版本、
+自然发生的 agent 错误及 Skill 收益仍未测量。没有修改上游或 canonical Skill。

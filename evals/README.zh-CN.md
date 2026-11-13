@@ -2,6 +2,10 @@
 
 [English](README.md)
 
+有限的 [consumer-first 后续实验](experiments/2026-11-consumer-first/README.zh-CN.md)
+预登记四种任务、三种指令组和十二个 fresh 槽位。准备、验证及可选匿名审阅工具离线运行；
+独立 live run 前由协调者冻结实际宿主设置。
+
 2026 年 11 月的[用户结果研究](../docs/user-outcomes-study.zh-CN.md)增加了可选的
 [真实消费者探针](field/README.zh-CN.md)与
 [四组原生任务配对实验](experiments/2026-11-user-outcomes/README.zh-CN.md)。

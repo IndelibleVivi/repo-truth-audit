@@ -51,6 +51,13 @@ digest 即使稳定相等，也可能给出错误的 delivery 结论。
 继续可见。自报工具数不等于经认证的使用记录；报告长度不等于所有者审阅时间。未知时间和
 token 保持 null。这些可选实验不进入运行验收，也不产生总分。
 
+### 无 Skill 对照的污染
+
+名为 `without-skill` 的组若自身 exposure 记录为已加载 Skill，不能支持无 Skill 比较。
+保留该次运行和结果，但不输出可比较判定或实测差值。明确比较两种已加载 treatment 时，
+其他匹配条件满足仍合法。历史 `skill` exposure 字段可以记录实验指令快照；这不使一条
+简短实验指令成为第二个可安装产品。
+
 ## Audit finding trace
 
 可报告 finding 必须连接：

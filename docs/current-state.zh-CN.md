@@ -2,7 +2,42 @@
 
 [English](current-state.md)
 
-最近核对：2026-11-13
+最近核对：2026-11-14
+
+## 本地接续——2026-11-14
+
+本地 checkout 从 clean 且与远端一致的 `research/user-outcomes-20261113`
+`89e3ec6ca668233925b45b3a5d215ce572a86df2` 接续。原研究及 CI 保留原身份。
+新鲜基线通过 147 tests、两个 validators、六项 fixture self-test、十三项 intent case、
+十四项 packet 修复挑战、离线比较器与 Skill validation。同一固定 companion 的独立
+Field Lab v2 迁移、validate 和六项 self-test 也通过；v1 pack 未改，这些检查目标调用为零。
+
+本机 `codex-cli 0.159.1` 已通过 `skills/list` 返回临时项目 Skill 的精确路径，无发现错误。
+synthetic markers 同时证明该构建仍读取旧 project/user 根目录，因此保留安装器默认值，
+现代根目录继续使用显式 `--dest`。发现元数据、读取载荷与正确任务行为分别裁定，见带日期的
+[宿主观察](host-compatibility.zh-CN.md)。
+
+随后恰好三次 fresh native 调用完成 Audit、Plan 和有限 Operate。Audit/Plan 全部目标字节
+不变；三次 completed tool trace 均读取 project Skill。Operate 经 manifest 所选产物交付
+`artifact-v2`；在副本放回旧产物后，distribution 检查失败、source 检查仍绿。host usage
+字段如实保留，不换算人工成本或生产率。
+
+可选[安装包 probe](../evals/field/README.zh-CN.md) 在固定 PyPA sampleproject 源码上新增
+构造的 wheel/editable 选择实验。八次真实 import 读取区分只改源码和重建交付，同时保留
+owner 后续编辑后冻结 wheel 合法不变的邻例。wrapper 分开 setup failure 与已运行 consumer
+失败；九项离线测试保护这些裁定与输出路径。
+
+离线比较器现拒绝名为 `without-skill`、实际 exposure 却为已加载 Skill 的样本，保留污染
+运行但不产生成本差值。明确比较两种已加载 treatment 仍可合法匹配。原始四组配对的结果
+不变；十二项比较器测试通过。
+
+本地接续完整回归通过 **169 项 repository tests**、两个 validators、六项 fixture self-test、
+十三项 intent case、十四项 packet 挑战、原配对比较器、Skill validation 与 diff 检查。
+新 [consumer-first 协议](../evals/experiments/2026-11-consumer-first/README.zh-CN.md)
+及执行设置已在 live 被试调用前冻结。
+
+source 版本保持 `0.3.0`，本轮不移动稳定 tag、不 release、不 merge、不升级日用安装。
+下方历史证据保留原日期，不改标成新鲜结果。
 
 ## 未发布的用户结果研究分支
 

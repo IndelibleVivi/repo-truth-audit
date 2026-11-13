@@ -22,6 +22,7 @@
 
 [用户结果研究（未发布）](docs/user-outcomes-study.zh-CN.md) ·
 [宿主兼容](docs/host-compatibility.zh-CN.md) ·
+[Consumer-first 实验](evals/experiments/2026-11-consumer-first/README.zh-CN.md) ·
 [任务有效性后续](docs/task-effectiveness-followup.zh-CN.md) ·
 [使用指南](docs/usage.zh-CN.md) · [0.3.0 行为证据](docs/forward-0.3.0-followup.zh-CN.md) ·
 [发布流程及 v0.2.0 历史](docs/release-preparation.zh-CN.md) · [v0.3.0 发布说明](docs/releases/v0.3.0.zh-CN.md)

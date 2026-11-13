@@ -50,6 +50,67 @@ OpenAI interface 文件属于宿主元数据；实际方法位于 Markdown 包�
 同名副本可能改变最终选择。调查优先级前，先保留实际选中路径的证据；不要凭猜测删除副本。
 显式调用、工具轨迹中提及路径以及实际应用方法是不同观察。按宿主实际暴露的信息记录。
 
+## 新一轮原生 Codex 烟测 — 2026-11-14
+
+此次观察保留上面的 2026-11-13 历史基线。所选本地可执行文件报告
+`codex-cli 0.159.1`，运行于 macOS arm64；它与此前初始化探针的
+`0.167.0-alpha.4` 是不同构建。暂存时源码为 clean 的
+`89e3ec6ca668233925b45b3a5d215ce572a86df2`，九文件载荷摘要与上文相同。
+没有改变日常安装的 Skill 字节。
+
+首先使用一次性 HOME、CODEX_HOME，且不提供认证，仅做本地协议发现。
+从该二进制生成的 JSON schema 确认 `initialize` 与 `skills/list`，没有启动模型 turn。
+`skills/list` 返回项目内
+`.agents/skills/repository-operational-truth-audit/SKILL.md`，状态为 enabled、
+scope 为 repo，errors 为空。独立的公开 synthetic markers 还证明此构建读取项目
+`.codex/skills`、`$CODEX_HOME/skills` 与 `$HOME/.agents/skills`。
+[当前官方指南](https://learn.chatgpt.com/docs/build-skills)列出 `.agents/skills`；
+文档表格没有旧目录，不代表实测构建拒绝它们。因此本次不需要为这个宿主修复安装器兼容性。
+显式 `--dest` 仍是可移植的验证入口；此次结果不能确定所有版本的根目录支持或同名副本优先级。
+
+随后进行了分别获授权的三个全新任务，各使用独立的公开
+`source-artifact-split/fixture` 副本和声明的项目 Skill 载荷，没有复制预期答案目录。
+这是使用现有账号的正常 native host 烟测，不是隔离因果试验。调用请求
+`gpt-6.1-sol`、high reasoning、`--ignore-user-config`、`--ephemeral`、
+`project_doc_max_bytes=0`、ChatGPT login mode 和 `never` approval policy。
+Audit、Plan 使用 `read-only`，Operate 使用 `workspace-write`。
+每次最多 180 秒且不重试。通过宿主正常使用现有认证，没有手动读取、复制或链接凭据，
+没有修改全局配置。这些 flags 不能证明与所有正常宿主 context surfaces 隔离。
+
+| 模式 | 实际结果 | 完成的 command-execution items | 耗时（秒） |
+| --- | --- | --- | --- |
+| Audit | 沿 manifest 找到 distributed v1，准确限定绿色 source check；target 无修改、新增或缺失文件。 | 5 | 94.41 |
+| Plan | 提出有限的 distribution 修复、consumer 验收与恢复边界；没有写 target 文件或 operation record。 | 15 | 101.39 |
+| Operate | 更新所选产物与 README，新增 manifest 驱动的 distribution check；target 无其他变化。 | 11 | 110.57 |
+
+三次任务实际完成的读取命令均明确指向项目
+`.agents/skills/repository-operational-truth-audit/SKILL.md` 及适用 references。
+这提供了超出自报的 selected-path/read 证据；发现与行为应用仍是不同观察。
+任务后的独立字节比对建立了 Audit/Plan nonmutation。
+独立 Operate 验收通过 source 和 distribution tests，并在仅包含 manifest 声明文件的
+consumer 中获得退出码 0、`artifact-v2\n` 和空 stderr。
+在另一份一次性副本恢复旧产物后，新 distribution check 失败，而 source check 仍通过。
+
+宿主的 `turn.completed.usage` objects 报告：
+
+| 模式 | Input tokens | Cached input tokens | Output tokens | Reasoning output tokens |
+| --- | --- | --- | --- | --- |
+| Audit | 246431 | 207616 | 2604 | 603 |
+| Plan | 226714 | 186240 | 3033 | 692 |
+| Operate | 247933 | 216064 | 3344 | 831 |
+
+三个对象的 `cache_write_input_tokens` 均为零。这些字段来自宿主报告；未独立确认累计与
+cache accounting 语义。Command 计数指 `item.completed` 中 `item.type` 为
+`command_execution` 的 items；一个 item 可以包含多个 shell commands，不能等同通用
+tool-call 次数。请求模型已知；所观察 JSONL 没有暴露可另行确证的 backend model identity。
+Private raw events、字节快照与 runner records 留在 Git 外；这里只记录 public-safe aggregate。
+这次有限显式烟测建立的是此宿主、构建与 fixture 上的结果，不能证明隐式激活、比较性生产力、
+续跑可靠性或其他原生宿主表现。
+
+另一次零模型 discovery 控制通过 CLI 的临时 `skills.config` override，将精确 project
+`SKILL.md` 路径设为 `enabled=false`；同一 binary 返回该路径已 disabled、无发现错误。
+这证明单次 invocation override 可用，未编辑用户配置，不证明同名副本的优先级。
+
 ## 最小可复现本地烟测
 
 在选定的 RTA 源码 checkout 中执行包验证。以下命令只建立临时包，保留日常安装：

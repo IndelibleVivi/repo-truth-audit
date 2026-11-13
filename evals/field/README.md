@@ -4,12 +4,15 @@
 
 These optional probes execute pinned public projects in disposable copies.
 They make no target-model call and never run during ordinary repository CI.
-Prepare the inputs explicitly; the probes do not install, clone, contact an
-upstream maintainer or change an observed repository. They are evaluator
+Prepare the inputs explicitly; the probes do not clone, contact an upstream
+maintainer or change an observed repository or global environment. The
+sampleproject probe builds and installs only inside disposable virtual
+environments, using explicitly prepared offline inputs. They are evaluator
 material and must stay outside target-agent workspaces.
 Output receipts must be outside observed source/package directories; the probes
 reject destinations that would overwrite their inputs. Python helpers support
-the repository's Python 3.10+ syntax; the actual field runs used 3.12.14.
+the repository's Python 3.10+ syntax; the original field runs used 3.12.14.
+Later dated observations state their own interpreter versions below.
 
 ## Python: configuration inherited by a real child
 
@@ -123,3 +126,64 @@ These are deliberately selected mechanisms. The upstream repair and constructed
 variants are evaluator evidence, not natural model outputs or representative
 failure-frequency estimates. Temporary directories model deployment boundaries
 for inspected code; they are not hostile-code isolation.
+
+## Python: selected installed package (predeclared constructed experiment)
+
+Before execution, this case selects public `pypa/sampleproject` at
+`621e4974ca25ce531773def586ba3ed8e736b3fc`. Its inspected backend is
+`setuptools.build_meta`, with setuptools required. This is a constructed delivery
+experiment, not an upstream defect report or a blind test of Skill benefit.
+The concrete consumer imports `sample.simple.add_one(10)` from a selected venv.
+Expected readings: baseline wheel 11; intentional source-only +2 leaves wheel
+consumer 11 while source reads 12; rebuilt/reinstalled wheel 12; native pip
+editable install reads 12; a later owner +3 source edit makes editable read 13,
+while the regular wheel legitimately stays 12 until explicit rebuild delivers 13.
+The frozen-wheel neighbor must not be classified as defective merely because
+source changed. Actual module origin and PEP 610 direct_url metadata must establish
+selection; a PYTHONPATH checkout shim is not editable-install evidence.
+
+The wrapper will use exact Git-pin bytes in disposable copies, separate explicit
+network-enabled seed preparation from offline wheel/editable operations, and
+record selected Python/build-tool versions. Output/source/seed overlap, including
+symlinks, is rejected before writes. Setup failures remain distinct from semantic
+mismatches. This optional external run does not enter ordinary CI and invokes no
+model; no canonical Skill change is presumed.
+
+Reproduce with an explicitly prepared development seed (network is used only in
+these setup commands; choose disposable paths outside the observed checkout):
+
+```sh
+git clone https://github.com/pypa/sampleproject.git /path/to/sampleproject
+git -C /path/to/sampleproject checkout 621e4974ca25ce531773def586ba3ed8e736b3fc
+uv venv --python python3 /path/to/seed
+uv pip install --python /path/to/seed/bin/python pip==26.3 setuptools==84.2.1 wheel==0.48.0 packaging==26.3 peppercorn==0.6
+/path/to/seed/bin/python -m pip download --dest /path/to/seed/wheelhouse pip==26.3 setuptools==84.2.1 wheel==0.48.0 packaging==26.3 peppercorn==0.6
+python3 evals/field/probe_sampleproject.py --source /path/to/sampleproject \
+  --seed /path/to/seed --output /path/to/observation.json
+python3 -m unittest discover -s tests -p test_sampleproject_probe.py
+```
+
+The probe creates stdlib venvs without pip, then uses the seed's native
+`pip --python` to install cached build tools and the real runtime dependency
+`peppercorn`. It builds actual wheels with the inspected backend and performs a
+native pip editable install. All project install/build commands disable dependency
+fetch and build isolation; dependency setup in the target venvs selects only the
+preseeded local wheelhouse. `PYTHONPATH` is removed. The source-only control
+explicitly inserts the disposable checkout path; editable readings use isolated
+Python with no such insertion. These pip restrictions are not OS network isolation;
+the inspected backend runs trusted public code. Temporary paths are scrubbed in
+successful receipts. A failed setup can contain local diagnostic paths, so keep raw
+receipts private. Source/seed snapshots compare file names, sizes, mtimes and
+symlink targets; they are write-detection evidence, not cryptographic identity.
+
+Observed on 2026-11-14 with Python 3.13.5, pip 26.3, setuptools 84.2.1,
+wheel 0.48.0, packaging 26.3 and peppercorn 0.6: all eight readings matched the
+predeclared sequence **11 / 12 / 11 / 12 / 12 / 13 / 12 / 13**; all 22 subprocesses
+succeeded, source/seed file names, sizes, mtimes and link targets stayed unchanged. Both installed
+selection modes were established by module origin and direct_url metadata. The
+nine offline tests cover value/origin/metadata rejection, the frozen-wheel
+neighbor, symlink/overlap protection, input write detection and distinct failure
+statuses (including nonzero/invalid-JSON ready consumers and retained portable setup-command evidence; `observed` 0, `expectation-mismatch` 1, `setup-blocked` 2).
+Only this selected function and deployment sequence were tested; console-script
+behavior, other Python/tool versions, naturally occurring agent mistakes and Skill
+benefit remain unmeasured. No upstream mutation or canonical Skill change resulted.

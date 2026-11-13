@@ -66,6 +66,15 @@ runs remain visible. A self-reported tool count is not authenticated usage; repo
 length is not owner review time. Unknown time and tokens remain null. These
 optional experiments are outside runtime acceptance and do not create a score.
 
+### Contaminated no-Skill control
+
+An arm named `without-skill` cannot support a no-Skill comparison when its own
+exposure record says a Skill was loaded. Keep the run and its outcome visible,
+but suppress comparability and measured deltas. Explicit comparisons between
+two loaded treatments remain valid when otherwise matched. The historical
+`skill` exposure field may identify an experimental instruction snapshot; that
+does not make a short experimental instruction a second installable product.
+
 ## Audit finding trace
 
 A reportable finding connects:

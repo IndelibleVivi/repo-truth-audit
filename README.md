@@ -26,6 +26,7 @@ the selected Skill path and behavior in a fresh task.
 
 [User-outcomes research (unreleased)](docs/user-outcomes-study.md) ·
 [Host compatibility](docs/host-compatibility.md) ·
+[Consumer-first study](evals/experiments/2026-11-consumer-first/README.md) ·
 [Task-effectiveness follow-up](docs/task-effectiveness-followup.md) ·
 [Using the Skill](docs/usage.md) · [0.3.0 behavior evidence](docs/forward-0.3.0-followup.md) ·
 [Release procedure and v0.2.0 history](docs/release-preparation.md) · [v0.3.0 notes](docs/releases/v0.3.0.md)

@@ -2,7 +2,55 @@
 
 [简体中文](current-state.zh-CN.md)
 
-Last reconciled: 2026-11-13
+Last reconciled: 2026-11-14
+
+## Local continuation — 2026-11-14
+
+The local checkout resumed `research/user-outcomes-20261113` at
+`89e3ec6ca668233925b45b3a5d215ce572a86df2`, with a clean tree and a matching
+remote branch. The earlier study and its CI retain their original identities.
+The fresh baseline passed 147 tests, both validators, six fixture self-tests,
+thirteen intent cases, fourteen packet repair challenges, the offline trial
+comparison and Skill validation. A separate Field Lab v2 migration, validation
+and six self-tests passed on the same pinned companion; the v1 pack is unchanged
+and those checks made zero target-model calls.
+
+Native `codex-cli 0.159.1` now exposes the disposable project Skill through
+`skills/list`, with its exact path and no discovery errors. Synthetic markers
+also establish legacy project/user roots for this build; this is evidence for
+retaining the installer default, with explicit `--dest` for modern roots.
+Discovery metadata, reading the package and correct task behavior remain
+separate claims. See the dated [host observations](host-compatibility.md).
+
+Exactly three fresh native calls then completed Audit, Plan and a finite
+Operate task. Audit/Plan preserved all target bytes; all three read the
+project Skill in completed tool traces. Operate delivered `artifact-v2` through
+the manifest-selected artifact. Restoring the old artifact made its distribution
+check fail while source checks stayed green. Host usage fields are retained as
+reported, without interpreting them as human effort or productivity.
+
+The optional [installed-package probe](../evals/field/README.md) adds a constructed
+wheel/editable selection experiment over pinned PyPA sampleproject source.
+Eight real import readings distinguish a source-only change from a rebuilt
+delivery and preserve the legitimate frozen-wheel case after an owner edit.
+The wrapper separates setup failure from an already running consumer's failure;
+nine offline tests cover these distinctions and protected output paths.
+
+The offline comparison now rejects an arm called `without-skill` when its
+exposure says a Skill was loaded, retaining the contaminated run without a cost
+delta. Explicit matched comparisons of two loaded treatments remain supported.
+The original four pairs still compare exactly as before; twelve comparator
+tests pass.
+
+The completed local continuation passed **169 repository tests**, both validators,
+six fixture self-tests, thirteen intent cases, fourteen packet challenges, the
+original trial comparison, Skill validation and diff checks. The new
+[consumer-first protocol](../evals/experiments/2026-11-consumer-first/README.md)
+and its execution settings are frozen before live subject calls.
+
+The source version remains `0.3.0`. No stable tag, release, merge or daily
+installation change is included. The dated evidence below is preserved rather
+than relabeled as a fresh result.
 
 ## Unreleased user-outcomes research branch
 

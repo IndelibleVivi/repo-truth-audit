@@ -7,6 +7,25 @@ repository checkout. It continues completed research and code, rather than
 commissioning another general review. The owner asked for a useful, portable
 engineering intervention whose extra review and coordination work earns its cost.
 
+## Continuation update — 2026-11-14
+
+This commission was first prepared on 2026-11-13. The local baseline resumed at
+`89e3ec6ca668233925b45b3a5d215ce572a86df2`; earlier study evidence retains its
+historical identity. Follow [current state](current-state.md) for fresh acceptance
+and remaining work before repeating probes.
+
+The local continuation completed the original source baseline, native Codex
+0.159.1 discovery and explicit Audit/Plan/Operate smoke, a transient exact-path
+disable control, and a real wheel/editable installation-selection example.
+The installer default and canonical nine-file Skill are unchanged. The offline
+comparator rejects contaminated `without-skill` exposure in either direction.
+See [host evidence](host-compatibility.md), [field probes](../evals/field/README.md)
+and the [consumer-first protocol](../evals/experiments/2026-11-consumer-first/README.md).
+The new protocol must pass positive/negative controls and freeze actual host
+settings before its separate, at-most-twelve live subject calls. Windows/OpenCode
+UI acceptance still needs that exact environment; no such local consumer is
+available here. No merge, tag, release or daily upgrade is implied.
+
 ## Start from these results
 
 The development branch is `research/user-outcomes-20261113`, based on main

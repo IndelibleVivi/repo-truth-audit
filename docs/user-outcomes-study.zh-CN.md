@@ -21,6 +21,27 @@ pin 和 `VERSION=0.3.0` 保持不变。候选仍是九文件 Skill，digest 为
 产品继续服务一次有明确决策或变更目标的介入。不增加仓库评分、模型运行器、强制审计阶段、
 安装包中的评测依赖或自动宿主集成。
 
+## 本地接续——2026-11-14
+
+研发分支已从 `89e3ec6ca668233925b45b3a5d215ce572a86df2` 恢复，无所有者未提交改动。
+原始 147 tests 与既定仓库门槛本地通过；这是新鲜源码观察，原远端矩阵仍只证明各自 commit。
+
+三个显式 Codex 0.159.1 原生任务关闭了此前未观察的 Audit/Plan/Operate 烟测边界。
+completed tool trace 读取精确 project Skill；Audit/Plan 目标不变。Operate 修正所选
+分发产物，通过 manifest-only consumer，陈旧产物反例也能被拒绝。零模型观察另验证了
+发现路径与临时 disable override。这支持本构建保留 installer 默认值，不构成全宿主
+支持或因果收益证明，见[宿主证据](host-compatibility.zh-CN.md)。
+
+[新增安装包实验](../evals/field/README.zh-CN.md) 使用固定 PyPA sampleproject 源码及
+一次性环境中的真实 pip wheel/editable 安装。它区分只改源码和实际安装选择，并保留
+owner 后续编辑后 regular wheel 合法冻结的邻例。预声明的八次读取通过。这是构造的
+部署情景，不是自然发现的上游缺陷，没有揭示需要继续扩写 canonical Skill 的缺口。
+
+离线比较器审查发现：名为 `without-skill` 的组可记录 loaded exposure，却仍产生实测
+差值。修复保留该次运行、在两个比较方向均拒绝可比判定；独立 review 复现并关闭了第一版
+补丁的反向绕过。两种已加载 treatment 的显式比较仍合法，原四组任务保持原判定。更强的
+比较器、成功宿主烟测和安装矩阵均不能推导新的生产率结论。
+
 ## 起点与保留的合同
 
 公开版 commit `6de6dae92f17efbef3cf8ad4e9e98eb6bdd5a61b` 已包含采纳意图还原，

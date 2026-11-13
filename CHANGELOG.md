@@ -4,6 +4,15 @@
 
 ## Unreleased
 
+- Verify discovery and all three behavior modes in native Codex 0.159.1 using
+  disposable project installs. Retain the compatible installer default and
+  separate trace-backed reads, target nonmutation and manifest-only acceptance
+  from implicit discovery or productivity claims.
+- Add an optional offline regular-wheel/editable-install probe with a later
+  owner edit, selected import-origin evidence and a legitimate frozen-wheel
+  control. Preserve setup failures separately from consumer failures.
+- Reject loaded `without-skill` controls in either comparison direction, while
+  retaining explicit comparisons between two loaded instruction treatments.
 - Verify handoffs from the actual recipient's available inputs, including type
   admission and host selection. Preserve legitimate neighboring modes and
   professional judgment; keep the same nine-file runtime payload.

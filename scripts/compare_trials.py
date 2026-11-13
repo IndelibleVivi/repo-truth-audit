@@ -128,6 +128,9 @@ def compare(trials: list[dict], baseline: str = "without-skill",
                 reasons.append("candidate Skill was not observed loaded")
             if left["skill"]["exposure"] == "unknown":
                 reasons.append("baseline Skill exposure is unknown")
+            if any(t["arm"] == "without-skill" and t["skill"]["exposure"] == "loaded"
+                   for t in (left, right)):
+                reasons.append("without-skill arm loaded a Skill")
             if any(t["outcome"]["method"] in {"self-report", "not-run"}
                    for t in (left, right)):
                 reasons.append("independent outcome missing")

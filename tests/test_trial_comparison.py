@@ -54,6 +54,27 @@ class TrialComparisonTests(unittest.TestCase):
         self.b["skill"]["exposure"] = "available-unread"
         self.assertEqual(compare([self.a, self.b])["comparable_blocks"], 0)
 
+    def test_loaded_skill_cannot_be_presented_as_without_skill_baseline(self):
+        self.a["skill"] = {"exposure": "loaded", "digest": "another-skill-snapshot"}
+        for t, cost in ((self.a, 10), (self.b, 2)):
+            t["measurements"]["tool_calls"] = {
+                "status": "observed", "value": cost, "source": "host trace"}
+        for baseline, candidate in (("without-skill", "candidate"), ("candidate", "without-skill")):
+            with self.subTest(baseline=baseline):
+                report = compare([self.a, self.b], baseline, candidate)
+                self.assertEqual(report["trial_count"], 2)
+                self.assertEqual(report["comparable_blocks"], 0)
+                self.assertTrue(any("without-skill" in reason and "loaded a Skill" in reason
+                                    for reason in report["pairs"][0]["reasons"]))
+                self.assertIsNone(report["pairs"][0]["measurements"]["tool_calls"]["candidate_minus_baseline"])
+
+    def test_explicit_two_treatment_comparison_may_load_both(self):
+        self.a["arm"] = "progressive"
+        self.b["arm"] = "consumer-first"
+        self.a["skill"] = {"exposure": "loaded", "digest": "full-snapshot"}
+        self.b["skill"] = {"exposure": "loaded", "digest": "short-instruction"}
+        self.assertEqual(compare([self.a, self.b], "progressive", "consumer-first")["comparable_blocks"], 1)
+
     def test_missing_arm_is_visible(self):
         result = compare([self.b])
         self.assertEqual(result["trial_count"], 1)

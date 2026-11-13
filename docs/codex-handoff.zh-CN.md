@@ -6,6 +6,21 @@
 研究和代码继续实现与验证。目标是形成有实际价值、可移植的有限工程介入，并证明额外审阅与
 协调成本值得付出。
 
+## 接续更新——2026-11-14
+
+本委托首次准备于 2026-11-13。本地已从 `89e3ec6ca668233925b45b3a5d215ce572a86df2`
+恢复，之前研究保留历史身份。重复 probe 前先按[当前状态](current-state.zh-CN.md)
+确认最新验收和剩余工作。
+
+本地接续已完成原始源码基线、Codex 0.159.1 原生发现及显式 Audit/Plan/Operate 烟测、
+临时精确路径 disable 控制，以及真实 wheel/editable 安装选择例子。installer 默认值和
+canonical 九文件 Skill 未改。离线比较器现从两个方向拒绝污染的 `without-skill` exposure。
+见[宿主证据](host-compatibility.zh-CN.md)、[实战 probe](../evals/field/README.zh-CN.md)
+和 [consumer-first 协议](../evals/experiments/2026-11-consumer-first/README.zh-CN.md)。
+新协议须先通过正/负控制并冻结实际 host 设置，再独立进行最多十二次 live 被试调用。
+Windows/OpenCode UI 验收仍需精确环境，本轮没有该本地消费者。不隐含 merge、tag、release
+或日用升级。
+
 ## 从这些已完成结果继续
 
 研发分支为 `research/user-outcomes-20261113`，起点是 main

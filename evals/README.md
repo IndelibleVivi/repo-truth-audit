@@ -9,6 +9,11 @@ They are separate evidence classes: deterministic oracle discrimination, fresh
 Agent behavior, measured/proxy costs and host adoption must not be conflated.
 Research tools stay outside the nine-file Skill payload and launch no models.
 
+The finite [consumer-first follow-up](experiments/2026-11-consumer-first/README.md)
+preregisters four tasks, three instruction arms and twelve fresh-run slots.
+Its preparation, verification and optional anonymous review tools are offline;
+the coordinator freezes actual host settings before any separate live run.
+
 ```bash
 python3 evals/intent-lab/check_intent_subject.py --self-challenge-repairs
 python3 scripts/compare_trials.py evals/experiments/2026-11-user-outcomes/observations.json

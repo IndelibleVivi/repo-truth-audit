@@ -28,6 +28,37 @@ The product remains a finite intervention for a concrete decision or change.
 There is no repository score, new model runner, mandatory audit stage, installed
 evaluation dependency or automatic host integration.
 
+## Local continuation — 2026-11-14
+
+The research branch resumed at `89e3ec6ca668233925b45b3a5d215ce572a86df2`,
+with no uncommitted owner edits. The original 147-test baseline and named
+repository gates passed locally. The original remote matrix remains evidence
+for its own commits rather than this continuation.
+
+Three explicit native Codex 0.159.1 tasks closed the previously unobserved
+Audit/Plan/Operate smoke boundary. Completed tool traces read the exact project
+Skill; Audit and Plan preserved their targets. Operate repaired the selected
+distribution and passed a manifest-only consumer, with a stale-artifact negative
+control. Discovery and a transient disable override also passed without model
+calls. This supports the existing installer default on this build, not universal
+host support or a causal benefit. See [host evidence](host-compatibility.md).
+
+A [new installed-package experiment](../evals/field/README.md) uses pinned PyPA
+sampleproject source and real pip wheel/editable installations in disposable
+environments. It distinguishes source-only completion from actual installed
+selection and retains a frozen regular wheel after a later owner edit as a valid
+neighbor. The eight expected readings passed. This is a constructed deployment
+scenario, not a discovered upstream defect. It exposed no gap requiring another
+canonical Skill rule.
+
+Review of the offline comparator found that a supposedly `without-skill` arm
+could record loaded exposure and still produce a measured delta. The repair
+retains such runs but excludes them in either comparison direction; independent
+review reproduced the reverse-direction hole in the first patch. Explicit
+comparisons of two loaded treatments remain supported. The original four task
+pairs retain their verdicts. A stronger comparator, successful host smoke and
+installed-package matrix do not establish a new productivity result.
+
 ## Starting state and retained contract
 
 The published release at `6de6dae92f17efbef3cf8ad4e9e98eb6bdd5a61b` already

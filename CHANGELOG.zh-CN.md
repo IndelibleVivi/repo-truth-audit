@@ -4,6 +4,12 @@
 
 ## 未发布
 
+- 在 Codex 0.159.1 原生宿主中，用临时 project 安装验证 discovery 与三种行为模式。
+  保留兼容的 installer 默认值；分开真实 trace 读取、目标不变与 manifest-only 验收，
+  不推导隐式发现或生产率。
+- 增加可选离线 regular wheel/editable install probe，观察 owner 后续编辑、实际 import
+  来源及合法冻结 wheel；分开 setup failure 与 consumer failure。
+- 两种比较方向均拒绝已加载 Skill 的 `without-skill` 对照，仍保留两种已加载指令的显式比较。
 - 从实际接收方可得输入检查交接，纳入类型准入与宿主选择，保留合法相邻模式及专业判断；
   运行载荷仍为九文件。
 - Cedar 修复判据改为独立源码/产物接收方及交错历史，挑战生产、平台与 packet 缓存；

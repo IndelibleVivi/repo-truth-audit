@@ -28,6 +28,7 @@ PAIRS = (
     ("evals/field/README.md", "evals/field/README.zh-CN.md"),
     ("evals/README.md", "evals/README.zh-CN.md"),
     ("evals/experiments/2026-11-user-outcomes/README.md", "evals/experiments/2026-11-user-outcomes/README.zh-CN.md"),
+    ("evals/experiments/2026-11-consumer-first/README.md", "evals/experiments/2026-11-consumer-first/README.zh-CN.md"),
 )
 
 

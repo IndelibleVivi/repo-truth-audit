@@ -4,6 +4,23 @@
 
 ## Unreleased
 
+- Verify handoffs from the actual recipient's available inputs, including type
+  admission and host selection. Preserve legitimate neighboring modes and
+  professional judgment; keep the same nine-file runtime payload.
+- Replace Cedar's shared-context repair check with independent source/artifact
+  recipients and crossed histories. Challenge producer, platform and packet
+  caches; retain legitimate packet encodings and explicit non-sandbox limits.
+- Add optional pinned Python/TypeScript/Go consumer probes and four paired
+  natural engineering tasks. Both arms succeeded in all four; extra tool costs
+  are proxies and human effort remains unknown. No productivity uplift is claimed.
+- Add an offline comparison instrument that retains failed/unjudged runs and
+  rejects mismatched outcome methods. Distinguish actual delivered ZIPs from
+  evaluator rebuilds, and current task structure from a stricter reused oracle.
+- Document native-host proof limits and explicit Field Lab v1-to-v2 offline
+  migration. Clarify the retained installer default versus current Codex roots;
+  no user installation, stable-tag change or release is included. See the
+  [study](docs/user-outcomes-study.md) and [continuation commission](docs/codex-handoff.md).
+
 - Investigate concrete ineffective tasks without inventing historical commitments;
   separate observed limitations, adopted intent and proposals. Preserve valid
   uses, professional judgment and explicit implementation authority.

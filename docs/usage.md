@@ -180,16 +180,18 @@ applicable evidence call for them.
 
 ## Installation and discovery
 
-The local installer defaults to `$CODEX_HOME/skills` or `~/.codex/skills`; it can
-use another destination explicitly. A directory created by `--dest` is not
-necessarily a location your current host discovers.
+The local installer retains `$CODEX_HOME/skills` or `~/.codex/skills` as its
+default. [Current Codex documentation](https://learn.chatgpt.com/docs/build-skills)
+lists repository/user `.agents/skills` roots. Use an explicit `--dest` for the
+root verified for your installed host; a directory created by the installer does
+not register itself with that host. Existing defaults are not silently migrated.
+See the [host matrix and temporary smoke test](host-compatibility.md).
 
 After installation, inspect the receipt and actual target. Start a fresh task,
 restarting or reloading Codex when needed, and confirm which `SKILL.md` it selects.
 The name alone cannot distinguish the older packages from v0.3.0.
-[OpenAI's Skill catalog](https://github.com/openai/skills#installing-a-skill)
-also documents restarting after installation; the observed behavior of your
-specific host remains the acceptance check.
+The current guide documents automatic detection and restarting if an update is
+absent; the observed behavior of your specific host remains the acceptance check.
 
 When the old Audit-only behavior remains, check the installed file and receipt,
 then competing copies in host-configured Skill roots or the target repository.

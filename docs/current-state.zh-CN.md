@@ -2,9 +2,49 @@
 
 [English](current-state.md)
 
-最近核对：2026-11-07
+最近核对：2026-11-13
 
-## 未发布的 main 改进
+## 未发布的用户结果研究分支
+
+`research/user-outcomes-20261113` 从 main
+`9fd099b6c9e88be2d7c809b021add51a5c8d6b8f` 继续，本轮末尾已重新核对 upstream main
+仍为该身份。source 版本保留 0.3.0；本轮未移动 main、公开 tag 或稳定安装 pin。
+源码研发、正式发布和用户日用安装继续分别决定。
+
+权威方法现在明确接收方、可得输入、编译器/宿主进入门槛及合法相邻用途。已测试九文件 digest：
+`28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211`。
+临时安装匹配该 digest，回执如实记录 dirty source；不据此推断原生发现或日用升级。
+
+### 本轮新鲜证据——2026-11-13
+
+- 最终完整本地运行 **146 项仓库测试通过**，包含 operation lab、安装行为、16 项 task-intent、
+  10 项比较器测试及受保护输出路径回归。Repository、architecture、Skill validation 和
+  git diff --check 通过。
+- 六项 fixture self-test、十三项 intent truth、十三项破坏对象拒绝通过，目标模型调用均为零。
+- Cedar 最终修复自挑战 **14/14**：接受两种合法实现，拒绝十二种负例。八个在研究前 main
+  被接受的候选，用该精确旧源码再次复现，最终判据全部拒绝。独立 review 另外发现两个继承的
+  平台缓存通道，保留 RED/GREEN 与 ASCII locale 修复证据。
+- 四组自然任务 **8/8 产物独立成功**，没有成功率优势。执行命令自报数为控制/候选
+  15/15、6/13、8/10、6/10，均为 proxy；人工时间与 token 不可得。旧接续 oracle 对合法转发
+  shim 的拒绝与当前任务验收分别保留。两份实际交付 ZIP 通过，两份 Cedar 也通过最终加强判据。
+- 固定真实消费者矩阵通过：python-dotenv 十九次进程观察，mitt 四种 package/type/runtime
+  变体，Viper 七种变体/十二次读取及 setup/仪器控制。CWR 旧 held-final 路径失败，当前真实
+  runtime 状态路径通过，四项针对性负案例通过。这些是有限机制证据，不是全仓库认证或自然发现。
+- 可选 Field Lab 0.2.1、commit 6f79c5717da8bc0639fa0d70f5d82b64c231b9c5 将原 v1 pack
+  显式迁移到独立 v2 工作区，validate 与六项 self-test 全通过，semantic_change=false，
+  目标调用为零，canonical pack 未改。
+
+本地 Codex CLI 在只读运行路径初始化 app-server 失败，未发生模型调用。Claude Code、
+Gemini CLI、OpenCode 入口只核对了文档，没有原生运行声称。当前 Codex .agents/skills 指引
+与安装器保留的 .codex/skills 默认不同，仍须明确目标并观察实际选择。CWR 的新状态字段在
+Windows/OpenCode 中如何显示，尚未观察。
+
+见[完整研究](user-outcomes-study.zh-CN.md)、
+[配对实验](../evals/experiments/2026-11-user-outcomes/README.zh-CN.md)、
+[宿主边界](host-compatibility.zh-CN.md)、[本地 Codex 委托](codex-handoff.zh-CN.md)。
+架构仍为七区域、31 节点、46 条边，未重画图，也不声称新增视觉验收。
+
+## 较早的未发布 main 改进——2026-11-07
 
 Main 保留 source 版本 `0.3.0` 和九文件载荷，新增尚未发布的具体任务有效性审查：分别判断
 当前任务局限、历史承诺与改进提案，保留合理用途和必要专业判断，沿用 Audit / Plan / Operate
@@ -13,11 +53,11 @@ Main 保留 source 版本 `0.3.0` 和九文件载荷，新增尚未发布的具�
 稳定安装仍固定到冻结的公开 `v0.3.0` tag，不包含这次 main 改进。本轮不更新日用安装、tag
 或 Release。当前检查和 fresh 模型观察与下方带日期的发布基线分开记录。
 
-Fresh 本地检查：128 个 repository tests、repository/architecture/Skill validation、
+当时的本地检查：128 个 repository tests、repository/architecture/Skill validation、
 六项 fixture self-tests、十三项 intent truth 和十三项破坏检查。四个 fresh native 审查与
 两次配对实施续做均支持所选任务，两份修复均通过独立 source/artifact 检查。不宣称新增优势
-或自然发现，见[任务有效性回执](task-effectiveness-followup.zh-CN.md)。可选 Field Lab v2
-无法运行 legacy-v1 pack，未进行迁移。
+或自然发现，见[任务有效性回执](task-effectiveness-followup.zh-CN.md)。当时可选 Field Lab v2
+无法运行 legacy-v1 pack，未进行迁移；2026-11-13 观察到的显式迁移另记于上方。
 
 ## 已发布 v0.3.0 基线（2026-09-22）
 

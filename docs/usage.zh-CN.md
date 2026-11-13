@@ -135,12 +135,14 @@ SPEC，也可能必须保留，应先追踪用途。
 
 ## 安装与发现
 
-本地安装器默认使用 `$CODEX_HOME/skills`，未设置时为 `~/.codex/skills`，也允许明确指定其他目标。
-`--dest` 建出的目录不一定是当前宿主会发现的位置。
+本地安装器保留 `$CODEX_HOME/skills` 默认值，未设置时为 `~/.codex/skills`。
+[当前 Codex 文档](https://learn.chatgpt.com/docs/build-skills) 列出仓库/用户 `.agents/skills`。
+使用明确的 `--dest` 选择当前宿主已确认的根目录；安装器创建目录不等于向宿主注册。
+已有默认值不会静默迁移，见[宿主矩阵与临时烟测](host-compatibility.zh-CN.md)。
 
 安装后检查回执和实际目标，按需要重启或重新加载 Codex，再开新任务确认选中了哪个 `SKILL.md`。
-只看名称无法区分旧 package 与 v0.3.0。[OpenAI 的 Skill 目录](https://github.com/openai/skills#installing-a-skill)
-也说明了安装后重启；最终仍要观察具体宿主是否加载成功。
+只看名称无法区分旧 package 与 v0.3.0。当前指南说明会自动检测，更新未出现时可重启；
+最终仍要观察具体宿主是否加载成功。
 
 仍然表现为 Audit-only 时，先检查安装文件与回执，再检查宿主配置的其他 Skill 根目录和目标仓库中
 是否有重名副本。不要猜测后直接删除。安装已发布的 v0.3.0 tag 会得到声明的九文件 v0.3.0 package；

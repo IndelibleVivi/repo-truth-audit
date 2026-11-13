@@ -2,9 +2,67 @@
 
 [简体中文](current-state.zh-CN.md)
 
-Last reconciled: 2026-11-07
+Last reconciled: 2026-11-13
 
-## Unreleased main follow-up
+## Unreleased user-outcomes research branch
+
+`research/user-outcomes-20261113` continues from main
+`9fd099b6c9e88be2d7c809b021add51a5c8d6b8f`, freshly rechecked as the upstream
+main during this round. Source version remains `0.3.0`; this work has not moved
+main, the public tag or the stable installation pin. Source development, release
+publication and the user's daily installation remain separate decisions.
+
+The canonical method now makes the receiving consumer, available inputs,
+compiler/host admission and a valid neighboring use explicit. The tested
+nine-file payload is
+`28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211`.
+A disposable install matched it and recorded dirty source. No native discovery
+or daily upgrade is inferred from that match.
+
+### Fresh evidence — 2026-11-13
+
+- **146 repository tests passed** in the final full local run, including the
+  operation lab, installation behavior, 16 task-intent tests, 10 comparison tests
+  and protected output-path regressions. Repository, architecture and Skill
+  validation passed; `git diff --check` passed.
+- Six fixture self-tests, thirteen intent truth checks and thirteen corrupted
+  subject rejections passed, with zero target-model invocations.
+- Cedar's final repair self-challenge is **14/14**: two valid implementations
+  accepted and twelve negatives rejected. Eight candidates accepted by the
+  pre-study main oracle were replayed against that exact old source and rejected
+  by the final oracle. Independent review additionally exposed two inherited
+  platform-cache channels; their RED/GREEN and ASCII-locale repair are retained.
+- Four natural task pairs produced **8/8 independently successful outputs**,
+  with no observed success-rate advantage. Executor self-reports, control/candidate,
+  were 15/15, 6/13, 8/10 and 6/10. They are proxies; human time and tokens are
+  unavailable. The stricter original continuation oracle's rejection of a valid
+  forwarding shim is retained separately from task acceptance. Both actual
+  delivered ZIPs passed, and both Cedar repairs passed the final strengthened gate.
+- Pinned real-consumer probes passed their expected matrices: python-dotenv
+  nineteen process observations; mitt four package/type/runtime variants;
+  Viper seven variants/twelve readings plus setup/instrument controls. CWR's old
+  held-final path failed and its current real-runtime status path passed; four
+  focused negative cases passed. These are scoped mechanism observations, not
+  whole-repository certifications or natural defect-discovery results.
+- Optional Field Lab `0.2.1` at `6f79c5717da8bc0639fa0d70f5d82b64c231b9c5`
+  explicitly migrated the original v1 pack into a separate v2 workspace.
+  Validation and all six self-tests passed, `semantic_change: false`, zero target
+  invocations. The canonical pack is unchanged.
+
+The local Codex CLI probe failed during app-server initialization on a read-only
+runtime path before any model invocation. Claude Code, Gemini CLI and OpenCode
+entry points are documentation-checked, not native-run claims. Current Codex
+`.agents/skills` guidance differs from the installer's retained `.codex/skills`
+default; explicit destination and actual selection remain necessary checks.
+Windows/OpenCode rendering of CWR's new status fields remains unobserved.
+
+See the [full study](user-outcomes-study.md),
+[paired experiment receipt](../evals/experiments/2026-11-user-outcomes/README.md),
+[host boundaries](host-compatibility.md), and [local Codex commission](codex-handoff.md).
+The architecture still has seven regions, 31 nodes and 46 edges; no diagram
+redesign or fresh visual acceptance is claimed.
+
+## Earlier unreleased main follow-up — 2026-11-07
 
 Main keeps source version `0.3.0` and the nine-file payload, with an unreleased
 concrete-task effectiveness refinement. It separates current task limitations,
@@ -18,13 +76,14 @@ contain this main follow-up. No daily installation, tag or Release update is par
 of this work. Current checks and fresh model observations are recorded separately
 from the dated release baseline below.
 
-Fresh local checks: 128 repository tests; repository/architecture/Skill
+At that stage: 128 repository tests; repository/architecture/Skill
 validation; six fixture self-tests; thirteen intent truth and thirteen corrupted
 fixture checks. Four fresh native audits and two paired implementation
 continuations both supported the selected tasks; both repairs passed independent
 source/artifact checks. No incremental advantage or natural discovery is claimed.
-See the [task-effectiveness receipt](task-effectiveness-followup.md). Optional
-Field Lab v2 checks could not run the legacy-v1 pack; no migration was performed.
+See the [task-effectiveness receipt](task-effectiveness-followup.md). At that stage, optional
+Field Lab v2 checks could not run the legacy-v1 pack and no migration was performed.
+The explicit migration observed on 2026-11-13 is recorded above.
 
 ## Published v0.3.0 baseline (2026-09-22)
 

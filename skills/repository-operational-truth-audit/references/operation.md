@@ -105,6 +105,14 @@ inspection, a disposable probe or a durable regression test. A behavior-preservi
 refactor may start and end with green baseline tests. A defect repair needs a
 witness that exposes the defect; a compile/setup failure alone is not that witness.
 
+When a consumer compiler rejects a documented supported call, that rejection is
+the task witness; distinguish it from a missing compiler or dependency. Follow
+the package's declared type/runtime entrypoints rather than testing only src/.
+For exported artifacts, run the next consumer with only its contracted inputs,
+without producer residue or manual reconstruction. Challenge a source-only fix,
+an existing-but-unselected helper and a repair that breaks a valid opposite mode
+when those are plausible alternatives. Use the smallest distinguishing probes.
+
 Keep baseline behavior separate from structural completion. Completion evidence
 must reject a forbidden old owner, import edge, selected artifact or shared state
 writer. For a directly inspectable retirement, trace selectors, callers and
@@ -182,6 +190,14 @@ Reconcile four obligations, scoped to the agreed goal:
   coupling and the purpose of retained tests, configuration and bridges. Where
   useful, try a small disposable follow-on change without touching unrelated
   owners. Do not use fewer lines, more tests or future reuse alone as proof.
+
+Verify the final recipient's task after the last relevant patch, including any
+packaged declarations, host-field selection or installed selector in scope.
+Retire an old responsibility only if it still competes for this same task;
+compatibility fields and intentional older modes can remain. Summarize the
+decisive evidence together so the user need not reconstruct the path from
+separate worker reports. New review or coordination work counts against the
+operation's usefulness; do not add a lasting measurement service to prove that.
 
 Not every operation needs runtime deployment evidence or a follow-on probe. Name
 which obligations apply and justify exclusions against the goal. A coherent large

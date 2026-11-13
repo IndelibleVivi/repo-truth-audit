@@ -380,7 +380,7 @@ def assert_operate_repair(root: Path) -> None:
             shutil.copy2(root / name, destination)
         _assert_atlas_flow(artifact)
 
-OPERATE_ASSERTIONS: dict[str, Callable[[Path], None]] = {
+OPERATE_ASSERTIONS: dict[str, Callable[[Path], dict | None]] = {
     "task-export-handoff": task_subjects.assert_repair,
     "conversation-only-accepted-intent": assert_operate_repair,
 }
@@ -503,6 +503,8 @@ def main() -> int:
     parser.add_argument("--json", action="store_true", help="emit a machine-readable summary")
     parser.add_argument("--self-challenge", action="store_true",
                         help="corrupt each prepared subject and require its check to reject it")
+    parser.add_argument("--self-challenge-repairs", action="store_true",
+                        help="challenge packet-handoff acceptance with valid and false repairs")
     parser.add_argument("--verify-operate", metavar="CASE",
                         help="independently check a candidate directory after an Operate turn")
     parser.add_argument("--candidate", type=Path,
@@ -518,14 +520,22 @@ def main() -> int:
             print(f"no operate assertion for case: {args.verify_operate}", file=sys.stderr)
             return 1
         try:
-            assertion(args.candidate)
+            evidence = assertion(args.candidate)
         except (AssertionError, OSError, ValueError, subprocess.SubprocessError) as exc:
             print(json.dumps({"status": "failed", "case": args.verify_operate,
                               "error": str(exc)}, ensure_ascii=False))
             return 1
-        print(json.dumps({"status": "passed", "case": args.verify_operate,
-                          "checks": "selected_behavior" }, ensure_ascii=False))
+        receipt = {"status": "passed", "case": args.verify_operate,
+                   "checks": "selected_behavior"}
+        if evidence is not None:
+            receipt["evidence"] = evidence
+        print(json.dumps(receipt, ensure_ascii=False))
         return 0
+    if args.self_challenge_repairs:
+        from packet_handoff_challenges import run_challenges
+        result = run_challenges()
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0 if result["status"] == "passed" else 1
     if args.self_challenge:
         errors = run_counterexamples()
         if errors:

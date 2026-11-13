@@ -41,6 +41,12 @@ PUBLIC_DOC_PAIRS = {
     "docs/releases/v0.3.0.md": "docs/releases/v0.3.0.zh-CN.md",
     "docs/research-basis.md": "docs/research-basis.zh-CN.md",
     "docs/current-state.md": "docs/current-state.zh-CN.md",
+    "docs/user-outcomes-study.md": "docs/user-outcomes-study.zh-CN.md",
+    "docs/host-compatibility.md": "docs/host-compatibility.zh-CN.md",
+    "docs/codex-handoff.md": "docs/codex-handoff.zh-CN.md",
+    "evals/field/README.md": "evals/field/README.zh-CN.md",
+    "evals/README.md": "evals/README.zh-CN.md",
+    "evals/experiments/2026-11-user-outcomes/README.md": "evals/experiments/2026-11-user-outcomes/README.zh-CN.md",
     "docs/architecture/README.md": "docs/architecture/README.zh-CN.md",
     "docs/releases/v0.1.0.md": "docs/releases/v0.1.0.zh-CN.md",
 }

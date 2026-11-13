@@ -66,6 +66,8 @@ publication, and other materially new effects still require matching authority.
 | `docs/research-basis.md` | Public-safe research provenance and external-source decisions |
 | `docs/forward-behavior-receipt.md` | Public-safe independent forward-test evidence, observed proof layers, and explicit trace limits |
 | `docs/current-state.md` | Volatile source, Git, validation, installation, and publication state |
+| `docs/user-outcomes-study.md`, `docs/host-compatibility.md`, `docs/codex-handoff.md` | Dated field research, compatibility proof boundaries and the continuation commission |
+| `evals/field/`, `evals/experiments/`, `scripts/compare_trials.py` | Optional real-consumer probes and paired outcome/cost research; excluded from installed runtime and model launching |
 | `evals/cases/`, `evals/operation-lab/` and `evals/intent-lab/` | Controlled behavior subjects and deterministic operation rehearsal; expected artifacts and known patches are evaluator evidence, not runtime instructions |
 | `scripts/common.py::SKILL_PAYLOAD_FILES` | Exact installable Skill payload shared by source validation, digesting, staging, installed comparison, and receipts |
 | `scripts/` and `tests/` | Deterministic validation and local installation behavior |
@@ -168,9 +170,11 @@ git diff --check
 ```
 
 When Skill Field Lab is already available, also validate and self-test the
-subject pack. If an installed companion rejects the legacy pack schema, record
-that compatibility limit without claiming its checks passed or silently migrating
-it. That companion remains optional and must not become a runtime
+subject pack. A v2-only companion needs its explicit offline `migrate-v1` route
+into a new experiment directory before validation/self-test; retain the migration
+receipt and original manifest. See `docs/host-compatibility.md`. If unavailable,
+record that compatibility limit without claiming its checks passed or silently
+migrating it. That companion remains optional and must not become a runtime
 dependency or start a target-model invocation during ordinary validation.
 
 ## Installation and publication

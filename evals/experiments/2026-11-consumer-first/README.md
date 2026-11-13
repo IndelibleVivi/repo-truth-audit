@@ -11,7 +11,8 @@ first target-agent call.
 The original registration and `execution-settings.json` preserve the first,
 aborted `03e3706` cohort. Use the separate [setup recovery](setup-recovery.md),
 [recovery registration](recovery-preregistration.json) and recovery settings for
-the corrected cohort. Its results must remain separate from the first cohort.
+the corrected cohort. The [final-four registration](final-four-preregistration.json)
+records the last scope correction. Cohorts are reported separately.
 
 ## Question and status
 
@@ -25,11 +26,14 @@ token use than the current progressive Skill snapshot? The three arms are:
 | `progressive-rta` | The exact nine-file RTA payload below plus `instructions/progressive-rta.md` |
 | `consumer-first` | The short instruction at `instructions/consumer-first.md`; no RTA payload |
 
-This package contains no observations and reports no advantage. No target-model
-call has been made. The twelve slots are exactly four tasks by three arms by one
-replicate. Further replication requires a new preregistration, seed, budget, and
-result-blind-integrity declaration; it cannot be added by editing the frozen
-slot count.
+The original twelve slots are four tasks by three arms by one replicate. The
+continuation is now closed after **24 launched subject sessions** across three
+separate cohorts. The first two cohorts stopped for setup/harness defects. The
+final four sessions provide one completed ordinary-repair pair and two verified
+migration checkpoints without their required reports. See [results and limits](results.md):
+the balanced study remains incomplete and establishes no productivity advantage.
+The frozen registrations retain their historical identities. Further calls need
+a new registration and budget.
 
 ## Frozen identity
 
@@ -168,7 +172,7 @@ The comparator remains owned elsewhere. Compare `progressive-rta` with
 semantics here or silently substitute an unsupported three-arm schema.
 
 The invocation unit is a fresh Agent subject session, not an individual API
-request inside its tool loop. Local settings are frozen separately in
+request inside its tool loop. The original cohort settings are frozen in
 `execution-settings.json`: twelve sessions maximum, 180 seconds each,
 three concurrent, no retries or new paid credentials. Host-reported usage does
 not measure active human time. For Chinese subjects, pass `--language zh-CN` to

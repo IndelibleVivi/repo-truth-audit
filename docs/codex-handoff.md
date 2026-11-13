@@ -21,10 +21,19 @@ The installer default and canonical nine-file Skill are unchanged. The offline
 comparator rejects contaminated `without-skill` exposure in either direction.
 See [host evidence](host-compatibility.md), [field probes](../evals/field/README.md)
 and the [consumer-first protocol](../evals/experiments/2026-11-consumer-first/README.md).
-The new protocol must pass positive/negative controls and freeze actual host
-settings before its separate, at-most-twelve live subject calls. Windows/OpenCode
-UI acceptance still needs that exact environment; no such local consumer is
-available here. No merge, tag, release or daily upgrade is implied.
+The finite comparison is now closed at 24 launched subject sessions. Two
+invalidated cohorts and a four-session scope-corrected probe are retained in
+[results and limits](../evals/experiments/2026-11-consumer-first/results.md).
+Both ordinary repairs completed; both migration arms reached verified delivery
+checkpoints but lack required reports. No balanced comparison, causal benefit or
+owner review-time benefit was established. Do not restart these registrations or
+silently spend further calls. A new study needs a fresh matched design and
+budget; no canonical Skill expansion is warranted by these results.
+
+Windows/OpenCode UI acceptance still needs that exact environment; no such local
+consumer is available here. No merge, tag, release or daily upgrade is implied.
+The original work order below is historical commissioning context; use the dated
+current state to identify unfinished work.
 
 ## Start from these results
 

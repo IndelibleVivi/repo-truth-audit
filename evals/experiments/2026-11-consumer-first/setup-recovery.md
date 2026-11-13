@@ -59,3 +59,13 @@ short migration pair and a no-RTA vs short local-repair pair, with the same
 180-second cap and no retries. This is a reduced, scope-corrected engineering
 probe, not the original balanced four-task/three-arm experiment. Prior setup
 knowledge is disclosed; no blind or causal claim is made.
+
+## Closed continuation
+
+All 24 subject sessions have now been spent. Both final ordinary repairs
+completed; both migration products passed consumer checks but missed their
+required report before the deadline, so full Task outcomes are failures.
+The two v2 clean controls were interrupted before their reports and remain
+unjudged. See [separated results](results.md) for native measurements and limits.
+This dated record preserves the earlier registrations; it does not authorize
+restarting or extending them.

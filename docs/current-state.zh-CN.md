@@ -31,16 +31,29 @@ owner 后续编辑后冻结 wheel 合法不变的邻例。wrapper 分开 setup f
 运行但不产生成本差值。明确比较两种已加载 treatment 仍可合法匹配。原始四组配对的结果
 不变；十二项比较器测试通过。
 
-本地接续完整回归通过 **169 项 repository tests**、两个 validators、六项 fixture self-test、
+Live 比较前，本地接续完整回归通过 **169 项 repository tests**、两个 validators、六项 fixture self-test、
 十三项 intent case、十四项 packet 挑战、原配对比较器、Skill validation 与 diff 检查。
 新 [consumer-first 协议](../evals/experiments/2026-11-consumer-first/README.zh-CN.md)
 及执行设置已在 live 被试调用前冻结。
 
 `03e3706` 首批因未接触结果的独立 review 发现三项 setup/oracle 缺陷而停止，尽管当时
-CI 全绿。十二次启动均以 unjudged 保留（九个 host-finished、一个 timeout、两个中断）。
-缺陷已修复并独立复验，最新完整回归通过 **172 tests**。修正批用新 seed 独立预注册，
-两批总上限为 24 个会话；修正批登记前未读取首批最终报告或产品结果，见
+CI 全绿。十二次启动均保留 unjudged。修复已通过独立反例及最新完整 **172 tests**。
+修正批随后在八次启动后因协调者的公共 prompt 错把 clean 任务只读范围施加给实现任务
+而停止；其中两个 clean 控制也在必需报告之前中断。这些属于 setup／截断观察，
+不是 Agent 修复失败。
+
+余下四次用明确写权限执行，并用尽 24 个会话上限。两个普通修复均通过源码、实际交付
+ZIP、回归和报告检查；两个 migration 检查点均通过行为、结构和实际 ZIP 检查，却在时间
+上限前未产生必需报告，不能记成任务完成。四次均保持登记的受保护字节。只有普通配对
+比较完整任务成本。两个 migration 因缺少必需报告判为完整任务 deadline 失败；截断计数
+不是成功交付成本，不推导因果或人工审阅收益。见
+[结果与限制](../evals/experiments/2026-11-consumer-first/results.zh-CN.md)及
 [setup 修正](../evals/experiments/2026-11-consumer-first/setup-recovery.zh-CN.md)。
+被试进程全部停止，本登记不再有可用调用。四任务／三组平衡比较仍未完成。
+
+源码交付 `03e3706`、`3df91f4`、`27dfe50` 已推送研发分支，各自 push 与 PR CI 通过。
+最终回执／文档后续保持相同 task/evaluator 实现和 Skill payload；branch head 与其新鲜 CI 另行解析，
+不把此前 CI 归给后来的 commit。
 
 source 版本保持 `0.3.0`，本轮不移动稳定 tag、不 release、不 merge、不升级日用安装。
 下方历史证据保留原日期，不改标成新鲜结果。

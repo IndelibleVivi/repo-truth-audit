@@ -17,9 +17,14 @@
 canonical 九文件 Skill 未改。离线比较器现从两个方向拒绝污染的 `without-skill` exposure。
 见[宿主证据](host-compatibility.zh-CN.md)、[实战 probe](../evals/field/README.zh-CN.md)
 和 [consumer-first 协议](../evals/experiments/2026-11-consumer-first/README.zh-CN.md)。
-新协议须先通过正/负控制并冻结实际 host 设置，再独立进行最多十二次 live 被试调用。
+有限比较现已在启动 24 个被试会话后关闭。两批失效实验和四次权限修正 probe 均保留于
+[结果与限制](../evals/experiments/2026-11-consumer-first/results.zh-CN.md)。两个普通
+修复完成；两个 migration 达到已验证交付检查点，却缺少必需报告。尚未得到完整平衡比较、
+因果收益或 owner 审阅时间收益。不要重启这些登记或默默追加调用；新实验须有新的配对
+设计和预算，这些结果不支持继续扩写 canonical Skill。
+
 Windows/OpenCode UI 验收仍需精确环境，本轮没有该本地消费者。不隐含 merge、tag、release
-或日用升级。
+或日用升级。下方原始工作单作为历史委托保留；剩余工作以带日期的当前状态为准。
 
 ## 从这些已完成结果继续
 

@@ -59,6 +59,18 @@ comparisons of two loaded treatments remain supported. The original four task
 pairs retain their verdicts. A stronger comparator, successful host smoke and
 installed-package matrix do not establish a new productivity result.
 
+The finite shorter-instruction follow-up is now closed at 24 launched subject
+sessions, including two invalidated cohorts. Setup corrections and a common
+prompt scope error are retained rather than counted as model failures. The final
+ordinary-repair pair succeeded in both arms; full and short migration arms each
+reached a consumer-verified checkpoint without the required report before the
+180-second cap. This does not resolve the original balanced comparison or show
+review/coordination costs are repaid. See [the separated receipts and decision](../evals/experiments/2026-11-consumer-first/results.md).
+Keep the canonical method unchanged; the short instruction remains an
+experimental comparison, not a second installable product. The next useful
+question is still whether either instruction improves a difficult completed
+outcome enough to offset measured owner work.
+
 ## Starting state and retained contract
 
 The published release at `6de6dae92f17efbef3cf8ad4e9e98eb6bdd5a61b` already

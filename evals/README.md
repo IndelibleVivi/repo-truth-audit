@@ -10,9 +10,10 @@ Agent behavior, measured/proxy costs and host adoption must not be conflated.
 Research tools stay outside the nine-file Skill payload and launch no models.
 
 The finite [consumer-first follow-up](experiments/2026-11-consumer-first/README.md)
-preregisters four tasks, three instruction arms and twelve fresh-run slots.
-Its preparation, verification and optional anonymous review tools are offline;
-the coordinator freezes actual host settings before any separate live run.
+preserves the original four-task/three-arm registration and the separated
+[24-session results](experiments/2026-11-consumer-first/results.md). The balanced
+study remains incomplete. Preparation, verification and optional review tools
+are offline; the package launches no models.
 
 ```bash
 python3 evals/intent-lab/check_intent_subject.py --self-challenge-repairs

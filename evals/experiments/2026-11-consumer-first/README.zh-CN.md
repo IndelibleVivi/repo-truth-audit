@@ -8,7 +8,7 @@
 
 原预注册及 `execution-settings.json` 保留中止的 `03e3706` 首批身份。修正批请查看独立的
 [setup 修正](setup-recovery.zh-CN.md)、[修正批预注册](recovery-preregistration.json)
-及修正批设置；不得把两批结果混池。
+及修正批设置；[最后四次登记](final-four-preregistration.json) 记录最终权限修正。各批分别报告。
 
 ## 问题与状态
 
@@ -21,9 +21,11 @@
 | `progressive-rta` | 下方精确九文件 RTA 载荷，加 `instructions/progressive-rta.md` |
 | `consumer-first` | `instructions/consumer-first.md` 的短指令；无 RTA 载荷 |
 
-本包没有任何观察结果，也不报告优势。尚未进行目标模型调用。十二个槽位严格是
-四任务 × 三组 × 一次重复。追加重复必须重新预注册 seed、预算和结果盲性声明，
-不能通过修改冻结槽位数完成。
+原十二个槽位严格是四任务 × 三组 × 一次重复。本次接续已关闭，在三批中共
+**启动 24 个被试会话**。前两批因 setup／harness 缺陷停止；最后四次得到一组完成的
+普通修复配对，以及两个缺少必需报告的已验证 migration 检查点。见
+[结果与限制](results.zh-CN.md)：平衡研究仍未完成，也不证明生产率优势。
+冻结登记保留历史身份，继续调用须有新的预注册与预算。
 
 ## 冻结身份
 
@@ -137,7 +139,7 @@ comparator 归其他 lane 所有。`progressive-rta` 与 `consumer-first` 另作
 不得在此修改比较语义，或暗中改为不支持的 three-arm schema。
 
 调用单位是 fresh Agent 被试会话，不是会话 tool loop 内单次 API 请求。
-本机执行设置另冻结于 `execution-settings.json`：最多十二会话、每次 180 秒、三并发、
+原批执行设置冻结于 `execution-settings.json`：最多十二会话、每次 180 秒、三并发、
 不重试、不启用新付费凭据。host usage 不等于人工活跃时间。中文对象的 prepare 与 verify
 都应传 `--language zh-CN`；同一匹配 block 保持一种语言。可选审阅导出器只对报告草稿
 隐去已知组名；自愿审阅前仍须人工检查路径、姓名等其他身份线索。

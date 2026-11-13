@@ -42,20 +42,36 @@ delta. Explicit matched comparisons of two loaded treatments remain supported.
 The original four pairs still compare exactly as before; twelve comparator
 tests pass.
 
-The completed local continuation passed **169 repository tests**, both validators,
+Before live comparison, the local continuation passed **169 repository tests**, both validators,
 six fixture self-tests, thirteen intent cases, fourteen packet challenges, the
 original trial comparison, Skill validation and diff checks. The new
 [consumer-first protocol](../evals/experiments/2026-11-consumer-first/README.md)
 and its execution settings are frozen before live subject calls.
 
-The `03e3706` cohort was stopped after result-blind independent review found
-three setup/oracle defects despite green CI. All twelve launches are retained
-as unjudged (nine host-finished, one timeout, two interrupted). The defects are
-fixed and independently rechecked; the fresh complete suite now passes **172
-tests**. A separate corrected cohort is preregistered with a new seed and a
-24-session total ceiling across both cohorts; no first-cohort final report or
-product outcome was read before the recovery registration. See
-[setup recovery](../evals/experiments/2026-11-consumer-first/setup-recovery.md).
+The `03e3706` cohort stopped after result-blind independent review found
+three setup/oracle defects despite green CI. All twelve launches remain
+unjudged. The fixes passed independent counterexamples and the fresh complete
+suite of **172 tests**. Recovery then stopped after eight launches because the
+coordinator's common prompt incorrectly imposed the clean task's read-only scope
+on implementation tasks. Its two clean controls were also interrupted before
+the required report. These are setup/censoring observations, not Agent repair failures.
+
+The four remaining sessions used explicit write authority and exhausted the
+24-session ceiling. Both ordinary repairs passed source, actual delivered ZIP,
+regression and report checks; both migration checkpoints passed behavior,
+structure and actual ZIP checks but timed out without the required report.
+They are not completed tasks. All four preserved registered protected bytes.
+Only the ordinary pair compares completed-task costs. Both migrations fail the
+full Task deadline because the required report is absent; their censored counts
+are not successful-delivery costs. There is no causal or human-review benefit claim. See [results and limits](../evals/experiments/2026-11-consumer-first/results.md)
+and [setup recovery](../evals/experiments/2026-11-consumer-first/setup-recovery.md).
+All subject processes are stopped. No further calls remain in this registration.
+The balanced four-task/three-arm comparison remains incomplete.
+
+Source deliveries `03e3706`, `3df91f4` and `27dfe50` are pushed on the research
+branch; their push and PR CI runs passed. The final receipt/doc follow-up keeps
+the same task/evaluator implementations and Skill payload. Resolve the branch head and its fresh
+CI separately; earlier CI does not establish acceptance of a later commit.
 
 The source version remains `0.3.0`. No stable tag, release, merge or daily
 installation change is included. The dated evidence below is preserved rather

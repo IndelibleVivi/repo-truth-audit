@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+- Close the finite 24-session instruction comparison with separated invalidated
+  cohorts, one completed ordinary-repair pair and two incomplete migration
+  checkpoints. Retain unknown human costs and make no productivity claim.
+
 - Repair evaluator import context, exact protected-byte checks and supplied
   fixture self-tests after independent counterexamples. Preserve the aborted
   cohort as unjudged and preregister a separate corrected cohort.

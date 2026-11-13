@@ -6,6 +6,10 @@
 单重复会话，并评估这些会话实际产生的产物。工具不启动模型，也不选择宿主；协调者在
 第一次目标 Agent 调用前冻结此包并选定 harness。
 
+原预注册及 `execution-settings.json` 保留中止的 `03e3706` 首批身份。修正批请查看独立的
+[setup 修正](setup-recovery.zh-CN.md)、[修正批预注册](recovery-preregistration.json)
+及修正批设置；不得把两批结果混池。
+
 ## 问题与状态
 
 较短的 consumer-first 指令，能否在当前 progressive Skill 快照之外，保持独立验证的

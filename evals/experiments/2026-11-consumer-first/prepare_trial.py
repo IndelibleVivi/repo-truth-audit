@@ -49,18 +49,18 @@ def module(name: str, path: Path):
 def prompt(task: str, language: str) -> str:
     return (HERE / "tasks" / language / f"{task}.md").read_text(encoding="utf-8")
 
-def slot_order() -> list[dict]:
+def slot_order(seed: str = SEED) -> list[dict]:
     rows = []
     for task in TASKS:
         for arm in ARMS:
-            key = digest_bytes(f"{SEED}\0{task}\0{arm}".encode("utf-8"))
+            key = digest_bytes(f"{seed}\0{task}\0{arm}".encode("utf-8"))
             rows.append({"slot": None, "task_id": task, "arm": arm, "order_key": key})
     rows.sort(key=lambda row: row["order_key"])
     for index, row in enumerate(rows, 1):
         row["slot"] = index
     return rows
 
-def preregistration() -> dict:
+def preregistration(seed: str = SEED) -> dict:
     sys.path.insert(0, str(ROOT / "scripts"))
     from common import SKILL_DIR, SKILL_PAYLOAD_FILES, directory_digest
     payload = directory_digest(SKILL_DIR, SKILL_PAYLOAD_FILES)
@@ -75,7 +75,7 @@ def preregistration() -> dict:
         "schema": "rta-consumer-first-preregistration/1",
         "status": "frozen-not-run",
         "question": "consumer-first instruction versus current progressive RTA and no-Skill controls",
-        "order_seed": SEED,
+        "order_seed": seed,
         "arms": list(ARMS),
         "task_ids": list(TASKS),
         "replicate_count": 1,
@@ -111,7 +111,7 @@ def preregistration() -> dict:
         "task_prompt_digests_zh-CN": {
             task: digest_bytes(prompt(task, "zh-CN").encode("utf-8")) for task in TASKS
         },
-        "slots": slot_order(),
+        "slots": slot_order(seed),
     }
 
 def overlaps(candidate: Path, protected: Path) -> bool:

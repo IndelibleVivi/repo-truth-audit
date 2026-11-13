@@ -1,0 +1,175 @@
+{
+  "schema": "rta-consumer-first-preregistration/1",
+  "status": "frozen-not-run",
+  "question": "consumer-first instruction versus current progressive RTA and no-Skill controls",
+  "order_seed": "consumer-first-2026-11-14-setup-repair-v2",
+  "arms": [
+    "without-skill",
+    "progressive-rta",
+    "consumer-first"
+  ],
+  "task_ids": [
+    "migration-recovery",
+    "delivery-adoption",
+    "known-bug",
+    "clean-baseline"
+  ],
+  "replicate_count": 1,
+  "maximum_fresh_sessions": 12,
+  "invocation_unit": "fresh Agent subject session, not individual model API requests",
+  "maximum_target_model_invocations": 12,
+  "target_model_invocations_observed_now": 0,
+  "frozen_before_target_calls": true,
+  "absolute_slot_limit": 12,
+  "further_replication": "requires a new preregistration, seed, budget and result-blind-integrity declaration",
+  "protocol": {
+    "replicates": 1,
+    "paired_arms": [
+      [
+        "without-skill",
+        "progressive-rta"
+      ],
+      [
+        "without-skill",
+        "consumer-first"
+      ],
+      [
+        "progressive-rta",
+        "consumer-first"
+      ]
+    ],
+    "languages": [
+      "en",
+      "zh-CN"
+    ],
+    "language_matching": "one language consistently within each matched block",
+    "outcomes": [
+      "success",
+      "failure",
+      "blocked",
+      "unjudged"
+    ],
+    "result_recording": "retain failures, setup blocks, unread treatment, and missing metrics",
+    "further_replication_forbidden_without_new_preregistration": true,
+    "human_review": "voluntary, anonymous, stopwatch active time, separate from agent elapsed time",
+    "reviewer_contact": "not authorized",
+    "maximum_target_model_calls_for_coordinator": 12
+  },
+  "progressive_payload": {
+    "digest": "28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211",
+    "files": [
+      "LICENSE.txt",
+      "NOTICE.md",
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/audit.md",
+      "references/intent.md",
+      "references/operation.md",
+      "references/recovery.md",
+      "scripts/check_evidence.py"
+    ]
+  },
+  "instructions": {
+    "progressive-rta": "11c51773935dcc50df816e9314c941eaef51c70317e1055919f5afdac7ecf0dc",
+    "consumer-first": "98bad017590772950116c4c4182fd8d135b5fe0de3bce93d66c11eed97796410"
+  },
+  "task_prompt_digests_en": {
+    "migration-recovery": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+    "delivery-adoption": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+    "known-bug": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+    "clean-baseline": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5"
+  },
+  "task_prompt_digests_zh-CN": {
+    "migration-recovery": "de05b35c4fef1ba00b330373893f9f343aa57ce47c1b55cf466e31cee4a19ce5",
+    "delivery-adoption": "55d7a1e0181f45f1fba2e9f3add514dcc5b11951b981be607903e7588964c6c3",
+    "known-bug": "8fb6e0be6579854b3abbaaf40dc75c0b023b5070b9b6492d928cc3e82b36fb89",
+    "clean-baseline": "77ed4e7a5b11aa9dbb85384c963c91f67e52b7b267b8c6de0cfe3550003af774"
+  },
+  "slots": [
+    {
+      "slot": 1,
+      "task_id": "delivery-adoption",
+      "arm": "progressive-rta",
+      "order_key": "09c0c0b6d9d7b1018486f48febf7b68b7ff737f687d68be7e95a816c77d500db"
+    },
+    {
+      "slot": 2,
+      "task_id": "delivery-adoption",
+      "arm": "consumer-first",
+      "order_key": "28a2c22cf8d47fb8f243b0801c376a48f8509a31ca20a170c1e7e8b83b060a04"
+    },
+    {
+      "slot": 3,
+      "task_id": "known-bug",
+      "arm": "without-skill",
+      "order_key": "297c3c98c9f8822b6f4817830c0ed87e807b6f9d607cdf30cbb0f92bca806246"
+    },
+    {
+      "slot": 4,
+      "task_id": "migration-recovery",
+      "arm": "consumer-first",
+      "order_key": "33ec7fe316984a87572c0e096908bc15d9dc8251745fa22466446f41d16efe8e"
+    },
+    {
+      "slot": 5,
+      "task_id": "delivery-adoption",
+      "arm": "without-skill",
+      "order_key": "40c2ca874b8f29ff621f05214b9b1e6069690649ac2b40f3490dd89f53fa3e76"
+    },
+    {
+      "slot": 6,
+      "task_id": "migration-recovery",
+      "arm": "progressive-rta",
+      "order_key": "9c54f9d9b7c9bac344f357373e9321abff58d229db5a4fe5ab179d94874fa0f0"
+    },
+    {
+      "slot": 7,
+      "task_id": "clean-baseline",
+      "arm": "consumer-first",
+      "order_key": "d025d88c3e0c6ce543c6fe3fb8f5d93e34261a1077c3456f54bdaba9c0ae4405"
+    },
+    {
+      "slot": 8,
+      "task_id": "clean-baseline",
+      "arm": "progressive-rta",
+      "order_key": "d2af6d484d67c73775004093d0c52703b7c3cf42bededa22fb7f054b72d9d152"
+    },
+    {
+      "slot": 9,
+      "task_id": "known-bug",
+      "arm": "progressive-rta",
+      "order_key": "d394516359d2604e6656a44783f9abbff59744f7256b63e2c9eb64a16a82a3f9"
+    },
+    {
+      "slot": 10,
+      "task_id": "migration-recovery",
+      "arm": "without-skill",
+      "order_key": "ee23304e37c40bd98d4a1fb8efc2f49745bc09cd4e7539267a3853c27b942800"
+    },
+    {
+      "slot": 11,
+      "task_id": "known-bug",
+      "arm": "consumer-first",
+      "order_key": "f4a6f8a887cd96892874f47ea1bacc1a0766cd471bb072c2a9c085d6b7fbc52c"
+    },
+    {
+      "slot": 12,
+      "task_id": "clean-baseline",
+      "arm": "without-skill",
+      "order_key": "f68cfe54ba833198f2f1b037e927f5e72d1de93b011459e32f6cfcfb594f5056"
+    }
+  ],
+  "cohort": "setup-repair-v2",
+  "previous_cohort": "03e3706 aborted and retained",
+  "maximum_total_subject_sessions_in_this_continuation": 24,
+  "result_blind_boundary": "Only first-cohort host statuses were read before this registration; no final reports or product outcomes were read. Independent reviewer had no campaign access.",
+  "adjudication": {
+    "product_outcome": "independent actual artifact and Task-required report checks; host completion/timeout recorded separately and is not alone a product verdict",
+    "failure": "a demonstrated violated task obligation in the final retained product; no inferred failure from unavailable setup or backend",
+    "protected_input_unit": "count distinct registered protected paths with changed or missing bytes; not an audit of all external actions",
+    "diagnosis_unit": "distinct visible causal claims contradicted by actual selected source/consumer evidence; ambiguous statements remain unjudged",
+    "material_invalid_change_unit": "distinct out-of-scope semantic changes with concrete behavior/ownership/delivery impact; formatting and extra useful tests are not failures",
+    "human_effort": "unavailable unless a voluntary person times active work; no such timing is being collected",
+    "costs": "native command_execution items, host-reported token fields and wall elapsed; no generic tool-call or billed-cost inference"
+  }
+}

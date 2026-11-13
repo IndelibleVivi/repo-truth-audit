@@ -87,6 +87,7 @@ KNOWN_BUG_FILES = {
     "app.py": RANGE_BUGGY,
     "test_app.py": source('''
         import json
+        import os
         import subprocess
         import sys
         from pathlib import Path
@@ -128,6 +129,7 @@ CLEAN_FILES = {
     "app.py": CLEAN_APP,
     "test_app.py": source('''
         import json
+        import os
         import subprocess
         import sys
         from pathlib import Path

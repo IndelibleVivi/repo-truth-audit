@@ -48,6 +48,15 @@ original trial comparison, Skill validation and diff checks. The new
 [consumer-first protocol](../evals/experiments/2026-11-consumer-first/README.md)
 and its execution settings are frozen before live subject calls.
 
+The `03e3706` cohort was stopped after result-blind independent review found
+three setup/oracle defects despite green CI. All twelve launches are retained
+as unjudged (nine host-finished, one timeout, two interrupted). The defects are
+fixed and independently rechecked; the fresh complete suite now passes **172
+tests**. A separate corrected cohort is preregistered with a new seed and a
+24-session total ceiling across both cohorts; no first-cohort final report or
+product outcome was read before the recovery registration. See
+[setup recovery](../evals/experiments/2026-11-consumer-first/setup-recovery.md).
+
 The source version remains `0.3.0`. No stable tag, release, merge or daily
 installation change is included. The dated evidence below is preserved rather
 than relabeled as a fresh result.

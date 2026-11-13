@@ -178,5 +178,29 @@ class ConsumerFirstTests(unittest.TestCase):
         self.assertIsNone(public["timing"]["human_active_seconds"])
         self.assertIsNone(public["timing"]["agent_elapsed_seconds"])
 
+    def test_generated_self_tests_are_runnable_before_subject_calls(self) -> None:
+        for task in ("known-bug", "clean-baseline"):
+            root = self.prepared(task)
+            result = verify_trial.run(root, [sys.executable, "-B", "test_app.py"])
+            self.assertEqual(result["exit_code"], 0, result)
+
+    def test_actual_local_helper_import_is_accepted(self) -> None:
+        root = self.prepared("known-bug")
+        subjects.apply_known_range_repair(root)
+        (root / "range_support.py").write_bytes((root / "app.py").read_bytes())
+        (root / "app.py").write_text("from range_support import main\nif __name__ == '__main__':\n    raise SystemExit(main())\n", encoding="utf-8")
+        (root / "bundle.json").write_text(json.dumps(["app.py", "launch.json", "range_support.py"]), encoding="utf-8")
+        self.assertEqual(verify_trial.verify("known-bug", root)["status"], "passed")
+
+    def test_owner_newline_byte_change_is_rejected(self) -> None:
+        root = self.prepared("migration-recovery")
+        fixture = verify_trial.module("consumer_owner_bytes", ROOT / "evals/operation-lab/run_operation_lab.py")
+        fixture.complete_fixture(root)
+        verify_trial.write_migration_zip(root)
+        owner = root / "owner-notes.txt"
+        owner.write_bytes(owner.read_bytes().replace(b"\n", b"\r\n"))
+        with self.assertRaisesRegex(AssertionError, "protected continuation"):
+            verify_trial.verify("migration-recovery", root)
+
 if __name__ == "__main__":
     unittest.main()

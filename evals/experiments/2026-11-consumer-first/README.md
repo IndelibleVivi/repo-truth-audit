@@ -8,6 +8,11 @@ artifacts those sessions produce. The helper does not start a model or choose a
 host. The coordinator must freeze this package and select the harness before the
 first target-agent call.
 
+The original registration and `execution-settings.json` preserve the first,
+aborted `03e3706` cohort. Use the separate [setup recovery](setup-recovery.md),
+[recovery registration](recovery-preregistration.json) and recovery settings for
+the corrected cohort. Its results must remain separate from the first cohort.
+
 ## Question and status
 
 Does a short consumer-first instruction preserve independently verified task

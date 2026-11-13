@@ -36,6 +36,12 @@ owner 后续编辑后冻结 wheel 合法不变的邻例。wrapper 分开 setup f
 新 [consumer-first 协议](../evals/experiments/2026-11-consumer-first/README.zh-CN.md)
 及执行设置已在 live 被试调用前冻结。
 
+`03e3706` 首批因未接触结果的独立 review 发现三项 setup/oracle 缺陷而停止，尽管当时
+CI 全绿。十二次启动均以 unjudged 保留（九个 host-finished、一个 timeout、两个中断）。
+缺陷已修复并独立复验，最新完整回归通过 **172 tests**。修正批用新 seed 独立预注册，
+两批总上限为 24 个会话；修正批登记前未读取首批最终报告或产品结果，见
+[setup 修正](../evals/experiments/2026-11-consumer-first/setup-recovery.zh-CN.md)。
+
 source 版本保持 `0.3.0`，本轮不移动稳定 tag、不 release、不 merge、不升级日用安装。
 下方历史证据保留原日期，不改标成新鲜结果。
 

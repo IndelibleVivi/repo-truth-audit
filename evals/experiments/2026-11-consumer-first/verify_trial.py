@@ -64,20 +64,20 @@ def copy_target(root: Path, task: str, base: Path, language: str = "en") -> tupl
     shutil.copytree(root, target, ignore=shutil.ignore_patterns(".git", "__pycache__"))
     supplied = module("consumer_prepare_verify", HERE / "prepare_trial.py")
     expected = module("consumer_subject_verify", HERE / "subjects.py")
-    require((target / "TASK.md").read_text(encoding="utf-8")
-            == supplied.prompt(task, language), "candidate Task prompt differs from the registered prompt language")
+    require((target / "TASK.md").read_bytes()
+            == supplied.prompt(task, language).encode("utf-8"), "candidate Task prompt differs from the registered prompt language")
     if task == "migration-recovery":
         fixture = module("consumer_resume_verify", ROOT / "evals/operation-lab/run_operation_lab.py")
         for name, value in (("owner-notes.txt", supplied.RESUME_OWNER),
                             ("CHECKPOINT.md", supplied.RESUME_CHECKPOINT),
                             ("entry.py", fixture.ENTRY)):
-            require((target / name).read_text(encoding="utf-8") == value,
+            require((target / name).read_bytes() == value.encode("utf-8"),
                     f"protected continuation input changed: {name}")
     elif task == "delivery-adoption":
         sourced = module("consumer_cedar_verify", ROOT / "evals/intent-lab/task_subjects.py")
         for name in ("PROGRAM.md", "store.json", "supplied-worksheet.json",
                      "docs/current-use.md"):
-            require((target / name).read_text(encoding="utf-8") == sourced.files("revision")[name],
+            require((target / name).read_bytes() == sourced.files("revision")[name].encode("utf-8"),
                     f"protected Cedar input changed: {name}")
     elif task == "known-bug":
         # Source, tests and instructions may legitimately change. The frozen TASK
@@ -110,7 +110,11 @@ def verify_range(target: Path, mode: str, *, ascending: bool = True) -> dict:
     entry = selected_range_entry(target)
     observations = {}
     for value, (expected, code, stderr) in cases.items():
-        observed = run(target, [sys.executable, "-I", "-B", entry, value])
+        # Isolate ambient imports while retaining the selected application's own modules.
+        launcher = ("import runpy,sys; from pathlib import Path; "
+                    "entry=Path(sys.argv[1]).resolve(); sys.path.insert(0,str(entry.parent)); "
+                    "sys.argv=sys.argv[1:]; runpy.run_path(str(entry),run_name='__main__')")
+        observed = run(target, [sys.executable, "-I", "-B", "-c", launcher, entry, value])
         require(observed["exit_code"] == code, f"{mode} {value}: wrong exit {observed}")
         require(observed["stderr"] == stderr, f"{mode} {value}: wrong error {observed}")
         if expected is None:

@@ -4,6 +4,9 @@
 
 ## Unreleased
 
+- Repair evaluator import context, exact protected-byte checks and supplied
+  fixture self-tests after independent counterexamples. Preserve the aborted
+  cohort as unjudged and preregister a separate corrected cohort.
 - Verify discovery and all three behavior modes in native Codex 0.159.1 using
   disposable project installs. Retain the compatible installer default and
   separate trace-backed reads, target nonmutation and manifest-only acceptance

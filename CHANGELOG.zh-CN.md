@@ -4,6 +4,8 @@
 
 ## 未发布
 
+- 依据独立反例修正 evaluator import context、受保护输入逐字节检查和所附 fixture 测试。
+  中止批次以 unjudged 保留，修正批另行预注册，不混池。
 - 在 Codex 0.159.1 原生宿主中，用临时 project 安装验证 discovery 与三种行为模式。
   保留兼容的 installer 默认值；分开真实 trace 读取、目标不变与 manifest-only 验收，
   不推导隐式发现或生产率。

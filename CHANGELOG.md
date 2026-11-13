@@ -10,6 +10,8 @@
 - Replace Cedar's shared-context repair check with independent source/artifact
   recipients and crossed histories. Challenge producer, platform and packet
   caches; retain legitimate packet encodings and explicit non-sandbox limits.
+- Finish synthetic Git preparation without detached auto-maintenance, closing a
+  macOS CI byte-snapshot race while preserving complete read-only assertions.
 - Add optional pinned Python/TypeScript/Go consumer probes and four paired
   natural engineering tasks. Both arms succeeded in all four; extra tool costs
   are proxies and human effort remains unknown. No productivity uplift is claimed.

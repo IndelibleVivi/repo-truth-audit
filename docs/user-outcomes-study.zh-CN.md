@@ -244,6 +244,14 @@ review 还复现了未判定运行被显示为更快的可比结果、输出回�
 保留原始观察并复跑相同反例。集成中，dotenv archive 可移植改动曾短暂覆盖 variant 名称导致
 KeyError，真实矩阵复跑捕获后已修正，最终交付前通过。
 
+首次远端 PR CI 随后在 macOS、Python 3.10、Git 2.56 组合中暴露 fixture 初始化竞态，
+其余三个 job 通过。fixture 基线 commit 启动的后台 maintenance，让变更前快照捕获了
+`.git/objects/maintenance.lock`，随后该锁在变更后快照前消失，导致两个 Cedar 保留子检查失败。
+真实 Git Trace2 探针复现了后台维护的启动，并验证了有限修正：两个 fixture 初始化器仅为各自的 commit
+命令传入 `-c maintenance.auto=false -c gc.auto=0`。完整快照断言继续保留；未修改 local/global
+Git 配置、产品 fixture 字节或权威 Skill，并增加了针对性回归。跨平台验收由修正提交的远端矩阵
+提供；本地 Trace2 观察不能单独证明 macOS 验收通过。
+
 这些修改作用于研究仪器，没有改变自然试验的冻结 treatment，也不能倒推为它带来的 Agent 成功。
 
 ### 方法决策

@@ -21,10 +21,14 @@ or daily upgrade is inferred from that match.
 
 ### Fresh evidence — 2026-11-13
 
-- **146 repository tests passed** in the final full local run, including the
+- **147 repository tests passed** in the final full local run, including the
   operation lab, installation behavior, 16 task-intent tests, 10 comparison tests
   and protected output-path regressions. Repository, architecture and Skill
   validation passed; `git diff --check` passed.
+- The first remote matrix exposed a Git auto-maintenance race in fixture byte
+  snapshots on macOS/Python 3.10. A real Git Trace2 regression now verifies that
+  both initializers finish without detached maintenance; product trees, local
+  Git configuration and complete snapshot assertions remain unchanged.
 - Six fixture self-tests, thirteen intent truth checks and thirteen corrupted
   subject rejections passed, with zero target-model invocations.
 - Cedar's final repair self-challenge is **14/14**: two valid implementations

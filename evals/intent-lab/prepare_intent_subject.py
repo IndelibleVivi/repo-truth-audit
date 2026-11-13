@@ -433,8 +433,11 @@ def write_subject(destination: Path, files: dict[str, str]) -> None:
         if name in {"lumen", "cedar"}:
             path.chmod(0o755)
     env = dict(os.environ, GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull)
+    # Finish fixture preparation before callers snapshot every byte, including
+    # .git. Detached auto-maintenance can otherwise remove a lock after return.
     for args in (["init", "--quiet", "--template="], ["add", "--", *files],
                  ["-c", "user.name=RTA fixture", "-c", "user.email=fixture@example.invalid",
+                  "-c", "maintenance.auto=false", "-c", "gc.auto=0",
                   "-c", "commit.gpgsign=false", "commit", "--quiet", "-m", "Synthetic baseline"]):
         subprocess.run(["git", *args], cwd=destination, env=env, check=True,
                        capture_output=True, timeout=15)

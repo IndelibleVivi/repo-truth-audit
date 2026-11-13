@@ -17,9 +17,12 @@
 
 ### 本轮新鲜证据——2026-11-13
 
-- 最终完整本地运行 **146 项仓库测试通过**，包含 operation lab、安装行为、16 项 task-intent、
+- 最终完整本地运行 **147 项仓库测试通过**，包含 operation lab、安装行为、16 项 task-intent、
   10 项比较器测试及受保护输出路径回归。Repository、architecture、Skill validation 和
   git diff --check 通过。
+- 首次远端矩阵在 macOS/Python 3.10 暴露 Git 自动维护与 fixture 字节快照的竞态。
+  真实 Git Trace2 回归现验证两个初始化器不再留下后台维护；产品 tree、本地 Git 配置和
+  完整快照断言保持不变。
 - 六项 fixture self-test、十三项 intent truth、十三项破坏对象拒绝通过，目标模型调用均为零。
 - Cedar 最终修复自挑战 **14/14**：接受两种合法实现，拒绝十二种负例。八个在研究前 main
   被接受的候选，用该精确旧源码再次复现，最终判据全部拒绝。独立 review 另外发现两个继承的

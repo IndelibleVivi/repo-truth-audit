@@ -335,6 +335,18 @@ observations and rerun the exact cases. During integration, the dotenv archive
 portability edit briefly shadowed its variant name and raised a `KeyError`; the
 real matrix rerun caught it, and the corrected probe passed before delivery.
 
+The first remote PR CI run then exposed a fixture-initialization race on macOS
+with Python 3.10 and Git 2.56; the other three jobs passed. Background maintenance
+launched by a fixture baseline commit left `.git/objects/maintenance.lock` in a
+before-snapshot, then removed it before the after-snapshot, failing two Cedar
+preservation subchecks. A real Git Trace2 probe reproduced the detached maintenance launch and verified
+the finite correction: both fixture initializers now pass
+`-c maintenance.auto=false -c gc.auto=0` only to their commit command. Complete
+snapshot assertions remain intact; local/global Git configuration, product
+fixture bytes and the canonical Skill are unchanged. A focused regression was
+added. The correction's remote matrix supplies cross-platform confirmation;
+the local trace alone is not macOS acceptance.
+
 These corrections change the research machinery, not the frozen natural-trial
 treatment. No natural Agent success is retroactively attributed to them.
 

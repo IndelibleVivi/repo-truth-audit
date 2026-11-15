@@ -2,6 +2,16 @@
 
 [English](codex-handoff.md)
 
+## 已归档委托——2026-11-15
+
+[PR #6](https://github.com/IndelibleVivi/repo-truth-audit/pull/6) 已合入 main，merge commit
+为 `ba9af39d7bc94faf01a2baaf7a8e0427b7cb1878`。下方工作单及带日期更新保留原始委托
+背景，不再作为重复已完成 probe 或重启已关闭 24 会话预算的指令。剩余问题以
+[当前状态](current-state.zh-CN.md)和
+[结果与限制](../evals/experiments/2026-11-consumer-first/results.zh-CN.md)为准。
+本次整合包括此前已准备的 Skill 修订，以及本地接续的验证工具／证据；不发新 release，
+不升级日用安装。
+
 准备日期：2026-11-13。把以下工作单交给能够访问仓库的本地 Codex。它应直接沿已经完成的
 研究和代码继续实现与验证。目标是形成有实际价值、可移植的有限工程介入，并证明额外审阅与
 协调成本值得付出。

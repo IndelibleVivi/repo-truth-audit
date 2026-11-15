@@ -2,7 +2,32 @@
 
 [English](current-state.md)
 
-最近核对：2026-11-14
+最近核对：2026-11-15
+
+## 已合入源码——2026-11-15
+
+[PR #6](https://github.com/IndelibleVivi/repo-truth-audit/pull/6) 已合入 `main`，
+merge commit 为 `ba9af39d7bc94faf01a2baaf7a8e0427b7cb1878`。两个 parent 分别是原 main
+`9fd099b6c9e88be2d7c809b021add51a5c8d6b8f` 和已测研发 head
+`81f3d4c66663c417edb6f53814db5cb6076a3ca9`；merge tree 与已测 head 完全一致。
+本地主 checkout 已在 main，未删除研究分支或原始证据。
+
+已测 head 通过 172 项本地 tests，以及 [push CI](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/43524540221)
+与 [PR CI](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/43524548439) 各四项
+Ubuntu/macOS × Python 3.10/3.13 jobs。这些结果只属于该 head；merge 和后续文档 commit
+具有独立 CI 身份。为 main 声称新鲜 CI 验收前，须检查其精确 revision 的 run。
+
+Main 现包含尚未发布的 consumer-verification 改进及可选研究工具。九文件 Skill payload
+保持已测身份 `28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211`。
+Source 版本仍是 `0.3.0`；不可变 v0.3.0 release/tag 和稳定安装 pin 保持
+`6de6dae92f17efbef3cf8ad4e9e98eb6bdd5a61b`。未升级日用 Skill 安装；源码合并不等于
+新 release 或宿主激活。
+
+研究限制不变：尚无因果生产率或 owner 审阅收益证明；24 会话登记已关闭，其他 native
+host 和 Windows/OpenCode UI 仍未验证。下方带日期段落保留当时 branch／安装观察，
+其中“未合并”等表述只描述此前日期。剩余研究看
+[结果与限制](../evals/experiments/2026-11-consumer-first/results.zh-CN.md)；
+[旧委托](codex-handoff.zh-CN.md)作为历史背景，不用于重做已完成工作。
 
 ## 本地接续——2026-11-14
 
@@ -58,7 +83,7 @@ ZIP、回归和报告检查；两个 migration 检查点均通过行为、结构
 source 版本保持 `0.3.0`，本轮不移动稳定 tag、不 release、不 merge、不升级日用安装。
 下方历史证据保留原日期，不改标成新鲜结果。
 
-## 未发布的用户结果研究分支
+## 用户结果分支快照——2026-11-13
 
 `research/user-outcomes-20261113` 从 main
 `9fd099b6c9e88be2d7c809b021add51a5c8d6b8f` 继续，本轮末尾已重新核对 upstream main

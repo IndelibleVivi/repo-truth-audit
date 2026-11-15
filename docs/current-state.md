@@ -2,7 +2,39 @@
 
 [简体中文](current-state.zh-CN.md)
 
-Last reconciled: 2026-11-14
+Last reconciled: 2026-11-15
+
+## Integrated source — 2026-11-15
+
+[PR #6](https://github.com/IndelibleVivi/repo-truth-audit/pull/6) is merged into
+`main` at `ba9af39d7bc94faf01a2baaf7a8e0427b7cb1878`. Its parents are the
+previous main `9fd099b6c9e88be2d7c809b021add51a5c8d6b8f` and tested research
+head `81f3d4c66663c417edb6f53814db5cb6076a3ca9`; the merge tree is identical
+to that tested head. The local primary checkout is on main. No research branch
+or raw evidence was deleted.
+
+The tested head passed 172 local tests and all four Ubuntu/macOS × Python
+3.10/3.13 jobs in both [push CI](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/43524540221)
+and [PR CI](https://github.com/IndelibleVivi/repo-truth-audit/actions/runs/43524548439).
+These are head-specific results; merge and later documentation commits have
+separate CI identities. Check the exact main revision's run before assigning it
+fresh CI acceptance.
+
+Main carries unreleased consumer-verification refinements and the optional
+research tools. The nine-file Skill payload remains the tested
+`28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211`.
+Source version stays `0.3.0`; the immutable v0.3.0 release/tag and stable install
+pin remain at `6de6dae92f17efbef3cf8ad4e9e98eb6bdd5a61b`. No daily Skill
+installation was upgraded. Source integration is not a new release or host activation.
+
+The research limits are unchanged: no causal productivity or owner-review
+benefit is established; the 24-session registration is closed, and other native
+hosts and Windows/OpenCode UI remain unverified. The dated sections below
+preserve their original branch/installation observations, including statements
+that no merge had happened at those earlier dates. For remaining research,
+use [results and limits](../evals/experiments/2026-11-consumer-first/results.md);
+the [old commission](codex-handoff.md) is historical context, not an instruction
+to repeat completed work.
 
 ## Local continuation — 2026-11-14
 
@@ -77,7 +109,7 @@ The source version remains `0.3.0`. No stable tag, release, merge or daily
 installation change is included. The dated evidence below is preserved rather
 than relabeled as a fresh result.
 
-## Unreleased user-outcomes research branch
+## User-outcomes branch snapshot — 2026-11-13
 
 `research/user-outcomes-20261113` continues from main
 `9fd099b6c9e88be2d7c809b021add51a5c8d6b8f`, freshly rechecked as the upstream

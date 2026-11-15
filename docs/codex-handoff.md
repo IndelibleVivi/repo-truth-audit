@@ -2,6 +2,17 @@
 
 [简体中文](codex-handoff.zh-CN.md)
 
+## Archived commission — 2026-11-15
+
+[PR #6](https://github.com/IndelibleVivi/repo-truth-audit/pull/6) is merged into
+main at `ba9af39d7bc94faf01a2baaf7a8e0427b7cb1878`. The work order and dated
+updates below preserve their commissioning context; they are not an active
+instruction to repeat completed probes or reopen the closed 24-session budget.
+Use [current state](current-state.md) and [results and limits](../evals/experiments/2026-11-consumer-first/results.md)
+for remaining questions. Integration includes the previously prepared Skill
+refinements and the local continuation's validation tools/evidence. It does not
+publish a new release or upgrade the daily installation.
+
 Prepared: 2026-11-13. Give the work order below to a local Codex session with the
 repository checkout. It continues completed research and code, rather than
 commissioning another general review. The owner asked for a useful, portable

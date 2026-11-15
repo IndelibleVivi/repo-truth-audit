@@ -1,0 +1,267 @@
+{
+  "schema": "rta-consumer-first-execution/1",
+  "frozen_before_subject_calls": true,
+  "language": "en",
+  "requested_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "observed_backend_model": "not independently exposed by this host",
+  "harness": "codex-cli 0.159.1 exec --no-daemon --ignore-user-config --ephemeral; normal existing ChatGPT login",
+  "environment": {
+    "os": "Darwin",
+    "release": "26.5.2",
+    "machine": "arm64",
+    "python": "3.13.3"
+  },
+  "budget": {
+    "unit": "fresh Agent subject session; internal API request count not capped at twelve or independently exposed",
+    "maximum_sessions": 12,
+    "deadline_seconds_per_session": 180,
+    "termination_grace_seconds": 5,
+    "maximum_concurrent_sessions": 3,
+    "retry": false,
+    "new_paid_credentials_or_service": false
+  },
+  "exposure": "ambient user RTA exact-path disabled by invocation override; treatments explicitly read from frozen temporary snapshots; no implicit discovery claim",
+  "context_limit": "normal existing host context, not an OS-isolated or context-clean causal trial",
+  "slots": [
+    {
+      "slot": 1,
+      "task_id": "delivery-adoption",
+      "arm": "progressive-rta",
+      "order_key": "09c0c0b6d9d7b1018486f48febf7b68b7ff737f687d68be7e95a816c77d500db"
+    },
+    {
+      "slot": 2,
+      "task_id": "delivery-adoption",
+      "arm": "consumer-first",
+      "order_key": "28a2c22cf8d47fb8f243b0801c376a48f8509a31ca20a170c1e7e8b83b060a04"
+    },
+    {
+      "slot": 3,
+      "task_id": "known-bug",
+      "arm": "without-skill",
+      "order_key": "297c3c98c9f8822b6f4817830c0ed87e807b6f9d607cdf30cbb0f92bca806246"
+    },
+    {
+      "slot": 4,
+      "task_id": "migration-recovery",
+      "arm": "consumer-first",
+      "order_key": "33ec7fe316984a87572c0e096908bc15d9dc8251745fa22466446f41d16efe8e"
+    },
+    {
+      "slot": 5,
+      "task_id": "delivery-adoption",
+      "arm": "without-skill",
+      "order_key": "40c2ca874b8f29ff621f05214b9b1e6069690649ac2b40f3490dd89f53fa3e76"
+    },
+    {
+      "slot": 6,
+      "task_id": "migration-recovery",
+      "arm": "progressive-rta",
+      "order_key": "9c54f9d9b7c9bac344f357373e9321abff58d229db5a4fe5ab179d94874fa0f0"
+    },
+    {
+      "slot": 7,
+      "task_id": "clean-baseline",
+      "arm": "consumer-first",
+      "order_key": "d025d88c3e0c6ce543c6fe3fb8f5d93e34261a1077c3456f54bdaba9c0ae4405"
+    },
+    {
+      "slot": 8,
+      "task_id": "clean-baseline",
+      "arm": "progressive-rta",
+      "order_key": "d2af6d484d67c73775004093d0c52703b7c3cf42bededa22fb7f054b72d9d152"
+    },
+    {
+      "slot": 9,
+      "task_id": "known-bug",
+      "arm": "progressive-rta",
+      "order_key": "d394516359d2604e6656a44783f9abbff59744f7256b63e2c9eb64a16a82a3f9"
+    },
+    {
+      "slot": 10,
+      "task_id": "migration-recovery",
+      "arm": "without-skill",
+      "order_key": "ee23304e37c40bd98d4a1fb8efc2f49745bc09cd4e7539267a3853c27b942800"
+    },
+    {
+      "slot": 11,
+      "task_id": "known-bug",
+      "arm": "consumer-first",
+      "order_key": "f4a6f8a887cd96892874f47ea1bacc1a0766cd471bb072c2a9c085d6b7fbc52c"
+    },
+    {
+      "slot": 12,
+      "task_id": "clean-baseline",
+      "arm": "without-skill",
+      "order_key": "f68cfe54ba833198f2f1b037e927f5e72d1de93b011459e32f6cfcfb594f5056"
+    }
+  ],
+  "initial_objects": {
+    "v2-01-delivery-adoption-progressive-rta": {
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "protected_inputs": [
+        "PROGRAM.md",
+        "TASK.md",
+        "docs/current-use.md",
+        "store.json",
+        "supplied-worksheet.json"
+      ]
+    },
+    "v2-02-delivery-adoption-consumer-first": {
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "protected_inputs": [
+        "PROGRAM.md",
+        "TASK.md",
+        "docs/current-use.md",
+        "store.json",
+        "supplied-worksheet.json"
+      ]
+    },
+    "v2-03-known-bug-without-skill": {
+      "subject_digest": "e97f6d1f5e4f3a246bb2d814030df620c41ad601b697442b59ba5480d10991dc",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "protected_inputs": [
+        "TASK.md"
+      ]
+    },
+    "v2-04-migration-recovery-consumer-first": {
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "protected_inputs": [
+        "CHECKPOINT.md",
+        "TASK.md",
+        "entry.py",
+        "owner-notes.txt"
+      ]
+    },
+    "v2-05-delivery-adoption-without-skill": {
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "protected_inputs": [
+        "PROGRAM.md",
+        "TASK.md",
+        "docs/current-use.md",
+        "store.json",
+        "supplied-worksheet.json"
+      ]
+    },
+    "v2-06-migration-recovery-progressive-rta": {
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "protected_inputs": [
+        "CHECKPOINT.md",
+        "TASK.md",
+        "entry.py",
+        "owner-notes.txt"
+      ]
+    },
+    "v2-07-clean-baseline-consumer-first": {
+      "subject_digest": "b775e3071653ea7359eba84eeccd5d453489c677196e10643a766dddefd4449b",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "protected_inputs": [
+        ".gitignore",
+        "README.md",
+        "TASK.md",
+        "app.py",
+        "bundle.json",
+        "docs/local-use.md",
+        "launch.json",
+        "test_app.py"
+      ]
+    },
+    "v2-08-clean-baseline-progressive-rta": {
+      "subject_digest": "b775e3071653ea7359eba84eeccd5d453489c677196e10643a766dddefd4449b",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "protected_inputs": [
+        ".gitignore",
+        "README.md",
+        "TASK.md",
+        "app.py",
+        "bundle.json",
+        "docs/local-use.md",
+        "launch.json",
+        "test_app.py"
+      ]
+    },
+    "v2-09-known-bug-progressive-rta": {
+      "subject_digest": "e97f6d1f5e4f3a246bb2d814030df620c41ad601b697442b59ba5480d10991dc",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "protected_inputs": [
+        "TASK.md"
+      ]
+    },
+    "v2-10-migration-recovery-without-skill": {
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "protected_inputs": [
+        "CHECKPOINT.md",
+        "TASK.md",
+        "entry.py",
+        "owner-notes.txt"
+      ]
+    },
+    "v2-11-known-bug-consumer-first": {
+      "subject_digest": "e97f6d1f5e4f3a246bb2d814030df620c41ad601b697442b59ba5480d10991dc",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "protected_inputs": [
+        "TASK.md"
+      ]
+    },
+    "v2-12-clean-baseline-without-skill": {
+      "subject_digest": "b775e3071653ea7359eba84eeccd5d453489c677196e10643a766dddefd4449b",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "protected_inputs": [
+        ".gitignore",
+        "README.md",
+        "TASK.md",
+        "app.py",
+        "bundle.json",
+        "docs/local-use.md",
+        "launch.json",
+        "test_app.py"
+      ]
+    }
+  },
+  "control_file_sha256": {
+    "evals/experiments/2026-11-consumer-first/execution-settings.json": "e8cb7515172b65d0dbc0c41b9864d797739cf44d31ec9542f52749f93d9eaf59",
+    "evals/experiments/2026-11-consumer-first/setup-recovery.md": "b0cd257ce98c5178ad14e84c54a5169b4c4f89ddb011df7b1c1a26cd148b35f7",
+    "evals/experiments/2026-11-consumer-first/recovery-preregistration.json": "b9493339cf1066a63405c096be580d0372421c6968e732edf3dd7efd4e90f953",
+    "evals/experiments/2026-11-consumer-first/prepare_trial.py": "d2fe79e22d8bce7fde63dd669754b677345ea5506447abb652a7b24cd0e18f85",
+    "evals/experiments/2026-11-consumer-first/setup-recovery.zh-CN.md": "a860f7b8d446bafdc7545f254cd053144c54c6bcf2643b8a4315400b6d1b3b39",
+    "evals/experiments/2026-11-consumer-first/README.md": "d3f7079df1bd0ceb9f648bc0dfdfb0a817f906f10f8f9bf24aa24db9eafa12fb",
+    "evals/experiments/2026-11-consumer-first/subjects.py": "32440da9c759d6a82ad192db3394057f4981442df419628585fe793a1edbff8e",
+    "evals/experiments/2026-11-consumer-first/README.zh-CN.md": "dfa5934ed2c2ecc6839875fb8437ec49851741503c1c30a4c8a367ac41d609fa",
+    "evals/experiments/2026-11-consumer-first/verify_trial.py": "6cbfb69ec8debc1bbf1259e38418e6f16b5a27cc1e8663bb57e52e096d1d685c",
+    "evals/experiments/2026-11-consumer-first/prepare_review.py": "5d82691acdcb640e5830cf336daac919584a447a6f2ba103d3c206b071d55f4d",
+    "evals/experiments/2026-11-consumer-first/preregistration.json": "ce46c22dc4bc5fa9a5db64c6595addcf0b46d307697bf5a0fa30a3c8f9fef7ed",
+    "evals/experiments/2026-11-consumer-first/instructions/progressive-rta.md": "11c51773935dcc50df816e9314c941eaef51c70317e1055919f5afdac7ecf0dc",
+    "evals/experiments/2026-11-consumer-first/instructions/consumer-first.md": "98bad017590772950116c4c4182fd8d135b5fe0de3bce93d66c11eed97796410",
+    "evals/experiments/2026-11-consumer-first/tasks/zh-CN/clean-baseline.md": "77ed4e7a5b11aa9dbb85384c963c91f67e52b7b267b8c6de0cfe3550003af774",
+    "evals/experiments/2026-11-consumer-first/tasks/zh-CN/migration-recovery.md": "de05b35c4fef1ba00b330373893f9f343aa57ce47c1b55cf466e31cee4a19ce5",
+    "evals/experiments/2026-11-consumer-first/tasks/zh-CN/known-bug.md": "8fb6e0be6579854b3abbaaf40dc75c0b023b5070b9b6492d928cc3e82b36fb89",
+    "evals/experiments/2026-11-consumer-first/tasks/zh-CN/delivery-adoption.md": "55d7a1e0181f45f1fba2e9f3add514dcc5b11951b981be607903e7588964c6c3",
+    "evals/experiments/2026-11-consumer-first/tasks/en/clean-baseline.md": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+    "evals/experiments/2026-11-consumer-first/tasks/en/migration-recovery.md": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+    "evals/experiments/2026-11-consumer-first/tasks/en/known-bug.md": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+    "evals/experiments/2026-11-consumer-first/tasks/en/delivery-adoption.md": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+    "evals/operation-lab/run_operation_lab.py": "704fe811cc586fbfa6c3e1243b6c28c39a31aa1d81d18d588c700261b804dd6f",
+    "evals/intent-lab/task_subjects.py": "e8f144ec49659416e72a1eb25ecaa336ac6ac44d097fcb5d3f3a41d24acba3b5",
+    "evals/intent-lab/check_intent_subject.py": "383f69529e156a7af03c819d69a29f2d4bc51a73aa86d0c921f0516a4ea64756",
+    "evals/experiments/2026-11-user-outcomes/verify_trial.py": "d51a209ed4976b9136ae07c8dbe244fc15433826cd7d0ddfb5ada8090566a07e"
+  },
+  "cohort": "setup-repair-v2",
+  "previous_cohort_disposition": "aborted-observations.json; no pooling",
+  "maximum_total_subject_sessions_in_this_continuation": 24,
+  "adjudication": {
+    "product_outcome": "independent actual artifact and Task-required report checks; host completion/timeout recorded separately and is not alone a product verdict",
+    "failure": "a demonstrated violated task obligation in the final retained product; no inferred failure from unavailable setup or backend",
+    "protected_input_unit": "count distinct registered protected paths with changed or missing bytes; not an audit of all external actions",
+    "diagnosis_unit": "distinct visible causal claims contradicted by actual selected source/consumer evidence; ambiguous statements remain unjudged",
+    "material_invalid_change_unit": "distinct out-of-scope semantic changes with concrete behavior/ownership/delivery impact; formatting and extra useful tests are not failures",
+    "human_effort": "unavailable unless a voluntary person times active work; no such timing is being collected",
+    "costs": "native command_execution items, host-reported token fields and wall elapsed; no generic tool-call or billed-cost inference"
+  }
+}

@@ -1,0 +1,588 @@
+{
+  "schema_version": 1,
+  "source_commit": "03e37060f5da720aa318d9021c03a73809fe5404",
+  "launches": 12,
+  "status_counts": {
+    "timed-out": 1,
+    "finished": 9,
+    "interrupted": 2
+  },
+  "trials": [
+    {
+      "schema_version": 1,
+      "run_id": "01-migration-recovery-progressive-rta",
+      "block_id": "aborted-migration-recovery",
+      "arm": "progressive-rta",
+      "task_id": "migration-recovery",
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 180.389,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 8,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "timed-out"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "02-known-bug-consumer-first",
+      "block_id": "aborted-known-bug",
+      "arm": "consumer-first",
+      "task_id": "known-bug",
+      "subject_digest": "04aedbc9496b76cc79a5a008f3b9dc9129968410fa5435abc04db0033fbef725",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 93.088,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 7,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 259722,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 2305,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "finished"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "03-delivery-adoption-progressive-rta",
+      "block_id": "aborted-delivery-adoption",
+      "arm": "progressive-rta",
+      "task_id": "delivery-adoption",
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 176.592,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 16,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 275614,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 5795,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "finished"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "04-clean-baseline-progressive-rta",
+      "block_id": "aborted-clean-baseline",
+      "arm": "progressive-rta",
+      "task_id": "clean-baseline",
+      "subject_digest": "aa2f3a4a0ee59a982d4a3e7a911277eee5a14a828435b6a4394ccf0db51107a1",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 106.338,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 12,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 238907,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 3706,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "finished"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "05-known-bug-without-skill",
+      "block_id": "aborted-known-bug",
+      "arm": "without-skill",
+      "task_id": "known-bug",
+      "subject_digest": "04aedbc9496b76cc79a5a008f3b9dc9129968410fa5435abc04db0033fbef725",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "none"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 82.891,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 7,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 194209,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 2107,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "finished"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "06-migration-recovery-without-skill",
+      "block_id": "aborted-migration-recovery",
+      "arm": "without-skill",
+      "task_id": "migration-recovery",
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "none"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 93.655,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 6,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 168019,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 2477,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "finished"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "07-delivery-adoption-consumer-first",
+      "block_id": "aborted-delivery-adoption",
+      "arm": "consumer-first",
+      "task_id": "delivery-adoption",
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 135.155,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 11,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 208307,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 4665,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "finished"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "08-migration-recovery-consumer-first",
+      "block_id": "aborted-migration-recovery",
+      "arm": "consumer-first",
+      "task_id": "migration-recovery",
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 115.234,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 14,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 170121,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 3696,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "finished"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "09-clean-baseline-without-skill",
+      "block_id": "aborted-clean-baseline",
+      "arm": "without-skill",
+      "task_id": "clean-baseline",
+      "subject_digest": "aa2f3a4a0ee59a982d4a3e7a911277eee5a14a828435b6a4394ccf0db51107a1",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "none"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 93.061,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 14,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 173570,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 2980,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "finished"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "10-clean-baseline-consumer-first",
+      "block_id": "aborted-clean-baseline",
+      "arm": "consumer-first",
+      "task_id": "clean-baseline",
+      "subject_digest": "aa2f3a4a0ee59a982d4a3e7a911277eee5a14a828435b6a4394ccf0db51107a1",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 90.781,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 12,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 198995,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 2541,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "finished"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "11-known-bug-progressive-rta",
+      "block_id": "aborted-known-bug",
+      "arm": "progressive-rta",
+      "task_id": "known-bug",
+      "subject_digest": "04aedbc9496b76cc79a5a008f3b9dc9129968410fa5435abc04db0033fbef725",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 82.251,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 9,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "interrupted"
+    },
+    {
+      "schema_version": 1,
+      "run_id": "12-delivery-adoption-without-skill",
+      "block_id": "aborted-delivery-adoption",
+      "arm": "without-skill",
+      "task_id": "delivery-adoption",
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "frozen-03e3706",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "none"
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "setup-recovery.md"
+        ],
+        "reason": "Cohort aborted for independently reproduced fixture/evaluator defects; no Agent success/failure inferred"
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 74.654,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 8,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "native host status/turn.completed usage; command_execution item count, not shell subcommands; raw evidence retained privately"
+        }
+      },
+      "host_status": "interrupted"
+    }
+  ]
+}

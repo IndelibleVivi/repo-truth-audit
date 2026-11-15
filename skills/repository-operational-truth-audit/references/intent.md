@@ -145,6 +145,25 @@ distinction was lost at a handoff or never represented. Replay or vary a boundar
 only within current authorization and adequate host controls; otherwise state
 the missing observation. Preserve a valid use as a control.
 
+Define the receiving task by what actually crosses that boundary: delivered
+files, public types, selected configuration, protocol fields and deliberately
+retained human decisions. Exercise the recipient with those inputs. A second
+command in the producer's directory can silently borrow its caches, original
+store or sidecar files. In a controlled probe, prepare a fresh recipient before
+production, copy only agreed deliverables, make disposable producer state
+unavailable, and interleave two different histories when stale associations are
+plausible. Do not delete real user data or call directory separation a sandbox.
+If retained services are part of the agreed product, preserve and identify them
+instead of imposing an offline requirement.
+
+Follow policy and meaning as well as data. An override flag can govern final
+assignment while interpolation still uses another precedence rule; a new status
+field can be correct while the host still displays an obsolete field. Compare
+what each consumer selects before attributing the failure to the underlying
+algorithm. Public type declarations can block a supported runtime journey, so a
+consumer compiler may be the decisive entry gate. A valid opposite mode helps
+reject repairs that merely move the failure elsewhere.
+
 The second direction prevents destroying working behavior. Absence of a spec
 mention is not proof that a feature is disposable, and a search miss is not proof
 that a capability is missing: inspect alternate terminology, other owners, other
@@ -219,6 +238,15 @@ choice, show its task-level consequences and ask the smallest deciding question;
 use existing delegation for internal implementation choices.
 
 ## Intent reconciliation inside an authorized operation
+
+Keep the review burden proportionate to the deciding finding. Resolve observable
+facts yourself, bundle evidence for one owner decision, and omit speculative
+cleanup. When evaluating this method, separate independently checked outcomes,
+misattributions and unnecessary changes from tool cost and measured human effort.
+Report unmeasured review time as unavailable; report length and agent self-reports
+are proxies. A clean/no-change task and a continuation after interruption are
+useful contrasts when they test the actual source of overhead. This evaluation
+is optional research, not a new routine for every target repository.
 
 In Operate, intent reconstruction feeds the same finite outcome, it does not
 replace it. An **inferred** wish is not an automatic edit. A **confirmed missing**

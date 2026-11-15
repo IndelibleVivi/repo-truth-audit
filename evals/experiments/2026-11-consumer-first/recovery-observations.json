@@ -1,0 +1,450 @@
+{
+  "schema_version": 1,
+  "cohort": "setup-repair-v2-scope-invalid",
+  "source_commit": "3df91f43fd9a4430070c816d8e21a4648f99e355",
+  "launched_subject_sessions": 8,
+  "not_started": [
+    "v2-09-known-bug-progressive-rta",
+    "v2-10-migration-recovery-without-skill",
+    "v2-11-known-bug-consumer-first",
+    "v2-12-clean-baseline-without-skill"
+  ],
+  "trials": [
+    {
+      "schema_version": 1,
+      "run_id": "v2-01-delivery-adoption-progressive-rta",
+      "block_id": "recovery-delivery-adoption",
+      "arm": "progressive-rta",
+      "task_id": "delivery-adoption",
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "recovery-v2-3df91f4-scope-invalid",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "host_status": "timed-out",
+      "raw_host_status": "timed-out",
+      "host_usage_raw": null,
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "results.md#cohort-accounting",
+          "setup-recovery.md#harness-scope-correction"
+        ],
+        "reason": "Contradictory harness scope prohibited the requested implementation; no repair success/failure inferred."
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 180.073,
+          "source": "Retained controller wall elapsed; cancellation may censor it."
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 14,
+          "source": "Native completed command_execution items, not all tool calls or shell subcommands."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable. Billing/cache semantics unverified."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable."
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "v2-02-delivery-adoption-consumer-first",
+      "block_id": "recovery-delivery-adoption",
+      "arm": "consumer-first",
+      "task_id": "delivery-adoption",
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "recovery-v2-3df91f4-scope-invalid",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "host_status": "finished",
+      "raw_host_status": "finished",
+      "host_usage_raw": {
+        "input_tokens": 200413,
+        "cached_input_tokens": 177920,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4291,
+        "reasoning_output_tokens": 1362
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "results.md#cohort-accounting",
+          "setup-recovery.md#harness-scope-correction"
+        ],
+        "reason": "Contradictory harness scope prohibited the requested implementation; no repair success/failure inferred."
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 144.279,
+          "source": "Retained controller wall elapsed; cancellation may censor it."
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 7,
+          "source": "Native completed command_execution items, not all tool calls or shell subcommands."
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 200413,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable. Billing/cache semantics unverified."
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 4291,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable."
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "v2-03-known-bug-without-skill",
+      "block_id": "recovery-known-bug",
+      "arm": "without-skill",
+      "task_id": "known-bug",
+      "subject_digest": "e97f6d1f5e4f3a246bb2d814030df620c41ad601b697442b59ba5480d10991dc",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "recovery-v2-3df91f4-scope-invalid",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "none"
+      },
+      "host_status": "finished",
+      "raw_host_status": "finished",
+      "host_usage_raw": {
+        "input_tokens": 199287,
+        "cached_input_tokens": 153984,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2776,
+        "reasoning_output_tokens": 423
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "results.md#cohort-accounting",
+          "setup-recovery.md#harness-scope-correction"
+        ],
+        "reason": "Contradictory harness scope prohibited the requested implementation; no repair success/failure inferred."
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 92.402,
+          "source": "Retained controller wall elapsed; cancellation may censor it."
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 7,
+          "source": "Native completed command_execution items, not all tool calls or shell subcommands."
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 199287,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable. Billing/cache semantics unverified."
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 2776,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable."
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "v2-04-migration-recovery-consumer-first",
+      "block_id": "recovery-migration-recovery",
+      "arm": "consumer-first",
+      "task_id": "migration-recovery",
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "recovery-v2-3df91f4-scope-invalid",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "host_status": "finished",
+      "raw_host_status": "finished",
+      "host_usage_raw": {
+        "input_tokens": 272129,
+        "cached_input_tokens": 241280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6789,
+        "reasoning_output_tokens": 2055
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "results.md#cohort-accounting",
+          "setup-recovery.md#harness-scope-correction"
+        ],
+        "reason": "Contradictory harness scope prohibited the requested implementation; no repair success/failure inferred."
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 175.791,
+          "source": "Retained controller wall elapsed; cancellation may censor it."
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 8,
+          "source": "Native completed command_execution items, not all tool calls or shell subcommands."
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 272129,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable. Billing/cache semantics unverified."
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 6789,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable."
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "v2-05-delivery-adoption-without-skill",
+      "block_id": "recovery-delivery-adoption",
+      "arm": "without-skill",
+      "task_id": "delivery-adoption",
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "recovery-v2-3df91f4-scope-invalid",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "none"
+      },
+      "host_status": "finished",
+      "raw_host_status": "finished",
+      "host_usage_raw": {
+        "input_tokens": 234976,
+        "cached_input_tokens": 215680,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3175,
+        "reasoning_output_tokens": 670
+      },
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "results.md#cohort-accounting",
+          "setup-recovery.md#harness-scope-correction"
+        ],
+        "reason": "Contradictory harness scope prohibited the requested implementation; no repair success/failure inferred."
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 119.749,
+          "source": "Retained controller wall elapsed; cancellation may censor it."
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 11,
+          "source": "Native completed command_execution items, not all tool calls or shell subcommands."
+        },
+        "input_tokens": {
+          "status": "observed",
+          "value": 234976,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable. Billing/cache semantics unverified."
+        },
+        "output_tokens": {
+          "status": "observed",
+          "value": 3175,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable."
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "v2-06-migration-recovery-progressive-rta",
+      "block_id": "recovery-migration-recovery",
+      "arm": "progressive-rta",
+      "task_id": "migration-recovery",
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "recovery-v2-3df91f4-scope-invalid",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "unknown"
+      },
+      "host_status": "interrupted",
+      "raw_host_status": "running",
+      "host_usage_raw": null,
+      "outcome": {
+        "status": "unjudged",
+        "method": "not-run",
+        "evidence": [
+          "results.md#cohort-accounting",
+          "setup-recovery.md#harness-scope-correction"
+        ],
+        "reason": "Contradictory harness scope prohibited the requested implementation; no repair success/failure inferred."
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 124.781,
+          "source": "Retained controller wall elapsed; cancellation may censor it."
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 7,
+          "source": "Native completed command_execution items, not all tool calls or shell subcommands."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable. Billing/cache semantics unverified."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable."
+        }
+      },
+      "status_reconciliation": "Stale label after cancellation; independent PID/arguments read-back and owner termination confirmed no remaining writer. Raw label is preserved."
+    },
+    {
+      "schema_version": 1,
+      "run_id": "v2-07-clean-baseline-consumer-first",
+      "block_id": "recovery-clean-baseline",
+      "arm": "consumer-first",
+      "task_id": "clean-baseline",
+      "subject_digest": "b775e3071653ea7359eba84eeccd5d453489c677196e10643a766dddefd4449b",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "recovery-v2-3df91f4-scope-invalid",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "loaded",
+        "digest": "98bad017590772950116c4c4182fd8d135b5fe0de3bce93d66c11eed97796410"
+      },
+      "host_status": "interrupted",
+      "raw_host_status": "running",
+      "host_usage_raw": null,
+      "outcome": {
+        "status": "unjudged",
+        "method": "independent-review",
+        "evidence": [
+          "results.md#cohort-accounting",
+          "setup-recovery.md#harness-scope-correction"
+        ],
+        "reason": "Control interrupted by coordinator before required INTENT-AUDIT.md; no completed audit. Not a normal task deadline."
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 40.817,
+          "source": "Retained controller wall elapsed; cancellation may censor it."
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 6,
+          "source": "Native completed command_execution items, not all tool calls or shell subcommands."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable. Billing/cache semantics unverified."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable."
+        }
+      },
+      "status_reconciliation": "Stale label after cancellation; independent PID/arguments read-back and owner termination confirmed no remaining writer. Raw label is preserved."
+    },
+    {
+      "schema_version": 1,
+      "run_id": "v2-08-clean-baseline-progressive-rta",
+      "block_id": "recovery-clean-baseline",
+      "arm": "progressive-rta",
+      "task_id": "clean-baseline",
+      "subject_digest": "b775e3071653ea7359eba84eeccd5d453489c677196e10643a766dddefd4449b",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "recovery-v2-3df91f4-scope-invalid",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "loaded",
+        "digest": "28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211"
+      },
+      "host_status": "interrupted",
+      "raw_host_status": "interrupted",
+      "host_usage_raw": null,
+      "outcome": {
+        "status": "unjudged",
+        "method": "independent-review",
+        "evidence": [
+          "results.md#cohort-accounting",
+          "setup-recovery.md#harness-scope-correction"
+        ],
+        "reason": "Control interrupted by coordinator before required INTENT-AUDIT.md; no completed audit. Not a normal task deadline."
+      },
+      "measurements": {
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 36.63,
+          "source": "Retained controller wall elapsed; cancellation may censor it."
+        },
+        "exec_commands": {
+          "status": "observed",
+          "value": 3,
+          "source": "Native completed command_execution items, not all tool calls or shell subcommands."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable. Billing/cache semantics unverified."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim retained turn.completed usage; missing event unavailable."
+        }
+      }
+    }
+  ]
+}

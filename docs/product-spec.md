@@ -2,11 +2,12 @@
 
 [简体中文](product-spec.zh-CN.md)
 
-Status: **0.3.0 source with unreleased task-effectiveness follow-up — 2026-11-07; public tag remains v0.3.0**
+Status: **0.3.0 source with unreleased task-effectiveness and consumer-verification work — 2026-11-13; public tag remains v0.3.0**
 Expanded scope accepted by owner: 2026-09-17
 Method-selection refinements accepted for implementation: 2026-09-20
 Product-intent reconstruction accepted for implementation: 2026-09-22
 Task-effectiveness follow-up accepted for implementation: 2026-11-07
+Consumer-verification research and source development authorized: 2026-11-13
 Source version: 0.3.0
 Latest public release: v0.3.0
 Product form: standalone repository + standalone Codex Skill
@@ -95,6 +96,12 @@ and installed copies are not interchangeable.
 Resolve reachability through real selectors, registrations, manifests,
 callers/imports, build pipelines, persistence readers/writers, install receipts,
 and operator routes. A search miss does not prove retirement.
+
+Include the consumer's admission gates: public types, package exports, command
+registration and host field selection can block an implemented capability.
+When a task crosses a handoff, name the files, retained services, configuration
+and human decisions available on the receiving side. Verify that actual side;
+producer caches or unshipped source must not silently supply missing inputs.
 
 ### ROT-04 — Material finding trace
 
@@ -270,6 +277,13 @@ Challenge consequential executable gates with safe counterexamples where feasibl
 report a material proof limit when that observation is unavailable. Retire or
 consolidate obsolete tests while preserving distinct supported failure coverage
 and the actual test entrypoints.
+
+A reused evaluator must match the current task contract. Preserve its raw result
+if it additionally demands a file deletion, architecture or output format that
+this task never required; adjudicate that mismatch separately. Do not weaken a
+real obligation to pass. Check a supported neighboring use beside the symptom,
+and verify the selected artifact after the final relevant edit. Clean recipient
+copies and separated child-process environments are probes, not OS isolation.
 
 ### ROT-14 — Convergent increments
 

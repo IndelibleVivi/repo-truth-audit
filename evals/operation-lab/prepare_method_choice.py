@@ -88,9 +88,11 @@ def prepare(case_id: str, destination: Path) -> str:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(content.encode("utf-8"))
     # Quiet trusted fixtures only; Git/environment/temporary paths are not containment.
+    # Do not leave detached Git maintenance racing a caller's byte snapshot.
     env = dict(os.environ, GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull)
     for args in (["init", "--quiet", "--template="], ["add", "--", *files],
                  ["-c", "user.name=RTA fixture", "-c", "user.email=fixture@example.invalid",
+                  "-c", "maintenance.auto=false", "-c", "gc.auto=0",
                   "-c", "commit.gpgsign=false", "commit", "--quiet", "-m", "Synthetic baseline"]):
         subprocess.run(["git", *args], cwd=destination, env=env,
                        check=True, capture_output=True, timeout=15)

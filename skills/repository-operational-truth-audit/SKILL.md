@@ -99,6 +99,12 @@ source/artifact/install/runtime distinctions and intentional-multiplicity test.
 A search miss is not retirement evidence. A green suite cannot by itself prove
 behavioral equivalence, structural completion or deployed activation.
 
+When the task crosses a handoff, verify from the receiving consumer's available
+inputs. Producer caches, source checkouts, undeclared sidecars and human repair
+work can make a local round trip succeed while the delivered result is unusable.
+For a material repair, keep a valid neighboring use as a control and check the
+selected entry through the actual consumer, including compiler or host adapters.
+
 Read widely enough to find real dependents; keep edits within the agreed
 semantic boundary. If dependencies invalidate the proposed cut, revise the
 sequence. Ask for additional authority only when a materially new effect,

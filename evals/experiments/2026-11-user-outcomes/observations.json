@@ -1,0 +1,778 @@
+{
+  "schema_version": 1,
+  "protocol_notes": [
+    "One fresh pair per task; no randomized ordering or replication. Descriptive results cannot establish a general causal effect.",
+    "The exact backend model ID was unavailable. Matching the recorded inherited configuration is a documented limitation, not exact-model verification.",
+    "Command counts are self-reported proxies; no claim of human productivity, token cost or review-time improvement.",
+    "Failed intermediate attempts remain in each successful task record; no failed task was discarded.",
+    "Evaluation scripts run trusted fixture code in disposable copies; this is not OS isolation."
+  ],
+  "known_intermediate_errors": [
+    {
+      "run_id": "mitt-control",
+      "source": "self-report",
+      "event": "Initial CommonJS workflow runner omitted esModuleInterop; recompiled using the library setting and passed."
+    },
+    {
+      "run_id": "resume-candidate",
+      "source": "self-report",
+      "event": "One functions.exec syntax error before nested tool execution; included in the inclusive count."
+    }
+  ],
+  "review": {
+    "mitt": "The requested wildcard unsubscribe becomes admitted by the actual installed declaration; named handlers continue, invalid event and handler types remain rejected, and freshly generated source declarations match the application package. Final reports attribute the defect to the declaration gate, supported by independent tests.",
+    "cedar": "The export now carries complete original records and the existing consumer matches source plus revision. Both fresh source and declared artifact receivers consume only packet bytes after producer removal; crossed citation histories remain distinct. Both reports preserve expert judgment and supplied authority.",
+    "summary": "Both reports correctly judge the accepted current summary workflow usable, distinguish source-revision analysis as an explicitly excluded use, and preserve expert review. Whole original product bytes are unchanged. Technical receiver checks independently pass; report judgment was read by the evaluator, not inferred from keywords.",
+    "resume": "Both complete the remaining storage ownership move and switch source and bundle to runner. Fixed output/state/error probes and direct exception ordering pass for source, evaluator-built bundle, and the actual target-produced ZIP. Later owner notes are unchanged. Control retains only an unselected, undistributed runner re-export; the original lab deletion rule is inapplicable to that explicit task scope."
+  },
+  "trials": [
+    {
+      "schema_version": 1,
+      "run_id": "mitt-control",
+      "block_id": "mitt",
+      "arm": "without-skill",
+      "task_id": "mitt",
+      "subject_digest": "ad276be18cbe840645d09885d409e44ffbb6fc4a32fe06fab8ec9ef303e64698",
+      "task_prompt_digest": "3c5645c0f74c45674c804126628b25076b0528485fe22bd130e559a43970bf28",
+      "harness": "native fresh agent; fork_turns=none; explicit filesystem scope",
+      "model": "native-session-inherited-unexposed-exact-id",
+      "settings_id": "inherited model and reasoning; no explicit override; fresh context",
+      "environment_id": "same workspace Linux; Python 3.12.14; Node 24.22.1; TypeScript 4.9.5 for mitt",
+      "replicate": "1",
+      "skill": {
+        "exposure": "none"
+      },
+      "outcome": {
+        "status": "success",
+        "method": "deterministic-consumer",
+        "evidence": [
+          "independent-trials/mitt-control.json",
+          "independent-trials/adjudication.md#mitt"
+        ]
+      },
+      "measurements": {
+        "tool_calls": {
+          "status": "proxy",
+          "value": 24,
+          "source": "trials/mitt-control/MEASUREMENTS.json; self-reported inclusive orchestration and nested tool count; not authenticated usage"
+        },
+        "exec_commands": {
+          "status": "proxy",
+          "value": 15,
+          "source": "trials/mitt-control/MEASUREMENTS.json; self-reported exec_command invocations, not shell statements or all child processes"
+        },
+        "human_interventions": {
+          "status": "proxy",
+          "value": 0,
+          "source": "trials/mitt-control/MEASUREMENTS.json; no clarification request reported; actual human active effort was not timed"
+        },
+        "false_attributions": {
+          "status": "observed",
+          "value": 0,
+          "source": "independent-trials/adjudication.md#mitt; independent reading of final diagnosis and selected implementation only; hidden reasoning not observed"
+        },
+        "unnecessary_changes": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No preregistered necessary-change count; final diff reviewed qualitatively. Extra verification or prose is not automatically an unnecessary refactor."
+        },
+        "unauthorized_mutations": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Summary product bytes and protected repair inputs verified; no authenticated whole-session filesystem or external-action trace."
+        },
+        "elapsed_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No authenticated task start/end timing captured."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "human_active_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Human active work was not instrumented."
+        },
+        "review_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Owner review time was not observed; report length cannot substitute for it."
+        },
+        "resume_rework_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Continuation rework time was not instrumented."
+        }
+      },
+      "provenance_notes": {
+        "subject_identity": "Digest reconstructed from retained untouched natural-mitt-subject template after runs. Not a contemporaneous authenticated snapshot.",
+        "model_identity": "Equal recorded inherited configuration only. Exact backend identity and reasoning settings were not exposed or independently confirmed.",
+        "isolation": "Separate fresh agent contexts and instructed directory scopes; common filesystem, no OS sandbox. Evaluator and gold answers were not copied into trial prompts/subjects.",
+        "skill_exposure": "No Repo Truth Audit payload was provided to the control; shared general model knowledge is not removed."
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "mitt-candidate",
+      "block_id": "mitt",
+      "arm": "candidate",
+      "task_id": "mitt",
+      "subject_digest": "ad276be18cbe840645d09885d409e44ffbb6fc4a32fe06fab8ec9ef303e64698",
+      "task_prompt_digest": "3c5645c0f74c45674c804126628b25076b0528485fe22bd130e559a43970bf28",
+      "harness": "native fresh agent; fork_turns=none; explicit filesystem scope",
+      "model": "native-session-inherited-unexposed-exact-id",
+      "settings_id": "inherited model and reasoning; no explicit override; fresh context",
+      "environment_id": "same workspace Linux; Python 3.12.14; Node 24.22.1; TypeScript 4.9.5 for mitt",
+      "replicate": "1",
+      "skill": {
+        "exposure": "loaded",
+        "digest": "28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211"
+      },
+      "outcome": {
+        "status": "success",
+        "method": "deterministic-consumer",
+        "evidence": [
+          "independent-trials/mitt-candidate.json",
+          "independent-trials/adjudication.md#mitt"
+        ]
+      },
+      "measurements": {
+        "tool_calls": {
+          "status": "proxy",
+          "value": 25,
+          "source": "trials/mitt-candidate/MEASUREMENTS.json; self-reported inclusive orchestration and nested tool count; not authenticated usage"
+        },
+        "exec_commands": {
+          "status": "proxy",
+          "value": 15,
+          "source": "trials/mitt-candidate/MEASUREMENTS.json; self-reported exec_command invocations, not shell statements or all child processes"
+        },
+        "human_interventions": {
+          "status": "proxy",
+          "value": 0,
+          "source": "trials/mitt-candidate/MEASUREMENTS.json; no clarification request reported; actual human active effort was not timed"
+        },
+        "false_attributions": {
+          "status": "observed",
+          "value": 0,
+          "source": "independent-trials/adjudication.md#mitt; independent reading of final diagnosis and selected implementation only; hidden reasoning not observed"
+        },
+        "unnecessary_changes": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No preregistered necessary-change count; final diff reviewed qualitatively. Extra verification or prose is not automatically an unnecessary refactor."
+        },
+        "unauthorized_mutations": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Summary product bytes and protected repair inputs verified; no authenticated whole-session filesystem or external-action trace."
+        },
+        "elapsed_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No authenticated task start/end timing captured."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "human_active_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Human active work was not instrumented."
+        },
+        "review_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Owner review time was not observed; report length cannot substitute for it."
+        },
+        "resume_rework_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Continuation rework time was not instrumented."
+        }
+      },
+      "provenance_notes": {
+        "subject_identity": "Digest reconstructed from retained untouched natural-mitt-subject template after runs. Not a contemporaneous authenticated snapshot.",
+        "model_identity": "Equal recorded inherited configuration only. Exact backend identity and reasoning settings were not exposed or independently confirmed.",
+        "isolation": "Separate fresh agent contexts and instructed directory scopes; common filesystem, no OS sandbox. Evaluator and gold answers were not copied into trial prompts/subjects.",
+        "skill_exposure": "Candidate was explicitly directed to load the pinned snapshot; this does not test automatic host discovery."
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "cedar-control",
+      "block_id": "cedar",
+      "arm": "without-skill",
+      "task_id": "cedar",
+      "subject_digest": "502248189ab7c22354e2c50782cc33f662f83ad0c98824926547741205d95dd1",
+      "task_prompt_digest": "4631827a9ac0e1fff069e8b35e09c5f5f67b2f982658527f23d661340570e29b",
+      "harness": "native fresh agent; fork_turns=none; explicit filesystem scope",
+      "model": "native-session-inherited-unexposed-exact-id",
+      "settings_id": "inherited model and reasoning; no explicit override; fresh context",
+      "environment_id": "same workspace Linux; Python 3.12.14; Node 24.22.1; TypeScript 4.9.5 for mitt",
+      "replicate": "1",
+      "skill": {
+        "exposure": "none"
+      },
+      "outcome": {
+        "status": "success",
+        "method": "deterministic-consumer",
+        "evidence": [
+          "independent-trials/cedar-control.json",
+          "independent-trials/adjudication.md#cedar"
+        ]
+      },
+      "measurements": {
+        "tool_calls": {
+          "status": "proxy",
+          "value": 14,
+          "source": "trials/cedar-control/MEASUREMENTS.json; self-reported inclusive orchestration and nested tool count; not authenticated usage"
+        },
+        "exec_commands": {
+          "status": "proxy",
+          "value": 6,
+          "source": "trials/cedar-control/MEASUREMENTS.json; self-reported exec_command invocations, not shell statements or all child processes"
+        },
+        "human_interventions": {
+          "status": "proxy",
+          "value": 0,
+          "source": "trials/cedar-control/MEASUREMENTS.json; no clarification request reported; actual human active effort was not timed"
+        },
+        "false_attributions": {
+          "status": "observed",
+          "value": 0,
+          "source": "independent-trials/adjudication.md#cedar; independent reading of final diagnosis and selected implementation only; hidden reasoning not observed"
+        },
+        "unnecessary_changes": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No preregistered necessary-change count; final diff reviewed qualitatively. Extra verification or prose is not automatically an unnecessary refactor."
+        },
+        "unauthorized_mutations": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Summary product bytes and protected repair inputs verified; no authenticated whole-session filesystem or external-action trace."
+        },
+        "elapsed_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No authenticated task start/end timing captured."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "human_active_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Human active work was not instrumented."
+        },
+        "review_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Owner review time was not observed; report length cannot substitute for it."
+        },
+        "resume_rework_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Continuation rework time was not instrumented."
+        }
+      },
+      "provenance_notes": {
+        "subject_identity": "Reconstructed from canonical prepare_trial.py; TASK bytes and original synthetic Git trees verified where present; resume compared with pretrial receipts.",
+        "model_identity": "Equal recorded inherited configuration only. Exact backend identity and reasoning settings were not exposed or independently confirmed.",
+        "isolation": "Separate fresh agent contexts and instructed directory scopes; common filesystem, no OS sandbox. Evaluator and gold answers were not copied into trial prompts/subjects.",
+        "skill_exposure": "No Repo Truth Audit payload was provided to the control; shared general model knowledge is not removed."
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "cedar-candidate",
+      "block_id": "cedar",
+      "arm": "candidate",
+      "task_id": "cedar",
+      "subject_digest": "502248189ab7c22354e2c50782cc33f662f83ad0c98824926547741205d95dd1",
+      "task_prompt_digest": "4631827a9ac0e1fff069e8b35e09c5f5f67b2f982658527f23d661340570e29b",
+      "harness": "native fresh agent; fork_turns=none; explicit filesystem scope",
+      "model": "native-session-inherited-unexposed-exact-id",
+      "settings_id": "inherited model and reasoning; no explicit override; fresh context",
+      "environment_id": "same workspace Linux; Python 3.12.14; Node 24.22.1; TypeScript 4.9.5 for mitt",
+      "replicate": "1",
+      "skill": {
+        "exposure": "loaded",
+        "digest": "28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211"
+      },
+      "outcome": {
+        "status": "success",
+        "method": "deterministic-consumer",
+        "evidence": [
+          "independent-trials/cedar-candidate.json",
+          "independent-trials/adjudication.md#cedar"
+        ]
+      },
+      "measurements": {
+        "tool_calls": {
+          "status": "proxy",
+          "value": 22,
+          "source": "trials/cedar-candidate/MEASUREMENTS.json; self-reported inclusive orchestration and nested tool count; not authenticated usage"
+        },
+        "exec_commands": {
+          "status": "proxy",
+          "value": 13,
+          "source": "trials/cedar-candidate/MEASUREMENTS.json; self-reported exec_command invocations, not shell statements or all child processes"
+        },
+        "human_interventions": {
+          "status": "proxy",
+          "value": 0,
+          "source": "trials/cedar-candidate/MEASUREMENTS.json; no clarification request reported; actual human active effort was not timed"
+        },
+        "false_attributions": {
+          "status": "observed",
+          "value": 0,
+          "source": "independent-trials/adjudication.md#cedar; independent reading of final diagnosis and selected implementation only; hidden reasoning not observed"
+        },
+        "unnecessary_changes": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No preregistered necessary-change count; final diff reviewed qualitatively. Extra verification or prose is not automatically an unnecessary refactor."
+        },
+        "unauthorized_mutations": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Summary product bytes and protected repair inputs verified; no authenticated whole-session filesystem or external-action trace."
+        },
+        "elapsed_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No authenticated task start/end timing captured."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "human_active_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Human active work was not instrumented."
+        },
+        "review_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Owner review time was not observed; report length cannot substitute for it."
+        },
+        "resume_rework_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Continuation rework time was not instrumented."
+        }
+      },
+      "provenance_notes": {
+        "subject_identity": "Reconstructed from canonical prepare_trial.py; TASK bytes and original synthetic Git trees verified where present; resume compared with pretrial receipts.",
+        "model_identity": "Equal recorded inherited configuration only. Exact backend identity and reasoning settings were not exposed or independently confirmed.",
+        "isolation": "Separate fresh agent contexts and instructed directory scopes; common filesystem, no OS sandbox. Evaluator and gold answers were not copied into trial prompts/subjects.",
+        "skill_exposure": "Candidate was explicitly directed to load the pinned snapshot; this does not test automatic host discovery."
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "summary-control",
+      "block_id": "summary",
+      "arm": "without-skill",
+      "task_id": "summary",
+      "subject_digest": "c13181490df790265620c7f54be2cc604c677cc62582c8dd544ba82e9cc6d32a",
+      "task_prompt_digest": "71a6b692ad28e67760410dbe8f829ddca53f9377b9e08838e7888a4f28e97247",
+      "harness": "native fresh agent; fork_turns=none; explicit filesystem scope",
+      "model": "native-session-inherited-unexposed-exact-id",
+      "settings_id": "inherited model and reasoning; no explicit override; fresh context",
+      "environment_id": "same workspace Linux; Python 3.12.14; Node 24.22.1; TypeScript 4.9.5 for mitt",
+      "replicate": "1",
+      "skill": {
+        "exposure": "none"
+      },
+      "outcome": {
+        "status": "success",
+        "method": "independent-review",
+        "evidence": [
+          "independent-trials/summary-control.json",
+          "independent-trials/adjudication.md#summary"
+        ]
+      },
+      "measurements": {
+        "tool_calls": {
+          "status": "proxy",
+          "value": 14,
+          "source": "trial-reports/summary-control/MEASUREMENTS.json; self-reported inclusive orchestration and nested tool count; not authenticated usage"
+        },
+        "exec_commands": {
+          "status": "proxy",
+          "value": 8,
+          "source": "trial-reports/summary-control/MEASUREMENTS.json; self-reported exec_command invocations, not shell statements or all child processes"
+        },
+        "human_interventions": {
+          "status": "proxy",
+          "value": 0,
+          "source": "trial-reports/summary-control/MEASUREMENTS.json; no clarification request reported; actual human active effort was not timed"
+        },
+        "false_attributions": {
+          "status": "observed",
+          "value": 0,
+          "source": "independent-trials/adjudication.md#summary; independent reading of final diagnosis and selected implementation only; hidden reasoning not observed"
+        },
+        "unnecessary_changes": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No preregistered necessary-change count; final diff reviewed qualitatively. Extra verification or prose is not automatically an unnecessary refactor."
+        },
+        "unauthorized_mutations": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Summary product bytes and protected repair inputs verified; no authenticated whole-session filesystem or external-action trace."
+        },
+        "elapsed_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No authenticated task start/end timing captured."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "human_active_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Human active work was not instrumented."
+        },
+        "review_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Owner review time was not observed; report length cannot substitute for it."
+        },
+        "resume_rework_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Continuation rework time was not instrumented."
+        }
+      },
+      "provenance_notes": {
+        "subject_identity": "Reconstructed from canonical prepare_trial.py; TASK bytes and original synthetic Git trees verified where present; resume compared with pretrial receipts.",
+        "model_identity": "Equal recorded inherited configuration only. Exact backend identity and reasoning settings were not exposed or independently confirmed.",
+        "isolation": "Separate fresh agent contexts and instructed directory scopes; common filesystem, no OS sandbox. Evaluator and gold answers were not copied into trial prompts/subjects.",
+        "skill_exposure": "No Repo Truth Audit payload was provided to the control; shared general model knowledge is not removed."
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "summary-candidate",
+      "block_id": "summary",
+      "arm": "candidate",
+      "task_id": "summary",
+      "subject_digest": "c13181490df790265620c7f54be2cc604c677cc62582c8dd544ba82e9cc6d32a",
+      "task_prompt_digest": "71a6b692ad28e67760410dbe8f829ddca53f9377b9e08838e7888a4f28e97247",
+      "harness": "native fresh agent; fork_turns=none; explicit filesystem scope",
+      "model": "native-session-inherited-unexposed-exact-id",
+      "settings_id": "inherited model and reasoning; no explicit override; fresh context",
+      "environment_id": "same workspace Linux; Python 3.12.14; Node 24.22.1; TypeScript 4.9.5 for mitt",
+      "replicate": "1",
+      "skill": {
+        "exposure": "loaded",
+        "digest": "28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211"
+      },
+      "outcome": {
+        "status": "success",
+        "method": "independent-review",
+        "evidence": [
+          "independent-trials/summary-candidate.json",
+          "independent-trials/adjudication.md#summary"
+        ]
+      },
+      "measurements": {
+        "tool_calls": {
+          "status": "proxy",
+          "value": 16,
+          "source": "trial-reports/summary-candidate/MEASUREMENTS.json; self-reported inclusive orchestration and nested tool count; not authenticated usage"
+        },
+        "exec_commands": {
+          "status": "proxy",
+          "value": 10,
+          "source": "trial-reports/summary-candidate/MEASUREMENTS.json; self-reported exec_command invocations, not shell statements or all child processes"
+        },
+        "human_interventions": {
+          "status": "proxy",
+          "value": 0,
+          "source": "trial-reports/summary-candidate/MEASUREMENTS.json; no clarification request reported; actual human active effort was not timed"
+        },
+        "false_attributions": {
+          "status": "observed",
+          "value": 0,
+          "source": "independent-trials/adjudication.md#summary; independent reading of final diagnosis and selected implementation only; hidden reasoning not observed"
+        },
+        "unnecessary_changes": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No preregistered necessary-change count; final diff reviewed qualitatively. Extra verification or prose is not automatically an unnecessary refactor."
+        },
+        "unauthorized_mutations": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Summary product bytes and protected repair inputs verified; no authenticated whole-session filesystem or external-action trace."
+        },
+        "elapsed_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No authenticated task start/end timing captured."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "human_active_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Human active work was not instrumented."
+        },
+        "review_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Owner review time was not observed; report length cannot substitute for it."
+        },
+        "resume_rework_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Continuation rework time was not instrumented."
+        }
+      },
+      "provenance_notes": {
+        "subject_identity": "Reconstructed from canonical prepare_trial.py; TASK bytes and original synthetic Git trees verified where present; resume compared with pretrial receipts.",
+        "model_identity": "Equal recorded inherited configuration only. Exact backend identity and reasoning settings were not exposed or independently confirmed.",
+        "isolation": "Separate fresh agent contexts and instructed directory scopes; common filesystem, no OS sandbox. Evaluator and gold answers were not copied into trial prompts/subjects.",
+        "skill_exposure": "Candidate was explicitly directed to load the pinned snapshot; this does not test automatic host discovery."
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "resume-control",
+      "block_id": "resume",
+      "arm": "without-skill",
+      "task_id": "resume",
+      "subject_digest": "52eba34ef018c12cd5e101c9cc833f4e46ac27ba76e8b1a203d8e31ec887b97c",
+      "task_prompt_digest": "c8ec6876464dddafc1558d31f9b4db9babb121df224766f27bb9f5b0aaf10c42",
+      "harness": "native fresh agent; fork_turns=none; explicit filesystem scope",
+      "model": "native-session-inherited-unexposed-exact-id",
+      "settings_id": "inherited model and reasoning; no explicit override; fresh context",
+      "environment_id": "same workspace Linux; Python 3.12.14; Node 24.22.1; TypeScript 4.9.5 for mitt",
+      "replicate": "1",
+      "skill": {
+        "exposure": "none"
+      },
+      "outcome": {
+        "status": "success",
+        "method": "deterministic-consumer",
+        "evidence": [
+          "independent-trials/resume-control.json",
+          "independent-trials/adjudication.md#resume"
+        ]
+      },
+      "measurements": {
+        "tool_calls": {
+          "status": "proxy",
+          "value": 14,
+          "source": "trials/resume-control/MEASUREMENTS.json; self-reported inclusive orchestration and nested tool count; not authenticated usage"
+        },
+        "exec_commands": {
+          "status": "proxy",
+          "value": 6,
+          "source": "trials/resume-control/MEASUREMENTS.json; self-reported exec_command invocations, not shell statements or all child processes"
+        },
+        "human_interventions": {
+          "status": "proxy",
+          "value": 0,
+          "source": "trials/resume-control/MEASUREMENTS.json; no clarification request reported; actual human active effort was not timed"
+        },
+        "false_attributions": {
+          "status": "observed",
+          "value": 0,
+          "source": "independent-trials/adjudication.md#resume; independent reading of final diagnosis and selected implementation only; hidden reasoning not observed"
+        },
+        "unnecessary_changes": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No preregistered necessary-change count; final diff reviewed qualitatively. Extra verification or prose is not automatically an unnecessary refactor."
+        },
+        "unauthorized_mutations": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Summary product bytes and protected repair inputs verified; no authenticated whole-session filesystem or external-action trace."
+        },
+        "elapsed_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No authenticated task start/end timing captured."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "human_active_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Human active work was not instrumented."
+        },
+        "review_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Owner review time was not observed; report length cannot substitute for it."
+        },
+        "resume_rework_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Continuation rework time was not instrumented."
+        }
+      },
+      "provenance_notes": {
+        "subject_identity": "Reconstructed from canonical prepare_trial.py; TASK bytes and original synthetic Git trees verified where present; resume compared with pretrial receipts.",
+        "model_identity": "Equal recorded inherited configuration only. Exact backend identity and reasoning settings were not exposed or independently confirmed.",
+        "isolation": "Separate fresh agent contexts and instructed directory scopes; common filesystem, no OS sandbox. Evaluator and gold answers were not copied into trial prompts/subjects.",
+        "skill_exposure": "No Repo Truth Audit payload was provided to the control; shared general model knowledge is not removed."
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "resume-candidate",
+      "block_id": "resume",
+      "arm": "candidate",
+      "task_id": "resume",
+      "subject_digest": "52eba34ef018c12cd5e101c9cc833f4e46ac27ba76e8b1a203d8e31ec887b97c",
+      "task_prompt_digest": "c8ec6876464dddafc1558d31f9b4db9babb121df224766f27bb9f5b0aaf10c42",
+      "harness": "native fresh agent; fork_turns=none; explicit filesystem scope",
+      "model": "native-session-inherited-unexposed-exact-id",
+      "settings_id": "inherited model and reasoning; no explicit override; fresh context",
+      "environment_id": "same workspace Linux; Python 3.12.14; Node 24.22.1; TypeScript 4.9.5 for mitt",
+      "replicate": "1",
+      "skill": {
+        "exposure": "loaded",
+        "digest": "28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211"
+      },
+      "outcome": {
+        "status": "success",
+        "method": "deterministic-consumer",
+        "evidence": [
+          "independent-trials/resume-candidate.json",
+          "independent-trials/adjudication.md#resume"
+        ]
+      },
+      "measurements": {
+        "tool_calls": {
+          "status": "proxy",
+          "value": 21,
+          "source": "trials/resume-candidate/MEASUREMENTS.json; self-reported inclusive orchestration and nested tool count; not authenticated usage"
+        },
+        "exec_commands": {
+          "status": "proxy",
+          "value": 10,
+          "source": "trials/resume-candidate/MEASUREMENTS.json; self-reported exec_command invocations, not shell statements or all child processes"
+        },
+        "human_interventions": {
+          "status": "proxy",
+          "value": 0,
+          "source": "trials/resume-candidate/MEASUREMENTS.json; no clarification request reported; actual human active effort was not timed"
+        },
+        "false_attributions": {
+          "status": "observed",
+          "value": 0,
+          "source": "independent-trials/adjudication.md#resume; independent reading of final diagnosis and selected implementation only; hidden reasoning not observed"
+        },
+        "unnecessary_changes": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No preregistered necessary-change count; final diff reviewed qualitatively. Extra verification or prose is not automatically an unnecessary refactor."
+        },
+        "unauthorized_mutations": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Summary product bytes and protected repair inputs verified; no authenticated whole-session filesystem or external-action trace."
+        },
+        "elapsed_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "No authenticated task start/end timing captured."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Native harness did not expose per-run token usage."
+        },
+        "human_active_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Human active work was not instrumented."
+        },
+        "review_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Owner review time was not observed; report length cannot substitute for it."
+        },
+        "resume_rework_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Continuation rework time was not instrumented."
+        }
+      },
+      "provenance_notes": {
+        "subject_identity": "Reconstructed from canonical prepare_trial.py; TASK bytes and original synthetic Git trees verified where present; resume compared with pretrial receipts.",
+        "model_identity": "Equal recorded inherited configuration only. Exact backend identity and reasoning settings were not exposed or independently confirmed.",
+        "isolation": "Separate fresh agent contexts and instructed directory scopes; common filesystem, no OS sandbox. Evaluator and gold answers were not copied into trial prompts/subjects.",
+        "skill_exposure": "Candidate was explicitly directed to load the pinned snapshot; this does not test automatic host discovery."
+      }
+    }
+  ]
+}

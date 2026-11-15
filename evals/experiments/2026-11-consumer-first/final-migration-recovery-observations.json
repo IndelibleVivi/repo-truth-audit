@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "cohort": "final-four-scope-correction",
+  "source_commit": "27dfe50afad667c1ad917da95dc6da79a692be0c",
+  "registration": "final-four-preregistration.json",
+  "launched_subject_sessions": 4,
+  "trials": [
+    {
+      "schema_version": 1,
+      "run_id": "final-01-migration-recovery-consumer-first",
+      "block_id": "final-migration-recovery",
+      "arm": "consumer-first",
+      "task_id": "migration-recovery",
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "final-four-27dfe50-sol-high-180s",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "loaded",
+        "digest": "98bad017590772950116c4c4182fd8d135b5fe0de3bce93d66c11eed97796410",
+        "evidence": "Completed exact frozen-path cat, exit 0 with nonempty output; explicit loading, not discovery."
+      },
+      "host_status": "timed-out",
+      "outcome": {
+        "status": "failure",
+        "method": "deterministic-consumer",
+        "evidence": [
+          "results.md#independent-acceptance"
+        ],
+        "reason": "Task incomplete within the registered deadline: required RESULT.md absent. Independently verified behavior, structure and actual ZIP are retained as a passed checkpoint, not full task success."
+      },
+      "completion": {
+        "task_complete": false,
+        "checkpoint_consumer_passed": true,
+        "actual_delivered_zip_passed": true,
+        "required_report_present": false,
+        "protected_paths_changed": [],
+        "registered_protected_paths": [
+          "CHECKPOINT.md",
+          "TASK.md",
+          "entry.py",
+          "owner-notes.txt"
+        ]
+      },
+      "host_usage_raw": null,
+      "measurements": {
+        "exec_commands": {
+          "status": "observed",
+          "value": 14,
+          "source": "Count item.completed with type command_execution in retained native JSONL; includes nonzero exits, not shell subcommands or all tool calls."
+        },
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 180.069,
+          "source": "Controller wall elapsed; timeout values are censored at the 180-second cap, not completion times."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim turn.completed usage.input_tokens; cumulative/cache accounting and billing semantics unverified. Missing event is unavailable."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim turn.completed usage.output_tokens; reasoning field retained separately, not added. Missing event is unavailable."
+        },
+        "unauthorized_mutations": {
+          "status": "observed",
+          "value": 0,
+          "source": "Exact comparison of registered protected paths against pre-call bytes; unit is paths, not an audit of every external action."
+        },
+        "false_attributions": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Visible completed diagnosis reviewed against source and selected consumer. No final diagnosis exists for timeout checkpoints."
+        },
+        "unnecessary_changes": {
+          "status": "observed",
+          "value": 0,
+          "source": "Retained source/delivery diff reviewed for distinct out-of-scope semantic changes; missing completion report recorded separately, not hidden as an extra edit."
+        },
+        "tool_calls": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Not independently measured; no voluntary owner stopwatch protocol was performed. Native command items do not measure this field."
+        },
+        "human_active_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Not independently measured; no voluntary owner stopwatch protocol was performed. Native command items do not measure this field."
+        },
+        "review_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Not independently measured; no voluntary owner stopwatch protocol was performed. Native command items do not measure this field."
+        },
+        "human_interventions": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Not independently measured; no voluntary owner stopwatch protocol was performed. Native command items do not measure this field."
+        },
+        "resume_rework_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Not independently measured; no voluntary owner stopwatch protocol was performed. Native command items do not measure this field."
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "final-03-migration-recovery-progressive-rta",
+      "block_id": "final-migration-recovery",
+      "arm": "progressive-rta",
+      "task_id": "migration-recovery",
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "harness": "codex-cli-0.159.1-normal-context",
+      "model": "requested:gpt-6.1-sol; backend-unobserved",
+      "settings_id": "final-four-27dfe50-sol-high-180s",
+      "environment_id": "macos-arm64-native-20261114",
+      "replicate": "1",
+      "skill": {
+        "exposure": "loaded",
+        "digest": "28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211",
+        "evidence": "Completed exact frozen-path cat, exit 0 with nonempty output; explicit loading, not discovery."
+      },
+      "host_status": "timed-out",
+      "outcome": {
+        "status": "failure",
+        "method": "deterministic-consumer",
+        "evidence": [
+          "results.md#independent-acceptance"
+        ],
+        "reason": "Task incomplete within the registered deadline: required RESULT.md absent. Independently verified behavior, structure and actual ZIP are retained as a passed checkpoint, not full task success."
+      },
+      "completion": {
+        "task_complete": false,
+        "checkpoint_consumer_passed": true,
+        "actual_delivered_zip_passed": true,
+        "required_report_present": false,
+        "protected_paths_changed": [],
+        "registered_protected_paths": [
+          "CHECKPOINT.md",
+          "TASK.md",
+          "entry.py",
+          "owner-notes.txt"
+        ]
+      },
+      "host_usage_raw": null,
+      "measurements": {
+        "exec_commands": {
+          "status": "observed",
+          "value": 16,
+          "source": "Count item.completed with type command_execution in retained native JSONL; includes nonzero exits, not shell subcommands or all tool calls."
+        },
+        "elapsed_seconds": {
+          "status": "observed",
+          "value": 180.059,
+          "source": "Controller wall elapsed; timeout values are censored at the 180-second cap, not completion times."
+        },
+        "input_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim turn.completed usage.input_tokens; cumulative/cache accounting and billing semantics unverified. Missing event is unavailable."
+        },
+        "output_tokens": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Verbatim turn.completed usage.output_tokens; reasoning field retained separately, not added. Missing event is unavailable."
+        },
+        "unauthorized_mutations": {
+          "status": "observed",
+          "value": 0,
+          "source": "Exact comparison of registered protected paths against pre-call bytes; unit is paths, not an audit of every external action."
+        },
+        "false_attributions": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Visible completed diagnosis reviewed against source and selected consumer. No final diagnosis exists for timeout checkpoints."
+        },
+        "unnecessary_changes": {
+          "status": "observed",
+          "value": 0,
+          "source": "Retained source/delivery diff reviewed for distinct out-of-scope semantic changes; missing completion report recorded separately, not hidden as an extra edit."
+        },
+        "tool_calls": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Not independently measured; no voluntary owner stopwatch protocol was performed. Native command items do not measure this field."
+        },
+        "human_active_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Not independently measured; no voluntary owner stopwatch protocol was performed. Native command items do not measure this field."
+        },
+        "review_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Not independently measured; no voluntary owner stopwatch protocol was performed. Native command items do not measure this field."
+        },
+        "human_interventions": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Not independently measured; no voluntary owner stopwatch protocol was performed. Native command items do not measure this field."
+        },
+        "resume_rework_seconds": {
+          "status": "unavailable",
+          "value": null,
+          "source": "Not independently measured; no voluntary owner stopwatch protocol was performed. Native command items do not measure this field."
+        }
+      }
+    }
+  ]
+}

@@ -9,12 +9,14 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 LAB = ROOT / "evals" / "intent-lab"
@@ -67,6 +69,27 @@ class IntentLabSubjectTests(unittest.TestCase):
         # The request names only the report artifact; the review notes never ship.
         status = run(["git", "status", "--porcelain"], root).stdout
         self.assertEqual(status, "")
+
+    def test_preparation_does_not_schedule_background_git_maintenance(self) -> None:
+        methods = _load("rta_quiet_method_prepare",
+                        ROOT / "evals/operation-lab/prepare_method_choice.py")
+        for name, prepare, case in (
+            ("intent", subject.prepare, "missing-core-journey"),
+            ("method", methods.prepare, "retire-existing-green"),
+        ):
+            with self.subTest(family=name):
+                trace = self.base / f"git-trace-{name}.jsonl"
+                with patch.dict(os.environ, {"GIT_TRACE2_EVENT": str(trace)}):
+                    prepare(case, self.base / name)
+                events = [json.loads(line)
+                          for line in trace.read_text(encoding="utf-8").splitlines()]
+                self.assertTrue(any(event.get("event") == "start" and
+                                    "commit" in event.get("argv", []) for event in events))
+                maintenance = [event["argv"] for event in events
+                               if event.get("event") == "child_start" and
+                               {"maintenance", "gc"}.intersection(event.get("argv", []))]
+                self.assertEqual(maintenance, [],
+                                 "fixture preparation must finish before byte snapshots")
 
     def test_prepare_refuses_to_overwrite_an_existing_destination(self) -> None:
         root = self.seed("deferred-not-missing")

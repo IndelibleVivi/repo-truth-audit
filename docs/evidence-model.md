@@ -38,6 +38,43 @@ Skill was discovered, or that it was activated. Conversely, an all-files digest
 can be reproducibly wrong for delivery when ignored runtime residue is copied
 and hashed on both sides.
 
+## Consumer contract and evaluator applicability
+
+For a task crossing a process, package, machine or professional role, record what
+the receiver can actually use. A real compiler may be the first consumer; a
+host may select only some of the fields a producer emits. If the contract is a
+standalone packet, prepare the recipient before export and remove incidental
+producer resources from a disposable test. If it retains a service, include that
+service. Avoid inferring universal offline requirements from one experiment.
+
+Successful local round trips can share the same mistake. Two states with equal
+delivered summaries but different required answers are a strong information-loss
+witness. Interleaving them in one recipient can expose stale state. Test both
+selected source and delivery where each is an acceptance obligation, and preserve
+an adjacent valid use. Distinguish a product failure from compiler/dependency
+setup failure.
+
+An independent deterministic gate still needs an applicable contract. A legacy
+file with only a forwarding export can satisfy retirement from the selected CLI
+and bundle even if another lab explicitly required deletion. Retain the old
+gate's rejection, its premise and the current task's separate judgment. File
+presence, test count and lexical scans cannot alone establish responsibility.
+
+Comparative research records independently judged outcomes separately from
+observed effort, proxy counts and unavailable measurements. Failed or blocked
+runs remain visible. A self-reported tool count is not authenticated usage; report
+length is not owner review time. Unknown time and tokens remain null. These
+optional experiments are outside runtime acceptance and do not create a score.
+
+### Contaminated no-Skill control
+
+An arm named `without-skill` cannot support a no-Skill comparison when its own
+exposure record says a Skill was loaded. Keep the run and its outcome visible,
+but suppress comparability and measured deltas. Explicit comparisons between
+two loaded treatments remain valid when otherwise matched. The historical
+`skill` exposure field may identify an experimental instruction snapshot; that
+does not make a short experimental instruction a second installable product.
+
 ## Audit finding trace
 
 A reportable finding connects:

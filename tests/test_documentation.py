@@ -22,6 +22,15 @@ PAIRS = (
     ("docs/forward-0.3.0-followup.md", "docs/forward-0.3.0-followup.zh-CN.md"),
     ("docs/releases/v0.3.0.md", "docs/releases/v0.3.0.zh-CN.md"),
     ("docs/task-effectiveness-followup.md", "docs/task-effectiveness-followup.zh-CN.md"),
+    ("docs/user-outcomes-study.md", "docs/user-outcomes-study.zh-CN.md"),
+    ("docs/host-compatibility.md", "docs/host-compatibility.zh-CN.md"),
+    ("docs/codex-handoff.md", "docs/codex-handoff.zh-CN.md"),
+    ("evals/field/README.md", "evals/field/README.zh-CN.md"),
+    ("evals/README.md", "evals/README.zh-CN.md"),
+    ("evals/experiments/2026-11-user-outcomes/README.md", "evals/experiments/2026-11-user-outcomes/README.zh-CN.md"),
+    ("evals/experiments/2026-11-consumer-first/README.md", "evals/experiments/2026-11-consumer-first/README.zh-CN.md"),
+    ("evals/experiments/2026-11-consumer-first/setup-recovery.md", "evals/experiments/2026-11-consumer-first/setup-recovery.zh-CN.md"),
+    ("evals/experiments/2026-11-consumer-first/results.md", "evals/experiments/2026-11-consumer-first/results.zh-CN.md"),
 )
 
 

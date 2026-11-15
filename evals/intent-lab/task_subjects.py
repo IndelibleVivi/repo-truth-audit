@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -167,13 +168,20 @@ def require(ok, message):
         raise AssertionError(message)
 
 
-def call(root, *args):
+def _utf8_environment(environment=None):
+    """Give the trusted fixture a stable file/stdio contract across host locales."""
+    return {**(os.environ if environment is None else environment),
+            "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}
+
+
+def call(root, *args, environment=None):
     return subprocess.run([sys.executable, "-B", str(root / "cedar"), *map(str, args)],
-                          cwd=root, capture_output=True, text=True, timeout=20)
+                          cwd=root, env=_utf8_environment(environment), capture_output=True,
+                          encoding="utf-8", timeout=20)
 
 
-def value(root, *args):
-    result = call(root, *args)
+def value(root, *args, environment=None):
+    result = call(root, *args, environment=environment)
     require(result.returncode == 0, f"selected CLI failed for {args}: {result.stderr}")
     try:
         return json.loads(result.stdout)
@@ -188,12 +196,12 @@ def expected_affected(store, source, revision):
 
 def check(root, variant):
     """Confirm the designed task boundary, not any model's interpretation."""
-    require((root / "PROGRAM.md").read_text() == PROGRAM, "historical scope changed")
-    require((root / "docs/current-use.md").read_text() == CURRENT[variant], "current use changed")
+    require((root / "PROGRAM.md").read_text(encoding="utf-8") == PROGRAM, "historical scope changed")
+    require((root / "docs/current-use.md").read_text(encoding="utf-8") == CURRENT[variant], "current use changed")
     before = (root / "store.json").read_bytes()
     require(json.loads(before) == STORE, "source citation records changed")
     smoke = subprocess.run([sys.executable, "-B", "tests/test_summary.py"], cwd=root,
-                           capture_output=True, text=True, timeout=20)
+                           env=_utf8_environment(), capture_output=True, encoding="utf-8", timeout=20)
     require(smoke.returncode == 0, f"original summary checks must pass: {smoke.stderr}")
     with tempfile.TemporaryDirectory(prefix="cedar-truth-") as raw:
         packet = Path(raw) / "packet.json"
@@ -206,7 +214,7 @@ def check(root, variant):
         require(unavailable.returncode == 2 and "no citation relation" in unavailable.stderr,
                 "baseline packet must expose its unavailable relation")
         # The user-held worksheet can answer, but that information is not delivered.
-        worksheet = json.loads((root / "supplied-worksheet.json").read_text())
+        worksheet = json.loads((root / "supplied-worksheet.json").read_text(encoding="utf-8"))
         actual = [r["claim"] for r in worksheet["references"]
                   if (r["source"], r["revision"]) == ("measurement-a", 1)]
         require(actual == [r["id"] for r in expected_affected(STORE, "measurement-a", 1)],
@@ -216,7 +224,7 @@ def check(root, variant):
 
 def corrupt(root, variant):
     path = root / "docs/current-use.md"
-    path.write_text(CURRENT["summary" if variant == "revision" else "revision"])
+    path.write_text(CURRENT["summary" if variant == "revision" else "revision"], encoding="utf-8")
 
 
 def probe_stores():
@@ -236,21 +244,44 @@ def probe_stores():
     return first, second
 
 
+def _role_environment(work):
+    """Separate ordinary per-user app data and caches; this is not containment."""
+    home, temporary = work / "home", work / "tmp"
+    home.mkdir(parents=True)
+    temporary.mkdir()
+    application_paths = {
+        "XDG_CACHE_HOME": home / ".cache",
+        "XDG_DATA_HOME": home / ".local" / "share",
+        "XDG_CONFIG_HOME": home / ".config",
+        "XDG_STATE_HOME": home / ".local" / "state",
+        "APPDATA": home / "AppData" / "Roaming",
+        "LOCALAPPDATA": home / "AppData" / "Local",
+    }
+    for path in application_paths.values():
+        path.mkdir(parents=True, exist_ok=True)
+    return _utf8_environment({**os.environ, "HOME": str(home), "USERPROFILE": str(home),
+                             **{name: str(path) for name, path in application_paths.items()},
+                             "TMPDIR": str(temporary), "TMP": str(temporary), "TEMP": str(temporary)})
+
+
 def assert_repair(root):
     """Read trusted candidates only in disposable source and declared-artifact copies.
 
     Exact affected record arrays are required by the paired current request.
-    Export layout and internal implementation remain free. This is not containment.
+    Each producer is removed before an independent recipient consumes only its
+    packet bytes. A same-directory round trip cannot establish that handoff.
+    Export layout and internal implementation remain free. The directory setup
+    models this information boundary for trusted candidates; it is not containment.
     """
     for name in ("PROGRAM.md", "store.json", "docs/current-use.md", "supplied-worksheet.json"):
-        require((root / name).read_text() == files("revision")[name], f"preserve supplied {name}")
+        require((root / name).read_text(encoding="utf-8") == files("revision")[name], f"preserve supplied {name}")
     with tempfile.TemporaryDirectory(prefix="cedar-accept-") as raw:
         base = Path(raw)
         source = base / "source"
         shutil.copytree(root, source, ignore=shutil.ignore_patterns(".git", "__pycache__"))
         artifact = base / "artifact"
         artifact.mkdir()
-        members = json.loads((root / "bundle.json").read_text())
+        members = json.loads((root / "bundle.json").read_text(encoding="utf-8"))
         for name in dict.fromkeys([*members, "cedar", "launch.json"]):
             path = Path(name)
             require(not path.is_absolute() and ".." not in path.parts,
@@ -259,29 +290,66 @@ def assert_repair(root):
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(root / path, target)
         for product in (source, artifact):
+            # Clone the recipient before any export. Source-mode recipients also
+            # lack the producer's fixture store and separately supplied worksheet.
+            recipient = base / f"{product.name}-recipient"
+            shutil.copytree(product, recipient, ignore=shutil.ignore_patterns(
+                "store.json", "supplied-worksheet.json"))
+            received = base / f"{product.name}-received"
+            received.mkdir()
+            recipient_env = _role_environment(received / "environment")
+            packets = []
             for index, store in enumerate(probe_stores()):
-                work = base / f"{product.name}-data-{index}"
+                producer = base / f"{product.name}-producer-{index}"
+                shutil.copytree(product, producer)
+                work = base / f"{product.name}-producer-data-{index}"
                 work.mkdir()
+                producer_env = _role_environment(work / "environment")
                 input_path = work / "unseen.json"
-                input_path.write_text(encode(store))
+                input_path.write_text(encode(store), encoding="utf-8")
                 before = input_path.read_bytes()
                 summaries = [{"id": r["id"], "text": r["text"]} for r in store["claims"]]
-                require(value(product, "read", "--store", input_path) == summaries,
+                require(value(producer, "read", "--store", input_path,
+                              environment=producer_env) == summaries,
                         "read must preserve original summary output")
-                packet = work / "packet.json"
-                export = call(product, "export", "--store", input_path, "--output", packet)
-                require(export.returncode == 0 and packet.is_file(), "selected export must produce a packet")
+                require(input_path.read_bytes() == before, "read must preserve input store bytes")
+                outgoing = work / "packet.json"
+                export = call(producer, "export", "--store", input_path, "--output", outgoing,
+                              environment=producer_env)
+                require(export.returncode == 0 and outgoing.is_file(), "selected export must produce a packet")
                 require(input_path.read_bytes() == before, "export must preserve input store bytes")
-                # Only the packet crosses the handoff. The consumer cannot reopen
-                # this input, and visible fixture/worksheet IDs cannot answer it.
-                input_path.unlink()
-                packet_before = packet.read_bytes()
-                require(value(product, "read", "--packet", packet) == summaries,
+                packet_bytes = outgoing.read_bytes()
+                # Remove the whole producer and input/output tree. This defeats
+                # absolute cache pointers and sidecars that survive merely
+                # unlinking the input. All paths are owned disposable fixtures.
+                shutil.rmtree(producer)
+                shutil.rmtree(work)
+                packet = received / f"packet-{index}.json"
+                packet.write_bytes(packet_bytes)
+                packets.append((packet, packet_bytes, store, summaries, producer, work))
+            # A single recipient reads two packets with identical summaries but
+            # crossed citations. Returning to an earlier packet challenges a
+            # consumer that silently substitutes whichever packet it read last.
+            for index in (0, 1, 0):
+                packet, packet_bytes, store, summaries, producer, work = packets[index]
+                require(value(recipient, "read", "--packet", packet,
+                              environment=recipient_env) == summaries,
                         "packet must preserve original summary reading")
+                require(packet.read_bytes() == packet_bytes, "read must preserve packet bytes")
                 for source_id, revision in (("lab-z", 4), ("lab-z", 5), ("lab-y", 2), ("absent", 8)):
-                    result = value(product, "affected", "--packet", packet,
-                                   "--source", source_id, "--revision", revision)
+                    result = value(recipient, "affected", "--packet", packet,
+                                   "--source", source_id, "--revision", revision,
+                                   environment=recipient_env)
                     require(result == expected_affected(store, source_id, revision),
                             "affected must return exact complete cited argument records in stored order")
-                    require(packet.read_bytes() == packet_before, "affected must preserve packet bytes")
-                    require(not input_path.exists(), "consumer must not recreate the missing input store")
+                    require(packet.read_bytes() == packet_bytes, "affected must preserve packet bytes")
+                    require(not producer.exists() and not work.exists(),
+                            "consumer must not recreate producer state")
+    return {"proof_layers": ["selected_source", "declared_artifact", "independent_packet_recipient"],
+            "handoff": "only exported packet bytes; producer code, data and sidecars removed",
+            "role_caches": "separate HOME, USERPROFILE, XDG cache/data/config/state, APPDATA, LOCALAPPDATA and temporary paths",
+            "role_environment_variables": ["HOME", "USERPROFILE", "XDG_CACHE_HOME", "XDG_DATA_HOME",
+                                           "XDG_CONFIG_HOME", "XDG_STATE_HOME", "APPDATA", "LOCALAPPDATA",
+                                           "TMPDIR", "TMP", "TEMP"],
+            "histories_per_surface": 2, "packet_read_order": [0, 1, 0],
+            "os_isolation": False}

@@ -1,0 +1,93 @@
+{
+  "schema": "rta-final-four-scope-correction/1",
+  "seed": "consumer-first-scope-correction-final-four-20261114",
+  "slots": [
+    {
+      "task_id": "migration-recovery",
+      "arm": "consumer-first",
+      "slot": 1
+    },
+    {
+      "task_id": "known-bug",
+      "arm": "consumer-first",
+      "slot": 2
+    },
+    {
+      "task_id": "migration-recovery",
+      "arm": "progressive-rta",
+      "slot": 3
+    },
+    {
+      "task_id": "known-bug",
+      "arm": "without-skill",
+      "slot": 4
+    }
+  ],
+  "maximum_fresh_sessions": 4,
+  "maximum_total_subject_sessions": 24,
+  "already_started_sessions": 20,
+  "deadline_seconds": 180,
+  "concurrency": 3,
+  "retry": false,
+  "source_base": "3df91f43fd9a4430070c816d8e21a4648f99e355",
+  "reason": "The previous harness unconditionally preserved all product bytes in implementation tasks. Explicit implementation authority replaces that contradictory harness clause. Returned read-only audits are not Agent implementation failures.",
+  "coverage": "One migration full-RTA vs short pair; one local-repair no-RTA vs short pair. This is not the original balanced 4x3 study. Clean-control observations from v2 can be inspected under their own valid read-only scope but are not pooled.",
+  "prior_outcome_exposure": "Two returned implementation-task audit reports were read and disclosed the harness scope contradiction; no blind or causal claim for this correction.",
+  "payload_digest": "28b73009402e0f149c7078379a15d51cf88468c66ec092f49a59a5f6926fb211",
+  "instructions": {
+    "progressive-rta": "11c51773935dcc50df816e9314c941eaef51c70317e1055919f5afdac7ecf0dc",
+    "consumer-first": "98bad017590772950116c4c4182fd8d135b5fe0de3bce93d66c11eed97796410"
+  },
+  "objects": {
+    "final-01-migration-recovery-consumer-first": {
+      "task_id": "migration-recovery",
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "protected_inputs": [
+        "CHECKPOINT.md",
+        "TASK.md",
+        "entry.py",
+        "owner-notes.txt"
+      ]
+    },
+    "final-02-known-bug-consumer-first": {
+      "task_id": "known-bug",
+      "subject_digest": "e97f6d1f5e4f3a246bb2d814030df620c41ad601b697442b59ba5480d10991dc",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "protected_inputs": [
+        "TASK.md"
+      ]
+    },
+    "final-03-migration-recovery-progressive-rta": {
+      "task_id": "migration-recovery",
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "protected_inputs": [
+        "CHECKPOINT.md",
+        "TASK.md",
+        "entry.py",
+        "owner-notes.txt"
+      ]
+    },
+    "final-04-known-bug-without-skill": {
+      "task_id": "known-bug",
+      "subject_digest": "e97f6d1f5e4f3a246bb2d814030df620c41ad601b697442b59ba5480d10991dc",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "protected_inputs": [
+        "TASK.md"
+      ]
+    }
+  },
+  "harness_prompt_sha256": {
+    "final-01-migration-recovery-consumer-first": "d7abae0ac26349e0da6d0d11e46e6e55ea12b2ef9a7f1e5abc37909679df608b",
+    "final-02-known-bug-consumer-first": "c6169bd4bb4b0fed4cbf96f731eadc962bf541bd7706f6dd762b33a32b5ddfa4",
+    "final-03-migration-recovery-progressive-rta": "ee8c2ce069fe30f05d69d4af309ced50e72ea19c90f27163b5831cfe14251a9d",
+    "final-04-known-bug-without-skill": "89277cdd94872c69956f79999982a3ac02309b90c4a6e188fb29122faa413cf1"
+  },
+  "control_file_sha256": {
+    "evals/experiments/2026-11-consumer-first/verify_trial.py": "6cbfb69ec8debc1bbf1259e38418e6f16b5a27cc1e8663bb57e52e096d1d685c",
+    "evals/experiments/2026-11-consumer-first/subjects.py": "32440da9c759d6a82ad192db3394057f4981442df419628585fe793a1edbff8e",
+    "evals/experiments/2026-11-consumer-first/prepare_trial.py": "d2fe79e22d8bce7fde63dd669754b677345ea5506447abb652a7b24cd0e18f85",
+    "evals/operation-lab/run_operation_lab.py": "704fe811cc586fbfa6c3e1243b6c28c39a31aa1d81d18d588c700261b804dd6f"
+  }
+}

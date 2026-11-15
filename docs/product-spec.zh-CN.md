@@ -2,11 +2,12 @@
 
 [English](product-spec.md)
 
-状态：**0.3.0 source，含未发布的任务有效性改进 — 2026-11-07；公开 tag 仍为 v0.3.0**
+状态：**0.3.0 source，含未发布的任务有效性与消费者验证改进 — 2026-11-13；公开 tag 仍为 v0.3.0**
 扩展范围经所有者确认：2026-09-17
 方法选择细化获准实施：2026-09-20
 产品意图还原获准实施：2026-09-22
 任务有效性改进获准实施：2026-11-07
+消费者验证研究与源码研发获授权：2026-11-13
 source 版本：0.3.0
 最新公开 release：v0.3.0
 产品形态：独立 repository + 独立 Codex Skill
@@ -80,6 +81,10 @@ runbook、status file、历史 note、generated projection 与 installed copy �
 通过真实 selector、registration、manifest、caller/import、build pipeline、持久化
 reader/writer、install receipt 与 operator route 建立可达性。一次搜索未命中不能证明
 retirement。
+
+纳入消费者的进入门槛：公开类型、package exports、命令注册和宿主字段选择，都可能阻止进入
+已有能力。任务跨越交接时，明确接收方可得的文件、保留服务、配置与人工判断，并在该端验证；
+不能由生产缓存或未交付源码暗中补齐缺失输入。
 
 ### ROT-04 — 实质 finding trace
 
@@ -210,6 +215,10 @@ witness。把 baseline behavior witness 与 structural-completion check 分开�
 沿路径证明，无需强制新建永久测试设施。可行时以安全反例挑战承担关键结论的可执行 gate；
 无法取得该观察时说明实质证明边界。允许退役或整合过时测试，同时保留受支持行为的独立
 失败覆盖，并更新真正的测试入口。
+
+复用判据须匹配当前任务合同。若额外要求任务从未约定的文件删除、架构或输出格式，应保留
+原始结果并单独裁定适用性，不可为通过而削弱真实义务。症状旁保留一个受支持相邻用途，最后
+相关编辑后验证实际所选产物。干净接收副本及子进程环境分离属于 probe，不构成 OS 隔离。
 
 ### ROT-14 — 收敛的 increment
 

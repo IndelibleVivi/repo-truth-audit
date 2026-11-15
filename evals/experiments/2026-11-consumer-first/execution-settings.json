@@ -1,0 +1,251 @@
+{
+  "schema": "rta-consumer-first-execution/1",
+  "frozen_before_subject_calls": true,
+  "language": "en",
+  "requested_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "observed_backend_model": "not independently exposed by this host",
+  "harness": "codex-cli 0.159.1 exec --no-daemon --ignore-user-config --ephemeral; normal existing ChatGPT login",
+  "environment": {
+    "os": "Darwin",
+    "release": "26.5.2",
+    "machine": "arm64",
+    "python": "3.13.3"
+  },
+  "budget": {
+    "unit": "fresh Agent subject session; internal API request count not capped at twelve or independently exposed",
+    "maximum_sessions": 12,
+    "deadline_seconds_per_session": 180,
+    "termination_grace_seconds": 5,
+    "maximum_concurrent_sessions": 3,
+    "retry": false,
+    "new_paid_credentials_or_service": false
+  },
+  "exposure": "ambient user RTA exact-path disabled by invocation override; treatments explicitly read from frozen temporary snapshots; no implicit discovery claim",
+  "context_limit": "normal existing host context, not an OS-isolated or context-clean causal trial",
+  "slots": [
+    {
+      "slot": 1,
+      "task_id": "migration-recovery",
+      "arm": "progressive-rta",
+      "order_key": "024c9413eedd6d5616e9e3af953b610c5657071f0642ec2c4d0368f86b01d3f3"
+    },
+    {
+      "slot": 2,
+      "task_id": "known-bug",
+      "arm": "consumer-first",
+      "order_key": "04bc305d6b3912ebe25789abbbb60e157e0a3b6e1e151b14bcdb0228e2316840"
+    },
+    {
+      "slot": 3,
+      "task_id": "delivery-adoption",
+      "arm": "progressive-rta",
+      "order_key": "25e4888cfc98bc5fe387eba20af7861b8ef1cf50ddabb63daac8b8031f1fdb27"
+    },
+    {
+      "slot": 4,
+      "task_id": "clean-baseline",
+      "arm": "progressive-rta",
+      "order_key": "290b5c04f890bbc60909dbf7ce256321c8162b22cd19835a1b5ba75cd17010f4"
+    },
+    {
+      "slot": 5,
+      "task_id": "known-bug",
+      "arm": "without-skill",
+      "order_key": "3861009e6892b6be3b6747285574e389403411bcfebcffd4544d5c0cd5956bcc"
+    },
+    {
+      "slot": 6,
+      "task_id": "migration-recovery",
+      "arm": "without-skill",
+      "order_key": "5c3383f4c69f065c7fbd1a286e51e687d92094a87a501f8f174539a965793e9b"
+    },
+    {
+      "slot": 7,
+      "task_id": "delivery-adoption",
+      "arm": "consumer-first",
+      "order_key": "8fcb8fac3dcf8db98b8789058c9408c056c2b9736c0e638ff916c133279d4ebf"
+    },
+    {
+      "slot": 8,
+      "task_id": "migration-recovery",
+      "arm": "consumer-first",
+      "order_key": "937f586fbbdfdb460251ebd6e33826ae70936426dae8cb6c34d1e55bee29522d"
+    },
+    {
+      "slot": 9,
+      "task_id": "clean-baseline",
+      "arm": "without-skill",
+      "order_key": "95540c88f1e9523353c467022c7216b00064db511cd8a9ec4a627fb6022cfa53"
+    },
+    {
+      "slot": 10,
+      "task_id": "clean-baseline",
+      "arm": "consumer-first",
+      "order_key": "9625bcfa99ad4716ad87a819777473c57671bcce28db9e58b2e7655b88dee251"
+    },
+    {
+      "slot": 11,
+      "task_id": "known-bug",
+      "arm": "progressive-rta",
+      "order_key": "c9ea21e12f71270ff23a66f659294dcd8cc9a24f0cb149b64fb89bc9c447d5b3"
+    },
+    {
+      "slot": 12,
+      "task_id": "delivery-adoption",
+      "arm": "without-skill",
+      "order_key": "f57a21a5628f89a4d1c841dc4cf29962b338973fee64b6e8e3d85a05b07b1e31"
+    }
+  ],
+  "initial_objects": {
+    "01-migration-recovery-progressive-rta": {
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "protected_inputs": [
+        "CHECKPOINT.md",
+        "TASK.md",
+        "entry.py",
+        "owner-notes.txt"
+      ]
+    },
+    "02-known-bug-consumer-first": {
+      "subject_digest": "04aedbc9496b76cc79a5a008f3b9dc9129968410fa5435abc04db0033fbef725",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "protected_inputs": [
+        "TASK.md"
+      ]
+    },
+    "03-delivery-adoption-progressive-rta": {
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "protected_inputs": [
+        "PROGRAM.md",
+        "TASK.md",
+        "docs/current-use.md",
+        "store.json",
+        "supplied-worksheet.json"
+      ]
+    },
+    "04-clean-baseline-progressive-rta": {
+      "subject_digest": "aa2f3a4a0ee59a982d4a3e7a911277eee5a14a828435b6a4394ccf0db51107a1",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "protected_inputs": [
+        ".gitignore",
+        "README.md",
+        "TASK.md",
+        "app.py",
+        "bundle.json",
+        "docs/local-use.md",
+        "launch.json",
+        "test_app.py"
+      ]
+    },
+    "05-known-bug-without-skill": {
+      "subject_digest": "04aedbc9496b76cc79a5a008f3b9dc9129968410fa5435abc04db0033fbef725",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "protected_inputs": [
+        "TASK.md"
+      ]
+    },
+    "06-migration-recovery-without-skill": {
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "protected_inputs": [
+        "CHECKPOINT.md",
+        "TASK.md",
+        "entry.py",
+        "owner-notes.txt"
+      ]
+    },
+    "07-delivery-adoption-consumer-first": {
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "protected_inputs": [
+        "PROGRAM.md",
+        "TASK.md",
+        "docs/current-use.md",
+        "store.json",
+        "supplied-worksheet.json"
+      ]
+    },
+    "08-migration-recovery-consumer-first": {
+      "subject_digest": "611212768914ed35449f00f274c16a378ad7d465fa6981e3cef3621070b1ee6a",
+      "task_prompt_digest": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+      "protected_inputs": [
+        "CHECKPOINT.md",
+        "TASK.md",
+        "entry.py",
+        "owner-notes.txt"
+      ]
+    },
+    "09-clean-baseline-without-skill": {
+      "subject_digest": "aa2f3a4a0ee59a982d4a3e7a911277eee5a14a828435b6a4394ccf0db51107a1",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "protected_inputs": [
+        ".gitignore",
+        "README.md",
+        "TASK.md",
+        "app.py",
+        "bundle.json",
+        "docs/local-use.md",
+        "launch.json",
+        "test_app.py"
+      ]
+    },
+    "10-clean-baseline-consumer-first": {
+      "subject_digest": "aa2f3a4a0ee59a982d4a3e7a911277eee5a14a828435b6a4394ccf0db51107a1",
+      "task_prompt_digest": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+      "protected_inputs": [
+        ".gitignore",
+        "README.md",
+        "TASK.md",
+        "app.py",
+        "bundle.json",
+        "docs/local-use.md",
+        "launch.json",
+        "test_app.py"
+      ]
+    },
+    "11-known-bug-progressive-rta": {
+      "subject_digest": "04aedbc9496b76cc79a5a008f3b9dc9129968410fa5435abc04db0033fbef725",
+      "task_prompt_digest": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+      "protected_inputs": [
+        "TASK.md"
+      ]
+    },
+    "12-delivery-adoption-without-skill": {
+      "subject_digest": "ddb13f48b7114e9bf7740f6e60560c3fb69e5c869822020a3c88953e5884e9b2",
+      "task_prompt_digest": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+      "protected_inputs": [
+        "PROGRAM.md",
+        "TASK.md",
+        "docs/current-use.md",
+        "store.json",
+        "supplied-worksheet.json"
+      ]
+    }
+  },
+  "control_file_sha256": {
+    "evals/experiments/2026-11-consumer-first/prepare_trial.py": "3bd101965df25c7e193c70d3dd7fd9d60e02aecf7b445525355d0826dd649719",
+    "evals/experiments/2026-11-consumer-first/README.md": "0f62cd260b1b90bee5f5287f541047a55bfeecef5912bb716de06d0e727d537d",
+    "evals/experiments/2026-11-consumer-first/subjects.py": "535193ab2ee97544cd32356aac33d5bf73183e1df902a2784a9e5246a7e48c5d",
+    "evals/experiments/2026-11-consumer-first/README.zh-CN.md": "690adf8c8aec490fb7c840f4eec42e4c175e70e86812fd2bac8b4d6971d64e1e",
+    "evals/experiments/2026-11-consumer-first/verify_trial.py": "8563286be4c3be4eb6843468bff414d56c644ecc29ea3e4d78e381c98ce90359",
+    "evals/experiments/2026-11-consumer-first/prepare_review.py": "5d82691acdcb640e5830cf336daac919584a447a6f2ba103d3c206b071d55f4d",
+    "evals/experiments/2026-11-consumer-first/preregistration.json": "ce46c22dc4bc5fa9a5db64c6595addcf0b46d307697bf5a0fa30a3c8f9fef7ed",
+    "evals/experiments/2026-11-consumer-first/instructions/progressive-rta.md": "11c51773935dcc50df816e9314c941eaef51c70317e1055919f5afdac7ecf0dc",
+    "evals/experiments/2026-11-consumer-first/instructions/consumer-first.md": "98bad017590772950116c4c4182fd8d135b5fe0de3bce93d66c11eed97796410",
+    "evals/experiments/2026-11-consumer-first/tasks/zh-CN/clean-baseline.md": "77ed4e7a5b11aa9dbb85384c963c91f67e52b7b267b8c6de0cfe3550003af774",
+    "evals/experiments/2026-11-consumer-first/tasks/zh-CN/migration-recovery.md": "de05b35c4fef1ba00b330373893f9f343aa57ce47c1b55cf466e31cee4a19ce5",
+    "evals/experiments/2026-11-consumer-first/tasks/zh-CN/known-bug.md": "8fb6e0be6579854b3abbaaf40dc75c0b023b5070b9b6492d928cc3e82b36fb89",
+    "evals/experiments/2026-11-consumer-first/tasks/zh-CN/delivery-adoption.md": "55d7a1e0181f45f1fba2e9f3add514dcc5b11951b981be607903e7588964c6c3",
+    "evals/experiments/2026-11-consumer-first/tasks/en/clean-baseline.md": "a819c881177ef4a2792bf70af1fc5676b35691bd7a18a4300f852c8e495a46f5",
+    "evals/experiments/2026-11-consumer-first/tasks/en/migration-recovery.md": "8a33b07da33cafa80eb1f828162f13dea53681f30170772d1ff0ac881931cb99",
+    "evals/experiments/2026-11-consumer-first/tasks/en/known-bug.md": "c30202c0d08da004a7aee646097062862b880473dbc751d5fa27ac72406f93a3",
+    "evals/experiments/2026-11-consumer-first/tasks/en/delivery-adoption.md": "f021fe25d8e165a5703bd56f2b5758bbc5ba749d677c79788047da57a48453e9",
+    "evals/operation-lab/run_operation_lab.py": "704fe811cc586fbfa6c3e1243b6c28c39a31aa1d81d18d588c700261b804dd6f",
+    "evals/intent-lab/task_subjects.py": "e8f144ec49659416e72a1eb25ecaa336ac6ac44d097fcb5d3f3a41d24acba3b5",
+    "evals/intent-lab/check_intent_subject.py": "383f69529e156a7af03c819d69a29f2d4bc51a73aa86d0c921f0516a4ea64756",
+    "evals/experiments/2026-11-user-outcomes/verify_trial.py": "d51a209ed4976b9136ae07c8dbe244fc15433826cd7d0ddfb5ada8090566a07e"
+  }
+}

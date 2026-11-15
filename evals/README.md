@@ -1,5 +1,33 @@
 # Behavior and operation evaluation
 
+[简体中文](README.zh-CN.md)
+
+The November 2026 [user-outcomes study](../docs/user-outcomes-study.md) adds
+optional [real consumer probes](field/README.md) and
+[four matched native task pairs](experiments/2026-11-user-outcomes/README.md).
+They are separate evidence classes: deterministic oracle discrimination, fresh
+Agent behavior, measured/proxy costs and host adoption must not be conflated.
+Research tools stay outside the nine-file Skill payload and launch no models.
+
+The finite [consumer-first follow-up](experiments/2026-11-consumer-first/README.md)
+preserves the original four-task/three-arm registration and the separated
+[24-session results](experiments/2026-11-consumer-first/results.md). The balanced
+study remains incomplete. Preparation, verification and optional review tools
+are offline; the package launches no models.
+
+```bash
+python3 evals/intent-lab/check_intent_subject.py --self-challenge-repairs
+python3 scripts/compare_trials.py evals/experiments/2026-11-user-outcomes/observations.json
+```
+
+Cedar repair verification prepares source and declared-artifact recipients before
+export, transfers only packet bytes, removes producer resources and interleaves
+two citation histories with identical summaries. A cache-backed candidate first
+proves that its local round trip works before facing the recipient. This models
+a trusted experiment's resource boundary, not OS isolation. A reused structural
+oracle must also match the task: a required physical deletion and retirement
+from selected CLI/bundle are different obligations.
+
 The original cases test whether Audit reconstructs decision-bearing repository
 truth instead of producing a generic checklist. The separate operation lab
 tests whether deterministic witnesses can distinguish a safe checkpoint from
@@ -147,9 +175,15 @@ python3 evals/intent-lab/check_intent_subject.py \
 ```
 
 The Cedar repair witness uses unseen crossed citations, exact complete records,
-source/revision matching, multiple/no matches, order, state preservation and
-source/declared-artifact copies. It removes the input store after export, so the
-consumer must use the packet alone. It accepts different valid packet layouts.
+source/revision matching, multiple/no matches, order and state preservation.
+Independent source and declared-artifact recipients are prepared before export.
+Only packet bytes cross the handoff; the producer's code, input, output, sidecars
+and ordinary role-specific home/cache/data/config/state/temporary directories
+are removed or separated. A single recipient reads two packets with identical
+summaries and different citation histories in order 0 → 1 → 0. This challenges
+producer-cache borrowing and accidental reuse of the last packet while allowing
+different valid packet layouts. It is trusted-fixture separation, not arbitrary
+environment isolation or native Windows acceptance.
 `tests/test_task_intent.py` challenges invalid outputs and preserves the normal-use
 contrast. These are product/evaluator checks, not model-output grading. Actual
 baseline/candidate observations and limits are in the
